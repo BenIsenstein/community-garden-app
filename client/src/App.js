@@ -1,15 +1,63 @@
-import './App.css';
-import SuperheroesTable from './components/SuperheroesTable'
+import React from "react"
+import './App.css'
+import GardenListAndForm from './components/GardenListAndForm/GardenListAndForm'
 
-const App = () => {
+
+function App() {
   return (
-    <div>
-      <div className="title-bar">
-        <h1>Superhero Registry</h1>
-      </div>
-      <SuperheroesTable />
+    <div className="App">
+      <header className="App-header">
+        <GardenListAndForm />
+      </header>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export default class App extends React.Component {
+//   state = {
+//     users: [],
+//   };
+//   componentDidMount() {
+//     axios.get("/users.json").then((response) => {
+//       this.setState({ users: response.data });
+//     });
+//   }
+
+//   render() {
+//     const { users } = this.state;
+//     return (
+//       <div>
+//         <ul className="users">
+//           {users.map((user) => (
+//             <li className="user">
+//               <p>
+//                 <strong>Name:</strong> {user.name}
+//               </p>
+//               <p>
+//                 <strong>Email:</strong> {user.email}
+//               </p>
+//               <p>
+//                 <strong>City:</strong> {user.address.city}
+//               </p>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
+//   }
+// }

@@ -1,0 +1,18 @@
+.addGardenForm {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.addGardenFormHeader {
+
+}
+
+.vacancy {
+    display: flex;
+    flex-direction: row;
+}
+
+.quadrant {
+    display: flex;
+}
