@@ -1,0 +1,14 @@
+/* Always set the map height explicitly to define the size of the div element that contains the map.*/
+/* All percentage-based sizes must inherit from parent block elements, 
+    and if any of those ancestors fail to specify a size, they are assumed to be sized at 0 x 0 pixels*/
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+html, body { /* Optional: Makes the sample page fill the window. */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
