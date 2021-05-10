@@ -7,3 +7,56 @@
 .title-bar h1 {
   margin: 0px;
 }
+
+/* Signup Form */
+.signupForm {
+  justify-content: center;
+  display: flex;
+}
+
+.signupForm h1 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.signupForm .container {
+  border: 5px solid rgb(171, 219, 120);
+  padding: 20px;
+}
+
+.signupForm label {
+  display: block;
+  margin-top: 10px;
+}
+
+.signupForm input {
+  padding: 5px;
+}
+
+.signupForm button {
+  display: block;
+  padding: 5px;
+  margin: 10px auto 0 auto;
+  font-size: 1.25rem;
+  background-color: rgb(171, 219, 120);
+  border-radius: 5px;
+}
+
+.currentPlantsSelection label {
+  display: inline;
+}
+
+#alreadyHaveAnAccount {
+  text-align: center;
+}
+#alreadyHaveAnAccount a {
+  text-decoration: none;
+}
+#alreadyHaveAnAccount a:visited {
+  color: rgb(171, 219, 120);
+}
+
+#loginButton {
+  color: rgb(171, 219, 120);
+  font-weight: bold;
+}
