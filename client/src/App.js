@@ -1,23 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
-import SuperheroesTable from "./components/SuperheroesTable";
+import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
 
-// const App = () => {
-//   return (
-//     <div>
-//       <div className="title-bar">
-//         <h1>Superhero Registry</h1>
-//       </div>
-//       {/* <SuperheroesTable /> */}
-//       <Signup />
-//     </div>
-//   );
-// };
-
-const App = () => {
+function App() {
   return (
     <Router>
       <div>
@@ -47,6 +35,13 @@ const App = () => {
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
+          <Route path="/gardenlistandform">
+            <div className="App">
+              <header className="App-header">
+                <GardenListAndForm />
+              </header>
+            </div>
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -54,7 +49,7 @@ const App = () => {
       </div>
     </Router>
   );
-};
+}
 
 function Home() {
   return <h2>Home</h2>;
@@ -69,3 +64,37 @@ function Users() {
 }
 
 export default App;
+
+// export default class App extends React.Component {
+//   state = {
+//     users: [],
+//   };
+//   componentDidMount() {
+//     axios.get("/users.json").then((response) => {
+//       this.setState({ users: response.data });
+//     });
+//   }
+
+//   render() {
+//     const { users } = this.state;
+//     return (
+//       <div>
+//         <ul className="users">
+//           {users.map((user) => (
+//             <li className="user">
+//               <p>
+//                 <strong>Name:</strong> {user.name}
+//               </p>
+//               <p>
+//                 <strong>Email:</strong> {user.email}
+//               </p>
+//               <p>
+//                 <strong>City:</strong> {user.address.city}
+//               </p>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
+//   }
+// }

@@ -1,23 +1,24 @@
-var createError = require("http-errors");
-var express = require("express");
-// var path = require("path");
-// const showError = require("../client/src/components/Signup");
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+require('dotenv').config()
 
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const app = express()
+
+app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
 // IMPORT ROUTES
-var superheroRouter = require("./routes/superhero");
-
-var app = express();
-
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+const getAllGardensRouter = require('./routes/getAllGardens')
+const addAGardenRouter = require('./routes/addAGarden')
 
 // USE ROUTES
-// app.use("/superhero", superheroRouter);
+app.use('/api/get-all-gardens', getAllGardensRouter)
+app.use('/api/add-a-garden', addAGardenRouter)
 
 // serve the react application
 app.use(express.static("../client/build"));
@@ -71,18 +72,18 @@ app.post("/signup", (req, res) => {
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
-});
+  next(createError(404))
+})
 
 // error handler
-// app.use(function (err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get("env") === "development" ? err : {};
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
+  // render the error page
+  res.status(err.status || 500)
+  res.render('error')
+})
 
-module.exports = app;
+module.exports = app
