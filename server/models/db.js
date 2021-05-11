@@ -1,16 +1,18 @@
 //db setup
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
 
-const dbServer = 'mongodb://localhost:27017'
-const databaseName = 'project-2-C6-local'
-const dbUrl = dbServer + '/' + databaseName
-
-mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
-
-const db = mongoose.connection
-db.on('error', (err) => console.error('MongoDB connection error!', err))
-db.once('open', () => console.log('MongoDB is now connected! @ ', dbUrl))
+mongoose.connect(
+  process.env.MONGODB_URL,
+  { useUnifiedTopology: true, useNewUrlParser: true },
+  )
+  .then(function(){
+    console.log('Connected to DB...')
+  })
+  .catch(function(err){
+    console.log(err)
+  })
 
 
 // Garden model and functions
