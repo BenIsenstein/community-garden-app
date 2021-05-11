@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config()
-=======
-const createError = require('http-errors')
-const express = require('express')
-const path = require('path')
-const cookieParser = require('cookie-parser')
-const logger = require('morgan')
->>>>>>> 970778ec8e4d7cc181cf0a4db8129eb383ae9d04
 
 const app = express()
 
