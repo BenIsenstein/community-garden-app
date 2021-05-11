@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <div class="signupForm">
+    <div className="signupForm">
       <div className="container">
         <h1>Sign Up!</h1>
-        <div className="username">
-          <label for="username">
+        <div className="form-control">
+          <label htmlFor="username">
             <b>Username</b>
           </label>
           <input
@@ -14,14 +14,15 @@ const Signup = () => {
             placeholder="Enter Username"
             name="username"
             id="username"
-            autofocus
-            required
+            // autofocus
+            // required
           />
-          <label id="usernameError"></label>
-          <label id="usernameSuccess"></label>
+          {/* <label id="usernameError"></label> */}
+          {/* <label id="usernameSuccess"></label> */}
+          <small>Error message</small>
         </div>
-        <div className="password">
-          <label for="password">
+        <div className="form-control">
+          <label htmlFor="password">
             <b>Password</b>
           </label>
           <input
@@ -29,11 +30,14 @@ const Signup = () => {
             placeholder="Enter Password"
             name="password"
             id="password"
-            required
+            // required
           />
+          {/* <label id="passwordError"></label> */}
+          {/* <label id="passwordSuccess"></label> */}
+          <small>Error message</small>
         </div>
-        <div className="confirmPassword">
-          <label for="confirmPassword">
+        <div className="form-control">
+          <label htmlFor="confirmPassword">
             <b>Password</b>
           </label>
           <input
@@ -41,10 +45,11 @@ const Signup = () => {
             placeholder="Confirm Password"
             name="confirmPassword"
             id="confirmPassword"
-            required
+            // required
           />
+          <small>Error message</small>
         </div>
-        <div className="howLongGardening">
+        <div className="form-control">
           <label htmlFor="howLongGardening">
             <b>How long have you been gardening?</b>
           </label>
@@ -53,8 +58,9 @@ const Signup = () => {
             <option value="oneToFiveYears">1 to 5 years</option>
             <option value="moreThanFiveYears">More than 5 years</option>
           </select>
+          <small>Error message</small>
         </div>
-        <div className="currentPlants">
+        <div className="form-control">
           <label htmlFor="currentPlants">
             <b>What plants are currently in your garden?</b>
           </label>
@@ -123,8 +129,8 @@ const Signup = () => {
   );
 
   async function submit() {
-    let reqName = document.getElementById("username").value;
-    let reqPass = document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
     let howLongGardening = document.getElementById("howLongGardening").value;
     let plantCheckbox = document.getElementsByName("plantCheckbox");
@@ -139,16 +145,17 @@ const Signup = () => {
     }
     // let rememberMe = document.getElementById("rememberMe").value;
 
-    console.log("reqName:", reqName);
-    console.log("reqPass:", reqPass);
+    console.log("username:", username);
+    console.log("password:", password);
     console.log("confirmPassword:", confirmPassword);
     console.log("howLongGardening:", howLongGardening);
     console.log("currentPlants:", currentPlants);
     // console.log("rememberMe:", rememberMe);
 
     let submissionData = {
-      username: reqName,
-      password: reqPass,
+      username: username,
+      password: password,
+      confirmPassword: confirmPassword,
       plants: currentPlants,
     };
 
@@ -169,7 +176,21 @@ const Signup = () => {
       window.location = "/loggedon";
     }
 
-    // // ERROR/SUCCESS OF NAME/PASSWORD
+    // // Show input error message
+    // function showError(input, message) {
+    //   const formControl = input.parentElement;
+    //   formControl.className = "form-control error";
+    //   const small = formControl.querySelector("small");
+    //   small.innerText = message;
+    // }
+
+    // // Show success outline
+    // function showSuccess(input) {
+    //   const formControl = input.parentElement;
+    //   formControl.className = "form-control success";
+    // }
+
+    // ERROR/SUCCESS OF NAME/PASSWORD
     // let nameErrorField = document.getElementById("usernameError");
     // let passErrorField = document.getElementById("passwordError");
     // let nameSuccessField = document.getElementById("usernameSuccess");

@@ -1,6 +1,7 @@
 var createError = require("http-errors");
 var express = require("express");
-var path = require("path");
+// var path = require("path");
+// const showError = require("../client/src/components/Signup");
 
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -31,12 +32,33 @@ app.get("/blah", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-  console.log(req);
+  console.log("req: ", req);
+  console.log("req.body.password: ", req.body.password);
+  console.log("req.body.confirmPassword: ", req.body.confirmPassword);
   // res.redirect("/loggedon");
-  if (req.body.password.length < 3) {
+  // if (req.body.username === "") {
+  //   res.send({
+  //     success: false,
+  //     // message: "Username is required",
+  //     showError(username, 'Username is required');
+  //   })
+  // } else {
+  //   showSuccess(username);
+  // }
+  if (req.body.username === "") {
     res.send({
       success: false,
-      message: "Bad Password",
+      message: "Username is required",
+    });
+  } else if (req.body.password.length < 5) {
+    res.send({
+      success: false,
+      message: "Bad password",
+    });
+  } else if (req.body.password != req.body.confirmPassword) {
+    res.send({
+      success: false,
+      message: "Passwords must match",
     });
   } else {
     res.send({
