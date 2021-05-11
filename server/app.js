@@ -21,7 +21,54 @@ app.use('/api/get-all-gardens', getAllGardensRouter)
 app.use('/api/add-a-garden', addAGardenRouter)
 
 // serve the react application
-app.use(express.static('../client/build'))
+app.use(express.static("../client/build"));
+
+// ***** My stuff
+
+app.get("/loggedon", (req, res) => {
+  res.send("TEST???");
+});
+app.get("/blah", (req, res) => {
+  res.send("TEST???");
+});
+
+app.post("/signup", (req, res) => {
+  console.log("req: ", req);
+  console.log("req.body.password: ", req.body.password);
+  console.log("req.body.confirmPassword: ", req.body.confirmPassword);
+  // res.redirect("/loggedon");
+  // if (req.body.username === "") {
+  //   res.send({
+  //     success: false,
+  //     // message: "Username is required",
+  //     showError(username, 'Username is required');
+  //   })
+  // } else {
+  //   showSuccess(username);
+  // }
+  if (req.body.username === "") {
+    res.send({
+      success: false,
+      message: "Username is required",
+    });
+  } else if (req.body.password.length < 5) {
+    res.send({
+      success: false,
+      message: "Bad password",
+    });
+  } else if (req.body.password != req.body.confirmPassword) {
+    res.send({
+      success: false,
+      message: "Passwords must match",
+    });
+  } else {
+    res.send({
+      success: true,
+    });
+  }
+});
+
+// ***** End of my stuff
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
