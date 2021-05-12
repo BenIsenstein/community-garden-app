@@ -3,7 +3,8 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 51.035, lng: -114.0603959887364 },
     zoom: 11,
-    mapTypeId: "terrain"
+    mapTypeId: "terrain",
+    mapId: '52ff285bd1833867'
   })
 
  function addMarker(coordinates, gardenName) {
@@ -18,11 +19,9 @@ function initMap() {
     const detailWindow = new google.maps.InfoWindow({
       content: marker.title
     })
-
     marker.addListener("mouseover", () => {
       detailWindow.open(map, marker)
     })
-
     marker.addListener("mouseout", () => {
       detailWindow.close(map, marker)
     })
