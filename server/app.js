@@ -16,7 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-console.log("addAGardenRouter", addAGardenRouter);
 // USE ROUTES
 app.use("/api/get-all-gardens", getAllGardensRouter);
 app.use("/api/add-a-garden", addAGardenRouter);
