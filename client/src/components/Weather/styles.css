@@ -3,12 +3,12 @@
 .main{
     margin: 10px;
     border-radius: 20px;
-    background-color: #457d00;
+    background-color: #007d1f;
 }
 
 .top{
     height: 60px;
-    background-color: #fea938;
+    background-color: #d88519;
     color: whitesmoke;
     padding: 10px;
     border-radius: 20px 20px 0 0;
@@ -18,8 +18,8 @@
 }
 
 .header{
-    background-color: #fea938;
-    color: #fcec9a;
+    background-color: #d88519;
+    color: #e4c321;
     margin: 10px 0px 0px 10px;
     font-size: 25px;
     border-radius: 20px 20px 0 0;
