@@ -22,6 +22,5 @@
 .node_repl_history
 .yarn-integrity
 .next
-/server/.env
-/client/.env
+.env
 /client/src/components/gardenMap/mapWithMarkers.txt
