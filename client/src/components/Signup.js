@@ -1,8 +1,34 @@
 import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { useForm } from "react-hook-form";
+import "./Signup.css";
 
 const Signup = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = useForm({});
+  const password = useRef({});
+  const confirmPassword = useRef({});
+  password.current = watch("password", "");
+  confirmPassword.current = watch("confirmPassword", "");
+  const onSubmit = async (data) => {
+    alert(JSON.stringify(data));
+  };
+
+  function validatePass(password) {
+    return (
+      /.{6,}$/.test(password) &&
+      /[A-Z]+/.test(password) &&
+      /[a-z]+/.test(password) &&
+      /[0-9]+/.test(password)
+    );
+  }
+
   return (
-    <div className="signupForm">
+    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
       <div className="container">
         <h1>Sign Up!</h1>
         <div className="form-control">
@@ -10,50 +36,61 @@ const Signup = () => {
             <b>Username</b>
           </label>
           <input
+            {...register("username", { required: true })}
             type="text"
             placeholder="Enter Username"
             name="username"
             id="username"
-            // autofocus
-            // required
           />
-          {/* <label id="usernameError"></label> */}
-          {/* <label id="usernameSuccess"></label> */}
-          <small>Error message</small>
         </div>
         <div className="form-control">
           <label htmlFor="password">
             <b>Password</b>
           </label>
           <input
+            {...register("password", {
+              required: true,
+              validate: (value) =>
+                validatePass(value) ||
+                "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long.",
+            })}
             type="password"
             placeholder="Enter Password"
             name="password"
             id="password"
-            // required
           />
-          {/* <label id="passwordError"></label> */}
-          {/* <label id="passwordSuccess"></label> */}
-          <small>Error message</small>
+          {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div className="form-control">
           <label htmlFor="confirmPassword">
             <b>Password</b>
           </label>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            id="confirmPassword"
-            // required
-          />
-          <small>Error message</small>
+          <div style={{ display: "flex", color: "red" }}>
+            <input
+              {...register("confirmPassword", {
+                required: true,
+                validate: (value) =>
+                  value === password.current || "The passwords do not match",
+                // validatePass(value) ||
+                // "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long.",
+              })}
+              type="password"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
+            {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+          </div>
         </div>
         <div className="form-control">
           <label htmlFor="howLongGardening">
             <b>How long have you been gardening?</b>
           </label>
-          <select name="howLongGardening" id="howLongGardening">
+          <select
+            {...register("howLongGardening", { required: false })}
+            name="howLongGardening"
+            id="howLongGardening"
+          >
             <option value="lessThanOneYear">Less than 1 year</option>
             <option value="oneToFiveYears">1 to 5 years</option>
             <option value="moreThanFiveYears">More than 5 years</option>
@@ -67,6 +104,7 @@ const Signup = () => {
           <div className="currentPlantsSelection" id="currentPlantsSelection">
             <div>
               <input
+                {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="peas"
@@ -76,6 +114,7 @@ const Signup = () => {
             </div>
             <div>
               <input
+                {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="carrots"
@@ -85,6 +124,7 @@ const Signup = () => {
             </div>
             <div>
               <input
+                {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="zucchini"
@@ -94,6 +134,7 @@ const Signup = () => {
             </div>
             <div>
               <input
+                {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="tomatoes"
@@ -103,18 +144,32 @@ const Signup = () => {
             </div>
           </div>
         </div>
-
-        {/* Don't think we need this...
-        <label>
+        <div className="postalCode">
+          <label htmlFor="postalCode">
+            <b>Postal Code</b>
+          </label>
           <input
-            type="checkbox"
-            checked="checked"
-            id="rememberMe"
-            name="rememberMe"
-          />{" "}
-          Remember me
-        </label> */}
-        <button onClick={submit}>Submit</button>
+            {...register("postalCode", { required: false })}
+            type="text"
+            placeholder="Enter Postal Code"
+            name="postalCode"
+            id="postalCode"
+          />
+        </div>
+        <div className="memberOfGarden">
+          <label htmlFor="memberOfGarden">
+            <b>
+              If you're currently a member of a garden, select it from our list
+              below:
+            </b>
+          </label>
+          <select name="memberOfGarden" id="memberOfGarden">
+            <option value="gardenA">Garden A</option>
+            <option value="gardenB">Garden B</option>
+            <option value="gardenC">Garden C</option>
+          </select>
+        </div>
+        <input type="submit" value="Submit" />
         <hr />
         <div>
           <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
@@ -125,7 +180,7 @@ const Signup = () => {
           </label>
         </div>
       </div>
-    </div>
+    </form>
   );
 
   async function submit() {
@@ -143,14 +198,12 @@ const Signup = () => {
     if (currentPlants) {
       currentPlants = currentPlants.substring(1);
     }
-    // let rememberMe = document.getElementById("rememberMe").value;
 
     console.log("username:", username);
     console.log("password:", password);
     console.log("confirmPassword:", confirmPassword);
     console.log("howLongGardening:", howLongGardening);
     console.log("currentPlants:", currentPlants);
-    // console.log("rememberMe:", rememberMe);
 
     let submissionData = {
       username: username,

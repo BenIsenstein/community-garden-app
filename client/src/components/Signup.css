@@ -1,0 +1,83 @@
+/* Signup Form */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.signupForm {
+  justify-content: center;
+  display: flex;
+}
+
+.signupForm h1 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.signupForm .container {
+  border: 5px solid rgb(171, 219, 120);
+  padding: 20px;
+}
+
+.signupForm label {
+  display: block;
+  margin-top: 10px;
+}
+
+.signupForm input {
+  padding: 5px;
+}
+
+.signupForm button {
+  display: block;
+  padding: 5px;
+  margin: 10px auto 0 auto;
+  font-size: 1.25rem;
+  background-color: rgb(171, 219, 120);
+  border-radius: 5px;
+}
+
+.currentPlantsSelection label {
+  display: inline;
+}
+
+#alreadyHaveAnAccount {
+  text-align: center;
+}
+#alreadyHaveAnAccount a {
+  text-decoration: none;
+}
+#alreadyHaveAnAccount a:visited {
+  color: rgb(171, 219, 120);
+}
+
+#loginButton {
+  color: rgb(171, 219, 120);
+  font-weight: bold;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-control.success input {
+  border-color: var(--success-color);
+}
+
+.form-control.error input {
+  border-color: var(--error-color);
+}
+
+.form-control small {
+  color: var(--error-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
