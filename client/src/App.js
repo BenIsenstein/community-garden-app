@@ -4,8 +4,7 @@ import "./App.css";
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
-import GetWeather from "./components/GetWeather";
-
+import Weather from "./components/Weather/weather";
 import GardenMap from "./components/gardenMap/GardenMapReact";
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
               <Link to="/signup">Signup</Link>
             </li>
             <li>
-              <Link to="/weather">Weather</Link>
+              <Link to="/Weather">Weather</Link>
             </li>
           </ul>
         </nav>
@@ -51,10 +50,11 @@ function App() {
           <Route path='/gardenmapreact'>
             <GardenMap />
           </Route>
+          <Route path = "/Weather">
+           <Weather />
+          </Route>
           <Route path="/">
             <Home />
-          </Route>
-          <Route path = "/GetWeather">
           </Route>
         </Switch>
       </div>
@@ -75,9 +75,8 @@ function Users() {
 }
 
 function GetWeather() {
-  return <weather />;
+  return <>GetWeather</>;
 }
-
 
 export default App;
 
