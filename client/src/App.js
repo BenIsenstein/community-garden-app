@@ -4,6 +4,7 @@ import "./App.css";
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
+import GardenMap from "./components/gardenMap/GardenMapReact";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
                 <GardenListAndForm />
               </header>
             </div>
+          </Route>
+          <Route path='/gardenmapreact'>
+            <GardenMap />
           </Route>
           <Route path="/">
             <Home />

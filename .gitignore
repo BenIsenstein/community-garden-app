@@ -23,3 +23,5 @@
 .yarn-integrity
 .next
 /server/.env
+/client/.env
+/client/src/components/gardenMap/mapWithMarkers.txt
