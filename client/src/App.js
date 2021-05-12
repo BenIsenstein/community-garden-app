@@ -5,6 +5,7 @@ import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
 import GardenMap from "./components/gardenMap/GardenMapReact";
+import ReactAutofill from "./components/formAutocomplete/ReactAutofill";
 
 function App() {
   return (
@@ -42,6 +43,9 @@ function App() {
                 <GardenListAndForm />
               </header>
             </div>
+          </Route>
+          <Route path='/reactautofill'>
+            <ReactAutofill />
           </Route>
           <Route path='/gardenmapreact'>
             <GardenMap />
