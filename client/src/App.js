@@ -4,6 +4,8 @@ import "./App.css";
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
+//import GetWeather from "./components/GetWeather";
+
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
             </li>
             <li>
               <Link to="/signup">Signup</Link>
+            </li>
+            <li>
+              <Link to="/weather">Weather</Link>
             </li>
           </ul>
         </nav>
@@ -45,6 +50,8 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
+          <Route path = "/GetWeather">
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -62,6 +69,11 @@ function About() {
 function Users() {
   return <Signup />;
 }
+
+function GetWeather() {
+  return <weather />;
+}
+
 
 export default App;
 
