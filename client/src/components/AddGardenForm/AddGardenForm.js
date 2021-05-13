@@ -1,4 +1,4 @@
-import './addGardenForm.css'
+import './AddGardenForm.css'
 
 function AddGardenForm() {
     return (

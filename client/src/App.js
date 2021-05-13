@@ -6,7 +6,6 @@ import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
 import Weather from "./components/Weather/Weather";
 import GardenMap from "./components/gardenMap/GardenMapReact";
-import ReactAutofill from "./components/formAutocomplete/ReactAutofill";
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
 
 
@@ -26,7 +25,10 @@ function App() {
               <Link to="/signup">Signup</Link>
             </li>
             <li>
-              <Link to="/Weather">Weather</Link>
+              <Link to="/weather">Weather</Link>
+            </li>
+            <li>
+              <Link to="/gardens">Gardens</Link>
             </li>
           </ul>
         </nav>
@@ -43,17 +45,10 @@ function App() {
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
-          <Route path="/gardenlistandform">
-            <div className="App">
-              <header className="App-header">
-                <GardenListAndForm />
-              </header>
-            </div>
+          <Route path="/gardens"> 
+            <GardenListAndForm />    
           </Route>
           <Route path='/reactautofill'>
-            <ReactAutofill />
-          </Route>
-          <Route path='/testcomponent'>
             <TestComponent />
           </Route>
           <Route path='/gardenmapreact'>

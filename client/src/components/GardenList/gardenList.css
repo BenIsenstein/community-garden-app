@@ -2,3 +2,14 @@
   display: flex;
   flex-direction: column;
 }
+
+.gardenlistelement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.Garden-sub-element {
+  margin: 5px 0 5px 0;
+}

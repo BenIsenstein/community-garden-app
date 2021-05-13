@@ -1,9 +1,9 @@
 import AddGardenForm from "../AddGardenForm/AddGardenForm"
-import '../GardenListAndForm/gardenListAndFormButtons.css'
+import './GardenListAndForm.css'
 
 function AddGardenButton({setStateFunction}) {
     return ( 
-        <button  className ='button' onClick={() => setStateFunction(<AddGardenForm />)}>
+        <button className ='button' onClick={() => setStateFunction(<AddGardenForm />)}>
             Add A Garden
         </button>  
     )

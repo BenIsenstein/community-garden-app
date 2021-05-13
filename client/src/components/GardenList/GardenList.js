@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react'
-import './gardenList.css'
-import './gardenListElement.css'
+import './GardenList.css'
 
 function GardenList() {
     const [gardenList, setGardenList] = useState([])
@@ -15,19 +14,19 @@ function GardenList() {
             setGardenList(gardenList)
         }
         getAllGardens()
-    }, [])
+    })
 
 
     return (
         <div className='gardenlist'>
             {gardenList.map((garden) => (
                 <div key={garden.name} className='gardenlistelement'>
-                    <div>{garden.name}</div>
-                    <div>Address: {garden.address}</div>
-                    <div>Quadrant: {garden.quadrant}</div>
-                    <div>{garden.coverPhoto}</div>
-                    <div>Size: {garden.surfaceArea}m<sup>2</sup></div>
-                    <div>Vacancy: {garden.vacancy ? 'yes' : 'no'}</div>
+                    <div className='Garden-sub-element'>{garden.name}</div>
+                    <div className='Garden-sub-element'>Address: {garden.address}</div>
+                    <div className='Garden-sub-element'>Quadrant: {garden.quadrant}</div>
+                    <div className='Garden-sub-element'>{garden.coverPhoto}</div>
+                    <div className='Garden-sub-element'>Size: {garden.surfaceArea}m<sup>2</sup></div>
+                    <div className='Garden-sub-element'>Vacancy: {garden.vacancy ? 'yes' : 'no'}</div>
                     <br />
                 </div>  
             ))}
