@@ -10,8 +10,8 @@ function initMap() {
  function addMarker(coordinates, gardenName) {
 
     const marker = new google.maps.Marker({
-      position: coordinates,
-      title: gardenName,
+      position: property.location,
+      title: property.title,
       map: map,
     // icon: "vegetables.svg" // How to resize?
     })
@@ -28,12 +28,12 @@ function initMap() {
   }
 
 let markerArray = [
-  [{ lat: 51.12828642120469, lng: -114.17890810185442}, "Hawkwood"],
-  [{ lat: 51.10070132242482, lng: -114.13610715362458}, "Brentwood"],
-  [{ lat: 51.09304721792646, lng: -114.14932508000413}, "Varsity"]
+  [{location:{ lat: 51.12828642120469, lng: -114.17890810185442}, title:"Hawkwood"}],
+  [{location:{ lat: 51.10070132242482, lng: -114.13610715362458}, title:"Brentwood"}],
+  [{location:{ lat: 51.09304721792646, lng: -114.14932508000413}, title:"Varsity"}]
 ]
 
 for (let i = 0; i < markerArray.length; i++) {
-  addMarker(markerArray[i][0],markerArray[i][1])
+  addMarker(markerArray[i])
 }
 }

@@ -5,7 +5,8 @@ import {
     InfoWindow,
     useLoadScript,
 } from '@react-google-maps/api'
-import mapStyles from "./mapStyles.js";
+import mapStyles from "./mapStyles"
+import markerArray from "./mapData"
 
 require('dotenv').config()
 
@@ -23,11 +24,7 @@ const options = {
     disableDefaultUI: true,
     zoomControl: true
 }
-let markerArray = [
-  [{ lat: 51.12828642120469, lng: -114.17890810185442}, "Hawkwood"],
-  [{ lat: 51.10070132242482, lng: -114.13610715362458}, "Brentwood"],
-  [{ lat: 51.09304721792646, lng: -114.14932508000413}, "Varsity"]
-]
+
 export default function GardenMap() {
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -46,7 +43,8 @@ export default function GardenMap() {
             {markerArray.map(function(marker, index){
                 return <Marker 
                     key={ index }
-                    position={marker[0]}
+                    position={marker.location}
+                    title={marker.title}
                 />
             })}
         </GoogleMap>
