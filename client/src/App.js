@@ -4,9 +4,11 @@ import "./App.css";
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
-import Weather from "./components/Weather/weather";
+import Weather from "./components/Weather/Weather";
 import GardenMap from "./components/gardenMap/GardenMapReact";
 import ReactAutofill from "./components/formAutocomplete/ReactAutofill";
+import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
+
 
 function App() {
   return (
@@ -50,6 +52,9 @@ function App() {
           </Route>
           <Route path='/reactautofill'>
             <ReactAutofill />
+          </Route>
+          <Route path='/testcomponent'>
+            <TestComponent />
           </Route>
           <Route path='/gardenmapreact'>
             <GardenMap />

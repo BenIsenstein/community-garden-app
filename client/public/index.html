@@ -24,6 +24,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!--
+      loading google maps API scripts
+    -->
+    <script 
+      src="https://polyfill.io/v3/polyfill.min.js?features=default">
+    </script>
+    <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9O38Vmhu9lQ51nzcojDxifDQnO67lYXU&map_ids=52ff285bd1833867&callback=initMap">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9O38Vmhu9lQ51nzcojDxifDQnO67lYXU&libraries=places"></script>
     <title>React App</title>
   </head>
   <body>
