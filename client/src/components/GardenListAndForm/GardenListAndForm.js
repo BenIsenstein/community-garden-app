@@ -10,7 +10,7 @@ function GardenListAndForm() {
 
     return(
         <div className='Garden-list-and-form'>
-            <div className='gardenlistandformbuttons'>
+            <div className='Garden-list-and-form-buttons'>
                 <AddGardenButton setStateFunction={setCurrentDisplay} />
                 <AllGardensButton setStateFunction={setCurrentDisplay} />
             </div>
