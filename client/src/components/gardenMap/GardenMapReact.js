@@ -31,6 +31,11 @@ export default function GardenMap() {
         libraries,
     })
 
+    const mouseMarker = (props, marker, e) => {
+        this.setState({
+            showInfo: true
+        })
+    }
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
     return <div>
@@ -42,9 +47,8 @@ export default function GardenMap() {
         >
             {markerArray.map(function(marker, index){
                 return <Marker 
-                    key={ index }
+                    key={marker.title}
                     position={marker.location}
-                    title={marker.title}
                 />
             })}
         </GoogleMap>
