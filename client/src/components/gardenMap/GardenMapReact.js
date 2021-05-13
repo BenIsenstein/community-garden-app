@@ -23,13 +23,16 @@ const options = {
     disableDefaultUI: true,
     zoomControl: true
 }
-
+let markerArray = [
+  [{ lat: 51.12828642120469, lng: -114.17890810185442}, "Hawkwood"],
+  [{ lat: 51.10070132242482, lng: -114.13610715362458}, "Brentwood"],
+  [{ lat: 51.09304721792646, lng: -114.14932508000413}, "Varsity"]
+]
 export default function GardenMap() {
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
     })
-    const [markers, setMarkers] = React.useState([])
 
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
@@ -39,23 +42,13 @@ export default function GardenMap() {
             zoom={11} 
             center={center}
             options={options}
-            /* onClick={(event) => {
-                setMarkers((current) => [
-                    ...current, 
-                    {
-                        lat: event.latLng.lat(),
-                        lng: event.latLng.lng(),
-                        time: new Date(),
-                    },
-                ])
-            }} UNCOMMENT TO ADD MARKERS */
         >
-            {markers.map((marker) => (
-                <Marker 
-                    key={marker.time.toISOString()} 
-                    position={ {lat: marker.lat, lng: marker.lng }}
+            {markerArray.map(function(marker, index){
+                return <Marker 
+                    key={ index }
+                    position={marker[0]}
                 />
-            ))} 
+            })}
         </GoogleMap>
     </div>
 }
