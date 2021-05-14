@@ -1,13 +1,15 @@
 .Garden-list-and-form {
   text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  width: 400px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border: 1px solid orange;
 }
 
 .Garden-list-and-form-buttons {
@@ -24,7 +26,7 @@
 .Garden-list-and-form-buttons .button {
   width: max-content;
   font-family: monospace;
-  font-size: 10px;
+  font-size: calc(10px + 0.5vmin);
   font-weight: 900;
   color: darkred;
   background-color: lightgreen;
