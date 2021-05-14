@@ -30,12 +30,17 @@ export default function GardenMap() {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
     })
+    const [markers, setMarkers] = React.useState([])
+    const onMapClick = React.useCallback((event) => {
+        setMarkers(() => [
+            {
+                lat: event.latLng.lat(),
+                lng: event.latLng.lng(),
+                time: new Date(),
+            },
+        ])
+    }, [])
 
-    const mouseMarker = (props, marker, e) => {
-        this.setState({
-            showInfo: true
-        })
-    }
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
     return <div>
@@ -44,7 +49,21 @@ export default function GardenMap() {
             zoom={11} 
             center={center}
             options={options}
+            onClick={onMapClick}
         >
+        {markers.map((marker) => (
+            <Marker 
+                key={"created_marker"} 
+                position={ {lat: marker.lat, lng: marker.lng }}
+                /* icon={{
+                    url: "/vegetables.svg",
+                    scaledSize: new window.google.maps.Size(30,30),
+                    origin: new window.google.maps.Point(0,0),
+                    anchor: new window.google.maps.Point(15,15)
+                }} */
+            />
+        ))} 
+
             {markerArray.map(function(marker, index){
                 return <Marker 
                     key={marker.title}
