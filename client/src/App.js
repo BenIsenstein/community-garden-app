@@ -23,7 +23,7 @@ function App() {
               <Link to="/signup">Signup</Link>
             </li>
             <li>
-              <Link to="/Weather">Weather</Link>
+              <Link to="/weather">Weather</Link>
             </li>
           </ul>
         </nav>
@@ -51,7 +51,7 @@ function App() {
             <GardenMap />
           </Route>
           <Route path = '/weather'>
-            <Weather />
+            <Weather weatherData={data} />
           </Route>
           <Route path="/">
             <Home />
