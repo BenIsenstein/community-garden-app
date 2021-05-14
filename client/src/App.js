@@ -52,10 +52,10 @@ function App() {
             <TestComponent />
           </Route>
           <Route path='/gardenmapreact'>
-            <GardenMap />
+            <GardenMap currentDisplay='AddGardenMap'/>
           </Route>
           <Route path = '/weather'>
-            <Weather weatherData={data} />
+            {/* <Weather weatherData={data} /> */}
           </Route>
           <Route path="/">
             <Home />

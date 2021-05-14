@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { 
     GoogleMap, 
     Marker,
@@ -12,8 +12,8 @@ require('dotenv').config()
 
 const libraries = ['places']
 const mapContainerStyle = {
-    width: '100vw',
-    height: '100vh',
+    width: '400px',
+    height: '400px',
 }
 const center = {
     lat: 51.035, 
@@ -25,21 +25,33 @@ const options = {
     zoomControl: true
 }
 
-export default function GardenMap() {
+export default function GardenMap({currentDisplay, formCoordinates, setFormCoordinates}) {
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
     })
-    const [markers, setMarkers] = React.useState([])
+    
     const onMapClick = React.useCallback((event) => {
-        setMarkers(() => [
+        setFormCoordinates(
             {
                 lat: event.latLng.lat(),
-                lng: event.latLng.lng(),
-                time: new Date(),
-            },
-        ])
+                lng: event.latLng.lng()
+            }
+        ) 
     }, [])
+
+    // useEffect(() => {
+    //     if (currentDisplay.props.name === 'AddGardenForm') {
+    //         setFormCoordinates(
+    //             {
+    //                 lat: 0,
+    //                 lng: 0
+    //             }
+    //         )
+    //     }
+    // }, [currentDisplay])
+
+        
 
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
@@ -49,20 +61,24 @@ export default function GardenMap() {
             zoom={11} 
             center={center}
             options={options}
-            onClick={onMapClick}
+            onClick={currentDisplay.props.name === 'AddGardenForm' ? onMapClick : undefined}
         >
-        {markers.map((marker) => (
+        {currentDisplay.props.name === 'AddGardenForm' 
+            ? (
             <Marker 
                 key={"created_marker"} 
-                position={ {lat: marker.lat, lng: marker.lng }}
+                position={ {lat: formCoordinates.lat, lng: formCoordinates.lng }}
+
                 /* icon={{
                     url: "/vegetables.svg",
                     scaledSize: new window.google.maps.Size(30,30),
                     origin: new window.google.maps.Point(0,0),
                     anchor: new window.google.maps.Point(15,15)
                 }} */
-            />
-        ))} 
+            />) 
+            : null
+        }
+        
 
             {markerArray.map(function(marker, index){
                 return <Marker 

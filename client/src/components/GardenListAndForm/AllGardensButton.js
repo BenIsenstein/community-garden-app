@@ -4,7 +4,7 @@ import './GardenListAndForm.css'
 
 function AllGardensButton({setStateFunction}) {
     return (  
-        <button className='button' onClick={() => setStateFunction(<GardenList />)}>
+        <button className='button' onClick={() => setStateFunction()}>
             Back To Garden List
         </button> 
     )

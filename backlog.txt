@@ -1,0 +1,8 @@
+---------
+|BACKLOG|
+---------
+
+1. Add feature in GardenListAndForm to make sure previously set 
+    marker doesn't re-render when going from list back to form.
+
+2.

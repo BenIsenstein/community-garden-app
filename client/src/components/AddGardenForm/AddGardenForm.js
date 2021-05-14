@@ -1,6 +1,6 @@
 import './AddGardenForm.css'
 
-function AddGardenForm() {
+function AddGardenForm({formCoordinates}) {
     return (
         <div>  
             <h1 className='Add-garden-form-header'>
@@ -18,7 +18,7 @@ function AddGardenForm() {
                   </div>
                   <div className='Garden-form-element'>
                     <label htmlFor='address'>Coordinates</label>
-                    <div id='coordinates'>Lat: latlng.lat Lng: latlng.lng</div>  
+                    <div id='coordinates'>Lat: {formCoordinates.lat} Lng: {formCoordinates.lng}</div>  
                   </div>
                 </div>
                 <div className='Garden-form-element'>
@@ -122,6 +122,10 @@ function AddGardenForm() {
             alert(successMessage)
         }
     }
+}
+
+AddGardenForm.defaultProps = {
+  name: 'AddGardenForm'
 }
 
 
