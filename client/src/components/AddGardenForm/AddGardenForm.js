@@ -1,61 +1,73 @@
-import './addGardenForm.css'
+import './AddGardenForm.css'
 
 function AddGardenForm() {
     return (
-        <div>
-            <div className='addGardenFormHeader'>
-                <h1>
-                    Add A Garden
-                </h1>
-            </div>
+        <div>  
+            <h1 className='addGardenFormHeader'>
+              Add A Garden
+            </h1>
             <div className='addGardenForm'>
-                <label htmlFor='gardenname'>Garden Name</label>
-                <input className='gardenname' id='gardenname' />
-
-                <label htmlFor='address'>Address</label>
-                <input className='address' id='address' />
-                    
-                <label htmlFor='quadrant'>Quadrant</label>
-                <div id='quadrant'>
-                    <div>
-                        <input type="radio" id="NW" name="quadrant" value="NW"/>
-                        <label htmlFor="NW">NW</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="NE" name="quadrant" value="NE"/>
-                        <label htmlFor="NE">NE</label>
-                    </div>   
-                    <div>
-                        <input type="radio" id="SW" name="quadrant" value="SW"/>
-                        <label htmlFor="SW">SW</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="SE" name="quadrant" value="SE"/>
-                        <label htmlFor="SE">SE</label>
-                    </div>   
-
+                <div className='Garden-form-element'>
+                  <label htmlFor='gardenname'>Garden Name</label>
+                  <input className='gardenname' id='gardenname' />
                 </div>
-                    
-                <label htmlFor='coverPhoto'>Cover Photo</label>
-                <input type='file' className='coverPhoto' id='coverPhoto' />
-                 
-                <label htmlFor='surfaceArea'>Total Area (meters squared)</label>
-                <input className='surfaceArea' id='surfaceArea' />
-                    
-                <label htmlFor='vacancy'>Vacancy</label>
-                <div id='vacancy'>
-                    <div>
-                        <input type="radio" id="yes" name="vacancy" value="yes"/>
-                        <label htmlFor="yes">Yes</label>
+                <div className='Address-and-coordinates'>
+                  <div className='Garden-form-element'>
+                    <label htmlFor='address'>Address</label>
+                    <input className='address' id='address' />
+                  </div>
+                  <div className='Garden-form-element'>
+                    <label htmlFor='address'>Coordinates</label>
+                    <div id='coordinates'>Lat: latlng.lat Lng: latlng.lng</div>  
+                  </div>
+                </div>
+                <div className='Garden-form-element'>
+                  <label htmlFor='quadrant'>Quadrant</label>
+                  <div className='Quadrant-buttons' id='quadrant'>
+                    <div className='button'>
+                      <label htmlFor="NW">NW</label>
+                      <input type="radio" id="NW" name="quadrant" value="NW"/>  
                     </div>
-                    <div>
-                        <input type="radio" id="no" name="vacancy" value="no"/>
-                        <label htmlFor="no">No</label>
+                    <div className='button'>
+                      <label htmlFor="NE">NE</label>
+                      <input type="radio" id="NE" name="quadrant" value="NE"/>  
                     </div>   
+                    <div className='button'>
+                      <label htmlFor="SW">SW</label>
+                      <input type="radio" id="SW" name="quadrant" value="SW"/>  
+                    </div>
+                    <div className='button'>
+                      <label htmlFor="SE">SE</label>
+                      <input type="radio" id="SE" name="quadrant" value="SE"/>  
+                    </div>   
+                  </div>
+                </div>
+                <div className='Garden-form-element'>   
+                  <label htmlFor='coverPhoto'>Cover Photo</label>
+                  <input type='file' className='coverPhoto' id='coverPhoto' />
+                </div> 
+                <div className='Garden-form-element'>
+                  <label htmlFor='surfaceArea'>Total Area (sqft)</label>
+                  <input className='surfaceArea' id='surfaceArea' />
                 </div>   
-                <button onClick={async () => await submitAddGardenForm()}>
+                <div className='Garden-form-element'> 
+                  <label htmlFor='vacancy'>Vacancy</label>
+                  <div className='Vacancy-buttons'id='vacancy'>
+                    <div className='button'>
+                      <label htmlFor="yes">Yes</label>
+                      <input type="radio" id="yes" name="vacancy" value="yes"/>
+                    </div>
+                    <div className='button'>
+                      <label htmlFor="no">No</label>
+                      <input type="radio" id="no" name="vacancy" value="no"/>
+                    </div>   
+                  </div>  
+                </div> 
+                <div className='Garden-form-element'>
+                  <button onClick={async () => await submitAddGardenForm()}>
                     Submit
-                </button>
+                  </button>
+                </div>
             </div>    
         </div>
     )

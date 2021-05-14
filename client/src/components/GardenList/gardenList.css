@@ -1,4 +1,22 @@
-.gardenlist {
+.Garden-list {
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  height: 20%;
 }
+
+.Garden-list-header {
+
+}
+
+.Garden-list-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.Garden-sub-element {
+  margin: 5px 0 5px 0;
+}
+

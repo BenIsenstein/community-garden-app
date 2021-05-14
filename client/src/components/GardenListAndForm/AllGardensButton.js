@@ -1,8 +1,8 @@
 import GardenList from "../GardenList/GardenList"
-import '../GardenListAndForm/gardenListAndFormButtons.css'
+import './GardenListAndForm.css'
 
 
-function BackToGardenListButton({setStateFunction}) {
+function AllGardensButton({setStateFunction}) {
     return (  
         <button className='button' onClick={() => setStateFunction(<GardenList />)}>
             Back To Garden List
@@ -11,4 +11,4 @@ function BackToGardenListButton({setStateFunction}) {
 }
 
 
-export default BackToGardenListButton
+export default AllGardensButton

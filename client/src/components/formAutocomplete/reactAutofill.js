@@ -1,13 +1,18 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
+
+import {useScript} from '../../customHooks/useScript'
 
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
-} from 'react-autocomplete-places';
+} from 'react-places-autocomplete';
 
-export default function App() {
-  const [address, setAddress] = React.useState("");
-  const [coordinates, setCoordinates] = React.useState({
+function ReactAutofill() {
+  // let googlePlacesUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB9O38Vmhu9lQ51nzcojDxifDQnO67lYXU&libraries=places"
+  // useScript(googlePlacesUrl)
+  
+  const [address, setAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null
   });
@@ -54,3 +59,5 @@ export default function App() {
     </div>
   );
 }
+
+export default ReactAutofill;

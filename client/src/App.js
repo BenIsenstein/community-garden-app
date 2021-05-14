@@ -6,6 +6,8 @@ import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
 import Weather from "./components/Weather/weatherForecast";
 import GardenMap from "./components/gardenMap/GardenMapReact";
+import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
+
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
             <li>
               <Link to="/weather">Weather</Link>
             </li>
+            <li>
+              <Link to="/gardens">Gardens</Link>
+            </li>
           </ul>
         </nav>
 
@@ -40,12 +45,11 @@ function App() {
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
-          <Route path="/gardenlistandform">
-            <div className="App">
-              <header className="App-header">
-                <GardenListAndForm />
-              </header>
-            </div>
+          <Route path="/gardens"> 
+            <GardenListAndForm />    
+          </Route>
+          <Route path='/reactautofill'>
+            <TestComponent />
           </Route>
           <Route path='/gardenmapreact'>
             <GardenMap />

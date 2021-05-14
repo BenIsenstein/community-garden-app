@@ -5,10 +5,11 @@ const dotenv = require("dotenv").config();
 const dbServer = "mongodb://localhost:27017";
 const databaseName = "project-2-C6-local";
 const dbUrl = dbServer + "/" + databaseName;
+const mongoAtlasUrl = process.env.MONGODB_URL
 
 // mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose
-  .connect(process.env.MONGODB_URL, {
+  .connect(mongoAtlasUrl, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
@@ -21,7 +22,7 @@ mongoose
 
 const db = mongoose.connection;
 db.on("error", (err) => console.error("MongoDB connection error!", err));
-db.once("open", () => console.log("MongoDB is now connected! @ ", dbUrl));
+db.once("open", () => console.log("MongoDB is now connected! @ ", mongoAtlasUrl));
 
 // Garden model and functions
 
