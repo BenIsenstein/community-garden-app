@@ -3,13 +3,13 @@ import './AddGardenForm.css'
 function AddGardenForm() {
     return (
         <div>  
-            <h1 className='addGardenFormHeader'>
+            <h1 className='Add-garden-form-header'>
               Add A Garden
             </h1>
-            <div className='addGardenForm'>
+            <div className='Add-garden-form'>
                 <div className='Garden-form-element'>
-                  <label htmlFor='gardenname'>Garden Name</label>
-                  <input className='gardenname' id='gardenname' />
+                  <label htmlFor='Garden-name'>Garden Name</label>
+                  <input className='Garden-name' id='Garden-name' />
                 </div>
                 <div className='Address-and-coordinates'>
                   <div className='Garden-form-element'>
@@ -43,12 +43,12 @@ function AddGardenForm() {
                   </div>
                 </div>
                 <div className='Garden-form-element'>   
-                  <label htmlFor='coverPhoto'>Cover Photo</label>
-                  <input type='file' className='coverPhoto' id='coverPhoto' />
+                  <label className='Cover-photo-label' htmlFor='Cover-photo'>Cover Photo</label>
+                  <input type='file' className='Cover-photo' id='Cover-photo' />
                 </div> 
                 <div className='Garden-form-element'>
-                  <label htmlFor='surfaceArea'>Total Area (sqft)</label>
-                  <input className='surfaceArea' id='surfaceArea' />
+                  <label htmlFor='Surface-area'>Total Area (sqft)</label>
+                  <input className='Surface-area' id='Surface-area' />
                 </div>   
                 <div className='Garden-form-element'> 
                   <label htmlFor='vacancy'>Vacancy</label>
