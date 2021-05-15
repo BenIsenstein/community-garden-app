@@ -25,20 +25,26 @@ const options = {
     zoomControl: true
 }
 
-export default function GardenMap({currentDisplay, formCoordinates, setFormCoordinates}) {
+export default function GardenMap({currentDisplay, formCoordinates, parentCallback}) {
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
     })
     
     const onMapClick = React.useCallback((event) => {
-        setFormCoordinates(
+        parentCallback(
             {
                 lat: event.latLng.lat(),
                 lng: event.latLng.lng()
             }
         ) 
-    }, [])
+    }, [parentCallback])
+
+    // useEffect(() => {
+    //     console.log('coming from map - formCoordinates: ', formCoordinates)
+    //   }, 
+    //   [formCoordinates]
+    // )
 
     // useEffect(() => {
     //     if (currentDisplay.props.name === 'AddGardenForm') {
@@ -51,7 +57,9 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
     //     }
     // }, [currentDisplay])
 
-        
+
+
+    
 
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
@@ -61,7 +69,11 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
             zoom={11} 
             center={center}
             options={options}
-            onClick={currentDisplay.props.name === 'AddGardenForm' ? onMapClick : undefined}
+            onClick={
+                currentDisplay.props.name === 'AddGardenForm' 
+                    ? onMapClick 
+                    : undefined
+            }
         >
         {currentDisplay.props.name === 'AddGardenForm' 
             ? (
@@ -75,7 +87,8 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
                     origin: new window.google.maps.Point(0,0),
                     anchor: new window.google.maps.Point(15,15)
                 }} */
-            />) 
+            />
+            ) 
             : null
         }
         

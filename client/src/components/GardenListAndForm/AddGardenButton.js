@@ -1,4 +1,3 @@
-import AddGardenForm from "../AddGardenForm/AddGardenForm"
 import './GardenListAndForm.css'
 
 function AddGardenButton({setStateFunction}) {

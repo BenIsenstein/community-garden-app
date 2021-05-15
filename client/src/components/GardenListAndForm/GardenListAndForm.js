@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import GardenList from '../GardenList/GardenList'
-import AllGardensButton from './AllGardensButton'
+import ListGardensButton from './ListGardensButton'
 import AddGardenButton from './AddGardenButton'
 import AddGardenForm from '../AddGardenForm/AddGardenForm'
 import GardenMap from '../gardenMap/GardenMapReact'
@@ -16,17 +16,19 @@ function GardenListAndForm() {
         }
     )
 
-    
+    const sendDataFromMapToForm = (data) => {
+        setFormCoordinates(data)
+        console.log('set coordinates inside map: ', formCoordinates)
+    }
 
-
-
-    return(
+    return (
         <div style={{display: 'flex'}}>
             <div className='Garden-list-and-form'>
                 <div className='Garden-list-and-form-buttons'>
                     <AddGardenButton setStateFunction={() => setCurrentDisplay(<AddGardenForm formCoordinates={formCoordinates}/>)} />
-                    <AllGardensButton setStateFunction={() => setCurrentDisplay(<GardenList />)} />
+                    <ListGardensButton setStateFunction={() => setCurrentDisplay(<GardenList />)} />
                 </div>
+                Lat: {formCoordinates.lat} Lng: {formCoordinates.lng}
                 <div>
                     {currentDisplay}
                 </div>
@@ -34,7 +36,7 @@ function GardenListAndForm() {
             <GardenMap  
                 currentDisplay={currentDisplay}
                 formCoordinates={formCoordinates}
-                setFormCoordinates={setFormCoordinates}
+                parentCallback={sendDataFromMapToForm}
             />
         </div>
     )

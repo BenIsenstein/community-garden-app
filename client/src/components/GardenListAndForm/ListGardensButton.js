@@ -1,8 +1,7 @@
-import GardenList from "../GardenList/GardenList"
 import './GardenListAndForm.css'
 
 
-function AllGardensButton({setStateFunction}) {
+function ListGardensButton({setStateFunction}) {
     return (  
         <button className='button' onClick={() => setStateFunction()}>
             Back To Garden List
@@ -11,4 +10,4 @@ function AllGardensButton({setStateFunction}) {
 }
 
 
-export default AllGardensButton
+export default ListGardensButton
