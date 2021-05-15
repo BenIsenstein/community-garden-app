@@ -8,7 +8,7 @@ import './GardenListAndForm.css'
 
 
 function GardenListAndForm() {
-    const [currentDisplay, setCurrentDisplay] = useState(<GardenList />)
+    const [isFormDisplayed, setIsFormDisplayed] = useState(false)
     const [formCoordinates, setFormCoordinates] = useState (
         {
             lat: 0,
@@ -25,16 +25,19 @@ function GardenListAndForm() {
         <div style={{display: 'flex'}}>
             <div className='Garden-list-and-form'>
                 <div className='Garden-list-and-form-buttons'>
-                    <AddGardenButton setStateFunction={() => setCurrentDisplay(<AddGardenForm formCoordinates={formCoordinates}/>)} />
-                    <ListGardensButton setStateFunction={() => setCurrentDisplay(<GardenList />)} />
+                    <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} />
+                    <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
                 </div>
-                Lat: {formCoordinates.lat} Lng: {formCoordinates.lng}
                 <div>
-                    {currentDisplay}
+                    {
+                    isFormDisplayed 
+                        ? <AddGardenForm formCoordinates={formCoordinates} />
+                        : <GardenList />
+                    }
                 </div>
             </div>
             <GardenMap  
-                currentDisplay={currentDisplay}
+                isFormDisplayed={isFormDisplayed}
                 formCoordinates={formCoordinates}
                 parentCallback={sendDataFromMapToForm}
             />

@@ -25,10 +25,10 @@ const options = {
     zoomControl: true
 }
 
-export default function GardenMap({currentDisplay, formCoordinates, parentCallback}) {
+export default function GardenMap({isFormDisplayed, formCoordinates, parentCallback}) {
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries,
+        libraries
     })
     
     const onMapClick = React.useCallback((event) => {
@@ -69,13 +69,10 @@ export default function GardenMap({currentDisplay, formCoordinates, parentCallba
             zoom={11} 
             center={center}
             options={options}
-            onClick={
-                currentDisplay.props.name === 'AddGardenForm' 
-                    ? onMapClick 
-                    : undefined
-            }
+            onClick={isFormDisplayed ? onMapClick : null}
         >
-        {currentDisplay.props.name === 'AddGardenForm' 
+        {
+        isFormDisplayed 
             ? (
             <Marker 
                 key={"created_marker"} 
