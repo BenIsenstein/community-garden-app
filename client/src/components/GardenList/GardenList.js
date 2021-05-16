@@ -30,7 +30,7 @@ function GardenList() {
               {garden.name}
             </div>
             <div className='Garden-sub-element'>
-              Address: {garden.address}
+              Address: {garden.address || 'No Street Address'}
             </div>
             <div className='Garden-sub-element'>
               <div>Coordinates:&emsp;&emsp;</div> 
