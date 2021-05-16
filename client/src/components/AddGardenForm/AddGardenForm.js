@@ -1,76 +1,88 @@
 import './AddGardenForm.css'
+import { useEffect } from 'react'
+function AddGardenForm({formCoordinates}) {
 
-function AddGardenForm() {
-    return (
-        <div>  
-            <h1 className='Add-garden-form-header'>
-              Add A Garden
-            </h1>
-            <div className='Add-garden-form'>
-                <div className='Garden-form-element'>
-                  <label htmlFor='Garden-name'>Garden Name</label>
-                  <input className='Garden-name' id='Garden-name' />
-                </div>
-                <div className='Address-and-coordinates'>
-                  <div className='Garden-form-element'>
-                    <label htmlFor='address'>Address</label>
-                    <input className='address' id='address' />
-                  </div>
-                  <div className='Garden-form-element'>
-                    <label htmlFor='address'>Coordinates</label>
-                    <div id='coordinates'>Lat: latlng.lat Lng: latlng.lng</div>  
-                  </div>
-                </div>
-                <div className='Garden-form-element'>
-                  <label htmlFor='quadrant'>Quadrant</label>
-                  <div className='Quadrant-buttons' id='quadrant'>
-                    <div className='button'>
-                      <label htmlFor="NW">NW</label>
-                      <input type="radio" id="NW" name="quadrant" value="NW"/>  
-                    </div>
-                    <div className='button'>
-                      <label htmlFor="NE">NE</label>
-                      <input type="radio" id="NE" name="quadrant" value="NE"/>  
-                    </div>   
-                    <div className='button'>
-                      <label htmlFor="SW">SW</label>
-                      <input type="radio" id="SW" name="quadrant" value="SW"/>  
-                    </div>
-                    <div className='button'>
-                      <label htmlFor="SE">SE</label>
-                      <input type="radio" id="SE" name="quadrant" value="SE"/>  
-                    </div>   
-                  </div>
-                </div>
-                <div className='Garden-form-element'>   
-                  <label className='Cover-photo-label' htmlFor='Cover-photo'>Cover Photo</label>
-                  <input type='file' className='Cover-photo' id='Cover-photo' />
-                </div> 
-                <div className='Garden-form-element'>
-                  <label htmlFor='Surface-area'>Total Area (sqft)</label>
-                  <input className='Surface-area' id='Surface-area' />
-                </div>   
-                <div className='Garden-form-element'> 
-                  <label htmlFor='vacancy'>Vacancy</label>
-                  <div className='Vacancy-buttons'id='vacancy'>
-                    <div className='button'>
-                      <label htmlFor="yes">Yes</label>
-                      <input type="radio" id="yes" name="vacancy" value="yes"/>
-                    </div>
-                    <div className='button'>
-                      <label htmlFor="no">No</label>
-                      <input type="radio" id="no" name="vacancy" value="no"/>
-                    </div>   
-                  </div>  
-                </div> 
-                <div className='Garden-form-element'>
-                  <button onClick={async () => await submitAddGardenForm()}>
-                    Submit
-                  </button>
-                </div>
-            </div>    
+
+  //useEffect is just to let me know that it's registering the coordinates have changed
+  useEffect(() => {
+    console.log('coming from form - formCoordinates: ', formCoordinates)
+    }, 
+    [formCoordinates]
+  )
+
+  return (
+    <div>  
+      <h1 className='Add-garden-form-header'>
+        Add A Garden
+      </h1>
+      <div className='Add-garden-form'>
+        <div className='Garden-form-element'>
+          <label htmlFor='Garden-name'>Garden Name</label>
+          <input className='Garden-name' id='Garden-name' />
         </div>
-    )
+        <div className='Address-and-coordinates'>
+          <div className='Garden-form-element'>
+            <label htmlFor='address'>Address</label>
+            <input className='address' id='address' />
+          </div>
+          <div className='Garden-form-element'>
+            <label htmlFor='address'>Coordinates</label>
+            <div id='coordinates'>
+              <div>Lat: {formCoordinates.lat} </div>
+              <div>Lng: {formCoordinates.lng}</div>  
+            </div>
+          </div>
+        </div>
+        <div className='Garden-form-element'>
+          <label htmlFor='quadrant'>Quadrant</label>
+          <div className='Quadrant-buttons' id='quadrant'>
+            <div className='button'>
+              <label htmlFor="NW">NW</label>
+              <input type="radio" id="NW" name="quadrant" value="NW"/>  
+            </div>
+            <div className='button'>
+              <label htmlFor="NE">NE</label>
+              <input type="radio" id="NE" name="quadrant" value="NE"/>  
+            </div>   
+            <div className='button'>
+              <label htmlFor="SW">SW</label>
+              <input type="radio" id="SW" name="quadrant" value="SW"/>  
+            </div>
+            <div className='button'>
+              <label htmlFor="SE">SE</label>
+              <input type="radio" id="SE" name="quadrant" value="SE"/>  
+            </div>   
+          </div>
+        </div>
+        <div className='Garden-form-element'>   
+          <label className='Cover-photo-label' htmlFor='Cover-photo'>Cover Photo</label>
+          <input type='file' className='Cover-photo' id='Cover-photo' />
+        </div> 
+        <div className='Garden-form-element'>
+          <label htmlFor='Surface-area'>Total Area (sqft)</label>
+          <input className='Surface-area' id='Surface-area' />
+        </div>   
+        <div className='Garden-form-element'> 
+          <label htmlFor='vacancy'>Vacancy</label>
+          <div className='Vacancy-buttons'id='vacancy'>
+            <div className='button'>
+              <label htmlFor="yes">Yes</label>
+              <input type="radio" id="yes" name="vacancy" value="yes"/>
+            </div>
+            <div className='button'>
+              <label htmlFor="no">No</label>
+              <input type="radio" id="no" name="vacancy" value="no"/>
+            </div>   
+          </div>  
+        </div> 
+        <div className='Garden-form-element'>
+          <button onClick={async () => await submitAddGardenForm()}>
+            Submit
+          </button>
+        </div>
+      </div>    
+    </div>
+  )
 
 
     async function submitAddGardenForm() {
@@ -122,6 +134,10 @@ function AddGardenForm() {
             alert(successMessage)
         }
     }
+}
+
+AddGardenForm.defaultProps = {
+  name: 'AddGardenForm'
 }
 
 
