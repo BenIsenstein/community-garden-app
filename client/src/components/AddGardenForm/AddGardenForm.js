@@ -1,14 +1,8 @@
 import './AddGardenForm.css'
-import { useEffect } from 'react'
+
 function AddGardenForm({formCoordinates}) {
-
-
-  //useEffect is just to let me know that it's registering the coordinates have changed
-  useEffect(() => {
-    console.log('coming from form - formCoordinates: ', formCoordinates)
-    }, 
-    [formCoordinates]
-  )
+  const lat = formCoordinates.lat
+  const lng = formCoordinates.lng
 
   return (
     <div>  
@@ -28,8 +22,8 @@ function AddGardenForm({formCoordinates}) {
           <div className='Garden-form-element'>
             <label htmlFor='address'>Coordinates</label>
             <div id='coordinates'>
-              <div>Lat: {formCoordinates.lat} </div>
-              <div>Lng: {formCoordinates.lng}</div>  
+              <div>Lat: {lat}</div>
+              <div>Lng: {lng}</div>  
             </div>
           </div>
         </div>
@@ -84,70 +78,56 @@ function AddGardenForm({formCoordinates}) {
     </div>
   )
 
-
-    async function submitAddGardenForm() {
-        let nameData = document.getElementById('gardenname').value
-        let addressData = document.getElementById('address').value
-        let quadrantField = document.querySelector('input[name="quadrant"]:checked') || {value: ''}
-        let quadrantData = quadrantField.value
-        let coverPhotoData = document.getElementById('coverPhoto').value
-        let surfaceAreaData = document.getElementById('surfaceArea').value
-        let vacancyField = document.querySelector('input[name="vacancy"]:checked') || {value: ''}
-        let vacancyData = vacancyField.value
-
-        let submissionData = {
-            nameData,
-            addressData,
-            quadrantData,
-            coverPhotoData,
-            surfaceAreaData,
-            vacancyData
-        }
-        
-        let fetchUrl = "/api/add-a-garden" //this is the proper endpoint for the final product.
-        //let fetchUrl = "http://localhost:5000/api/add-a-garden" //explicit endpoint that will work even when running the client and server in separate ports.
-        let fetchOptions = {
-            method: 'post',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(submissionData)
-        }
-        
-        let response = await fetch(fetchUrl, fetchOptions)
-        let resObject = await response.json()
-
-        if (response.status === 400) {
-            let errorMessage = ''
-
-            for (let key in resObject) {
-                errorMessage += resObject[key] + '\n\n'
-            }
-
-            //console.log(errorMessage)
-
-            alert(errorMessage)
-        }
-        else {
-            let successMessage = resObject.successMessage
-
-            console.log('success!')
-
-            alert(successMessage)
-        }
+  async function submitAddGardenForm() {
+    let nameData = document.getElementById('Garden-name').value
+    let addressData = document.getElementById('address').value
+    let coordinatesData = {
+      lat,
+      lng
     }
+    let quadrantField = document.querySelector('input[name="quadrant"]:checked') || {value: ''}
+    let quadrantData = quadrantField.value
+    let coverPhotoData = document.getElementById('Cover-photo').value
+    let surfaceAreaData = document.getElementById('Surface-area').value
+    let vacancyField = document.querySelector('input[name="vacancy"]:checked') || {value: ''}
+    let vacancyData = vacancyField.value
+    let submissionData = {
+      nameData,
+      addressData,
+      coordinatesData,
+      quadrantData,
+      coverPhotoData,
+      surfaceAreaData,
+      vacancyData
+    }
+    let fetchUrl = "/api/add-a-garden" 
+    let fetchOptions = {
+      method: 'post',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(submissionData)
+    }
+    let response = await fetch(fetchUrl, fetchOptions)
+    let resObject = await response.json()
+
+    if (response.status === 400) {
+      let errorMessage = ''
+
+      for (let key in resObject) {
+        errorMessage += resObject[key] + '\n\n'
+      }
+
+      alert(errorMessage)
+    }
+    else {
+      let successMessage = resObject.successMessage
+      
+      alert(successMessage)
+    }
+  }
 }
 
 AddGardenForm.defaultProps = {
   name: 'AddGardenForm'
 }
 
-
 export default AddGardenForm
-
-/*
-<input type="radio" id="male" name="gender" value="male">
-  <label for="male">Male</label><br>
-  <input type="radio" id="female" name="gender" value="female">
-  <label for="female">Female</label>
-  <input type="radio" id="other" name="gender" value="other">
-  <label for="other">Other</label>
-  */
