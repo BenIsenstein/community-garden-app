@@ -1,9 +1,8 @@
-//
 import React, { useEffect, useState } from "react";
 import { Dimmer, Loader } from 'semantic-ui-react';
-import weather from './weather';
+import Weather from './Weather';
 
- export default function GetWeather() {
+export default function GetWeather() {
   const [lat] = useState (51.0501);
   const [lon] = useState (-114.0853);
   const [data, setData] = useState ([]);
@@ -11,22 +10,24 @@ import weather from './weather';
   useEffect(() => {
     const fetchData = async () => { 
 
-    await fetch(`${process.env.REACT_APP_WEATHER_API_URL}/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
+    /*await fetch(`${process.env.REACT_APP_WEATHER_API_URL}/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)*/
+    await fetch(`https://pro.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=343be121d39acc6b7c438003f0fe1e30`)
     .then(res => res.json())
     .then(result => {
       setData(result)
       console.log(result);
-    });
+    }); 
 
   }
-    fetchData();
-}, [lat,lon])
+
+   fetchData();
+}, [lat,lon]) 
 
   return (
     <div className="GetWeather">
       {(typeof data.main != 'undefined') ? (
         <div>
-          <weather weatherData={data}/>
+          <Weather weatherData={data}/>
         </div>
       ): (
         <div>
