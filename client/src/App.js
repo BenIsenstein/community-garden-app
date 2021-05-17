@@ -4,7 +4,7 @@ import "./App.css";
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
-import Weather from "./components/Weather/weatherForecast";
+import Weather from "./components/Weather/weather";
 import GardenMap from "./components/gardenMap/GardenMapReact";
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
 
@@ -55,7 +55,7 @@ function App() {
             <GardenMap currentDisplay='AddGardenMap'/>
           </Route>
           <Route path = '/weather'>
-            {/* <Weather weatherData={data} /> */}
+            {<Weather weatherData /> }
           </Route>
           <Route path="/">
             <Home />
@@ -78,8 +78,8 @@ function Users() {
   return <Signup />;
 }
 
-function GetWeather() {
-  return <>Weather</>;
+function WeatherConditions() {
+  return <h2> Weather Conditions</h2>;
 }
 
 export default App;

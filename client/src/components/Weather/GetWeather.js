@@ -1,11 +1,11 @@
 //
 import React, { useEffect, useState } from "react";
 import { Dimmer, Loader } from 'semantic-ui-react';
-//import GetWeather from './GetWeather';
+import weather from './weather';
 
  export default function GetWeather() {
   const [lat] = useState (51.0501);
-  const [lon] = useState (-114.0853);ce
+  const [lon] = useState (-114.0853);
   const [data, setData] = useState ([]);
 
   useEffect(() => {
