@@ -3,7 +3,7 @@ const router = express.Router();
 const { findAccountByName, addAccount } = require("../models/db");
 
 router.get("/loggedon", (req, res) => {
-  res.send("TEST???");
+  res.send("You are logged on!");
 });
 
 router.post("/", (req, res) => {

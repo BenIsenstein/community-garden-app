@@ -6,6 +6,7 @@ router.post('/', async (req, res) => {
   console.log('add a garden was POSTed to!')
   let reqName = req.body.nameData
   let reqAddress = req.body.addressData
+  let reqCoordinates = req.body.coordinatesData
   let reqQuadrant = req.body.quadrantData
   let reqCoverPhoto = req.body.coverPhotoData
   let reqSurfaceArea = req.body.surfaceAreaData
@@ -14,11 +15,11 @@ router.post('/', async (req, res) => {
   let isAddressFree = await validateAddress(reqAddress)
   let isNameFree = await validateName(reqName)
 
-
   if (isAddressFree && isNameFree) {
     let newGarden = new Garden({
       name: reqName,
       address: reqAddress,
+      coordinates: reqCoordinates,
       quadrant: reqQuadrant,
       coverPhoto: reqCoverPhoto,
       surfaceArea: reqSurfaceArea,
@@ -30,15 +31,15 @@ router.post('/', async (req, res) => {
     res.json({successMessage: 'Success! Your garden has been added.'})
   } 
   else {
-      let errorObject = {}
+    let errorObject = {}
 
-      if (!isAddressFree) 
+    if (!isAddressFree) 
       errorObject.addressError = 'Address taken!'
 
-      if (!isNameFree)
-          errorObject.usernameError = 'Garden name taken!'
+    if (!isNameFree)
+      errorObject.usernameError = 'Garden name taken!'
 
-      res.status(400).json(errorObject)
+    res.status(400).json(errorObject)
   }
 
   async function validateAddress(gardenAddress) {
@@ -47,8 +48,8 @@ router.post('/', async (req, res) => {
   }
 
   async function validateName(gardenName) {
-      let gardenExists = await findGardenByName(gardenName)
-      return !gardenExists
+    let gardenExists = await findGardenByName(gardenName)
+    return !gardenExists
   }
 })
 

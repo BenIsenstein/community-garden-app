@@ -25,20 +25,26 @@ const options = {
     zoomControl: true
 }
 
-export default function GardenMap({currentDisplay, formCoordinates, setFormCoordinates}) {
+export default function GardenMap({isFormDisplayed, formCoordinates, parentCallback}) {
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries,
+        libraries
     })
     
     const onMapClick = React.useCallback((event) => {
-        setFormCoordinates(
+        parentCallback(
             {
                 lat: event.latLng.lat(),
                 lng: event.latLng.lng()
             }
         ) 
-    }, [])
+    }, [parentCallback])
+
+    // useEffect(() => {
+    //     console.log('coming from map - formCoordinates: ', formCoordinates)
+    //   }, 
+    //   [formCoordinates]
+    // )
 
     // useEffect(() => {
     //     if (currentDisplay.props.name === 'AddGardenForm') {
@@ -50,8 +56,8 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
     //         )
     //     }
     // }, [currentDisplay])
-
-        
+    
+    const [selected, setSelected] = React.useState(null)
 
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
@@ -61,9 +67,10 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
             zoom={11} 
             center={center}
             options={options}
-            onClick={currentDisplay.props.name === 'AddGardenForm' ? onMapClick : undefined}
+            onClick={isFormDisplayed ? onMapClick : null}
         >
-        {currentDisplay.props.name === 'AddGardenForm' 
+        {
+        isFormDisplayed 
             ? (
             <Marker 
                 key={"created_marker"} 
@@ -75,7 +82,8 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
                     origin: new window.google.maps.Point(0,0),
                     anchor: new window.google.maps.Point(15,15)
                 }} */
-            />) 
+            />
+            ) 
             : null
         }
         
@@ -84,8 +92,22 @@ export default function GardenMap({currentDisplay, formCoordinates, setFormCoord
                 return <Marker 
                     key={marker.title}
                     position={marker.location}
+                    onMouseOver={() => {
+                        setSelected(marker)
+                    }}
                 />
             })}
+
+            {selected ? (<InfoWindow 
+                position={selected.location}
+                onCloseClick={() => {
+                    setSelected(null)
+                }}
+                >
+                <div style={{fontWeight:"bold"}}>
+                    {selected.title}
+                </div>
+            </InfoWindow>) : null}
         </GoogleMap>
     </div>
 }
