@@ -5,6 +5,7 @@ import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
 import Signup from "./components/Signup";
 import LoggedOn from "./components/LoggedOn";
 import GetWeather from "./components/Weather/GetWeather";
+import GetForecast from "./components/Weather/GetForecast";
 import GardenMap from "./components/gardenMap/GardenMapReact";
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
 
@@ -29,6 +30,9 @@ function App() {
             </li>
             <li>
               <Link to="/gardens">Gardens</Link>
+            </li>
+            <li>
+              <Link to="/forecast">Forecast</Link>
             </li>
           </ul>
         </nav>
@@ -56,6 +60,9 @@ function App() {
           </Route>
           <Route path = '/weather'>
             <GetWeather weatherData ='Weather Conditions'/> 
+          </Route>
+          <Route path = '/forecast'>
+            <GetForecast forecastData ='Forecast'/> 
           </Route>
           <Route path="/">
             <Home />
