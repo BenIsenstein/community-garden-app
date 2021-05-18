@@ -50,17 +50,17 @@ function App() {
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
-          <Route path="/gardens"> 
-            <GardenListAndForm />    
+          <Route path="/gardens">
+            <GardenListAndForm />
           </Route>
-          <Route path='/reactautofill'>
+          <Route path="/reactautofill">
             <TestComponent />
           </Route>
-          <Route path='/gardenmapreact'>
-            <GardenMap currentDisplay='AddGardenMap'/>
+          <Route path="/gardenmapreact">
+            <GardenMap currentDisplay="AddGardenMap" />
           </Route>
-          <Route path = '/weather'>
-            <GetWeather weatherData ='Weather Conditions'/> 
+          <Route path="/weather">
+            <GetWeather weatherData="Weather Conditions" />
           </Route>
           <Route path = '/forecast'>
             <GetForecast forecastData ='Forecast'/> 
@@ -74,22 +74,22 @@ function App() {
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <h2>Home</h2>
 }
 
 function About() {
-  return <h2>About</h2>;
+  return <h2>About</h2>
 }
 
 function Users() {
-  return <Signup />;
+  return <Signup />
 }
 
-export default App;
+export default App
 
 // export default class App extends React.Component {
 //   state = {

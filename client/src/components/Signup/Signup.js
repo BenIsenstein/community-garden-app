@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import React, { useRef } from "react";
-import { useForm } from "react-hook-form";
-import "./Signup.css";
+import { Link } from 'react-router-dom'
+import React, { useRef } from 'react'
+import { useForm } from 'react-hook-form'
+import './Signup.css'
 
 const Signup = () => {
   const {
@@ -9,14 +9,14 @@ const Signup = () => {
     formState: { errors },
     handleSubmit,
     watch,
-  } = useForm({});
-  const password = useRef({});
-  const confirmPassword = useRef({});
-  password.current = watch("password", "");
-  confirmPassword.current = watch("confirmPassword", "");
+  } = useForm({})
+  const password = useRef({})
+  const confirmPassword = useRef({})
+  password.current = watch('password', '')
+  confirmPassword.current = watch('confirmPassword', '')
   const onSubmit = async (data) => {
-    alert(JSON.stringify(data));
-  };
+    alert(JSON.stringify(data))
+  }
 
   function validatePass(password) {
     return (
@@ -24,7 +24,7 @@ const Signup = () => {
       /[A-Z]+/.test(password) &&
       /[a-z]+/.test(password) &&
       /[0-9]+/.test(password)
-    );
+    )
   }
 
   return (
@@ -36,7 +36,7 @@ const Signup = () => {
             <b>Username</b>
           </label>
           <input
-            {...register("username", { required: true })}
+            {...register('username', { required: true })}
             type="text"
             placeholder="Enter Username"
             name="username"
@@ -48,11 +48,11 @@ const Signup = () => {
             <b>Password</b>
           </label>
           <input
-            {...register("password", {
+            {...register('password', {
               required: true,
               validate: (value) =>
                 validatePass(value) ||
-                "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long.",
+                'The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long.',
             })}
             type="password"
             placeholder="Enter Password"
@@ -65,12 +65,12 @@ const Signup = () => {
           <label htmlFor="confirmPassword">
             <b>Password</b>
           </label>
-          <div style={{ display: "flex", color: "red" }}>
+          <div style={{ display: 'flex', color: 'red' }}>
             <input
-              {...register("confirmPassword", {
+              {...register('confirmPassword', {
                 required: true,
                 validate: (value) =>
-                  value === password.current || "The passwords do not match",
+                  value === password.current || 'The passwords do not match',
                 // validatePass(value) ||
                 // "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long.",
               })}
@@ -87,7 +87,7 @@ const Signup = () => {
             <b>How long have you been gardening?</b>
           </label>
           <select
-            {...register("howLongGardening", { required: false })}
+            {...register('howLongGardening', { required: false })}
             name="howLongGardening"
             id="howLongGardening"
           >
@@ -104,7 +104,7 @@ const Signup = () => {
           <div className="currentPlantsSelection" id="currentPlantsSelection">
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register('plantCheckbox', { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="peas"
@@ -114,7 +114,7 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register('plantCheckbox', { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="carrots"
@@ -124,7 +124,7 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register('plantCheckbox', { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="zucchini"
@@ -134,7 +134,7 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register('plantCheckbox', { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
                 id="tomatoes"
@@ -149,7 +149,7 @@ const Signup = () => {
             <b>Postal Code</b>
           </label>
           <input
-            {...register("postalCode", { required: false })}
+            {...register('postalCode', { required: false })}
             type="text"
             placeholder="Enter Postal Code"
             name="postalCode"
@@ -173,7 +173,7 @@ const Signup = () => {
         <hr />
         <div>
           <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <span id="loginButton">
               <Link to="/loggedon">Log in.</Link>
             </span>
@@ -181,52 +181,52 @@ const Signup = () => {
         </div>
       </div>
     </form>
-  );
+  )
 
   async function submit() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
-    let howLongGardening = document.getElementById("howLongGardening").value;
-    let plantCheckbox = document.getElementsByName("plantCheckbox");
-    let currentPlants = "";
+    let username = document.getElementById('username').value
+    let password = document.getElementById('password').value
+    let confirmPassword = document.getElementById('confirmPassword').value
+    let howLongGardening = document.getElementById('howLongGardening').value
+    let plantCheckbox = document.getElementsByName('plantCheckbox')
+    let currentPlants = ''
     for (var i = 0, n = plantCheckbox.length; i < n; i++) {
       if (plantCheckbox[i].checked) {
-        currentPlants += ", " + plantCheckbox[i].value;
+        currentPlants += ', ' + plantCheckbox[i].value
       }
     }
     if (currentPlants) {
-      currentPlants = currentPlants.substring(1);
+      currentPlants = currentPlants.substring(1)
     }
 
-    console.log("username:", username);
-    console.log("password:", password);
-    console.log("confirmPassword:", confirmPassword);
-    console.log("howLongGardening:", howLongGardening);
-    console.log("currentPlants:", currentPlants);
+    console.log('username:', username)
+    console.log('password:', password)
+    console.log('confirmPassword:', confirmPassword)
+    console.log('howLongGardening:', howLongGardening)
+    console.log('currentPlants:', currentPlants)
 
     let submissionData = {
       username: username,
       password: password,
       confirmPassword: confirmPassword,
       plants: currentPlants,
-    };
+    }
 
-    let fetchUrl = "/signup";
+    let fetchUrl = '/signup'
     let fetchOptions = {
-      method: "post",
-      headers: { "content-type": "application/json" },
+      method: 'post',
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(submissionData),
-    };
+    }
 
-    let response = await fetch(fetchUrl, fetchOptions);
-    let resObject = await response.json();
-    console.log(resObject);
+    let response = await fetch(fetchUrl, fetchOptions)
+    let resObject = await response.json()
+    console.log(resObject)
 
     if (resObject.success === false) {
-      alert(resObject.message);
+      alert(resObject.message)
     } else {
-      window.location = "/loggedon";
+      window.location = '/loggedon'
     }
 
     // // Show input error message
@@ -262,6 +262,6 @@ const Signup = () => {
     //   nameSuccessField.innerText = resObject.successMessage;
     // }
   }
-};
+}
 
-export default Signup;
+export default Signup
