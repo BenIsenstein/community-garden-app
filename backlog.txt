@@ -5,4 +5,9 @@
 1. Add feature in GardenListAndForm to make sure previously set 
     marker doesn't re-render when going from list back to form.
 
-2.
+2. GardenListAndForm ->
+    - Garden Leader - Name
+    - Phone # / Email
+    - What year was the garden established?
+    - Annual fee?
+    - Wheelchair accessible
