@@ -56,10 +56,8 @@ export default function GardenMap({isFormDisplayed, formCoordinates, parentCallb
     //         )
     //     }
     // }, [currentDisplay])
-
-
-
     
+    const [selected, setSelected] = React.useState(null)
 
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
@@ -94,8 +92,22 @@ export default function GardenMap({isFormDisplayed, formCoordinates, parentCallb
                 return <Marker 
                     key={marker.title}
                     position={marker.location}
+                    onMouseOver={() => {
+                        setSelected(marker)
+                    }}
                 />
             })}
+
+            {selected ? (<InfoWindow 
+                position={selected.location}
+                onCloseClick={() => {
+                    setSelected(null)
+                }}
+                >
+                <div style={{fontWeight:"bold"}}>
+                    {selected.title}
+                </div>
+            </InfoWindow>) : null}
         </GoogleMap>
     </div>
 }

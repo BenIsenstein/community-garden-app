@@ -4,9 +4,10 @@ import './App.css'
 import GardenListAndForm from './components/GardenListAndForm/GardenListAndForm'
 import Signup from './components/Signup/Signup'
 import LoggedOn from './components/LoggedOn'
-import Weather from './components/Weather/weatherForecast'
+import GetWeather from './components/Weather/GetWeather'
 import GardenMap from './components/gardenMap/GardenMapReact'
 import TestComponent from './components/formAutocomplete/NewReactAutoFill'
+import { BasicTable } from './components/DataTable/BasicTable'
 
 function App() {
   return (
@@ -53,7 +54,12 @@ function App() {
           <Route path="/gardenmapreact">
             <GardenMap currentDisplay="AddGardenMap" />
           </Route>
-          <Route path="/weather">{/* <Weather weatherData={data} /> */}</Route>
+          <Route path="/weather">
+            <GetWeather weatherData="Weather Conditions" />
+          </Route>
+          <Route path="/table">
+            <BasicTable />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -73,10 +79,6 @@ function About() {
 
 function Users() {
   return <Signup />
-}
-
-function GetWeather() {
-  return <>Weather</>
 }
 
 export default App

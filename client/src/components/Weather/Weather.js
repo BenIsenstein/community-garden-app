@@ -14,6 +14,8 @@ import {
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
+
 export default function Weather({weatherData}) {
   
   const WeatherIcon = styled.div`
@@ -25,7 +27,7 @@ export default function Weather({weatherData}) {
   }
 
   let weatherIcon = null;
-
+  
   if (weatherData.weather[0].main === 'Thunderstorm') {
     weatherIcon = <FontAwesomeIcon icon={faBolt} />;
   } else if (weatherData.weather[0].main === 'Drizzle') {
@@ -46,7 +48,7 @@ export default function Weather({weatherData}) {
     <div className="main">
       <div className="top">
         <p className="header">{weatherData.name}</p>
-        <Button className="button" inverted color='blue' circular icon='refresh' onClick={refresh} />
+        <Button className="button" inverted color='green' circular icon='refresh' onClick={refresh} />
       </div>
       <div className="flex">
         <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
@@ -69,3 +71,5 @@ export default function Weather({weatherData}) {
   </div>
   )
 }
+
+

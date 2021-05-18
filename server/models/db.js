@@ -29,8 +29,9 @@ db.once("open", () => console.log("MongoDB is now connected! @ ", mongoAtlasUrl)
 const gardenSchema = new mongoose.Schema({
   name: String,
   address: String,
+  coordinates: Object,
   quadrant: String,
-  coverPhoto: String,
+  coverPhoto: {},
   surfaceArea: String,
   vacancy: Boolean,
 });
