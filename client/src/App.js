@@ -1,13 +1,15 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import './App.css'
-import GardenListAndForm from './components/GardenListAndForm/GardenListAndForm'
-import Signup from './components/Signup/Signup'
-import LoggedOn from './components/LoggedOn'
-import GetWeather from './components/Weather/GetWeather'
-import GardenMap from './components/gardenMap/GardenMapReact'
-import TestComponent from './components/formAutocomplete/NewReactAutoFill'
-import { BasicTable } from './components/DataTable/BasicTable'
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.css";
+import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
+import Signup from "./components/Signup";
+import LoggedOn from "./components/LoggedOn";
+import GetWeather from "./components/Weather/GetWeather";
+import GetForecast from "./components/Weather/GetForecast";
+import GardenMap from "./components/gardenMap/GardenMapReact";
+import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
+import { BasicTable } from "./components/DataTable/BasicTable";
+
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
             </li>
             <li>
               <Link to="/gardens">Gardens</Link>
+            </li>
+            <li>
+              <Link to="/forecast">Forecast</Link>
             </li>
           </ul>
         </nav>
@@ -57,12 +62,15 @@ function App() {
           <Route path="/weather">
             <GetWeather weatherData="Weather Conditions" />
           </Route>
-          <Route path="/table">
+          <Route path = '/forecast'>
+            <GetForecast forecastData ='Forecast'/> 
+          </Route>
+          <Route path='/table'>
             <BasicTable />
           </Route>
           <Route path="/">
-            <Home />
-          </Route>
+           <Home />
+          </Route> 
         </Switch>
       </div>
     </Router>

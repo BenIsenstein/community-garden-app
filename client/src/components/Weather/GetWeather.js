@@ -11,7 +11,6 @@ export default function GetWeather() {
     const fetchData = async () => { 
 
     await fetch(`${process.env.REACT_APP_WEATHER_API_URL}/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
-    //await fetch(`https://pro.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)//
     .then(res => res.json())
     .then(result => {
       setData(result)
@@ -22,6 +21,7 @@ export default function GetWeather() {
 
    fetchData();
 }, [lat,lon]) 
+
 
   return (
     <div className="GetWeather">
