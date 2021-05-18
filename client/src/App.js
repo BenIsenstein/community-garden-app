@@ -1,16 +1,16 @@
-import React from "react"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import "./App.css"
-import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
-import Signup from "./components/Signup/Signup"
-import LoggedOn from "./components/LoggedOn"
-import GetWeather from "./components/Weather/GetWeather"
-import GetForecast from "./components/Weather/GetForecast"
-import GardenMap from "./components/gardenMap/GardenMapReact"
-import TestComponent from "./components/formAutocomplete/NewReactAutoFill"
-import { BasicTable } from "./components/DataTable/BasicTable"
-import LandingPage from "./components/IndividualGardens/LandingPage"
-
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import './App.css'
+import GardenListAndForm from './components/GardenListAndForm/GardenListAndForm'
+import Signup from './components/Signup/Signup'
+import LogIn from './components/LogIn/LogIn'
+import LoggedOn from './components/LoggedOn'
+import GetWeather from './components/Weather/GetWeather'
+import GetForecast from './components/Weather/GetForecast'
+import GardenMap from './components/gardenMap/GardenMapReact'
+import TestComponent from './components/formAutocomplete/NewReactAutoFill'
+import { BasicTable } from './components/DataTable/BasicTable'
+import LandingPage from './components/IndividualGardens/LandingPage'
 
 function App() {
   return (
@@ -26,6 +26,9 @@ function App() {
             </li>
             <li>
               <Link to="/signup">Signup</Link>
+            </li>
+            <li>
+              <Link to="/login">LogIn</Link>
             </li>
             <li>
               <Link to="/weather">Weather</Link>
@@ -48,6 +51,9 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
+          <Route path="/login">
+            <LogIn />
+          </Route>
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
@@ -63,18 +69,18 @@ function App() {
           <Route path="/weather">
             <GetWeather weatherData="Weather Conditions" />
           </Route>
-          <Route path = '/forecast'>
-            <GetForecast forecastData ='Forecast'/> 
+          <Route path="/forecast">
+            <GetForecast forecastData="Forecast" />
           </Route>
-          <Route path='/table'>
+          <Route path="/table">
             <BasicTable />
-          </Route> 
-          <Route path='/individual'>
-            <LandingPage name='Hawkwood' />
+          </Route>
+          <Route path="/individual">
+            <LandingPage name="Hawkwood" />
           </Route>
           <Route path="/">
-           <Home />
-          </Route> 
+            <Home />
+          </Route>
         </Switch>
       </div>
     </Router>

@@ -14,8 +14,17 @@ const Signup = () => {
   const confirmPassword = useRef({})
   password.current = watch('password', '')
   confirmPassword.current = watch('confirmPassword', '')
-  const onSubmit = async (data) => {
-    alert(JSON.stringify(data))
+
+  async function onSubmit(data) {
+    let fetchUrl = '/api/user/signup'
+    let fetchOptions = {
+      method: 'post',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data),
+    }
+    let response = await fetch(fetchUrl, fetchOptions)
+    let resObject = await response.json()
+    console.log('submit worked')
   }
 
   function validatePass(password) {
