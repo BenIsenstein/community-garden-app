@@ -76,7 +76,7 @@ router.post('/check-is-address-free', async (req, res) => {
 
   async function checkIsAddressFree(gardenAddress) {
     let gardenExists = await findGardenByAddress(gardenAddress)
-    return !gardenAddress ? true : !addressExists 
+    return !gardenAddress ? true : !gardenExists 
   }
 })
 
