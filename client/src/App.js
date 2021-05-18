@@ -7,6 +7,7 @@ import LoggedOn from "./components/LoggedOn";
 import GetWeather from "./components/Weather/GetWeather";
 import GardenMap from "./components/gardenMap/GardenMapReact";
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
+import { BasicTable } from "./components/DataTable/BasicTable";
 
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route path = '/weather'>
             <GetWeather weatherData ='Weather Conditions'/> 
+          </Route>
+          <Route path='/table'>
+            <BasicTable />
           </Route>
           <Route path="/">
             <Home />
