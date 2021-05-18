@@ -3,7 +3,6 @@ const {Garden, addGarden, findGardenByName, findGardenByAddress} = require('../m
 let router = express.Router()
 
 router.post('/', async (req, res) => {
-  console.log('add a garden was POSTed to!')
   let reqName = req.body.nameData
   let reqAddress = req.body.addressData
   let reqCoordinates = req.body.coordinatesData
@@ -12,8 +11,8 @@ router.post('/', async (req, res) => {
   let reqSurfaceArea = req.body.surfaceAreaData
   let reqVacancy = req.body.vacancyData
 
-  let isAddressFree = await validateAddress(reqAddress)
-  let isNameFree = await validateName(reqName)
+  let isAddressFree = await checkIsAddressFree(reqAddress)
+  let isNameFree = await checkIsNameFree(reqName)
 
   if (isAddressFree && isNameFree) {
     let newGarden = new Garden({
@@ -42,17 +41,44 @@ router.post('/', async (req, res) => {
     res.status(400).json(errorObject)
   }
 
-  async function validateAddress(gardenAddress) {
+  async function checkIsAddressFree(gardenAddress) {
     let addressExists = await findGardenByAddress(gardenAddress)
-    return !addressExists 
+    return !gardenAddress ? true : !addressExists 
   }
 
-  async function validateName(gardenName) {
+  async function checkIsNameFree(gardenName) {
     let gardenExists = await findGardenByName(gardenName)
     return !gardenExists
   }
 })
 
+
+router.post('/check-is-name-free', async (req, res) => {
+  let reqName = req.body.nameData
+  let isNameFree = await checkIsNameFree(reqName)
+
+  res.json({result: isNameFree})
+
+
+  async function checkIsNameFree(gardenName) {
+    let gardenExists = await findGardenByName(gardenName)
+    return !gardenExists
+  }
+})
+
+
+router.post('/check-is-address-free', async (req, res) => {
+  let reqAddress = req.body.addressData
+  let isAddressFree = await checkIsAddressFree(reqAddress)
+
+  res.json({result: isAddressFree})
+
+
+  async function checkIsAddressFree(gardenAddress) {
+    let gardenExists = await findGardenByAddress(gardenAddress)
+    return !gardenExists
+  }
+})
 
 
 
