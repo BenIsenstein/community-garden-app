@@ -31,7 +31,7 @@ const gardenSchema = new mongoose.Schema({
   address: String,
   coordinates: Object,
   quadrant: String,
-  coverPhoto: String,
+  coverPhoto: {},
   surfaceArea: String,
   vacancy: Boolean,
 });

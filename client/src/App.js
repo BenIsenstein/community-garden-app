@@ -8,6 +8,7 @@ import GetWeather from "./components/Weather/GetWeather";
 import GetForecast from "./components/Weather/GetForecast";
 import GardenMap from "./components/gardenMap/GardenMapReact";
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
+import { BasicTable } from "./components/DataTable/BasicTable";
 
 
 function App() {
@@ -64,9 +65,12 @@ function App() {
           <Route path = '/forecast'>
             <GetForecast forecastData ='Forecast'/> 
           </Route>
-          <Route path="/">
-            <Home />
+          <Route path='/table'>
+            <BasicTable />
           </Route>
+          <Route path="/">
+           <Home />
+          </Route> 
         </Switch>
       </div>
     </Router>

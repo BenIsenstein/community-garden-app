@@ -1,29 +1,73 @@
 import './AddGardenForm.css'
+import { useEffect } from 'react'
+import { useForm } from "react-hook-form";
 
 function AddGardenForm({formCoordinates}) {
+  const { register, handleSubmit, onChange, setValue, formState: { errors } } = useForm();
   const lat = formCoordinates.lat
   const lng = formCoordinates.lng
 
+  useEffect(() => {
+    setValue('lat', lat)
+    setValue('lng', lng)
+
+  }, [lat, lng])
+          
   return (
-    <div>  
+    <form onSubmit={handleSubmit(submitAddGardenForm)}>   
       <h1 className='Add-garden-form-header'>
         Add A Garden
       </h1>
       <div className='Add-garden-form'>
         <div className='Garden-form-element'>
           <label htmlFor='Garden-name'>Garden Name</label>
-          <input className='Garden-name' id='Garden-name' />
+          <input 
+            className='Garden-name' 
+            id='Garden-name' 
+            name='nameData'
+            onChange={onChange}
+            {...register(
+              'nameData', 
+              {
+                validate: async (name) => await checkIsNameFree(name),
+                required: {
+                  value: true,
+                  message: 'You must input a name for your garden.'
+                }
+              }
+            )}
+          />
         </div>
         <div className='Address-and-coordinates'>
           <div className='Garden-form-element'>
             <label htmlFor='address'>Address</label>
-            <input className='address' id='address' />
+            <input 
+              className='address' 
+              id='address' 
+              name='addressData'
+              onChange={onChange}
+              {...register(
+                'addressData', {
+                validate: async (address) => await checkIsAddressFree(address)
+                }
+              )}
+            />
           </div>
           <div className='Garden-form-element'>
             <label htmlFor='address'>Coordinates</label>
+            <input 
+              type='hidden'
+              name='lat'
+              {...register('lat')}
+            />
+            <input 
+              type='hidden'
+              name='lng'
+              {...register('lng')}
+            />
             <div id='coordinates'>
-              <div>Lat: {lat}</div>
-              <div>Lng: {lng}</div>  
+              <div>Lat: {lat || 'No coordinates given'}</div>
+              <div>Lng: {lng || 'No coordinates given'}</div>  
             </div>
           </div>
         </div>
@@ -32,75 +76,73 @@ function AddGardenForm({formCoordinates}) {
           <div className='Quadrant-buttons' id='quadrant'>
             <div className='button'>
               <label htmlFor="NW">NW</label>
-              <input type="radio" id="NW" name="quadrant" value="NW"/>  
+              <input type="radio" id="NW" name="quadrantData" value="NW" {...register('quadrantData', {required: {value: true, message: 'You must select a quadrant.'}})}/>  
             </div>
             <div className='button'>
               <label htmlFor="NE">NE</label>
-              <input type="radio" id="NE" name="quadrant" value="NE"/>  
+              <input type="radio" id="NE" name="quadrantData" value="NE" {...register('quadrantData', {required: {value: true, message: 'You must select a quadrant.'}})}/>  
             </div>   
             <div className='button'>
               <label htmlFor="SW">SW</label>
-              <input type="radio" id="SW" name="quadrant" value="SW"/>  
+              <input type="radio" id="SW" name="quadrantData" value="SW" {...register('quadrantData', {required: {value: true, message: 'You must select a quadrant.'}})}/>  
             </div>
             <div className='button'>
               <label htmlFor="SE">SE</label>
-              <input type="radio" id="SE" name="quadrant" value="SE"/>  
+              <input type="radio" id="SE" name="quadrantData" value="SE" {...register('quadrantData', {required: {value: true, message: 'You must select a quadrant.'}})}/>  
             </div>   
           </div>
         </div>
         <div className='Garden-form-element'>   
           <label className='Cover-photo-label' htmlFor='Cover-photo'>Cover Photo</label>
-          <input type='file' className='Cover-photo' id='Cover-photo' />
+          <input 
+            type='file' 
+            className='Cover-photo' 
+            id='Cover-photo' 
+            name='coverPhotoData'
+            {...register('coverPhotoData')}
+          />
         </div> 
         <div className='Garden-form-element'>
           <label htmlFor='Surface-area'>Total Area (sqft)</label>
-          <input className='Surface-area' id='Surface-area' />
+          <input 
+            className='Surface-area' 
+            id='Surface-area' 
+            name='surfaceAreaData'
+            type='number'
+            min='0'
+            {...register(
+              'surfaceAreaData', {
+                required: {
+                  value: true, 
+                  message: 'You must input a surface area.'
+                }
+              }
+            )}
+          />
         </div>   
         <div className='Garden-form-element'> 
           <label htmlFor='vacancy'>Vacancy</label>
           <div className='Vacancy-buttons'id='vacancy'>
             <div className='button'>
               <label htmlFor="yes">Yes</label>
-              <input type="radio" id="yes" name="vacancy" value="yes"/>
+              <input type="radio" id="yes" name="vacancyData" value="yes" {...register('vacancyData', {required: {value: true, message: 'You must declare whether you have room for new gardeners.'}})}/>
             </div>
             <div className='button'>
               <label htmlFor="no">No</label>
-              <input type="radio" id="no" name="vacancy" value="no"/>
+              <input type="radio" id="no" name="vacancyData" value="no" {...register('vacancyData', {required: {value: true, message: 'You must declare whether you have room for new gardeners.'}})}/>
             </div>   
           </div>  
         </div> 
         <div className='Garden-form-element'>
-          <button onClick={async () => await submitAddGardenForm()}>
-            Submit
-          </button>
+          <input type='submit' value='submit' />
         </div>
       </div>    
-    </div>
+    </form>
   )
 
-  async function submitAddGardenForm() {
-    let nameData = document.getElementById('Garden-name').value
-    let addressData = document.getElementById('address').value
-    let coordinatesData = {
-      lat,
-      lng
-    }
-    let quadrantField = document.querySelector('input[name="quadrant"]:checked') || {value: ''}
-    let quadrantData = quadrantField.value
-    let coverPhotoData = document.getElementById('Cover-photo').value
-    let surfaceAreaData = document.getElementById('Surface-area').value
-    let vacancyField = document.querySelector('input[name="vacancy"]:checked') || {value: ''}
-    let vacancyData = vacancyField.value
-    let submissionData = {
-      nameData,
-      addressData,
-      coordinatesData,
-      quadrantData,
-      coverPhotoData,
-      surfaceAreaData,
-      vacancyData
-    }
-    let fetchUrl = "/api/add-a-garden" 
+  async function checkIsNameFree(name) {
+    let submissionData = {nameData: name}
+    let fetchUrl = "/api/add-a-garden/check-is-name-free" 
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -108,21 +150,49 @@ function AddGardenForm({formCoordinates}) {
     }
     let response = await fetch(fetchUrl, fetchOptions)
     let resObject = await response.json()
-
-    if (response.status === 400) {
-      let errorMessage = ''
-
-      for (let key in resObject) {
-        errorMessage += resObject[key] + '\n\n'
-      }
-
-      alert(errorMessage)
+  
+    try {
+      return resObject.result
     }
-    else {
-      let successMessage = resObject.successMessage
-      
-      alert(successMessage)
+    catch (err) {
+      console.error('Error validating name in MongoDBAtlas Cluster!', err)
     }
+  }
+
+
+  async function checkIsAddressFree(address) {
+    let submissionData = {addressData: address}
+    let fetchUrl = "/api/add-a-garden/check-is-address-free" 
+    let fetchOptions = {
+      method: 'post',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(submissionData)
+    }
+    let response = await fetch(fetchUrl, fetchOptions)
+    let resObject = await response.json()
+  
+    try {
+      return !address ? true : resObject.result
+    }
+    catch (err) {
+      console.error('Error validating address in MongoDBAtlas Cluster!', err)
+    }
+  }
+
+
+  async function submitAddGardenForm(data) {
+    data.coordinatesData={lat, lng}
+
+    let fetchUrl = "/api/add-a-garden" 
+    let fetchOptions = {
+      method: 'post',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(data)
+    }
+    let response = await fetch(fetchUrl, fetchOptions)
+    let resObject = await response.json()
+
+    alert(resObject.successMessage)
   }
 }
 
