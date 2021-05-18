@@ -3,9 +3,6 @@ Community Garden App - Cohort 6
 Below is the original superheroes code. We will have to edit as we see fit.
 # Introduction
 
-SUPERHEROES is a learning project, providing basic out-of-the-box capabilities
-for learners to build upon.
-
 This project is a MERN (MongoDB, ExpressJS, ReactJS, Node.js) application made
 of two processes:
    1. an Express "server" providing API support for retrieving and submitting
@@ -35,34 +32,6 @@ In a command shell run the commands:
 
 Your browser should open to `http://localhost:4444`.  The React development
 system is running on port *4444*.
-
-# Using your own MongoDB instance
-
-You can run MongoDB locally on your machine or you can sign up for a no-cost(!)
-account at `https://www.mongodb.com/`.
-
-Once you have your MongoDB instance set up, simply edit the login information
-that is found in `server/models/db.js` under the comment `// SETUP MONGO/MONGOOSE`.
-
-For example, if you are using a local install you might set:
-
-```js
-const mongoUser = 'dbUser';
-const mongoPasswd = 'hideMe!!';
-const mongoDBName = 'my_mongo_db';
-const mongoServer = 'localhost:27017';
-```
-
-You might add the initial data used in the public MongoDB instance:
-
-```js
-[
-  {name: "Batwoman", nickname: null, alterego: "Kate Kane", sidekick: "Batgirl"},
-  {name: "Bat-Girl", nickname: null, alterego: "Betty Kane", sidekick: null},
-  {name: "Batman", nickname: "The Batman", alterego: "Bruce Wayne", sidekick: "Robin"},
-  {name: "Robin", nickname: "The Boy Wonder", alterego: "Dick Grayson", sidekick: null},
-]
-```
 
 # How this project was created
 
