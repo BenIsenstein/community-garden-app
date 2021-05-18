@@ -1,14 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
-import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
-import Signup from "./components/Signup";
-import LoggedOn from "./components/LoggedOn";
-import GetWeather from "./components/Weather/GetWeather";
-import GetForecast from "./components/Weather/GetForecast";
-import GardenMap from "./components/gardenMap/GardenMapReact";
-import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
-import { BasicTable } from "./components/DataTable/BasicTable";
+import React from "react"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import "./App.css"
+import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
+import Signup from "./components/Signup/Signup"
+import LoggedOn from "./components/LoggedOn"
+import GetWeather from "./components/Weather/GetWeather"
+import GetForecast from "./components/Weather/GetForecast"
+import GardenMap from "./components/gardenMap/GardenMapReact"
+import TestComponent from "./components/formAutocomplete/NewReactAutoFill"
+import { BasicTable } from "./components/DataTable/BasicTable"
+import LandingPage from "./components/IndividualGardens/LandingPage"
 
 
 function App() {
@@ -67,6 +68,9 @@ function App() {
           </Route>
           <Route path='/table'>
             <BasicTable />
+          </Route> 
+          <Route path='/individual'>
+            <LandingPage name='Hawkwood' />
           </Route>
           <Route path="/">
            <Home />
