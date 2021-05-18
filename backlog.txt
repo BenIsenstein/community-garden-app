@@ -10,4 +10,4 @@
     - Phone # / Email
     - What year was the garden established?
     - Annual fee?
-    - Wheelchair accessible
+    - Wheelchair accessible?
