@@ -1,13 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
-import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm";
-import Signup from "./components/Signup";
-import LoggedOn from "./components/LoggedOn";
-import Weather from "./components/Weather/weatherForecast";
-import GardenMap from "./components/gardenMap/GardenMapReact";
-import TestComponent from "./components/formAutocomplete/NewReactAutoFill";
-
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import './App.css'
+import GardenListAndForm from './components/GardenListAndForm/GardenListAndForm'
+import Signup from './components/Signup/Signup'
+import LoggedOn from './components/LoggedOn'
+import Weather from './components/Weather/weatherForecast'
+import GardenMap from './components/gardenMap/GardenMapReact'
+import TestComponent from './components/formAutocomplete/NewReactAutoFill'
 
 function App() {
   return (
@@ -45,44 +44,42 @@ function App() {
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
-          <Route path="/gardens"> 
-            <GardenListAndForm />    
+          <Route path="/gardens">
+            <GardenListAndForm />
           </Route>
-          <Route path='/reactautofill'>
+          <Route path="/reactautofill">
             <TestComponent />
           </Route>
-          <Route path='/gardenmapreact'>
-            <GardenMap currentDisplay='AddGardenMap'/>
+          <Route path="/gardenmapreact">
+            <GardenMap currentDisplay="AddGardenMap" />
           </Route>
-          <Route path = '/weather'>
-            {/* <Weather weatherData={data} /> */}
-          </Route>
+          <Route path="/weather">{/* <Weather weatherData={data} /> */}</Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <h2>Home</h2>
 }
 
 function About() {
-  return <h2>About</h2>;
+  return <h2>About</h2>
 }
 
 function Users() {
-  return <Signup />;
+  return <Signup />
 }
 
 function GetWeather() {
-  return <>Weather</>;
+  return <>Weather</>
 }
 
-export default App;
+export default App
 
 // export default class App extends React.Component {
 //   state = {
