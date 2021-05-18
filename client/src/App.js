@@ -8,8 +8,8 @@ import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
 import GardenMap from "./components/gardenMap/GardenMapReact"
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill"
-import { BasicTable } from "./components/DataTable/BasicTable"
 import LandingPage from "./components/IndividualGardens/LandingPage"
+import GardenTable from "./components/DataTable/GardenTable"
 
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
             <GetForecast forecastData ='Forecast'/> 
           </Route>
           <Route path='/table'>
-            <BasicTable />
+            <GardenTable />
           </Route> 
           <Route path='/individual'>
             <LandingPage name='Hawkwood' />

@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy, useFilters } from 'react-table'
 import mockData from './mockGardenData.json'
 import { columnHeaders } from './columns'
 import './table.css'
 
-export const BasicTable = () => {
+export default function FilteringTable() {
 
     // Prevent re-rendering of data
     const columns = useMemo(() => columnHeaders, [])
@@ -12,15 +12,17 @@ export const BasicTable = () => {
 
     const tableInstance = useTable({
         columns,
-        data
-    })
+        data,
+    },
+    useFilters,
+    useSortBy)
 
     const { 
         getTableProps,
         getTableBodyProps,
         headerGroups,
         rows,
-        prepareRow
+        prepareRow,
     } = tableInstance
 
     return (
@@ -29,7 +31,14 @@ export const BasicTable = () => {
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map( column => (
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            <th {...column.getHeaderProps(column.getSortByToggleProps)}>
+                                {column.render('Header')}
+                                <div>{column.canFilter ? column.render('Filter') : null}</div>
+                                <span>
+                                    {/* if column is sorted -> check if sorted in descending order */}
+                                    {column.isSorted ? (column.isSortedDesc ?  ' 🔽' : ' 🔼') : ''}
+                                </span>
+                            </th>
                         ))}
                     </tr>
                 ))}
@@ -39,8 +48,8 @@ export const BasicTable = () => {
                     prepareRow(row)
                     return (
                         <tr {...row.getRowProps()}>
-                            {row.cells.map((cell) => {
-                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                            {row.cells.map((cell) => { // access cells in each row
+                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td> // renders cell value for each column
                             })}
                         </tr>
                     )
