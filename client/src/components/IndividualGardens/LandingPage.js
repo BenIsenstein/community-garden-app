@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom'
 
-export default function LandingPage({ name }) {
+export default function LandingPage() {
+  const { gardenName } = useParams()
   const [gardenData, setGardenData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      let response = await fetch(
-        `/api/get-all-gardens/individual-garden?name=${name}`
-      );
+      let fetchGardenUrl = `/api/get-all-gardens/individual-garden?name=${gardenName}`
+      let response = await fetch(fetchGardenUrl);
       let resObject = await response.json();
       let gardenObject = resObject.garden;
-      setGardenData(gardenObject);
+      
+      return gardenObject ? setGardenData(gardenObject) : setGardenData('no garden');
     };
     fetchData();
   }, []);
 
-  return <h1>{gardenData ? "Loading..." : gardenData.name}</h1>;
+  return (
+    <h1>
+      {!gardenData && 'Loading...'}
+      {(gardenData === 'no garden') && 'This garden could not be found.'}
+      {(gardenData && gardenData !== 'no garden') && gardenData.name}
+    </h1>
+  )
 }

@@ -10,7 +10,7 @@ import GetForecast from './components/Weather/GetForecast'
 import GardenMap from './components/gardenMap/GardenMapReact'
 import TestComponent from './components/formAutocomplete/NewReactAutoFill'
 import GardenTable from "./components/DataTable/GardenTable"
-import LandingPage from './components/IndividualGardens/LandingPage'
+import GardenPageRouter from './components/IndividualGardens/GardenPageRouter'
 
 function App() {
   return (
@@ -75,8 +75,8 @@ function App() {
           <Route path='/table'>
             <GardenTable />
           </Route> 
-          <Route path='/individual'>
-            <LandingPage name='Hawkwood' />
+          <Route path='/garden-page'>
+            <GardenPageRouter />
           </Route>
           <Route path="/">
             <Home />
@@ -86,6 +86,8 @@ function App() {
     </Router>
   )
 }
+
+
 
 function Home() {
   return <h2>Home</h2>

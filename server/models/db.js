@@ -53,7 +53,8 @@ const deleteGardenByName = async (name) => {
 }
 
 const findGardenByName = async (name) => {
-  let result = await Garden.findOne({ name: name })
+  let caseInsensitiveName = new RegExp(`${name}`, 'i')
+  let result = await Garden.findOne({ name: caseInsensitiveName})
   return result
 }
 

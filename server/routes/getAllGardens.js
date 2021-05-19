@@ -10,9 +10,8 @@ router.get('/', async (req, res) => {
 
 router.get('/individual-garden', async (req, res) => {
   let gardenName = req.query.name
-  console.log ("garden name is", gardenName)
   let gardenResult = await findGardenByName(gardenName)
-  console.log ("garden result is", gardenResult)
+  
   res.json({garden: gardenResult})
 })
 
