@@ -21,7 +21,7 @@ export default function LandingPage() {
     <h1>
       {!gardenData && 'Loading...'}
       {(gardenData === 'no garden') && 'This garden could not be found.'}
-      {(gardenData && gardenData !== 'no garden') && gardenData.name}
+      {(gardenData !== 'no garden') && gardenData?.name}
     </h1>
   )
 }
