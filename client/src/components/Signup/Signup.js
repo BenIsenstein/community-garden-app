@@ -52,6 +52,7 @@ const Signup = () => {
             id="username"
           />
         </div>
+        <div>***INSERT EMAIL FIELD TOO***</div>
         <div className="form-control">
           <label htmlFor="password">
             <b>Password</b>
@@ -103,7 +104,6 @@ const Signup = () => {
             <option value="oneToFiveYears">1 to 5 years</option>
             <option value="moreThanFiveYears">More than 5 years</option>
           </select>
-          <small>Error message</small>
         </div>
         <div className="form-control">
           <label htmlFor="currentPlants">
@@ -152,9 +152,9 @@ const Signup = () => {
             </div>
           </div>
         </div>
-        <div className="postalCode">
+        <div className="form-control postalCode">
           <label htmlFor="postalCode">
-            <b>Postal Code</b>
+            <b>Postal Code (city?? other location details instead?)</b>
           </label>
           <input
             {...register("postalCode", { required: false })}
@@ -164,7 +164,7 @@ const Signup = () => {
             id="postalCode"
           />
         </div>
-        <div className="memberOfGarden">
+        <div className="form-control memberOfGarden">
           <label htmlFor="memberOfGarden">
             <b>If you're currently a member of a garden, select it from our list below:</b>
           </label>
@@ -174,15 +174,17 @@ const Signup = () => {
             <option value="gardenC">Garden C</option>
           </select>
         </div>
-        <input type="submit" value="Submit" />
-        <hr />
         <div>
-          <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
-            Already have an account?{" "}
-            <span id="loginButton">
-              <Link to="/loggedon">Log in.</Link>
-            </span>
-          </label>
+          <input class="signupButton" type="submit" value="Submit" />
+          <hr />
+          <div>
+            <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
+              Already have an account?
+              <span class="signupSpan">
+                <Link to="/login"> Log in.</Link>
+              </span>
+            </label>
+          </div>
         </div>
       </div>
     </form>
@@ -231,7 +233,7 @@ const Signup = () => {
     if (resObject.success === false) {
       alert(resObject.message)
     } else {
-      window.location = "/loggedon"
+      window.location = "/login"
     }
 
     // // Show input error message
