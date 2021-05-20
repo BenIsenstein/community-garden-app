@@ -78,7 +78,12 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500)
-  res.render("error")
+  // *** res.render (below) was replaced with res.json since we don't have a view engine specified
+  // res.render("error")
+  res.json({
+    message: err.message,
+    error: err
+  })
 })
 
 module.exports = app
