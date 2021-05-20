@@ -1,16 +1,16 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import './App.css'
-import GardenListAndForm from './components/GardenListAndForm/GardenListAndForm'
-import Signup from './components/Signup/Signup'
-import LogIn from './components/LogIn/LogIn'
-import LoggedOn from './components/LoggedOn'
-import GetWeather from './components/Weather/GetWeather'
-import GetForecast from './components/Weather/GetForecast'
-import GardenMap from './components/gardenMap/GardenMapReact'
-import TestComponent from './components/formAutocomplete/NewReactAutoFill'
+import React from "react"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import "./App.css"
+import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
+import Signup from "./components/Signup/Signup"
+import Login from "./components/Login/Login"
+import LoggedOn from "./components/LoggedOn"
+import GetWeather from "./components/Weather/GetWeather"
+import GetForecast from "./components/Weather/GetForecast"
+import GardenMap from "./components/gardenMap/GardenMapReact"
+import TestComponent from "./components/formAutocomplete/NewReactAutoFill"
 import GardenTable from "./components/DataTable/GardenTable"
-import GardenPageRouter from './components/IndividualGardens/GardenPageRouter'
+import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 
 function App() {
   return (
@@ -25,10 +25,10 @@ function App() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/signup">Signup</Link>
+              <Link to="/signup">Sign Up</Link>
             </li>
             <li>
-              <Link to="/login">LogIn</Link>
+              <Link to="/login">Log In</Link>
             </li>
             <li>
               <Link to="/weather">Weather</Link>
@@ -52,7 +52,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/login">
-            <LogIn />
+            <Login />
           </Route>
           <Route path="/loggedon">
             <LoggedOn />
@@ -72,10 +72,10 @@ function App() {
           <Route path="/forecast">
             <GetForecast forecastData="Forecast" />
           </Route>
-          <Route path='/table'>
+          <Route path="/table">
             <GardenTable />
-          </Route> 
-          <Route path='/garden-page'>
+          </Route>
+          <Route path="/garden-page">
             <GardenPageRouter />
           </Route>
           <Route path="/">
@@ -86,8 +86,6 @@ function App() {
     </Router>
   )
 }
-
-
 
 function Home() {
   return <h2>Home</h2>
