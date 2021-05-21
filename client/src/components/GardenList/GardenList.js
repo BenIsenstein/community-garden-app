@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom'
 import "./GardenList.css"
 
@@ -15,7 +15,10 @@ function GardenList() {
   const history = useHistory()
   const changeRoute = (val) => history.push(`/garden-page/${val}`)
 
-  ;(async () => await getAllGardens())()
+  useEffect(() => {
+    getAllGardens()
+  }, [])
+  
 
 
   return (
