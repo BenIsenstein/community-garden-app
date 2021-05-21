@@ -112,11 +112,12 @@ const Signup = () => {
             <b>How long have you been gardening?</b>
           </label>
           <select
+            defaultValue="selectOne"
             {...register("howLongGardening", { required: false })}
             name="howLongGardening"
             id="howLongGardening"
           >
-            <option value="selectOne" selected disabled>
+            <option value="selectOne" disabled>
               Please Select
             </option>
             <option value="lessThanOneYear">Less than 1 year</option>
@@ -198,9 +199,10 @@ const Signup = () => {
             className="signupButton"
             type="submit"
             value="Submit"
-            onClick={function () {
-              window.location = "/loggedon"
-            }}
+            // *** FIX THIS... redirects without validating :(
+            // onClick={function () {
+            //   window.location = "/loggedon"
+            // }}
             // onclick="window.location='www.google.com'"
           />
           {/* <Link to="/login" className="signupButton" type="submit">

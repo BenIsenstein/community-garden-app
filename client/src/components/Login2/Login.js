@@ -46,6 +46,7 @@ const Login = () => {
             type="submit"
             value="Log In"
             onClick={function () {
+              // FIX
               window.location = "/loggedon"
             }}
           />
