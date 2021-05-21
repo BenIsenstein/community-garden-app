@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 
 export default function GardenSearchAutocomplete() {
-  const [gardenList, setGardenList] = useState([])
+  const [gardenList, setGardenList] = useState(null)
   const [inputValue, setInputValue] = useState("")
   const getAllGardens = async () => {
     let fetchUrl = "/api/get-all-gardens"
@@ -15,9 +15,11 @@ export default function GardenSearchAutocomplete() {
 
   ;(async () => await getAllGardens())()
 
-  const filteredGardenList = gardenList.filter((garden) => {
-    let gardenNameRegex = new RegExp(`.*${inputValue}.*`, "i")
-    return gardenNameRegex.test(garden?.name)
+  const filteredGardenList = !gardenList 
+    ? ['Loading...']
+    : gardenList.filter((garden) => {
+      let gardenNameRegex = new RegExp(`.*${inputValue}.*`, "i")
+      return gardenNameRegex.test(garden?.name)
   })
 
   const history = useHistory()
@@ -29,7 +31,7 @@ export default function GardenSearchAutocomplete() {
         Search for a garden, then click to visit its homepage.
       </h1>
       <Autocomplete
-        getItemValue={(garden) => garden?.name}
+        getItemValue={(garden) => garden.name || garden}
         items={filteredGardenList}
         renderItem={(garden, isHighlighted) => (
           <div style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>

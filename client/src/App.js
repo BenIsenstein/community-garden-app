@@ -63,12 +63,6 @@ function App() {
           <Route path="/gardens">
             <GardenListAndForm />
           </Route>
-          <Route path="/reactautofill">
-            <TestComponent />
-          </Route>
-          <Route path="/gardenmapreact">
-            <GardenMap currentDisplay="AddGardenMap" />
-          </Route>
           <Route path="/weather">
             <GetWeather weatherData="Weather Conditions" />
           </Route>

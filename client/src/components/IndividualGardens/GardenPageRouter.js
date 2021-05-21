@@ -14,7 +14,8 @@ export default function GardenPageRouter() {
         <Route path={`${path}/:gardenName`}>
           <LandingPage />
         </Route>
-        <Route path={path} render={() => <Redirect to={`${path}/search`} />}></Route>
+        <Route path={path} render={() => <Redirect to={`${path}/search`} />}>
+        </Route>
       </Switch>
     </Router>
   )
