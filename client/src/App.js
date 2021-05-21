@@ -63,6 +63,9 @@ function App() {
           <Route path="/gardens">
             <GardenListAndForm />
           </Route>
+          <Route path="/gardenMap">
+            <GardenMap />
+          </Route>
           <Route path="/weather">
             <GetWeather weatherData="Weather Conditions" />
           </Route>
