@@ -17,12 +17,12 @@ const Login = () => {
           <input type="password" name="password" />
         </div>
         <div>
-          <input class="signupButton" type="submit" value="Log In" />
+          <input className="signupButton" type="submit" value="Log In" />
           <hr />
           <div>
             <label htmlFor="dontHaveAnAccount" id="dontHaveAnAccount">
               Don't have an account yet?{" "}
-              <span class="signupSpan">
+              <span className="signupSpan">
                 <Link to="/signup"> Sign up.</Link>
               </span>
             </label>

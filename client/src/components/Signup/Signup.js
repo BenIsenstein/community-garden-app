@@ -16,13 +16,14 @@ const Signup = () => {
   confirmPassword.current = watch("confirmPassword", "")
 
   async function onSubmit(data) {
-    let fetchUrl = "/api/user/signup"
+    let fetchUrl = "http://localhost:3000/api/signup"
     let fetchOptions = {
       method: "post",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data)
     }
     let response = await fetch(fetchUrl, fetchOptions)
+    console.log("response: ", response)
     let resObject = await response.json()
     console.log("submit worked")
   }
@@ -175,12 +176,12 @@ const Signup = () => {
           </select>
         </div>
         <div>
-          <input class="signupButton" type="submit" value="Submit" />
+          <input className="signupButton" type="submit" value="Submit" />
           <hr />
           <div>
             <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
               Already have an account?
-              <span class="signupSpan">
+              <span className="signupSpan">
                 <Link to="/login"> Log in.</Link>
               </span>
             </label>
@@ -234,40 +235,8 @@ const Signup = () => {
       alert(resObject.message)
     } else {
       window.location = "/login"
+      // alert("I think it worked?")
     }
-
-    // // Show input error message
-    // function showError(input, message) {
-    //   const formControl = input.parentElement;
-    //   formControl.className = "form-control error";
-    //   const small = formControl.querySelector("small");
-    //   small.innerText = message;
-    // }
-
-    // // Show success outline
-    // function showSuccess(input) {
-    //   const formControl = input.parentElement;
-    //   formControl.className = "form-control success";
-    // }
-
-    // ERROR/SUCCESS OF NAME/PASSWORD
-    // let nameErrorField = document.getElementById("usernameError");
-    // let passErrorField = document.getElementById("passwordError");
-    // let nameSuccessField = document.getElementById("usernameSuccess");
-
-    // for (let field of [nameSuccessField, nameErrorField, passErrorField]) {
-    //   field.innerText = "";
-    // }
-
-    // if (response.status === 400) {
-    //   if (resObject.usernameError)
-    //     nameErrorField.innerText = resObject.usernameError;
-
-    //   if (resObject.passwordError)
-    //     passErrorField.innerText = resObject.passwordError;
-    // } else {
-    //   nameSuccessField.innerText = resObject.successMessage;
-    // }
   }
 }
 

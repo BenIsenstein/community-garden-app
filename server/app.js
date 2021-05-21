@@ -8,6 +8,7 @@ const LocalStrategy = require("passport-local").Strategy
 const session = require("express-session")
 const bodyParser = require("body-parser")
 const { User } = require("./models/db")
+const cors = require("cors")
 require("dotenv").config()
 // IMPORT ROUTES
 const getAllGardensRouter = require("./routes/getAllGardens")
@@ -16,6 +17,7 @@ const signupRouter = require("./routes/signup")
 const loginRouter = require("./routes/login")
 
 const app = express()
+app.use(cors())
 
 // Configure Passport strategy
 passport.use(
