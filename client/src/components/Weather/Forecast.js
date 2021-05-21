@@ -16,12 +16,11 @@ import {
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Forecast({props, weatherData}) {
+export default function Forecast(props, {forecastData}) {
 
   const WeatherIcon = styled.div`
   color: whitesmoke;
 `;
-
   const { forecast } = props;
 
   console.log("Forecast", forecast);
@@ -30,17 +29,17 @@ export default function Forecast({props, weatherData}) {
 
     let weatherIcon = null;
 
-    if (weatherData.list[0].weather === 'Thunderstorm') {
+    if (item.description === 'Thunderstorm') {
       weatherIcon = <FontAwesomeIcon icon={faBolt} />;
-    }else if (weatherData.list[0].weather === 'Drizzle') {
+    }else if (item.description === 'Drizzle') {
       weatherIcon = <FontAwesomeIcon icon={faCloudRain} />;
-    } else if (weatherData.weather[0].weather === 'Rain') {
+    } else if (item.description === 'Rain') {
       weatherIcon = <FontAwesomeIcon icon={faCloudShowersHeavy} />;
-    } else if (weatherData.weather[0].weather === 'Snow') {
+    } else if (item.description === 'Snow') {
       weatherIcon = <FontAwesomeIcon icon={faSnowflake} />;
-    } else if (weatherData.weather[0].weather === 'Clear') {
+    } else if (item.description === 'Clear') {
       weatherIcon = <FontAwesomeIcon icon={faSun} />;
-    } else if (weatherData.weather[0].weather === 'Clouds') {
+    } else if (item.description === 'Clouds') {
       weatherIcon = <FontAwesomeIcon icon={faCloud} />;
     } else {
       weatherIcon = <FontAwesomeIcon icon={faSmog} />;
@@ -61,10 +60,12 @@ export default function Forecast({props, weatherData}) {
     )
   })
   
-  return(
-    <div>
+    return(
+      <div>
       <List aria-label="forecast data">{results}</List>
-    </div>
-  );
+      </div>
+    )
   
-}
+  }
+
+

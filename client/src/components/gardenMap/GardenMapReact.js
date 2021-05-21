@@ -52,7 +52,7 @@ export default function GardenMap({
         lng: 0
       })
     }
-  }, [isFormDisplayed, setFormCoordinates])
+  }, [isFormDisplayed])
 
   const [selected, setSelected] = React.useState(null)
 

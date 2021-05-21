@@ -3,9 +3,9 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 import Weather from './Weather';
 
 export default function GetWeather() {
-  const [lat] = useState (51.0501);
-  const [lon] = useState (-114.0853);
-  const [data, setData] = useState ([]);
+  const [lat] = useState (51.0501)
+  const [lon] = useState (-114.0853)
+  const [data, setData] = useState ([])
 
   useEffect(() => {
     const fetchData = async () => { 
@@ -19,7 +19,7 @@ export default function GetWeather() {
 
   }
 
-   fetchData();
+   fetchData()
 }, [lat,lon]) 
 
 
