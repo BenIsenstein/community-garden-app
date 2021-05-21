@@ -1,5 +1,5 @@
 import Autocomplete from "react-autocomplete"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 
 export default function GardenSearchAutocomplete() {
@@ -13,7 +13,9 @@ export default function GardenSearchAutocomplete() {
     setGardenList(listResult)
   }
 
-  ;(async () => await getAllGardens())()
+  useEffect(() => {
+    getAllGardens()
+  }, [])
 
   const filteredGardenList = !gardenList 
     ? ['Loading...']
