@@ -3,29 +3,34 @@ import { TypeColumnFilter, SelectColumnFilter } from "./Filters";
 export const columnHeaders = [
     {
         Header: 'Garden Name',
-        accessor: 'garden_name',
+        accessor: 'Garden Name',
+        Filter: TypeColumnFilter
+    },
+    {
+        Header: 'Address',
+        accessor: 'Address',
         Filter: TypeColumnFilter
     },
     {
         Header: 'Quadrant',
-        accessor: 'quadrant',
+        accessor: 'Quadrant',
         Filter: SelectColumnFilter
     },
     {
         Header: 'Latitude',
-        accessor: 'latitude',
+        accessor: 'Lat',
         Filter: TypeColumnFilter,
         disableFilters: true
     },
     {
         Header: 'Longitude',
-        accessor: 'longitude',
+        accessor: 'Lng',
         Filter: TypeColumnFilter,
         disableFilters: true
     },
     {
         Header: 'Vacancy',
-        accessor: 'vacancy',
+        accessor: 'Vacancy',
         Filter: SelectColumnFilter
     },
 ]

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
-import React, { useRef } from "react"
+import React from "react"
 import { useForm } from "react-hook-form"
 import "../Signup/Signup.css"
 
 const Login = () => {
   const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch
+    // register,
+    // formState: { errors },
+    handleSubmit
+    // watch
   } = useForm({})
   // const password = useRef({})
   // const confirmPassword = useRef({})
@@ -16,7 +16,6 @@ const Login = () => {
   // confirmPassword.current = watch("confirmPassword", "")
 
   async function onSubmit(data) {
-    // let fetchUrl = "http://localhost:3000/api/signup"
     let fetchUrl = "/api/login"
     let fetchOptions = {
       method: "post",
@@ -25,7 +24,7 @@ const Login = () => {
     }
     let response = await fetch(fetchUrl, fetchOptions)
     console.log("response: ", response)
-    let resObject = await response.json()
+    // let resObject = await response.json()
     console.log("login submit worked!!")
   }
 
@@ -65,39 +64,39 @@ const Login = () => {
   )
 }
 
-const Signup = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch
-  } = useForm({})
-  const password = useRef({})
-  password.current = watch("password", "")
+// const Signup = () => {
+//   const {
+//     // register,
+//     // formState: { errors },
+//     // handleSubmit,
+//     watch
+//   } = useForm({})
+//   const password = useRef({})
+//   password.current = watch("password", "")
 
-  async function submit() {
-    let username = document.getElementById("username").value
-    let password = document.getElementById("password").value
+//   async function submit() {
+//     let username = document.getElementById("username").value
+//     let password = document.getElementById("password").value
 
-    console.log("username:", username)
-    console.log("password:", password)
+//     console.log("username:", username)
+//     console.log("password:", password)
 
-    let submissionData = {
-      username: username,
-      password: password
-    }
+//     let submissionData = {
+//       username: username,
+//       password: password
+//     }
 
-    let fetchUrl = "/signup"
-    let fetchOptions = {
-      method: "post",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(submissionData)
-    }
+//     let fetchUrl = "/signup"
+//     let fetchOptions = {
+//       method: "post",
+//       headers: { "content-type": "application/json" },
+//       body: JSON.stringify(submissionData)
+//     }
 
-    let response = await fetch(fetchUrl, fetchOptions)
-    let resObject = await response.json()
-    console.log(resObject)
-  }
-}
+//     let response = await fetch(fetchUrl, fetchOptions)
+//     let resObject = await response.json()
+//     console.log(resObject)
+//   }
+// }
 
 export default Login
