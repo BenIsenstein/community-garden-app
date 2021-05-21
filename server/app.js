@@ -17,6 +17,7 @@ const signupRouter = require("./routes/signup")
 const loginRouter = require("./routes/login")
 
 const app = express()
+
 app.use(cors())
 
 // Configure Passport strategy

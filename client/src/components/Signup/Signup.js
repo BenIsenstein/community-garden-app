@@ -16,7 +16,8 @@ const Signup = () => {
   confirmPassword.current = watch("confirmPassword", "")
 
   async function onSubmit(data) {
-    let fetchUrl = "http://localhost:3000/api/signup"
+    // let fetchUrl = "http://localhost:3000/api/signup"
+    let fetchUrl = "/api/signup"
     let fetchOptions = {
       method: "post",
       headers: { "content-type": "application/json" },
@@ -112,6 +113,9 @@ const Signup = () => {
             name="howLongGardening"
             id="howLongGardening"
           >
+            <option value="selectOne" selected disabled>
+              Please Select
+            </option>
             <option value="lessThanOneYear">Less than 1 year</option>
             <option value="oneToFiveYears">1 to 5 years</option>
             <option value="moreThanFiveYears">More than 5 years</option>

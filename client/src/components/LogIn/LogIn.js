@@ -4,8 +4,33 @@ import { useForm } from "react-hook-form"
 import "../Signup/Signup.css"
 
 const Login = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch
+  } = useForm({})
+  // const password = useRef({})
+  // const confirmPassword = useRef({})
+  // password.current = watch("password", "")
+  // confirmPassword.current = watch("confirmPassword", "")
+
+  async function onSubmit(data) {
+    // let fetchUrl = "http://localhost:3000/api/signup"
+    let fetchUrl = "/api/login"
+    let fetchOptions = {
+      method: "post",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data)
+    }
+    let response = await fetch(fetchUrl, fetchOptions)
+    console.log("response: ", response)
+    let resObject = await response.json()
+    console.log("login submit worked!!")
+  }
+
   return (
-    <form className="signupForm" action="/login" method="post">
+    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
       <div className="container">
         <h1>Log In!</h1>
         <div className="form-control">
@@ -17,7 +42,6 @@ const Login = () => {
           <input type="password" name="password" />
         </div>
         <div>
-          {/* *** NOT WORKING *** */}
           <input
             className="signupButton"
             type="submit"
@@ -41,8 +65,6 @@ const Login = () => {
   )
 }
 
-export default Login
-
 const Signup = () => {
   const {
     register,
@@ -59,5 +81,23 @@ const Signup = () => {
 
     console.log("username:", username)
     console.log("password:", password)
+
+    let submissionData = {
+      username: username,
+      password: password
+    }
+
+    let fetchUrl = "/signup"
+    let fetchOptions = {
+      method: "post",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(submissionData)
+    }
+
+    let response = await fetch(fetchUrl, fetchOptions)
+    let resObject = await response.json()
+    console.log(resObject)
   }
 }
+
+export default Login
