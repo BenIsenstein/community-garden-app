@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import React, { useRef } from "react"
 import { useForm } from "react-hook-form"
 import "./Signup.css"
@@ -16,15 +16,16 @@ const Signup = () => {
   confirmPassword.current = watch("confirmPassword", "")
 
   async function onSubmit(data) {
-    let fetchUrl = "/api/user/signup"
+    let fetchUrl = "http://localhost:3000/api/signup"
     let fetchOptions = {
       method: "post",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data)
     }
     let response = await fetch(fetchUrl, fetchOptions)
+    console.log("response: ", response)
     let resObject = await response.json()
-    console.log("submit worked")
+    console.log("submit worked!!")
   }
 
   function validatePass(password) {
@@ -52,7 +53,18 @@ const Signup = () => {
             id="username"
           />
         </div>
-        <div>***INSERT EMAIL FIELD TOO***</div>
+        <div className="form-control">
+          <label htmlFor="email">
+            <b>Email</b>
+          </label>
+          <input
+            {...register("email", { required: true })}
+            type="email"
+            placeholder="Enter Email"
+            name="email"
+            id="email"
+          />
+        </div>
         <div className="form-control">
           <label htmlFor="password">
             <b>Password</b>
@@ -175,12 +187,23 @@ const Signup = () => {
           </select>
         </div>
         <div>
-          <input class="signupButton" type="submit" value="Submit" />
+          <input
+            className="signupButton"
+            type="submit"
+            value="Submit"
+            onClick={function () {
+              window.location = "/loggedon"
+            }}
+            // onclick="window.location='www.google.com'"
+          />
+          {/* <Link to="/login" className="signupButton" type="submit">
+            Sign Up Now
+          </Link> */}
           <hr />
           <div>
             <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
               Already have an account?
-              <span class="signupSpan">
+              <span className="signupSpan">
                 <Link to="/login"> Log in.</Link>
               </span>
             </label>
@@ -192,6 +215,7 @@ const Signup = () => {
 
   async function submit() {
     let username = document.getElementById("username").value
+    let email = document.getElementById("email").value
     let password = document.getElementById("password").value
     let confirmPassword = document.getElementById("confirmPassword").value
     let howLongGardening = document.getElementById("howLongGardening").value
@@ -207,6 +231,7 @@ const Signup = () => {
     }
 
     console.log("username:", username)
+    console.log("email:", email)
     console.log("password:", password)
     console.log("confirmPassword:", confirmPassword)
     console.log("howLongGardening:", howLongGardening)
@@ -214,6 +239,7 @@ const Signup = () => {
 
     let submissionData = {
       username: username,
+      email: email,
       password: password,
       confirmPassword: confirmPassword,
       plants: currentPlants
@@ -233,41 +259,10 @@ const Signup = () => {
     if (resObject.success === false) {
       alert(resObject.message)
     } else {
-      window.location = "/login"
+      // window.location = "/login"
+      alert("I think it worked?")
+      // res.redirect("/login")
     }
-
-    // // Show input error message
-    // function showError(input, message) {
-    //   const formControl = input.parentElement;
-    //   formControl.className = "form-control error";
-    //   const small = formControl.querySelector("small");
-    //   small.innerText = message;
-    // }
-
-    // // Show success outline
-    // function showSuccess(input) {
-    //   const formControl = input.parentElement;
-    //   formControl.className = "form-control success";
-    // }
-
-    // ERROR/SUCCESS OF NAME/PASSWORD
-    // let nameErrorField = document.getElementById("usernameError");
-    // let passErrorField = document.getElementById("passwordError");
-    // let nameSuccessField = document.getElementById("usernameSuccess");
-
-    // for (let field of [nameSuccessField, nameErrorField, passErrorField]) {
-    //   field.innerText = "";
-    // }
-
-    // if (response.status === 400) {
-    //   if (resObject.usernameError)
-    //     nameErrorField.innerText = resObject.usernameError;
-
-    //   if (resObject.passwordError)
-    //     passErrorField.innerText = resObject.passwordError;
-    // } else {
-    //   nameSuccessField.innerText = resObject.successMessage;
-    // }
   }
 }
 

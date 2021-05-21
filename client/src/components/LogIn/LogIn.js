@@ -5,7 +5,7 @@ import "../Signup/Signup.css"
 
 const Login = () => {
   return (
-    <form className="signupForm" action="/api/user/login" method="post">
+    <form className="signupForm" action="/login" method="post">
       <div className="container">
         <h1>Log In!</h1>
         <div className="form-control">
@@ -17,12 +17,20 @@ const Login = () => {
           <input type="password" name="password" />
         </div>
         <div>
-          <input class="signupButton" type="submit" value="Log In" />
+          {/* *** NOT WORKING *** */}
+          <input
+            className="signupButton"
+            type="submit"
+            value="Log In"
+            onClick={function () {
+              window.location = "/loggedon"
+            }}
+          />
           <hr />
           <div>
             <label htmlFor="dontHaveAnAccount" id="dontHaveAnAccount">
               Don't have an account yet?{" "}
-              <span class="signupSpan">
+              <span className="signupSpan">
                 <Link to="/signup"> Sign up.</Link>
               </span>
             </label>
