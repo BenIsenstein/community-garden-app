@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
 import Signup from "./components/Signup/Signup"
-import Login from "./components/Login/Login"
+import Login from "./components/Login/LogIn"
 import LoggedOn from "./components/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
@@ -17,7 +17,7 @@ function App() {
     <Router>
       <div>
         <nav>
-          <ul>
+          <ul style={{display: 'flex', justifyContent: 'space-between'}}>
             <li>
               <Link to="/">Home</Link>
             </li>
