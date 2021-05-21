@@ -25,6 +25,7 @@ router.post("/", async (req, res) => {
   console.log("req.body.password: ", req.body.password)
   console.log("req.body.confirmPassword: ", req.body.confirmPassword)
   let username = req.body.username
+  let email = req.body.email
   let password = req.body.password
   let confirmPassword = req.body.confirmPassword
   let isPassSafe = validatePass(password)
@@ -34,6 +35,7 @@ router.post("/", async (req, res) => {
 
   let newUser = new User({
     username: username,
+    email: email,
     password: password,
     howLongGardening: howLongGardening,
     currentPlants: plantCheckbox,
@@ -43,7 +45,7 @@ router.post("/", async (req, res) => {
   })
 
   await addUser(newUser)
-  console.log("New User: ", newUser)
+  console.log("New user has been added: ", newUser)
   res.send({}) // What do I need to return? (user record, id, etc.)
 })
 

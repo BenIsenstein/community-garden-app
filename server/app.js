@@ -57,7 +57,7 @@ app.use(cookieParser())
 app.use("/api/get-all-gardens", getAllGardensRouter)
 app.use("/api/add-a-garden", addAGardenRouter)
 app.use("/api/signup", signupRouter)
-app.use("/api/user", loginRouter)
+app.use("/api/login", loginRouter)
 
 // serve the react application
 app.use(express.static("../client/build"))
