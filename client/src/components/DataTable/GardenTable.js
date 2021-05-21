@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { useTable, useSortBy, useFilters } from 'react-table'
-import mockData from './mockGardenData.json'
+import mockData from './gardenData.json'
 import { columnHeaders } from './columns'
 import './table.css'
 
