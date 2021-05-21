@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
 import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
 import Signup from "./components/Signup/Signup"
-import Login from "./components/Login/Login"
+import Login from "./components/LogIn/LogIn"
 import LoggedOn from "./components/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
@@ -35,6 +35,9 @@ function App() {
             </li>
             <li>
               <Link to="/gardens">Gardens</Link>
+            </li>
+            <li>
+              <Link to="/garden-page/search">Search For A Garden</Link>
             </li>
             <li>
               <Link to="/forecast">Forecast</Link>
