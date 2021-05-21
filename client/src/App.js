@@ -95,9 +95,9 @@ function About() {
   return <h2>About</h2>
 }
 
-function Users() {
-  return <Signup />
-}
+// function Users() {
+//   return <Signup />
+// }
 
 export default App
 

@@ -14,7 +14,7 @@
 }
 
 .signupForm .container {
-  border: 5px solid rgb(171, 219, 120);
+  border: 5px solid rgb(147, 206, 83);
   padding: 20px;
 }
 
@@ -27,56 +27,39 @@
   padding: 5px;
 }
 
-.signupForm button {
+.signupButton {
   display: block;
   padding: 5px;
-  margin: 10px auto 0 auto;
+  margin: 20px auto;
   font-size: 1.25rem;
-  background-color: rgb(171, 219, 120);
+  background-color: rgb(147, 206, 83);
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .currentPlantsSelection label {
   display: inline;
 }
 
-#alreadyHaveAnAccount {
+#alreadyHaveAnAccount,
+#dontHaveAnAccount {
   text-align: center;
 }
-#alreadyHaveAnAccount a {
+#alreadyHaveAnAccount a,
+#dontHaveAnAccount a {
   text-decoration: none;
 }
-#alreadyHaveAnAccount a:visited {
-  color: rgb(171, 219, 120);
+#alreadyHaveAnAccount a:visited,
+#dontHaveAnAccount a:visited {
+  color: rgb(147, 206, 83);
 }
 
-#loginButton {
-  color: rgb(171, 219, 120);
+.signupSpan {
   font-weight: bold;
 }
 
 .form-control {
   margin-bottom: 10px;
   padding-bottom: 20px;
-  position: relative;
-}
-
-.form-control.success input {
-  border-color: var(--success-color);
-}
-
-.form-control.error input {
-  border-color: var(--error-color);
-}
-
-.form-control small {
-  color: var(--error-color);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  visibility: hidden;
-}
-
-.form-control.error small {
-  visibility: visible;
+  /* position: relative; */
 }
