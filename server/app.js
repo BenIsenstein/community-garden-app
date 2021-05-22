@@ -9,6 +9,7 @@ const session = require("express-session")
 const bodyParser = require("body-parser")
 const { User } = require("./models/db")
 const cors = require("cors")
+const flash = require("connect-flash")
 require("dotenv").config()
 // IMPORT ROUTES
 const getAllGardensRouter = require("./routes/getAllGardens")
@@ -48,6 +49,12 @@ passport.deserializeUser(function (id, done) {
   })
 })
 
+// Passport middleware
+app.use(session({ secret: "cats", resave: true, saveUninitialized: true }))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+
 // Configure Express app
 app.use(logger("dev"))
 app.use(express.json())
@@ -62,11 +69,6 @@ app.use("/api/login", loginRouter)
 
 // serve the react application
 app.use(express.static("../client/build"))
-
-// Passport middleware
-app.use(session({ secret: "cats", resave: true, saveUninitialized: true }))
-app.use(passport.initialize())
-app.use(passport.session())
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -3,14 +3,13 @@ const router = express.Router()
 const passport = require("passport")
 const { findUserByName, User, addUser } = require("../models/db")
 
-// ***** FIX PASSPORT STUFF
 router.post(
   "/",
-  // passport.authenticate("local", {
-  //   successRedirect: "/loggedon",
-  //   failureRedirect: "/",
-  //   failureFlash: true
-  // }),
+  passport.authenticate("local", {
+    successRedirect: "/loggedon",
+    failureRedirect: "/login",
+    failureFlash: true
+  }),
   async (req, res) => {
     const username = req.body.username
     const password = req.body.password
