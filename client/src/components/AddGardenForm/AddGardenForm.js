@@ -29,14 +29,12 @@ function AddGardenForm({formCoordinates}) {
             {...register(
               'nameData', 
               {
-                validate: async (name) => await checkIsNameFree(name),
-                required: {
-                  value: true,
-                  message: 'You must input a name for your garden.'
-                }
+                validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
+                required: 'You must input a name for your garden.'
               }
             )}
           />
+          {errors.nameData && <p>{errors.nameData.message}</p>}
         </div>
         <div className='Address-and-coordinates'>
           <div className='Garden-form-element'>
@@ -47,18 +45,20 @@ function AddGardenForm({formCoordinates}) {
               name='addressData'
               onChange={onChange}
               {...register(
-                'addressData', {
-                validate: async (address) => await checkIsAddressFree(address)
+                'addressData', 
+                {
+                validate: async (address) => await checkIsAddressFree(address) || 'That address is taken'
                 }
               )}
             />
+            {errors.addressData && <p>{errors.addressData.message}</p>}
           </div>
           <div className='Garden-form-element'>
             <label htmlFor='address'>Coordinates</label>
             <input 
               type='hidden'
               name='lat'
-              {...register('lat')}
+              {...register('lat', {validate: lat => lat !== 0 || 'You must choose coordinates.'})}
             />
             <input 
               type='hidden'
@@ -69,6 +69,7 @@ function AddGardenForm({formCoordinates}) {
               <div>Lat: {lat || 'No coordinates given'}</div>
               <div>Lng: {lng || 'No coordinates given'}</div>  
             </div>
+            {errors.lat && <p>{errors.lat.message}</p>}
           </div>
         </div>
         <div className='Garden-form-element'>
