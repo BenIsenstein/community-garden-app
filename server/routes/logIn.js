@@ -1,24 +1,43 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-const passport = require('passport')
-const { findUserByName, addUser } = require('../models/db')
+const passport = require("passport")
+const { findUserByName, User, addUser } = require("../models/db")
 
 router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true,
+  "/",
+  passport.authenticate("local", {
+    successRedirect: "/loggedon",
+    failureRedirect: "/login",
+    failureFlash: true
   }),
-  (req, res) => {
-    console.log('Authenticated')
-    console.log('user object', req.user)
+  async (req, res) => {
+    const username = req.body.username
+    const password = req.body.password
+    await User.findOne({ username: username }, (err, foundUser) => {
+      if (err) {
+        console.log("****LOGON ERROR: ", err)
+        res.send(err)
+      } else {
+        if (foundUser) {
+          console.log("*****LOGON FOUND USER: ", username)
+          if (foundUser.password === password) {
+            res.send("User was found and password matches!!!!")
+          } else {
+            res.send("User was found but password is incorrect :(")
+          }
+        } else {
+          res.send("This username doesn't exist.")
+        }
+      }
+    })
+    console.log("Authenticated")
+    console.log("user object", req.user)
   }
 )
 
-router.get('/logout', function (req, res) {
+router.get("/logout", function (req, res) {
   req.logout()
-  res.redirect('/')
+  res.redirect("/")
 })
 
 module.exports = router

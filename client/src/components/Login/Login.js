@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
-import React, { useRef } from "react"
+import React from "react"
 import { useForm } from "react-hook-form"
 import "../Signup/Signup.css"
 
 const Login = () => {
   return (
-    <form className="signupForm" action="/api/user/login" method="post">
+    <form className="signupForm" action="/api/login" method="POST">
       <div className="container">
         <h1>Log In!</h1>
         <div className="form-control">
@@ -17,7 +17,16 @@ const Login = () => {
           <input type="password" name="password" />
         </div>
         <div>
-          <input type="submit" value="Log In" />
+          <input className="signupButton" type="submit" value="Log In" />
+          <hr />
+          <div>
+            <label htmlFor="dontHaveAnAccount" id="dontHaveAnAccount">
+              Don't have an account yet?
+              <span className="signupSpan">
+                <Link to="/signup"> Sign up.</Link>
+              </span>
+            </label>
+          </div>
         </div>
       </div>
     </form>
@@ -25,22 +34,3 @@ const Login = () => {
 }
 
 export default Login
-
-const Signup = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch
-  } = useForm({})
-  const password = useRef({})
-  password.current = watch("password", "")
-
-  async function submit() {
-    let username = document.getElementById("username").value
-    let password = document.getElementById("password").value
-
-    console.log("username:", username)
-    console.log("password:", password)
-  }
-}

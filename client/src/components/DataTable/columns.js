@@ -3,7 +3,12 @@ import { TypeColumnFilter, SelectColumnFilter } from "./Filters";
 export const columnHeaders = [
     {
         Header: 'Garden Name',
-        accessor: 'garden_name',
+        accessor: 'name',
+        Filter: TypeColumnFilter
+    },
+    {
+        Header: 'Address',
+        accessor: 'address',
         Filter: TypeColumnFilter
     },
     {
@@ -13,19 +18,29 @@ export const columnHeaders = [
     },
     {
         Header: 'Latitude',
-        accessor: 'latitude',
+        accessor: 'coordinates.lat',
         Filter: TypeColumnFilter,
         disableFilters: true
     },
     {
         Header: 'Longitude',
-        accessor: 'longitude',
+        accessor: 'coordinates.lng',
         Filter: TypeColumnFilter,
         disableFilters: true
     },
     {
-        Header: 'Vacancy',
-        accessor: 'vacancy',
-        Filter: SelectColumnFilter
+        Header: 'Plot Size (sqft)',
+        accessor: 'plotSize',
+        Filter: TypeColumnFilter
+    },
+    {
+        Header: '# of Plots',
+        accessor: 'numberOfPlots',
+        Filter: TypeColumnFilter
+    },
+    {
+        Header: 'Established',
+        accessor: 'established',
+        Filter: TypeColumnFilter
     },
 ]

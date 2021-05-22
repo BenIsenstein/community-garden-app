@@ -17,7 +17,7 @@ function App() {
     <Router>
       <div>
         <nav>
-          <ul>
+          <ul style={{display: 'flex', justifyContent: 'space-between'}}>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -35,6 +35,9 @@ function App() {
             </li>
             <li>
               <Link to="/gardens">Gardens</Link>
+            </li>
+            <li>
+              <Link to="/garden-page/search">Search For A Garden</Link>
             </li>
             <li>
               <Link to="/forecast">Forecast</Link>
@@ -60,11 +63,8 @@ function App() {
           <Route path="/gardens">
             <GardenListAndForm />
           </Route>
-          <Route path="/reactautofill">
-            <TestComponent />
-          </Route>
-          <Route path="/gardenmapreact">
-            <GardenMap currentDisplay="AddGardenMap" />
+          <Route path="/gardenMap">
+            <GardenMap />
           </Route>
           <Route path="/weather">
             <GetWeather weatherData="Weather Conditions" />
@@ -95,9 +95,9 @@ function About() {
   return <h2>About</h2>
 }
 
-function Users() {
-  return <Signup />
-}
+// function Users() {
+//   return <Signup />
+// }
 
 export default App
 

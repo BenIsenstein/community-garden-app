@@ -13,6 +13,14 @@
 
 }
 
+#Garden-name {
+  cursor: pointer;
+}
+
+#Garden-name:hover {
+  color: lightseagreen;
+}
+
 .Garden-list-element {
   display: flex;
   flex-direction: column;

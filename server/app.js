@@ -8,6 +8,8 @@ const LocalStrategy = require("passport-local").Strategy
 const session = require("express-session")
 const bodyParser = require("body-parser")
 const { User } = require("./models/db")
+const cors = require("cors")
+const flash = require("connect-flash")
 require("dotenv").config()
 // IMPORT ROUTES
 const getAllGardensRouter = require("./routes/getAllGardens")
@@ -16,6 +18,8 @@ const signupRouter = require("./routes/signup")
 const loginRouter = require("./routes/login")
 
 const app = express()
+
+app.use(cors())
 
 // Configure Passport strategy
 passport.use(
@@ -45,6 +49,12 @@ passport.deserializeUser(function (id, done) {
   })
 })
 
+// Passport middleware
+app.use(session({ secret: "cats", resave: true, saveUninitialized: true }))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+
 // Configure Express app
 app.use(logger("dev"))
 app.use(express.json())
@@ -55,15 +65,10 @@ app.use(cookieParser())
 app.use("/api/get-all-gardens", getAllGardensRouter)
 app.use("/api/add-a-garden", addAGardenRouter)
 app.use("/api/signup", signupRouter)
-app.use("/api/user", loginRouter)
+app.use("/api/login", loginRouter)
 
 // serve the react application
 app.use(express.static("../client/build"))
-
-// Passport middleware
-app.use(session({ secret: "cats", resave: true, saveUninitialized: true }))
-app.use(passport.initialize())
-app.use(passport.session())
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -78,7 +83,12 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500)
-  res.render("error")
+  // *** res.render (below) was replaced with res.json since we don't have a view engine specified
+  // res.render("error")
+  res.json({
+    message: err.message,
+    error: err
+  })
 })
 
 module.exports = app
