@@ -17,7 +17,7 @@ function App() {
     <Router>
       <div>
         <nav>
-          <ul>
+          <ul style={{display: 'flex', justifyContent: 'space-between'}}>
             <li>
               <Link to="/">Home</Link>
             </li>
