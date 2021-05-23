@@ -32,8 +32,13 @@ const gardenSchema = new mongoose.Schema({
   coordinates: Object,
   quadrant: String,
   coverPhoto: {},
-  surfaceArea: String,
-  vacancy: Boolean
+  vacancy: Boolean,
+  postalCode: String,
+  plotSize: String,
+  established: Number,
+  fee: String,
+  numberOfPlots: Number,
+  website: String
 })
 
 // NOTE syntax to add methods: gardenSchema.methods.methodX = function () {}

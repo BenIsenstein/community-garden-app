@@ -3,34 +3,44 @@ import { TypeColumnFilter, SelectColumnFilter } from "./Filters";
 export const columnHeaders = [
     {
         Header: 'Garden Name',
-        accessor: 'Garden Name',
+        accessor: 'name',
         Filter: TypeColumnFilter
     },
     {
         Header: 'Address',
-        accessor: 'Address',
+        accessor: 'address',
         Filter: TypeColumnFilter
     },
     {
         Header: 'Quadrant',
-        accessor: 'Quadrant',
+        accessor: 'quadrant',
         Filter: SelectColumnFilter
     },
     {
         Header: 'Latitude',
-        accessor: 'Lat',
+        accessor: 'coordinates.lat',
         Filter: TypeColumnFilter,
         disableFilters: true
     },
     {
         Header: 'Longitude',
-        accessor: 'Lng',
+        accessor: 'coordinates.lng',
         Filter: TypeColumnFilter,
         disableFilters: true
     },
     {
-        Header: 'Vacancy',
-        accessor: 'Vacancy',
-        Filter: SelectColumnFilter
+        Header: 'Plot Size (sqft)',
+        accessor: 'plotSize',
+        Filter: TypeColumnFilter
+    },
+    {
+        Header: '# of Plots',
+        accessor: 'numberOfPlots',
+        Filter: TypeColumnFilter
+    },
+    {
+        Header: 'Established',
+        accessor: 'established',
+        Filter: TypeColumnFilter
     },
 ]
