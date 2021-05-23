@@ -15,8 +15,9 @@ import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
+      <div style={{backgroundColor: '#8EE4AF'}}>
+        <nav style={{backgroundColor: '#05386B'}}>
+          <h1 style={{color: '#5CDB95'}}>Grow Calgary</h1>
           <ul style={{display: 'flex', justifyContent: 'space-between'}}>
             <li>
               <Link to="/">Home</Link>
@@ -74,6 +75,10 @@ function App() {
           </Route>
           <Route path="/table">
             <GardenTable />
+          </Route>
+          <Route path='/homepage'>
+            <GardenListAndForm />
+            <GetWeather />
           </Route>
           <Route path="/garden-page">
             <GardenPageRouter />

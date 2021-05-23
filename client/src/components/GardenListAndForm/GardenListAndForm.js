@@ -18,8 +18,8 @@ function GardenListAndForm() {
     <div style={{ display: "flex" }}>
       <div className="Garden-list-and-form">
         <div className="Garden-list-and-form-buttons">
-          <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} />
           <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
+          <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} />
         </div>
         {isFormDisplayed 
           ? <AddGardenForm formCoordinates={formCoordinates} /> 
