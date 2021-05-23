@@ -16,16 +16,17 @@ import {
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Forecast(props, {weatherData}) {
+
+export default function Forecast({forecastData},props) {
 
   const WeatherIcon = styled.div`
-  color: whitesmoke;
-`;
+  color: whitesmoke
+`
   const { forecast } = props;
 
-  console.log("Forecast", forecast);
+  console.log("Forecast", forecast.list);
 
-  const results = forecast.weatherData.map((item, index) => {
+  const results = forecast.list.map((item, index) => {
 
     let weatherIcon = null;
 
