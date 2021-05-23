@@ -10,10 +10,13 @@ const Signup = () => {
     handleSubmit,
     watch
   } = useForm({})
+  const username = useRef({})
   const password = useRef({})
   const confirmPassword = useRef({})
+  username.current = watch("username", "")
   password.current = watch("password", "")
   confirmPassword.current = watch("confirmPassword", "")
+  let usernameAvailable
 
   async function onSubmit(data) {
     // let fetchUrl = "http://localhost:3000/api/signup"
@@ -24,9 +27,9 @@ const Signup = () => {
       body: JSON.stringify(data)
     }
     let response = await fetch(fetchUrl, fetchOptions)
-    console.log("response: ", response)
+    // console.log("response: ", response)
     // let resObject = await response.json()
-    console.log("submit worked!!")
+    // console.log("submit worked!!")
   }
 
   function validatePass(password) {
@@ -47,12 +50,17 @@ const Signup = () => {
             <b>Username</b>
           </label>
           <input
-            {...register("username", { required: true })}
+            {...register("username", {
+              required: true
+              // validate: (value) => usernameAvailable(value) || "Sorry, that name is already taken."
+              // validate: () => usernameAvailable || "Sorry, that name is already taken."
+            })}
             type="text"
             placeholder="Enter Username"
             name="username"
             id="username"
           />
+          {errors.username && <p>{errors.username.message}</p>}
         </div>
         <div className="form-control">
           <label htmlFor="email">
