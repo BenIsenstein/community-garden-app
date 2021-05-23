@@ -9,7 +9,9 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: #05386B;
-  border: 1px solid orange;
+  border: 1px solid #05386B;
+  margin: 10px;
+  border-radius: 20px;
 }
 
 .Garden-list-and-form-buttons {
@@ -30,5 +32,9 @@
   border-radius: 1px;
   margin: 10px;
   padding: 4px;
+}
+
+.Garden-map {
+  padding: 20px;
 }
 

@@ -26,11 +26,13 @@ function GardenListAndForm() {
           : <GardenList />
         }
       </div>
-      <GardenMap
-        isFormDisplayed={isFormDisplayed}
-        formCoordinates={formCoordinates}
-        setFormCoordinates={sendDataFromMapToForm}
-      />
+      <div className='Garden-map'>
+        <GardenMap
+          isFormDisplayed={isFormDisplayed}
+          formCoordinates={formCoordinates}
+          setFormCoordinates={sendDataFromMapToForm}
+        />
+      </div>
     </div>
   )
 }
