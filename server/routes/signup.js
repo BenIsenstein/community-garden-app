@@ -3,20 +3,6 @@ const { findUserByName, addUser, User } = require("../models/db")
 const bcrypt = require("bcrypt")
 const router = express.Router()
 
-async function validateName(username) {
-  let accountExists = await findUserByName(username)
-  return !accountExists
-}
-
-function validatePass(password) {
-  return (
-    /.{6,}$/.test(password) &&
-    /[A-Z]+/.test(password) &&
-    /[a-z]+/.test(password) &&
-    /[0-9]+/.test(password)
-  )
-}
-
 router.post("/", async (req, res) => {
   console.log("req: ", req)
   console.log("req.body.password: ", req.body.password)
