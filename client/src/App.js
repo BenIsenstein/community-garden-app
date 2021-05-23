@@ -81,15 +81,12 @@ function App() {
           <Route path="/table">
             <GardenTable />
           </Route>
-          <Route path='/homepage'>
+          <Route path='/'>
             <GardenListAndForm />
             <GetWeather />
           </Route>
           <Route path="/garden-page">
             <GardenPageRouter />
-          </Route>
-          <Route path="/">
-            <Home />
           </Route>
         </Switch>
       </div>
