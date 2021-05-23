@@ -8,9 +8,9 @@ export default function LandingPage() {
   useEffect(() => {
     const fetchData = async () => {
       let fetchGardenUrl = `/api/get-all-gardens/individual-garden?name=${gardenName}`
-      let response = await fetch(fetchGardenUrl);
-      let resObject = await response.json();
-      let gardenObject = resObject.garden;
+      let response = await fetch(fetchGardenUrl)
+      let resObject = await response.json()
+      let gardenObject = resObject.garden
       
       return gardenObject ? setGardenData(gardenObject) : setGardenData('no garden');
     };

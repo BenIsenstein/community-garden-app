@@ -1,5 +1,5 @@
 //import { Data } from "@react-google-maps/api"
-//import { moment } from "moment"
+import { moment } from "moment"
 import React, { useEffect, useState } from "react"
 import { Dimmer, Loader } from 'semantic-ui-react'
 import Forecast from './Forecast'
@@ -8,35 +8,39 @@ import Forecast from './Forecast'
 export default function GetForecast() {
   const [lat] = useState (51.0501)
   const [lon] = useState (-114.0853)
-  const [error, setError] =useState(null)
   const [forecast, setForecast] = useState ([])
+  //const [error, setError] =useState(null)
+  
 
   useEffect(() => {
     const fetchForecast = async () => {
-      let fetchForecastUrl = `${process.env.REACT_APP_WEATHER_API_URL}/forecast/daily?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
+     // let fetchForecastUrl = `${process.env.REACT_APP_WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
+      let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
       let response = await fetch(fetchForecastUrl)
-      let data = await response.json()
-      setForecast(data)
-      console.log("forecast",forecast)  
+      let resObject = await response.json()
+      let forecastObject = resObject.forecast
+
+      console.log ("Status is",forecastObject)
+      return forecastObject ? setForecast(forecastObject) : setForecast('no forecast');
       
-      setError(null)
+      /*setError(null)
       .catch (err => {
         setError(err.message)
-      })
+      })*/
     }
     
   fetchForecast()
-  },[lat,lon, error] )
+  },[lat,lon] )
 
 
-console.log("What am i?",forecast)
+  console.log('Forecast length is',forecast.arrayBuffer)
 
-  if (forecast.length>0) {
+ /* if (forecast.length<0) {
   return forecast.list
+ 
   }
-  console.log ('Data is true')
-
- /* function mapDataToWeatherInterface(forecastData) {
+  console.log ('Data is',forecast.dt)
+function mapDataToWeatherInterface(forecastData) {
     const mapped = {
       date: forecastData.dt * 1000, // convert from seconds to milliseconds
       description: forecastData.weather[0].main,
@@ -52,10 +56,21 @@ console.log("What am i?",forecast)
 */
     
   return (
-   <div>
-     <Forecast forecast = {forecast}/>
-   </div>
-  ) 
-     
+      <div className="GetForecast">
+        {(typeof forecast.main != 'undefined') ? (
+          <div>
+            <Forecast forecast ={forecast}/>
+          </div>
+        ) : (  
+          <div>
+          <Dimmer active>
+            <Loader>Loading..</Loader>
+          </Dimmer>
+          </div>
+        )}
+    </div>
+  )
 }
+   
+
   
