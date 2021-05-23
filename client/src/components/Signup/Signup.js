@@ -10,10 +10,13 @@ const Signup = () => {
     handleSubmit,
     watch
   } = useForm({})
+  const username = useRef({})
   const password = useRef({})
   const confirmPassword = useRef({})
+  username.current = watch("username", "")
   password.current = watch("password", "")
   confirmPassword.current = watch("confirmPassword", "")
+  let usernameAvailable
 
   async function onSubmit(data) {
     // let fetchUrl = "http://localhost:3000/api/signup"
@@ -24,9 +27,9 @@ const Signup = () => {
       body: JSON.stringify(data)
     }
     let response = await fetch(fetchUrl, fetchOptions)
-    console.log("response: ", response)
+    // console.log("response: ", response)
     // let resObject = await response.json()
-    console.log("submit worked!!")
+    // console.log("submit worked!!")
   }
 
   function validatePass(password) {
@@ -47,12 +50,17 @@ const Signup = () => {
             <b>Username</b>
           </label>
           <input
-            {...register("username", { required: true })}
+            {...register("username", {
+              required: true
+              // validate: (value) => usernameAvailable(value) || "Sorry, that name is already taken."
+              // validate: () => usernameAvailable || "Sorry, that name is already taken."
+            })}
             type="text"
             placeholder="Enter Username"
             name="username"
             id="username"
           />
+          {errors.username && <p>{errors.username.message}</p>}
         </div>
         <div className="form-control">
           <label htmlFor="email">
@@ -64,7 +72,6 @@ const Signup = () => {
             placeholder="Enter Email"
             name="email"
             id="email"
-            value="a@b.com"
           />
         </div>
         <div className="form-control">
@@ -82,7 +89,6 @@ const Signup = () => {
             placeholder="Enter Password"
             name="password"
             id="password"
-            value="1Aaaaa"
           />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
@@ -102,7 +108,6 @@ const Signup = () => {
               placeholder="Confirm Password"
               name="confirmPassword"
               id="confirmPassword"
-              value="1Aaaaa"
             />
             {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
           </div>
@@ -221,56 +226,6 @@ const Signup = () => {
       </div>
     </form>
   )
-
-  // async function submit() {
-  //   let username = document.getElementById("username").value
-  //   let email = document.getElementById("email").value
-  //   let password = document.getElementById("password").value
-  //   let confirmPassword = document.getElementById("confirmPassword").value
-  //   let howLongGardening = document.getElementById("howLongGardening").value
-  //   let plantCheckbox = document.getElementsByName("plantCheckbox")
-  //   let currentPlants = ""
-  //   for (var i = 0, n = plantCheckbox.length; i < n; i++) {
-  //     if (plantCheckbox[i].checked) {
-  //       currentPlants += ", " + plantCheckbox[i].value
-  //     }
-  //   }
-  //   if (currentPlants) {
-  //     currentPlants = currentPlants.substring(1)
-  //   }
-
-  //   console.log("username:", username)
-  //   console.log("email:", email)
-  //   console.log("password:", password)
-  //   console.log("confirmPassword:", confirmPassword)
-  //   console.log("howLongGardening:", howLongGardening)
-  //   console.log("currentPlants:", currentPlants)
-
-  //   let submissionData = {
-  //     username: username,
-  //     email: email,
-  //     password: password,
-  //     confirmPassword: confirmPassword,
-  //     plants: currentPlants
-  //   }
-
-  //   let fetchUrl = "/signup"
-  //   let fetchOptions = {
-  //     method: "post",
-  //     headers: { "content-type": "application/json" },
-  //     body: JSON.stringify(submissionData)
-  //   }
-
-  //   let response = await fetch(fetchUrl, fetchOptions)
-  //   let resObject = await response.json()
-  //   console.log(resObject)
-
-  //   if (resObject.success === false) {
-  //     alert(resObject.message)
-  //   } else {
-  //     // ADD SOMETHING HERE
-  //   }
-  // }
 }
 
 export default Signup
