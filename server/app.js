@@ -49,8 +49,10 @@ passport.deserializeUser(function (id, done) {
   })
 })
 
-// Passport middleware
+// Initialize Express-session (for login)
 app.use(session({ secret: "cats", resave: true, saveUninitialized: true }))
+
+// Passport middleware (to manage sessions)
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
