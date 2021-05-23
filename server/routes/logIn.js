@@ -1,42 +1,31 @@
 const express = require("express")
 const router = express.Router()
 const passport = require("passport")
-const { findUserByName, User, addUser } = require("../models/db")
 
-router.post(
-  "/",
+router.post("/",
+  (req, res, next) => {
+    if (!req.isAuthenticated()) {
+      console.log('about to log in')
+      next()
+    }
+    else {
+      res.redirect('/home')
+    }
+  },
   passport.authenticate("local", {
     successRedirect: "/loggedon",
     failureRedirect: "/login",
     failureFlash: true
-  }),
-  async (req, res) => {
-    const username = req.body.username
-    const password = req.body.password
-    await User.findOne({ username: username }, (err, foundUser) => {
-      if (err) {
-        console.log("****LOGON ERROR: ", err)
-        res.send(err)
-      } else {
-        if (foundUser) {
-          console.log("*****LOGON FOUND USER: ", username)
-          if (foundUser.password === password) {
-            res.send("User was found and password matches!!!!")
-          } else {
-            res.send("User was found but password is incorrect :(")
-          }
-        } else {
-          res.send("This username doesn't exist.")
-        }
-      }
-    })
-    console.log("Authenticated")
-    console.log("user object", req.user)
-  }
+  })
 )
 
 router.get("/logout", function (req, res) {
-  req.logout()
+  console.log("req authenticated: ", req.isAuthenticated())
+  req.isAuthenticated() ? req.logOut() : console.log("already logged out")
+  let message = req.isAuthenticated()
+    ? `user ${req.user?.username} is logged in still :(`
+    : "logged out!"
+  console.log("message: ", message)
   res.redirect("/")
 })
 

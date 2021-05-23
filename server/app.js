@@ -4,13 +4,12 @@ const path = require("path")
 const cookieParser = require("cookie-parser")
 const logger = require("morgan")
 const passport = require("passport")
-const LocalStrategy = require("passport-local").Strategy
 const session = require("express-session")
-const bodyParser = require("body-parser")
-const { User } = require("./models/db")
 const cors = require("cors")
 const flash = require("connect-flash")
+const initializePassport = require('./passport-config') 
 require("dotenv").config()
+
 // IMPORT ROUTES
 const getAllGardensRouter = require("./routes/getAllGardens")
 const addAGardenRouter = require("./routes/addAGarden")
@@ -18,39 +17,13 @@ const signupRouter = require("./routes/signup")
 const loginRouter = require("./routes/login")
 
 const app = express()
-
 app.use(cors())
 
-// Configure Passport strategy
-passport.use(
-  new LocalStrategy(function (username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) {
-        return done(err)
-      }
-      if (!user) {
-        return done(null, false, { message: "Incorrect username." })
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: "Incorrect password." })
-      }
-      return done(null, user)
-    })
-  })
-)
-
-passport.serializeUser(function (user, done) {
-  done(null, user.id)
-})
-
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user)
-  })
-})
+//Initialize passport strategy
+initializePassport(passport)
 
 // Passport middleware
-app.use(session({ secret: "cats", resave: true, saveUninitialized: true }))
+app.use(session({ secret: process.env.PASSPORT_SECRET, resave: true, saveUninitialized: true }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
