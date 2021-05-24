@@ -5,15 +5,14 @@ import { useHistory } from "react-router-dom"
 export default function GardenSearchAutocomplete() {
   const [gardenList, setGardenList] = useState(null)
   const [inputValue, setInputValue] = useState("")
-  const getAllGardens = async () => {
-    let fetchUrl = "/api/get-all-gardens"
-    let response = await fetch(fetchUrl)
-    let resObject = await response.json()
-    let listResult = resObject.gardenList
-    setGardenList(listResult)
-  }
-
   useEffect(() => {
+    const getAllGardens = async () => {
+      let fetchUrl = "/api/get-all-gardens"
+      let response = await fetch(fetchUrl)
+      let resObject = await response.json()
+      let listResult = resObject.gardenList
+      setGardenList(listResult)
+    }
     getAllGardens()
   }, [])
 
@@ -28,10 +27,6 @@ export default function GardenSearchAutocomplete() {
   const changeRoute = (val) => history.push(`/garden-page/${val}`)
 
   return (
-    <div>
-      <h1>
-        Search for a garden, then click to visit its homepage.
-      </h1>
       <Autocomplete
         getItemValue={(garden) => garden.name || garden}
         items={filteredGardenList}
@@ -40,9 +35,9 @@ export default function GardenSearchAutocomplete() {
         )}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        onSelect={(garden) => changeRoute(garden)}
+        onSelect={(garden) => setInputValue(garden)}
         open={true}
+        name='testName'
       />
-    </div>
   )
 }
