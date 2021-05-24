@@ -15,9 +15,6 @@
 }
 
 .Garden-list-and-form-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   margin: 5px;
 }
 
@@ -38,3 +35,10 @@
   padding: 20px;
 }
 
+.Garden-display-container {
+  display: "flex"; 
+  flex-direction: row;
+  justify-content: 'space-around'; 
+  margin-top: '25px'; 
+  margin-bottom: '25px'; 
+}

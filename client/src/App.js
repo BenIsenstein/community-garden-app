@@ -18,7 +18,7 @@ function App() {
       <div style={{backgroundColor: '#8EE4AF'}}>
         <nav style={{backgroundColor: '#05386B'}}>
           <h1 style={{color: '#5CDB95'}}>Grow Calgary</h1>
-          <ul style={{display: 'flex', justifyContent: 'space-between'}}>
+          <ul style={{display: 'flex', justifyContent: 'space-around'}}>
             <li>
               <Link to="/">Home</Link>
             </li>
