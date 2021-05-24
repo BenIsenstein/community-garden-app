@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom"
-import React, { useRef } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import GardenSearchAutocomplete from "../IndividualGardens/GardenSearchAutocomplete"
 import "./Signup.css"
 
 const Signup = () => {
+  const [gardenMembership, setGardenMembership] = useState("")
   const {
     register,
     formState: { errors },
     handleSubmit,
-    watch
+    watch,
+    setValue
   } = useForm({})
   const username = useRef({})
   const password = useRef({})
@@ -17,10 +19,16 @@ const Signup = () => {
   username.current = watch("username", "")
   password.current = watch("password", "")
   confirmPassword.current = watch("confirmPassword", "")
-  let usernameAvailable
+
 
   async function onSubmit(data) {
-    // let fetchUrl = "http://localhost:3000/api/signup"
+    // set gardenMembership to the _id of the garden, incase they ever change its name.
+    let fetchMembershipUrl = `/api/get-all-gardens/individual-garden?name=${data.gardenMembership}`
+    let membershipResponse = await fetch(fetchMembershipUrl)
+    let membershipObject = await membershipResponse.json()
+    data.gardenMembership = membershipObject.garden._id
+    console.log('garden membership id: ', data.gardenMembership)
+
     let fetchUrl = "/api/signup"
     let fetchOptions = {
       method: "post",
@@ -28,8 +36,7 @@ const Signup = () => {
       body: JSON.stringify(data)
     }
     let response = await fetch(fetchUrl, fetchOptions)
-    // console.log("response: ", response)
-    // let resObject = await response.json()
+    let resObject = await response.json()
     // console.log("submit worked!!")
   }
 
@@ -43,6 +50,8 @@ const Signup = () => {
   }
 
   const alertData = (data) => alert(JSON.stringify(data))
+
+  useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
 
   return (
     // <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
@@ -193,10 +202,16 @@ const Signup = () => {
         </div>
         <div className="form-control memberOfGarden">
           <label htmlFor="memberOfGarden">
-            <b>If you're currently a member of a garden, select it from our list below:</b>
+            <b>If you're currently a member of a garden, search for it here.</b>
           </label>
-          {/* FIX GARDENSEARCHAUTOCOMPLETE!!! */}
-          {/* <GardenSearchAutocomplete /> */}
+           <GardenSearchAutocomplete 
+            setGardenMembership={setGardenMembership}
+           /> 
+          <input 
+            type='hidden'
+            name='gardenMembership'
+            {...register('gardenMembership')}
+          />
         </div>
         <div>
           <input className="signupButton" type="submit" value="Submit" />
