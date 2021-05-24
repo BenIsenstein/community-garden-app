@@ -21,14 +21,14 @@ function GardenListAndForm() {
     <div>
       <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
         <div className="Garden-list-and-form">
-          <div className="Garden-list-and-form-buttons">
-            <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
-            <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} />
-          </div>
           {isFormDisplayed 
             ? <AddGardenForm formCoordinates={formCoordinates} /> 
             : <GardenList />
           }
+          <div className="Garden-list-and-form-buttons">
+            <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} /> 
+            <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
+          </div>
         </div>
         <div className='Garden-map'>
           <GardenMap
