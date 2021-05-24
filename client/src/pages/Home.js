@@ -4,7 +4,7 @@ import ListGardensButton from "../components/GardenListAndForm/ListGardensButton
 import AddGardenButton from "../components/GardenListAndForm/AddGardenButton"
 import AddGardenForm from "../components/AddGardenForm/AddGardenForm"
 import GardenMap from "../components/gardenMap/GardenMapReact"
-import "../components/GardenListAndForm/GardenListAndForm.css"
+import "./Home.css"
 import GetWeather from "../components/Weather/GetWeather"
 
 

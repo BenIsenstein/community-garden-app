@@ -62,7 +62,7 @@ export default function GardenMap({
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={11}
+        zoom={10.5}
         center={center}
         options={options}
         onClick={isFormDisplayed ? onMapClick : null}

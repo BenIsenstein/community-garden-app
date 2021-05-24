@@ -1,4 +1,4 @@
-import './GardenListAndForm.css'
+import './ListFormButtons.css'
 
 
 function ListGardensButton({setStateFunction}) {
