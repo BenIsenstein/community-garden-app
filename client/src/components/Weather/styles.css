@@ -3,13 +3,13 @@
 .main{
     margin: 10px;
     border-radius: 20px;
-    background-color: #0d90a5;
+    background-color: #379683;
 }
 
 .top{
     height: 60px;
-    background-color: #fe4f27;
-    color: whitesmoke;
+    background-color: #05386B;
+    color: #EDF5E1;
     padding: 10px;
     border-radius: 20px 20px 0 0;
     font-family: 'Recursive', sans-serif;
@@ -18,7 +18,7 @@
 }
 
 .header{
-    background-color: #fe4f27;
+    background-color: #05386B;
     color: #9ee637;
     margin: 10px 0px 0px 10px;
     font-size: 25px;
@@ -33,7 +33,7 @@
 
 .day{
     padding: 15px;
-    color: whitesmoke;
+    color: #EDF5E1;
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -41,7 +41,7 @@
 
 .temp{
     padding: 15px;
-    color: whitesmoke;
+    color: #EDF5E1;
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
 }
@@ -53,14 +53,14 @@
 
 .sunrise-sunset{
     padding: 15px;
-    color: rgb(199, 224, 153);
+    color: #EDF5E1;
     font-family: 'Recursive', sans-serif;
     font-size: 16px;
 }
 
 .description{
     padding: 15px;
-    color: whitesmoke;
+    color: #EDF5E1;
     font-family: 'Recursive', sans-serif;
     font-size: 24px;
     font-weight: 600;
@@ -69,7 +69,7 @@
 .forecast{
     border-radius: 20px;
     background-color: #8d3276;
-    color: whitesmoke;
+    color: #EDF5E1;
     padding: 10px;
     margin: 10px;
     font-family: 'Recursive', sans-serif;

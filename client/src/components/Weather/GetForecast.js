@@ -1,4 +1,3 @@
-//import { Data } from "@react-google-maps/api"
 import { moment } from "moment"
 import React, { useEffect, useState } from "react"
 import { Dimmer, Loader } from 'semantic-ui-react'
@@ -8,8 +7,8 @@ import Forecast from './Forecast'
 export default function GetForecast() {
   const [lat] = useState (51.0501)
   const [lon] = useState (-114.0853)
-  const [forecast, setForecast] = useState ([])
-  //const [error, setError] =useState(null)
+  const [forecast, setForecast] = useState ({})
+ // const [error, setError] =useState(null)
   
 
   useEffect(() => {
@@ -18,29 +17,33 @@ export default function GetForecast() {
       let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
       let response = await fetch(fetchForecastUrl)
       let resObject = await response.json()
-      let forecastObject = resObject.forecast
+     .then(json => console.log(json))
+     // let forecastObject = JSON.stringify(resObject)
 
-      console.log ("Status is",forecastObject)
-      return forecastObject ? setForecast(forecastObject) : setForecast('no forecast');
+      console.log ("Status is",response.status)
+      console.log ("forecastObject",{resObject})
+      return resObject ? setForecast(resObject) : setForecast('no forecast')
       
-      /*setError(null)
-      .catch (err => {
-        setError(err.message)
-      })*/
-    }
-    
+      }
+  
+     
+    //  setError(null)
+    //  .catch (error => {
+    //    setError(error.message)
+    //  })
+ 
   fetchForecast()
   },[lat,lon] )
 
+  console.log('Forecast length is', forecast.length)
 
-  console.log('Forecast length is',forecast.arrayBuffer)
 
- /* if (forecast.length<0) {
+ if (forecast.length>0) {
   return forecast.list
  
   }
   console.log ('Data is',forecast.dt)
-function mapDataToWeatherInterface(forecastData) {
+/*function mapDataToWeatherInterface(forecastData) {
     const mapped = {
       date: forecastData.dt * 1000, // convert from seconds to milliseconds
       description: forecastData.weather[0].main,

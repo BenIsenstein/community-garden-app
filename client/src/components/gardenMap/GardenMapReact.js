@@ -12,8 +12,8 @@ require("dotenv").config()
 
 const libraries = ["places"]
 const mapContainerStyle = {
-  width: "400px",
-  height: "400px"
+  width: "450px",
+  height: "625px"
 }
 const center = {
   lat: 51.035,

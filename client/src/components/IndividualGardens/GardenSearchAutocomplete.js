@@ -16,28 +16,29 @@ export default function GardenSearchAutocomplete() {
     getAllGardens()
   }, [])
 
-  const filteredGardenList = !gardenList 
-    ? ['Loading...']
+  const filteredGardenList = !gardenList
+    ? ["Loading..."]
     : gardenList.filter((garden) => {
-      let gardenNameRegex = new RegExp(`.*${inputValue}.*`, "i")
-      return gardenNameRegex.test(garden?.name)
-  })
+        let gardenNameRegex = new RegExp(`.*${inputValue}.*`, "i")
+        return gardenNameRegex.test(garden?.name)
+      })
 
   const history = useHistory()
   const changeRoute = (val) => history.push(`/garden-page/${val}`)
 
   return (
-      <Autocomplete
-        getItemValue={(garden) => garden.name || garden}
-        items={filteredGardenList}
-        renderItem={(garden, isHighlighted) => (
-          <div style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
-        )}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onSelect={(garden) => setInputValue(garden)}
-        open={true}
-        name='testName'
-      />
+    <Autocomplete
+      getItemValue={(garden) => garden.name || garden}
+      items={filteredGardenList}
+      renderItem={(garden, isHighlighted) => (
+        <div style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
+      )}
+      value={inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
+      onSelect={(garden) => setInputValue(garden)}
+      open={true}
+      // FIX INPUTPROPS!!!
+      // inputProps={{ {...register("gardenMembership")}, name: "gardenMembership" }}
+    />
   )
 }
