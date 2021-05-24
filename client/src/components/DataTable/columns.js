@@ -16,7 +16,7 @@ export const columnHeaders = [
         accessor: 'quadrant',
         Filter: SelectColumnFilter
     },
-    {
+    /*{
         Header: 'Latitude',
         accessor: 'coordinates.lat',
         Filter: TypeColumnFilter,
@@ -32,7 +32,7 @@ export const columnHeaders = [
         Header: 'Plot Size (sqft)',
         accessor: 'plotSize',
         Filter: TypeColumnFilter
-    },
+    },*/
     {
         Header: '# of Plots',
         accessor: 'numberOfPlots',

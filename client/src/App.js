@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
-import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
+import Home from "./pages/Home"
 import Signup from "./components/Signup/Signup"
 import Login from "./components/Login/Login"
 import LoggedOn from "./components/LoggedOn"
@@ -15,9 +15,10 @@ import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul style={{display: 'flex', justifyContent: 'space-between'}}>
+      <div style={{backgroundColor: '#8EE4AF'}}>
+        <nav style={{backgroundColor: '#05386B'}}>
+          <h1 style={{color: '#5CDB95'}}>Grow Calgary</h1>
+          <ul style={{display: 'flex', justifyContent: 'space-around'}}>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -34,13 +35,15 @@ function App() {
               <Link to="/weather">Weather</Link>
             </li>
             <li>
-              <Link to="/gardens">Gardens</Link>
-            </li>
-            <li>
               <Link to="/garden-page/search">Search For A Garden</Link>
             </li>
             <li>
               <Link to="/forecast">Forecast</Link>
+            </li>
+            <li>
+              <button onClick={async () => {await fetch('/api/login/logout')}}>
+                Log out
+              </button>
             </li>
           </ul>
         </nav>
@@ -59,9 +62,6 @@ function App() {
           </Route>
           <Route path="/loggedon">
             <LoggedOn />
-          </Route>
-          <Route path="/gardens">
-            <GardenListAndForm />
           </Route>
           <Route path="/gardenMap">
             <GardenMap />
@@ -85,10 +85,6 @@ function App() {
       </div>
     </Router>
   )
-}
-
-function Home() {
-  return <h2>Home</h2>
 }
 
 function About() {

@@ -1,24 +1,7 @@
 const express = require("express")
 const { findUserByName, addUser, User } = require("../models/db")
+const bcrypt = require("bcrypt")
 const router = express.Router()
-
-// router.get("/loggedon", (req, res) => {
-//   res.send("You are logged on!")
-// })
-
-async function validateName(username) {
-  let accountExists = await findUserByName(username)
-  return !accountExists
-}
-
-function validatePass(password) {
-  return (
-    /.{6,}$/.test(password) &&
-    /[A-Z]+/.test(password) &&
-    /[a-z]+/.test(password) &&
-    /[0-9]+/.test(password)
-  )
-}
 
 router.post("/", async (req, res) => {
   console.log("req: ", req)
@@ -26,9 +9,8 @@ router.post("/", async (req, res) => {
   console.log("req.body.confirmPassword: ", req.body.confirmPassword)
   let username = req.body.username
   let email = req.body.email
-  let password = req.body.password
+  let hashedPassword = await bcrypt.hash(req.body.password, 10)
   let confirmPassword = req.body.confirmPassword
-  let isPassSafe = validatePass(password)
   let howLongGardening = req.body.howLongGardening
   let plantCheckbox = req.body.plantCheckbox[0]
   let postalCode = req.body.postalCode
@@ -36,7 +18,7 @@ router.post("/", async (req, res) => {
   let newUser = new User({
     username: username,
     email: email,
-    password: password,
+    password: hashedPassword,
     howLongGardening: howLongGardening,
     currentPlants: plantCheckbox,
     postalCode: postalCode,
