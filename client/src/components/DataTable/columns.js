@@ -1,4 +1,4 @@
-import { TypeColumnFilter, SelectColumnFilter } from "./Filters";
+import { TypeColumnFilter, SelectColumnFilter, NumberRangeColumnFilter } from "./Filters";
 
 export const columnHeaders = [
     {
@@ -36,11 +36,13 @@ export const columnHeaders = [
     {
         Header: '# of Plots',
         accessor: 'numberOfPlots',
-        Filter: TypeColumnFilter
+        Filter: NumberRangeColumnFilter,
+        disableFilters: true
     },
     {
         Header: 'Established',
         accessor: 'established',
-        Filter: TypeColumnFilter
+        Filter: NumberRangeColumnFilter,
+        disableFilters: true
     },
 ]
