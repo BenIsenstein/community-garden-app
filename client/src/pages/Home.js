@@ -4,8 +4,9 @@ import ListGardensButton from "../components/GardenListAndForm/ListGardensButton
 import AddGardenButton from "../components/GardenListAndForm/AddGardenButton"
 import AddGardenForm from "../components/AddGardenForm/AddGardenForm"
 import GardenMap from "../components/gardenMap/GardenMapReact"
-import "../components/GardenListAndForm/GardenListAndForm.css"
+import "./Home.css"
 import GetWeather from "../components/Weather/GetWeather"
+import GardenTable from "../components/DataTable/GardenTable"
 
 
 function GardenListAndForm() {
@@ -18,16 +19,16 @@ function GardenListAndForm() {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
+      <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
         <div className="Garden-list-and-form">
-          <div className="Garden-list-and-form-buttons">
-            <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
-            <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} />
-          </div>
           {isFormDisplayed 
             ? <AddGardenForm formCoordinates={formCoordinates} /> 
             : <GardenList />
           }
+          <div className="Garden-list-and-form-buttons">
+            <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} /> 
+            <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
+          </div>
         </div>
         <div className='Garden-map'>
           <GardenMap
@@ -37,7 +38,7 @@ function GardenListAndForm() {
           />
         </div>
       </div>
-      <div style={{ maxWidth:"fit-content"}}>
+      <div style={{ display: "flex", justifyContent: "center"}}>
           <GetWeather />
       </div>
     </div>

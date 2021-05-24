@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState, useMemo } from "react"
+import { useHistory } from 'react-router-dom'
 import {
   GoogleMap,
   Marker,
@@ -35,6 +36,26 @@ export default function GardenMap({
     libraries
   })
 
+  const loadingMessage = [{name: 'Loading...', address: "This won't take long!"}]
+  const [gardenList, setGardenList] = useState(loadingMessage)
+  useEffect(() => {
+    const getAllGardens = async () => {
+      let fetchUrl = "/api/get-all-gardens"
+      let response = await fetch(fetchUrl)
+      let resObject = await response.json()
+      let listResult = resObject.gardenList
+
+      setGardenList(listResult)
+    }
+    getAllGardens()
+  }, [])
+
+  const history = useHistory()
+  const changeRoute = (val) => history.push(`/garden-page/${val}`)
+
+  // Prevent re-rendering of data
+  const data = useMemo(() => gardenList, [gardenList]) 
+
   const onMapClick = React.useCallback(
     (event) => {
       setFormCoordinates({
@@ -62,7 +83,7 @@ export default function GardenMap({
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={11}
+        zoom={10.5}
         center={center}
         options={options}
         onClick={isFormDisplayed ? onMapClick : null}
@@ -81,11 +102,12 @@ export default function GardenMap({
           />
         ) : null}
 
-        {markerArray.map(function (marker, index) {
+        {data.map(function (marker, index) {
           return (
             <Marker
-              key={marker.title}
-              position={marker.location}
+              key={marker.name}
+              position={marker.coordinates}
+              // {lat: parseFloat(marker.coordinates.lat), lng: parseFloat(marker.coordinates.lng)}
               onMouseOver={() => {
                 setSelected(marker)
               }}
@@ -95,12 +117,12 @@ export default function GardenMap({
 
         {selected ? (
           <InfoWindow
-            position={selected.location}
+            position={selected.coordinates}
             onCloseClick={() => {
               setSelected(null)
             }}
           >
-            <div style={{ fontWeight: "bold" }}>{selected.title}</div>
+            <div style={{ fontWeight: "bold" }}>{selected.name}</div>
           </InfoWindow>
         ) : null}
       </GoogleMap>
