@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
-import GardenListAndForm from "./components/GardenListAndForm/GardenListAndForm"
+import Home from "./pages/Home"
 import Signup from "./components/Signup/Signup"
 import Login from "./components/Login/Login"
 import LoggedOn from "./components/LoggedOn"
@@ -35,9 +35,6 @@ function App() {
               <Link to="/weather">Weather</Link>
             </li>
             <li>
-              <Link to="/gardens">Gardens</Link>
-            </li>
-            <li>
               <Link to="/garden-page/search">Search For A Garden</Link>
             </li>
             <li>
@@ -66,9 +63,6 @@ function App() {
           <Route path="/loggedon">
             <LoggedOn />
           </Route>
-          <Route path="/gardens">
-            <GardenListAndForm />
-          </Route>
           <Route path="/gardenMap">
             <GardenMap />
           </Route>
@@ -81,21 +75,16 @@ function App() {
           <Route path="/table">
             <GardenTable />
           </Route>
-          <Route path='/'>
-            <GardenListAndForm />
-            <GetWeather />
-          </Route>
           <Route path="/garden-page">
             <GardenPageRouter />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </div>
     </Router>
   )
-}
-
-function Home() {
-  return <h2>Home</h2>
 }
 
 function About() {

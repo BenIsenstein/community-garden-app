@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import GardenList from "../GardenList/GardenList"
-import ListGardensButton from "./ListGardensButton"
-import AddGardenButton from "./AddGardenButton"
-import AddGardenForm from "../AddGardenForm/AddGardenForm"
-import GardenMap from "../gardenMap/GardenMapReact"
-import "./GardenListAndForm.css"
-import GetWeather from "../Weather/GetWeather"
+import GardenList from "../components/GardenList/GardenList"
+import ListGardensButton from "../components/GardenListAndForm/ListGardensButton"
+import AddGardenButton from "../components/GardenListAndForm/AddGardenButton"
+import AddGardenForm from "../components/AddGardenForm/AddGardenForm"
+import GardenMap from "../components/gardenMap/GardenMapReact"
+import "../components/GardenListAndForm/GardenListAndForm.css"
+import GetWeather from "../components/Weather/GetWeather"
 
 
 function GardenListAndForm() {
