@@ -1,10 +1,10 @@
 import Autocomplete from "react-autocomplete"
 import { useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
 
-export default function GardenSearchAutocomplete() {
+export default function GardenSearchAutocomplete({setGardenMembership}) {
   const [gardenList, setGardenList] = useState(null)
-  const [inputValue, setInputValue] = useState("")
+  const [inputFieldGardenName, setInputFieldGardenName] = useState('Search Gardens')
+  
   useEffect(() => {
     const getAllGardens = async () => {
       let fetchUrl = "/api/get-all-gardens"
@@ -19,26 +19,23 @@ export default function GardenSearchAutocomplete() {
   const filteredGardenList = !gardenList
     ? ["Loading..."]
     : gardenList.filter((garden) => {
-        let gardenNameRegex = new RegExp(`.*${inputValue}.*`, "i")
+        let gardenNameRegex = new RegExp(`.*${inputFieldGardenName}.*`, "i")
         return gardenNameRegex.test(garden?.name)
       })
 
-  const history = useHistory()
-  const changeRoute = (val) => history.push(`/garden-page/${val}`)
-
   return (
     <Autocomplete
-      getItemValue={(garden) => garden.name || garden}
+      getItemValue={(garden) => garden._id || garden}
       items={filteredGardenList}
       renderItem={(garden, isHighlighted) => (
         <div style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
       )}
-      value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
-      onSelect={(garden) => setInputValue(garden)}
-      open={true}
-      // FIX INPUTPROPS!!!
-      // inputProps={{ {...register("gardenMembership")}, name: "gardenMembership" }}
+      value={inputFieldGardenName}
+      onChange={(e) => setInputFieldGardenName(e.target.value)}
+      onSelect={(id, garden) => {
+        setInputFieldGardenName(garden.name)
+        setGardenMembership(id)
+      }}
     />
   )
 }
