@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import React, { useRef } from "react"
 import { useForm } from "react-hook-form"
+import GardenSearchAutocomplete from "../IndividualGardens/GardenSearchAutocomplete"
 import "./Signup.css"
 
 const Signup = () => {
@@ -41,8 +42,11 @@ const Signup = () => {
     )
   }
 
+  const alertData = (data) => alert(JSON.stringify(data))
+
   return (
-    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
+    // <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
+    <form className="signupForm" onSubmit={handleSubmit(alertData)}>
       <div className="container">
         <h1>Sign Up!</h1>
         <div className="form-control">
@@ -52,8 +56,6 @@ const Signup = () => {
           <input
             {...register("username", {
               required: true
-              // validate: (value) => usernameAvailable(value) || "Sorry, that name is already taken."
-              // validate: () => usernameAvailable || "Sorry, that name is already taken."
             })}
             type="text"
             placeholder="Enter Username"
@@ -193,26 +195,11 @@ const Signup = () => {
           <label htmlFor="memberOfGarden">
             <b>If you're currently a member of a garden, select it from our list below:</b>
           </label>
-          <select name="memberOfGarden" id="memberOfGarden">
-            <option value="gardenA">Garden A</option>
-            <option value="gardenB">Garden B</option>
-            <option value="gardenC">Garden C</option>
-          </select>
+          {/* FIX GARDENSEARCHAUTOCOMPLETE!!! */}
+          {/* <GardenSearchAutocomplete /> */}
         </div>
         <div>
-          <input
-            className="signupButton"
-            type="submit"
-            value="Submit"
-            // *** FIX THIS... redirects without validating :(
-            // onClick={function () {
-            //   window.location = "/loggedon"
-            // }}
-            // onclick="window.location='www.google.com'"
-          />
-          {/* <Link to="/login" className="signupButton" type="submit">
-            Sign Up Now
-          </Link> */}
+          <input className="signupButton" type="submit" value="Submit" />
           <hr />
           <div>
             <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
