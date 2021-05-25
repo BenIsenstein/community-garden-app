@@ -22,12 +22,6 @@ const Signup = () => {
 
 
   async function onSubmit(data) {
-    // set gardenMembership to the _id of the garden, incase they ever change its name.
-    let fetchMembershipUrl = `/api/get-all-gardens/individual-garden?name=${data.gardenMembership}`
-    let membershipResponse = await fetch(fetchMembershipUrl)
-    let membershipObject = await membershipResponse.json()
-    data.gardenMembership = membershipObject.garden._id
-    console.log('garden membership id: ', data.gardenMembership)
 
     let fetchUrl = "/api/signup"
     let fetchOptions = {
@@ -54,8 +48,8 @@ const Signup = () => {
   useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
 
   return (
-    // <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
-    <form className="signupForm" onSubmit={handleSubmit(alertData)}>
+    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
+    {/* <form className="signupForm" onSubmit={handleSubmit(alertData)}> */}
       <div className="container">
         <h1>Sign Up!</h1>
         <div className="form-control">
