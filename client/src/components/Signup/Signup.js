@@ -143,7 +143,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="currentPlants">
-            <b>What plants are currently in your garden?</b>
+            <b>What types of plants are in your garden?</b>
           </label>
           <div className="currentPlantsSelection" id="currentPlantsSelection">
             <div>
@@ -151,40 +151,50 @@ const Signup = () => {
                 {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
-                id="peas"
-                value="peas"
+                id="fruits"
+                value="fruits"
               />
-              <label htmlFor="peas">peas</label>
+              <label htmlFor="fruits">fruits</label>
             </div>
             <div>
               <input
                 {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
-                id="carrots"
-                value="carrots"
+                id="vegetables"
+                value="vegetables"
               />
-              <label htmlFor="carrots">carrots</label>
+              <label htmlFor="vegetables">vegetables</label>
             </div>
             <div>
               <input
                 {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
-                id="zucchini"
-                value="zucchini"
+                id="herbs"
+                value="herbs"
               />
-              <label htmlFor="zucchini">zucchini</label>
+              <label htmlFor="herbs">herbs</label>
             </div>
             <div>
               <input
                 {...register("plantCheckbox", { required: false })}
                 type="checkbox"
                 name="plantCheckbox"
-                id="tomatoes"
-                value="tomatoes"
+                id="flowers"
+                value="flowers"
               />
-              <label htmlFor="tomatoes">tomatoes</label>
+              <label htmlFor="flowers">flowers</label>
+            </div>
+            <div>
+              <input
+                {...register("plantCheckbox", { required: false })}
+                type="checkbox"
+                name="plantCheckbox"
+                id="other"
+                value="other"
+              />
+              <label htmlFor="other">other</label>
             </div>
           </div>
         </div>
