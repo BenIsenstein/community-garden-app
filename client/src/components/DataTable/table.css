@@ -1,5 +1,6 @@
 table {
     font-family: Arial, Helvetica, sans-serif;
+    color:#05386B;
     border-collapse: collapse;
     max-width: 1vw;
   }
@@ -9,9 +10,12 @@ table {
     padding: 8px;
   }
   
-  table tr {text-align: center;}
+  table tr {
+    text-align: center;
+    background-color: #edf5e1
+  }
 
-  table tr:nth-child(even){background-color: #f2f2f2;}
+  table tr:nth-child(even){background-color: #EDF5E1;}
   
   table tr:hover {background-color: #ddd;}
   
@@ -19,6 +23,6 @@ table {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #4CAF50;
+    background-color: #05386B;
     color: white;
   }
