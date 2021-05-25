@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 export default function GardenSearchAutocomplete({setGardenMembership}) {
   const [gardenList, setGardenList] = useState(null)
-  const [inputFieldGardenName, setInputFieldGardenName] = useState('Search Gardens')
+  const [inputFieldGardenName, setInputFieldGardenName] = useState('')
   
   useEffect(() => {
     const getAllGardens = async () => {
@@ -36,6 +36,7 @@ export default function GardenSearchAutocomplete({setGardenMembership}) {
         setInputFieldGardenName(garden.name)
         setGardenMembership(id)
       }}
+      inputProps={{placeholder:'Search Gardens'}}
     />
   )
 }

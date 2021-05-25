@@ -13,7 +13,9 @@
     - Wheelchair accessible?
 
 
+3. add updateGarden function and route
 
+4. 'not a member' button in signup form
 
 Script to upload data to mongo atlas -> run in terminal
 mongoimport --host communitygarden-shard-00-01.hawuz.mongodb.net:27017 --db gardenDatabase --collection gardens --type json --file /Users/bwalkerbrock/Documents/Coding/EvolveU/community-garden-app/client/src/components/DataTable/gardenData.json --jsonArray --authenticationDatabase admin --ssl --username evolveU-cohort6 --password ux9OjXYa50waR6NP

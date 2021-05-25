@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
   let reqCoverPhoto = req.body.coverPhotoData
   let reqSurfaceArea = req.body.surfaceAreaData
   let reqVacancy = req.body.vacancyData
+  
 
   let isAddressFree = await checkIsAddressFree(reqAddress)
   let isNameFree = await checkIsNameFree(reqName)
@@ -22,6 +23,7 @@ router.post('/', async (req, res) => {
       quadrant: reqQuadrant,
       coverPhoto: reqCoverPhoto,
       surfaceArea: reqSurfaceArea,
+      members: {},
       vacancy: reqVacancy 
     }) 
 

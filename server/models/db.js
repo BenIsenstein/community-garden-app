@@ -38,6 +38,7 @@ const gardenSchema = new mongoose.Schema({
   established: Number,
   fee: String,
   numberOfPlots: Number,
+  members: {},
   website: String
 })
 
@@ -78,8 +79,7 @@ const userSchema = new mongoose.Schema({
   howLongGardening: String,
   currentPlants: Array,
   postalCode: String,
-  // memberOfGarden: Boolean,
-  memberOfGarden: String,
+  gardenMembership: String,
   dateSignedUp: Date
 })
 

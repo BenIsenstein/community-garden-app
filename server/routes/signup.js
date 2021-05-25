@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   let howLongGardening = req.body.howLongGardening
   let plantCheckbox = req.body.plantCheckbox[0]
   let postalCode = req.body.postalCode
-  let memberOfGarden = req.body.memberOfGarden
+  let gardenMembership = req.body.gardenMembership
 
   let newUser = new User({
     username: username,
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     howLongGardening: howLongGardening,
     currentPlants: plantCheckbox,
     postalCode: postalCode,
-    memberOfGarden: memberOfGarden,
+    gardenMembership: gardenMembership,
     dateSignedUp: new Date()
   })
 
