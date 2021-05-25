@@ -13,9 +13,10 @@ require("dotenv").config()
 // IMPORT ROUTES
 const getAllGardensRouter = require("./routes/getAllGardens")
 const addAGardenRouter = require("./routes/addAGarden")
-const signupRouter = require("./routes/signup")
-const loginRouter = require("./routes/login")
-const logoutRouter = require("./routes/logout")
+// const signupRouter = require("./routes/signup")
+// const loginRouter = require("./routes/login")
+// const logoutRouter = require("./routes/logout")
+const userRouter = require("./routes/user")
 
 const app = express()
 app.use(cors())
@@ -38,9 +39,10 @@ app.use(cookieParser())
 // USE ROUTES
 app.use("/api/get-all-gardens", getAllGardensRouter)
 app.use("/api/add-a-garden", addAGardenRouter)
-app.use("/api/signup", signupRouter)
-app.use("/api/login", loginRouter)
-app.use("/api/logout", logoutRouter)
+// app.use("/api/signup", signupRouter)
+// app.use("/api/login", loginRouter)
+// app.use("/api/logout", logoutRouter)
+app.use("/api/user", userRouter)
 
 // serve the react application
 app.use(express.static("../client/build"))
@@ -65,5 +67,9 @@ app.use(function (err, req, res, next) {
     error: err
   })
 })
+
+// app.get("/api/logout", (req, res) => {
+//   console.log("Logging out ", req.user.username)
+// })
 
 module.exports = app

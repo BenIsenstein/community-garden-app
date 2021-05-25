@@ -1,10 +1,10 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
 import Home from "./pages/Home"
-import Signup from "./components/Signup/Signup"
-import Login from "./components/Login/Login"
-import LoggedOn from "./components/LoggedOn"
+import Signup from "./components/User/Signup"
+import Login from "./components/User/Login"
+import LoggedOn from "./components/User/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
 import GardenMap from "./components/gardenMap/GardenMap"
@@ -13,6 +13,19 @@ import GardenTable from "./components/DataTable/GardenTable"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 
 function App() {
+// const[user, setUser] = useState()
+// useEffect(() => {
+//   const loggedInUser = localStorage.getItem("user");
+//   if (loggedInUser) {
+//     const foundUser = JSON.parse(loggedInUser);
+//     console.log("Logged on (line 21)")
+//     setUser(foundUser);
+//     fetch
+//   }
+// }, []);
+// if (user) {
+//   return <div>{user.name} is loggged in</div>;
+// } else
   return (
     <Router>
       <div style={{backgroundColor: '#8EE4AF'}}>
@@ -41,7 +54,7 @@ function App() {
               <Link to="/forecast">Forecast</Link>
             </li>
             <li>
-              <button onClick={async () => {await fetch('/api/logout')}}>
+              <button onClick={async () => {await fetch('/api/user/logout')}}>
                 Log out
               </button>
             </li>

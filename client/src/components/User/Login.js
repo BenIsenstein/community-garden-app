@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import React from "react"
 import { useForm } from "react-hook-form"
-import "../Signup/Signup.css"
+import "./Signup.css"
 
 const Login = () => {
   return (
-    <form className="signupForm" action="/api/login" method="POST">
+    <form className="signupForm" action="/api/user/login" method="POST">
       <div className="container">
         <h1>Log In!</h1>
         <div className="form-control">

@@ -23,7 +23,7 @@ const Signup = () => {
 
   async function onSubmit(data) {
 
-    let fetchUrl = "/api/signup"
+    let fetchUrl = "/api/user/signup"
     let fetchOptions = {
       method: "post",
       headers: { "content-type": "application/json" },
