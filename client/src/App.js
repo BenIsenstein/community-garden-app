@@ -7,7 +7,7 @@ import Login from "./components/Login/Login"
 import LoggedOn from "./components/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
-import GardenMap from "./components/gardenMap/GardenMapReact"
+import GardenMap from "./components/gardenMap/GardenMap"
 import TestComponent from "./components/formAutocomplete/NewReactAutoFill"
 import GardenTable from "./components/DataTable/GardenTable"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
@@ -67,10 +67,10 @@ function App() {
             <GardenMap />
           </Route>
           <Route path="/weather">
-            <GetWeather weatherData="Weather Conditions" />
+            <GetWeather/>
           </Route>
           <Route path="/forecast">
-            <GetForecast forecastData="Forecast" />
+            <GetForecast />
           </Route>
           <Route path="/table">
             <GardenTable />
