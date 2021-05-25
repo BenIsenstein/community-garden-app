@@ -18,10 +18,17 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <h1>
-      {!gardenData && 'Loading...'}
-      {(gardenData === 'no garden') && 'This garden could not be found.'}
-      {(gardenData !== 'no garden') && gardenData?.name}
-    </h1>
+    <div>
+      <h1>
+        {!gardenData && 'Loading...'}
+        {(gardenData === 'no garden') && 'This garden could not be found.'}
+        {(gardenData !== 'no garden') && gardenData?.name}
+      </h1>
+      <div>
+        {gardenData?.address}
+      </div>
+    </div>
+
+
   )
 }
