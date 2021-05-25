@@ -41,7 +41,7 @@ function App() {
               <Link to="/forecast">Forecast</Link>
             </li>
             <li>
-              <button onClick={async () => {await fetch('/api/login/logout')}}>
+              <button onClick={async () => {await fetch('/api/logout')}}>
                 Log out
               </button>
             </li>

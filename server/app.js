@@ -15,6 +15,7 @@ const getAllGardensRouter = require("./routes/getAllGardens")
 const addAGardenRouter = require("./routes/addAGarden")
 const signupRouter = require("./routes/signup")
 const loginRouter = require("./routes/login")
+const logoutRouter = require("./routes/logout")
 
 const app = express()
 app.use(cors())
@@ -39,6 +40,7 @@ app.use("/api/get-all-gardens", getAllGardensRouter)
 app.use("/api/add-a-garden", addAGardenRouter)
 app.use("/api/signup", signupRouter)
 app.use("/api/login", loginRouter)
+app.use("/api/logout", logoutRouter)
 
 // serve the react application
 app.use(express.static("../client/build"))
