@@ -7,7 +7,7 @@ import Forecast from './Forecast'
 export default function GetForecast() {
   const [lat] = useState (51.0501)
   const [lon] = useState (-114.0853)
-  const [forecast, setForecast] = useState ({})
+  const [forecast, setForecast] = useState (null)
  // const [error, setError] =useState(null)
   
 
@@ -17,19 +17,14 @@ export default function GetForecast() {
     //  let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
       let response = await fetch(fetchForecastUrl)
       let resObject = await response.json()
-      
-      
-     .then(json => console.log(json))
-     
-     // let resObject = JSON.stringify(list)
-     
-      console.log ("Status is",response.status)
-      console.log ("forecastObject",response)
-      return resObject //? setForecast(resObject.list) : setForecast('no forecast')
+       
+      console.log ("resObject is", resObject)
+    
+  
+      return resObject ? setForecast(resObject.list) : setForecast('no forecast')
       
       }
-  
-     
+
     //  setError(null)
     //  .catch (error => {
     //    setError(error.message)
@@ -38,18 +33,12 @@ export default function GetForecast() {
   fetchForecast()
   },[lat,lon] )
 
-  console.log('Forecast length is', forecast.length)
+  console.log('Forecast length is', forecast?.length)
 
 
- if (forecast.length>0) {
-  return forecast
- 
-  }
- /* console.log ('Data is',forecast)
-
-  function mapDataToWeatherInterface(forecast) {
+ /* function mapDataToWeatherInterface(forecast) {
     const mapped = {
-      date: forecast.dt * 1000, // convert from seconds to milliseconds
+      date: forecast.list.dt * 1000, // convert from seconds to milliseconds
       description: forecast.weather[0].main,
       temperature: Math.round(forecast.main.temp),
     }
@@ -59,12 +48,12 @@ export default function GetForecast() {
       mapped.dt_txt = forecast.dt_txt
     }
     return mapped
-  }
-*/
+  }*/
+
     
   return (
       <div className="GetForecast">
-        {(typeof forecast.main != 'undefined') ? (
+        {( forecast ) ? (
           <div>
             <Forecast forecast ={forecast}/>
           </div>
