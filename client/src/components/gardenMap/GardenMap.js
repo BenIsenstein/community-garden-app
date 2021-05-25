@@ -17,8 +17,8 @@ const mapContainerStyle = {
   height: "625px"
 }
 const center = {
-  lat: 51.035,
-  lng: -114.0603959887364
+  lat: 51.01,
+  lng: -114.1
 }
 const options = {
   styles: mapStyles,
