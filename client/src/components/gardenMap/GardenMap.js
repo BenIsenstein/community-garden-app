@@ -36,8 +36,10 @@ export default function GardenMap({
     libraries
   })
 
-  const loadingMessage = [{name: 'Loading...', address: "This won't take long!"}]
+  // This is passed through the first Marker array
+  const loadingMessage = [{name: 'Loading...', address: "This won't take long!", "coordinates":{"lat":"0","lng":"0"}}]
   const [gardenList, setGardenList] = useState(loadingMessage)
+  
   useEffect(() => {
     const getAllGardens = async () => {
       let fetchUrl = "/api/get-all-gardens"
@@ -54,7 +56,8 @@ export default function GardenMap({
   const changeRoute = (val) => history.push(`/garden-page/${val}`)
 
   // Prevent re-rendering of data
-  const data = useMemo(() => gardenList, [gardenList]) 
+  const data = useMemo(() => gardenList, [gardenList])
+  console.log(data) 
 
   const onMapClick = React.useCallback(
     (event) => {
@@ -106,8 +109,7 @@ export default function GardenMap({
           return (
             <Marker
               key={marker.name}
-              position={marker.coordinates}
-              // {lat: parseFloat(marker.coordinates.lat), lng: parseFloat(marker.coordinates.lng)}
+              position={{lat: parseFloat(marker.coordinates.lat), lng: parseFloat(marker.coordinates.lng)}}
               onMouseOver={() => {
                 setSelected(marker)
               }}
@@ -117,7 +119,7 @@ export default function GardenMap({
 
         {selected ? (
           <InfoWindow
-            position={selected.coordinates}
+            position={{lat: parseFloat(selected.coordinates.lat), lng: parseFloat(selected.coordinates.lng)}}
             onCloseClick={() => {
               setSelected(null)
             }}
