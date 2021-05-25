@@ -78,7 +78,8 @@ const userSchema = new mongoose.Schema({
   howLongGardening: String,
   currentPlants: Array,
   postalCode: String,
-  memberOfGarden: Boolean,
+  // memberOfGarden: Boolean,
+  memberOfGarden: String,
   dateSignedUp: Date
 })
 
