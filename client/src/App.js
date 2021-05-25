@@ -67,10 +67,10 @@ function App() {
             <GardenMap />
           </Route>
           <Route path="/weather">
-            <GetWeather weatherData="Weather Conditions" />
+            <GetWeather/>
           </Route>
           <Route path="/forecast">
-            <GetForecast forecastData="Forecast" />
+            <GetForecast />
           </Route>
           <Route path="/table">
             <GardenTable />

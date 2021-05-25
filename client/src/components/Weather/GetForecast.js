@@ -13,8 +13,8 @@ export default function GetForecast() {
 
   useEffect(() => {
     const fetchForecast = async () => {
-      let fetchForecastUrl = `${process.env.REACT_APP_WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
-    //  let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
+     // let fetchForecastUrl = `${process.env.REACT_APP_WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
+      let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
       let response = await fetch(fetchForecastUrl)
       let resObject = await response.json()
        
@@ -34,23 +34,7 @@ export default function GetForecast() {
   },[lat,lon] )
 
   console.log('Forecast length is', forecast?.length)
-
-
- /* function mapDataToWeatherInterface(forecast) {
-    const mapped = {
-      date: forecast.list.dt * 1000, // convert from seconds to milliseconds
-      description: forecast.weather[0].main,
-      temperature: Math.round(forecast.main.temp),
-    }
   
-    // Add extra properties for the five day forecast: dt_txt, icon, min, max
-    if (forecast.dt_txt) {
-      mapped.dt_txt = forecast.dt_txt
-    }
-    return mapped
-  }*/
-
-    
   return (
       <div className="GetForecast">
         {( forecast ) ? (
