@@ -39,7 +39,10 @@ const gardenSchema = new mongoose.Schema({
   fee: String,
   numberOfPlots: Number,
   members: {},
-  website: String
+  website: String,
+  email: String,
+  description: String,
+  wheelchairAccessible: Boolean
 })
 
 // NOTE syntax to add methods: gardenSchema.methods.methodX = function () {}
