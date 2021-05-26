@@ -8,7 +8,6 @@ import LoggedOn from "./components/User/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
 import GardenMap from "./components/gardenMap/GardenMap"
-import TestComponent from "./components/formAutocomplete/NewReactAutoFill"
 import GardenTable from "./components/DataTable/GardenTable"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 
