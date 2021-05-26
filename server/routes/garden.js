@@ -34,6 +34,25 @@ router.post('/add', async (req, res) => {
   res.json({successMessage: 'Message received.'})
 })
 
+/* Update a superhero by ID. */
+router.put('/update/:name', async (req, res) => {
+  let gardenToUpdate = req.body
+  try {
+    let data = await Garden.findOneAndUpdate({name: req.params.name}, gardenToUpdate);
+    console.log("Updated Garden", data)
+    res.redirect(`/garden-page/${gardenToUpdate.name}`);
+  }
+  catch(err) {
+    console.log(err)
+    if (err.code === 11000) {
+      res.status(409).send('Garden ' + gardenToUpdate.name + ' already exists');      
+    }
+    else {
+      res.sendStatus(500)
+    }
+  }
+})
+
 
 // get all gardens
 router.get('/get', async (req, res) => {
