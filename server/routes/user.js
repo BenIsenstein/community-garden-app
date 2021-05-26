@@ -17,7 +17,7 @@ router.post("/signup", async (req, res) => {
   let howLongGardening = req.body.howLongGardening
   let plantCheckbox = req.body.plantCheckbox[0]
   let postalCode = req.body.postalCode
-  let memberOfGarden = req.body.memberOfGarden
+  let gardenMembership = req.body.gardenMembership
 
   let newUser = new User({
     username: username,
@@ -26,7 +26,7 @@ router.post("/signup", async (req, res) => {
     howLongGardening: howLongGardening,
     currentPlants: plantCheckbox,
     postalCode: postalCode,
-    memberOfGarden: memberOfGarden,
+    gardenMembership: gardenMembership,
     dateSignedUp: new Date()
   })
 
@@ -77,6 +77,7 @@ router.post(
 
 router.get("/logout", function (req, res) {
   console.log("req authenticated: ", req.isAuthenticated())
+  console.log('req.user: ', req.user)
   req.isAuthenticated() ? req.logOut() : console.log("already logged out")
   let message = req.isAuthenticated()
     ? `user ${req.user?.username} is logged in still :(`
@@ -84,7 +85,6 @@ router.get("/logout", function (req, res) {
   console.log("message: ", message)
   res.redirect("/")
 })
-
 
 // ----------------------------------- GET USER -----------------------------------
 
