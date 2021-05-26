@@ -36,7 +36,7 @@ router.post('/add', async (req, res) => {
 
 
 // get all gardens
-router.get('/get/', async (req, res) => {
+router.get('/get', async (req, res) => {
   let allGardensArray = await listGardens()
 
   res.json({gardenList: allGardensArray})
@@ -59,7 +59,7 @@ router.post('/check-is-name-free', async (req, res) => {
   res.json({result: isNameFree})
 })
 
-// check is garden address is available
+// check if garden address is available
 router.post('/check-is-address-free', async (req, res) => {
   let reqAddress = req.body.addressData
   let isAddressFree = await checkIsAddressFree(reqAddress)
