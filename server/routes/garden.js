@@ -1,8 +1,10 @@
 const express = require('express')
-const {Garden, addGarden, findGardenByName, findGardenByAddress} = require('../models/db')
+const {Garden, addGarden, findGardenByName, findGardenByAddress, listGardens} = require('../models/db')
 let router = express.Router()
 
-router.post('/', async (req, res) => {
+
+// add a garden
+router.post('/add', async (req, res) => {
   let body = req.body
   
   console.log('req.body: ', body)
@@ -32,6 +34,23 @@ router.post('/', async (req, res) => {
   res.json({successMessage: 'Message received.'})
 })
 
+
+// get all gardens
+router.get('/get/', async (req, res) => {
+  let allGardensArray = await listGardens()
+
+  res.json({gardenList: allGardensArray})
+})
+
+// get one garden by name
+router.get('/get/:name', async (req, res) => {
+  let gardenName = req.params.name
+  let gardenResult = await findGardenByName(gardenName)
+  
+  res.json({garden: gardenResult})
+})
+
+// check if garden name is available
 router.post('/check-is-name-free', async (req, res) => {
   let reqName = req.body.nameData
   let isNameFree = await checkIsNameFree(reqName)
@@ -40,6 +59,7 @@ router.post('/check-is-name-free', async (req, res) => {
   res.json({result: isNameFree})
 })
 
+// check is garden address is available
 router.post('/check-is-address-free', async (req, res) => {
   let reqAddress = req.body.addressData
   let isAddressFree = await checkIsAddressFree(reqAddress)
@@ -50,8 +70,7 @@ router.post('/check-is-address-free', async (req, res) => {
 
 
 
-
-
+// functions
 async function checkIsNameFree(desiredName) {
   let searchResult = await findGardenByName(desiredName)
   return searchResult?.name !== desiredName

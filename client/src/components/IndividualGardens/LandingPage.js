@@ -7,7 +7,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      let fetchGardenUrl = `/api/get-all-gardens/individual-garden?name=${gardenName}`
+      let fetchGardenUrl = `/api/garden/get/${gardenName}`
       let response = await fetch(fetchGardenUrl)
       let resObject = await response.json()
       let gardenObject = resObject.garden

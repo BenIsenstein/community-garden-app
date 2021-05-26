@@ -5,7 +5,7 @@ import "./GardenList.css"
 function GardenList() {
   const [gardenList, setGardenList] = useState(null)
   const getAllGardens = async () => {
-    let fetchUrl = "/api/get-all-gardens"
+    let fetchUrl = "/api/garden/get"
     let response = await fetch(fetchUrl)
     let resObject = await response.json()
     let listResult = resObject.gardenList
