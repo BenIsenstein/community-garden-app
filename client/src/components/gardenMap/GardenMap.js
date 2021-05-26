@@ -7,9 +7,6 @@ import {
   useLoadScript
 } from "@react-google-maps/api"
 import mapStyles from "./mapStyles"
-import markerArray from "./mapData"
-
-require("dotenv").config()
 
 const libraries = ["places"]
 const mapContainerStyle = {

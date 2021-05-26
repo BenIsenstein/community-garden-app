@@ -48,7 +48,7 @@ const Signup = () => {
   useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
 
   return (
-    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
+    <form className="signupForm" onSubmit={handleSubmit(alertData)}>
     {/* <form className="signupForm" onSubmit={handleSubmit(alertData)}> */}
       <div className="container">
         <h1>Sign Up!</h1>
@@ -204,8 +204,8 @@ const Signup = () => {
             id="postalCode"
           />
         </div>
-        <div className="form-control memberOfGarden">
-          <label htmlFor="memberOfGarden">
+        <div className="form-control gardenMembership">
+          <label htmlFor="gardenMembership">
             <b>If you're currently a member of a garden, search for it here.</b>
           </label>
            <GardenSearchAutocomplete 

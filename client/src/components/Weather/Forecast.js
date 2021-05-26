@@ -26,29 +26,21 @@ export default function Forecast ({ forecast }) {
   const results = forecast.map((item) => {
 
     let weatherIcon = null;
-  //  let timeMoment 
 
     if (item.weather[0].main === 'Thunderstorm') {
       weatherIcon = <FontAwesomeIcon icon={faBolt} />;
-     // timeMoment = item.Thunderstorm.dt_txt
     }else if (item.weather[0].main === 'Drizzle') {
       weatherIcon = <FontAwesomeIcon icon={faCloudRain} />;
-     // timeMoment = item.Drizzle.dt_txt
     } else if (item.weather[0].main === 'Rain') {
       weatherIcon = <FontAwesomeIcon icon={faCloudShowersHeavy} />;
-     // timeMoment = item.clouds.dt_txt
     } else if (item.weather[0].main === 'Snow') {
       weatherIcon = <FontAwesomeIcon icon={faSnowflake} />;
-    //  timeMoment = item.Snow.dt_txt
     } else if (item.weather[0] === 'Clear') {
       weatherIcon = <FontAwesomeIcon icon={faSun} />;
-     // timeMoment = item.Clear.dt_txt
     } else if (item.weather[0] === 'Clouds') {
       weatherIcon = <FontAwesomeIcon icon={faCloud} />;
-    //  timeMoment = item.Clouds.dt_txt
     } else {
       weatherIcon = <FontAwesomeIcon icon={faSmog} />;
-    //  timeMoment = item.Smog.dt_txt
     }
 
     return (
@@ -58,7 +50,7 @@ export default function Forecast ({ forecast }) {
         <p>{moment(item.dt_txt).format("h:mm a")}</p>
         <WeatherIcon style={{fontSize:20,marginTop:4}}>{weatherIcon}</WeatherIcon>
         <p>{Math.round(item.main.temp)} &deg;C</p>
-        <p>Precip amount: </p>
+        <p>Precip amount: {(item.rain && item.rain['3h']) || "0"} </p>
         <p> Wind: {Math.round(item.wind.speed)} km/hr</p>
         </div>
       </div>
@@ -74,6 +66,6 @@ export default function Forecast ({ forecast }) {
 }
 
 
-  
+
 
 
