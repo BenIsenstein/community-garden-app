@@ -2,7 +2,7 @@ import './ListFormButtons.css'
 
 function AddGardenButton({setStateFunction}) {
     return ( 
-        <button className ='button' onClick={() => setStateFunction()}>
+        <button className ='Add-garden-button' onClick={() => setStateFunction()}>
             Add A Garden
         </button>  
     )

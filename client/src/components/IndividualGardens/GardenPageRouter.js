@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from "react-router-dom"
-import LandingPage from "./LandingPage"
-import GardenSearchAutocomplete from "./GardenSearchAutocomplete"
+import EditGardenPage from "../../pages/EditGardenPage/EditGardenPage"
+import LandingPage from "../../pages/LandingPage/LandingPage"
 
 export default function GardenPageRouter() {
   let { path } = useRouteMatch()
@@ -8,13 +8,15 @@ export default function GardenPageRouter() {
   return (
     <Router>
       <Switch>
-        <Route path={`${path}/search`}>
-          <GardenSearchAutocomplete />
+        <Route path={`${path}/:gardenName/edit`}>
+          <EditGardenPage />
         </Route>
         <Route path={`${path}/:gardenName`}>
           <LandingPage />
         </Route>
-        <Route path={path} render={() => <Redirect to={`${path}/search`} />}>
+        <Route 
+          path={path} render={() => <Redirect to={'/'} />}
+        > 
         </Route>
       </Switch>
     </Router>

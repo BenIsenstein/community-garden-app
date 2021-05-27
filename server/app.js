@@ -11,11 +11,7 @@ const initializePassport = require("./passport-config")
 require("dotenv").config()
 
 // IMPORT ROUTES
-const getAllGardensRouter = require("./routes/getAllGardens")
-const addAGardenRouter = require("./routes/addAGarden")
-// const signupRouter = require("./routes/signup")
-// const loginRouter = require("./routes/login")
-// const logoutRouter = require("./routes/logout")
+const gardenRouter = require("./routes/garden")
 const userRouter = require("./routes/user")
 
 const app = express()
@@ -49,11 +45,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 // USE ROUTES
-app.use("/api/get-all-gardens", getAllGardensRouter)
-app.use("/api/add-a-garden", addAGardenRouter)
-// app.use("/api/signup", signupRouter)
-// app.use("/api/login", loginRouter)
-// app.use("/api/logout", logoutRouter)
+app.use("/api/garden", gardenRouter)
 app.use("/api/user", userRouter)
 
 // serve the react application
