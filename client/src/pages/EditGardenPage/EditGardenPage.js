@@ -34,13 +34,13 @@ export default function EditGardenPage() {
       let response = await fetch(fetchGardenUrl)
       let resObject = await response.json()
       let gardenObject = resObject.garden
-      let coordinates = gardenObject?.coordinates
+      let coordinatesToSet = gardenObject?.coordinates
 
       if (gardenObject) {
         setGardenData(gardenObject) 
         setFormCoordinates({
-          lat: parseFloat(coordinates.lat),
-          lng: parseFloat(coordinates.lng)
+          lat: parseFloat(coordinatesToSet.lat),
+          lng: parseFloat(coordinatesToSet.lng)
         })
       }
       else {

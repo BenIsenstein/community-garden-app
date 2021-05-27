@@ -26,7 +26,6 @@ router.put('/edit/:id', async (req, res) => {
   try {
     let data = await Garden.findByIdAndUpdate(req.params.id, gardenToUpdate, {new: true});
     console.log("Updated Garden", data)
-    //res.redirect(`/garden-page/${data.name}`);
     res.send({message: 'success!'})
   }
   catch(err) {
