@@ -1,15 +1,16 @@
 import React, { useMemo, useState, useEffect } from "react"
-import { useTable, useSortBy, useFilters } from "react-table"
+import { useTable, useSortBy, useFilters, useBlockLayout } from "react-table"
+import { useSticky } from 'react-table-sticky'
 import { columnHeaders } from "./columns"
 import { useHistory } from "react-router-dom"
 import "./table.css"
 
-export default function FilteringTable() {
+export default function GardenTable() {
   const loadingMessage = [{name: 'Loading...', address: "This won't take long!"}]
   const [gardenList, setGardenList] = useState(loadingMessage)
   useEffect(() => {
     const getAllGardens = async () => {
-      let fetchUrl = "/api/get-all-gardens"
+      let fetchUrl = "/api/garden/get"
       let response = await fetch(fetchUrl)
       let resObject = await response.json()
       let listResult = resObject.gardenList
@@ -32,7 +33,9 @@ export default function FilteringTable() {
       data
     },
     useFilters,
-    useSortBy
+    useSortBy,
+    useBlockLayout,
+    useSticky
   )
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance
