@@ -1,53 +1,84 @@
-import './addGardenForm.css'
+import './EditGardenForm.css'
 import { useEffect } from 'react'
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom"
 
-function AddGardenForm({formCoordinates}) {
+
+function EditGardenForm({formCoordinates, gardenToEdit}) {
   const { register, handleSubmit, onChange, setValue, formState: { errors } } = useForm();
+  const history = useHistory()
   const lat = formCoordinates.lat
   const lng = formCoordinates.lng
-
+  
+  
   useEffect(() => {
     setValue('lat', lat)
     setValue('lng', lng)
 
-  }, [lat, lng])
+  }, [setValue, lat, lng])
+
+  useEffect(() => {
+    let {
+      name,
+      address,
+      postalCode,
+      plotSize,
+      numberOfPlots,
+      quadrant,
+      established,
+      vacancy,
+      website,
+      coverPhoto,
+      email,
+      description,
+      fee,
+      wheelchairAccessible 
+    } = gardenToEdit
+
+    setValue('name', name)
+    setValue('address', address)
+    setValue('postalCode', postalCode)
+    setValue('plotSize', plotSize)
+    setValue('numberOfPlots', numberOfPlots)
+    setValue('quadrant', quadrant)
+    setValue('established', established)
+    setValue('vacancy', vacancy ? 'yes' : 'no')
+    setValue('website', website)
+    setValue('coverPhoto', coverPhoto)
+    setValue('email', email)
+    setValue('description', description)
+    setValue('fee', fee)
+    setValue('wheelchairAccessible', wheelchairAccessible ? 'yes' : 'no')
+
+  }, [setValue, gardenToEdit])
+  
           
-  return (
-    <form className ='Add-garden-form' onSubmit={handleSubmit(submitAddGardenForm)}>   
-      <h1 className='Add-garden-form-header'>
-        Add A Garden
+  return ( 
+    <form onSubmit={handleSubmit(submitEditGardenForm)}>   
+      <h1 
+        className='Edit-garden-form-header'
+      >
+        {gardenToEdit.name === 'Garden not found.' 
+          ? 'GARDEN NOT FOUND'
+          : `Editing ${gardenToEdit.name}` 
+        }
       </h1>
-      <div style={{width:'100%'}}>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}>
-          <div className='Garden-form-element'>
-            <label htmlFor='Garden-name'>Garden Name</label>
-            <input 
-              className='Garden-name' 
-              id='Garden-name' 
-              name='name'
-              onChange={onChange}
-              {...register('name', 
-                {
-                  validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
-                  required: 'You must input a name for your garden.'
-                }
-              )}
-            />
-            {errors.name && <p>{errors.name.message}</p>}
-          </div>
-          <div className='Garden-form-element'>
-            <label htmlFor='Established'>Established</label>
-            <input 
-              className='Established' 
-              id='Established' 
-              name='established'
-              type='number'
-              min='1900'
-              {...register('established', {required: 'You must input a year established.'})}
-            />
-            {errors.established && <p>{errors.established.message}</p>}
-          </div>
+      <div className='Add-garden-form'>
+        <div className='Garden-form-element'>
+          <label htmlFor='Garden-name'>Garden Name</label>
+          <input 
+            className='Garden-name' 
+            id='Garden-name' 
+            name='name'
+            onChange={onChange}
+            {...register('name', 
+              {
+                validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
+                required: 'You must input a name for your garden.'
+              }
+            )}
+          />
+          {errors.name && <p>{errors.name.message}</p>}
         </div>
         <div className='Address-and-coordinates'>
           <div className='Garden-form-element'>
@@ -57,7 +88,7 @@ function AddGardenForm({formCoordinates}) {
               id='address' 
               name='address'
               onChange={onChange}
-              {...register('address', {validate: async (address) => await checkIsAddressFree(address) || 'That address is taken'})}
+              {...register('address', {validate: async (address) => await checkIsAddressFree(address) || 'That address is taken.'})}
             />
             {errors.address && <p>{errors.address.message}</p>}
           </div>
@@ -81,6 +112,18 @@ function AddGardenForm({formCoordinates}) {
             </div>
             {errors.lat && <p>{errors.lat.message}</p>}
           </div>
+        </div>
+        <div className='Garden-form-element'>
+          <label htmlFor='Established'>Established</label>
+          <input 
+            className='Established' 
+            id='Established' 
+            name='established'
+            type='number'
+            min='1900'
+            {...register('established', {required: 'You must input a year established.'})}
+          />
+          {errors.established && <p>{errors.established.message}</p>}
         </div>
         <div className='Garden-form-element'>
           <label htmlFor='quadrant'>Quadrant</label>
@@ -214,7 +257,7 @@ function AddGardenForm({formCoordinates}) {
               <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
             </div>   
           </div> 
-          {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
+          {errors.wheelchairAccessble && <p>{errors.wheelchairAccessble.message}</p>} 
         </div> 
         <div className='Garden-form-element'>
           <input type='submit' value='submit' />
@@ -224,7 +267,7 @@ function AddGardenForm({formCoordinates}) {
   )
 
   async function checkIsNameFree(name) {
-    let submission = {nameData: name}
+    let submission = {nameData: name, idData: gardenToEdit._id}
     let fetchUrl = "/api/garden/check-is-name-free" 
     let fetchOptions = {
       method: 'post',
@@ -245,7 +288,7 @@ function AddGardenForm({formCoordinates}) {
 
 
   async function checkIsAddressFree(address) {
-    let submission = {addressData: address}
+    let submission = {addressData: address, idData: gardenToEdit._id}
     let fetchUrl = "/api/garden/check-is-address-free" 
     let fetchOptions = {
       method: 'post',
@@ -264,12 +307,12 @@ function AddGardenForm({formCoordinates}) {
     }
   }
 
-  async function submitAddGardenForm(data) {
+  async function submitEditGardenForm(data) {
     data.coordinates={lat, lng}
 
-    let fetchUrl = "/api/garden/add" 
+    let fetchUrl = `/api/garden/edit/${gardenToEdit._id}`
     let fetchOptions = {
-      method: 'post',
+      method: 'put',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(data)
     }
@@ -277,8 +320,10 @@ function AddGardenForm({formCoordinates}) {
     try {
       let response = await fetch(fetchUrl, fetchOptions)
       let resObject = await response.json()
+      console.log('Edit garden res status: ', response.status)
 
-      alert(resObject.successMessage)
+      history.push(`/garden-page/${data.name}`)
+      alert(resObject.message + " You will be directed back to your garden's page.")
     }
     catch (err) {
       alert("There was an error adding your garden. We're solving it as fast as we can.")
@@ -287,4 +332,4 @@ function AddGardenForm({formCoordinates}) {
   }
 }
 
-export default AddGardenForm
+export default EditGardenForm

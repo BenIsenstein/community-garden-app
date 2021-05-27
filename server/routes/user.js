@@ -7,7 +7,7 @@ const router = express.Router()
 // ----------------------------------- SIGNUP -----------------------------------
 
 router.post("/signup", async (req, res) => {
-  console.log("req: ", req)
+  // console.log("req: ", req)
   console.log("req.body.password: ", req.body.password)
   console.log("req.body.confirmPassword: ", req.body.confirmPassword)
   let username = req.body.username
@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
 // ----------------------------------- LOGIN -----------------------------------
 
 
-// router.get("/", (req, res) => {
+// router.post("/login", (req, res) => {
 //   if (req.isAuthenticated()) {
 //     console.log("***req.isAuthenticated!")
 //   }
@@ -48,6 +48,10 @@ router.post("/signup", async (req, res) => {
 router.post(
   "/login",
   (req, res, next) => {
+    // if (req.user) {
+    //   console.log("hi")
+    // }
+    // else 
     if (!req.isAuthenticated()) {
       console.log("about to log in")
       next()
@@ -81,12 +85,33 @@ router.get("/logout", function (req, res) {
   req.isAuthenticated() ? req.logOut() : console.log("already logged out")
   let message = req.isAuthenticated()
     ? `user ${req.user?.username} is logged in still :(`
-    : "logged out!"
+    : `${req.user?.username} logged out!`
   console.log("message: ", message)
   res.redirect("/")
 })
 
 // ----------------------------------- GET USER -----------------------------------
 
-// --------------------------------------------------------------------------------
+// ------------------------------------ UPDATE USER---------------------------------
+
+// Update a user by name
+router.put('/edit/:id', async (req, res) => {
+  let userToUpdate = req.body
+  try {
+    let data = await User.findByIdAndUpdate(req.params.id, userToUpdate);
+    console.log("Updated User", data)
+    res.redirect('/home');
+  }
+  catch(err) {
+    console.log(err)
+    if (err.code === 11000) {
+      res.status(409).send('User ' + userToUpdate.name + ' already exists');      
+    }
+    else {
+      res.sendStatus(500)
+    }
+  }
+})
+
+
 module.exports = router

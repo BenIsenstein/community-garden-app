@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import React, { useRef, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import GardenSearchAutocomplete from "../IndividualGardens/GardenSearchAutocomplete"
+import GardenSearchAutocomplete from "./GardenSearchAutocomplete/GardenSearchAutocomplete"
 import "./Signup.css"
 
 const Signup = () => {
@@ -48,7 +48,7 @@ const Signup = () => {
   useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
 
   return (
-    <form className="signupForm" onSubmit={handleSubmit(alertData)}>
+    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
     {/* <form className="signupForm" onSubmit={handleSubmit(alertData)}> */}
       <div className="container">
         <h1>Sign Up!</h1>

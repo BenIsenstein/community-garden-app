@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
-import Home from "./pages/Home"
+import Home from "./pages/Home/Home"
 import Signup from "./components/User/Signup"
 import Login from "./components/User/Login"
 import LoggedOn from "./components/User/LoggedOn"
@@ -45,9 +45,6 @@ function App() {
             </li>
             <li>
               <Link to="/weather">Weather</Link>
-            </li>
-            <li>
-              <Link to="/garden-page/search">Search For A Garden</Link>
             </li>
             <li>
               <Link to="/forecast">Forecast</Link>
