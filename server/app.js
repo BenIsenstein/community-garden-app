@@ -17,8 +17,8 @@ const userRouter = require("./routes/user")
 const app = express()
 app.use(cors())
 
-//Initialize passport strategy
-// initializePassport(passport)
+// Initialize passport strategy
+initializePassport(passport)
 // initializePassport(
 //   passport,
 //   username => users.find(user => user.username === username)
@@ -29,6 +29,7 @@ app.use(session({ secret: process.env.PASSPORT_SECRET, resave: true, saveUniniti
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
+
 
 // // Global variables as middlewares
 // app.use(function (req, res, next) {
