@@ -43,6 +43,7 @@ export default function Forecast ({ forecast }) {
       weatherIcon = <FontAwesomeIcon icon={faSmog} />;
     }
 
+        
     return (
       <div key={forecast.indexOf(item)} className="forecast">
         <div className="flex-forecast">
@@ -50,8 +51,9 @@ export default function Forecast ({ forecast }) {
         <p>{moment(item.dt_txt).format("h:mm a")}</p>
         <WeatherIcon style={{fontSize:20,marginTop:4}}>{weatherIcon}</WeatherIcon>
         <p>{Math.round(item.main.temp)} &deg;C</p>
-        <p>Precip amount: {(item.rain && item.rain['3h']) || "0"} </p>
+        <p> Precip amount:  {(item.rain && item.rain['3h']) || "0"} </p>
         <p> Wind: {Math.round(item.wind.speed)} km/hr</p>
+        <p> Rain.max {Math.max(item.rain && item.rain['3h'])} </p>
         </div>
       </div>
     )
