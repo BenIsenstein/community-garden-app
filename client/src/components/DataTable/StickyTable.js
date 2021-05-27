@@ -10,7 +10,7 @@ export default function GardenTable() {
   const [gardenList, setGardenList] = useState(loadingMessage)
   useEffect(() => {
     const getAllGardens = async () => {
-      let fetchUrl = "/api/get-all-gardens"
+      let fetchUrl = "/api/garden/get"
       let response = await fetch(fetchUrl)
       let resObject = await response.json()
       let listResult = resObject.gardenList
@@ -43,6 +43,7 @@ export default function GardenTable() {
     const firstPageRows = rows.slice(0,20)
 
     return (
+      <div style={{display: 'flex', justifyContent: 'center', marginTop:'10px'}}>
         <Styles>
           <div {...getTableProps()} className="table sticky" style={{ width: 800, height: 500 }}>
             <div className="header">
@@ -51,6 +52,7 @@ export default function GardenTable() {
                   {headerGroup.headers.map((column) => (
                     <div {...column.getHeaderProps()} className="th">
                       {column.render('Header')}
+                      <div>{column.canFilter ? column.render("Filter") : null}</div>
                     </div>
                   ))}
                 </div>
@@ -60,7 +62,7 @@ export default function GardenTable() {
               {firstPageRows.map((row) => {
                 prepareRow(row);
                 return (
-                  <div {...row.getRowProps()} className="tr">
+                  <div onClick={() => changeRoute(row.values.name)} {...row.getRowProps()} className="tr">
                     {row.cells.map((cell) => (
                       <div {...cell.getCellProps()} className="td">
                         {cell.render('Cell')}
@@ -72,5 +74,6 @@ export default function GardenTable() {
             </div>
           </div>
         </Styles>
+      </div>
       );
     }

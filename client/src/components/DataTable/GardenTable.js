@@ -10,7 +10,7 @@ export default function GardenTable() {
   const [gardenList, setGardenList] = useState(loadingMessage)
   useEffect(() => {
     const getAllGardens = async () => {
-      let fetchUrl = "/api/get-all-gardens"
+      let fetchUrl = "/api/garden/get"
       let response = await fetch(fetchUrl)
       let resObject = await response.json()
       let listResult = resObject.gardenList
