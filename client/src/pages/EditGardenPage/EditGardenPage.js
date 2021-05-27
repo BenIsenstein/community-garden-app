@@ -4,7 +4,7 @@ import EditGardenMap from "./EditGardenMap"
 import EditGardenForm from "../../components/EditGardenForm/EditGardenForm"
 import "./EditGardenPage.css"
 
-function EditGardenPage() {
+export default function EditGardenPage() {
   const [formCoordinates, setFormCoordinates] = useState({
     lat: 0,
     lng: 0
@@ -47,7 +47,7 @@ function EditGardenPage() {
         setGardenData({
           name: 'Garden not found.',
           address: '',
-          coordinates: formCoordinates,
+          coordinates: {lat: 0,  lng: 0},
           postalCode: '',
           plotSize: 0,
           numberOfPlots: 0,
@@ -82,5 +82,3 @@ function EditGardenPage() {
     </div>
   )
 }
-
-export default EditGardenPage
