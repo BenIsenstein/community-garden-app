@@ -48,7 +48,7 @@ const Signup = () => {
   useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
 
   return (
-    <form className="signupForm" onSubmit={handleSubmit(alertData)}>
+    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
     {/* <form className="signupForm" onSubmit={handleSubmit(alertData)}> */}
       <div className="container">
         <h1>Sign Up!</h1>
