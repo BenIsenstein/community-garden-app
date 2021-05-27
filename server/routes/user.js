@@ -88,5 +88,26 @@ router.get("/logout", function (req, res) {
 
 // ----------------------------------- GET USER -----------------------------------
 
-// --------------------------------------------------------------------------------
+// ------------------------------------ UPDATE USER---------------------------------
+
+// Update a user by name
+router.put('/update/:name', async (req, res) => {
+  let userToUpdate = req.body
+  try {
+    let data = await User.findOneAndUpdate({name: req.params.name}, userToUpdate);
+    console.log("Updated User", data)
+    res.redirect('/home');
+  }
+  catch(err) {
+    console.log(err)
+    if (err.code === 11000) {
+      res.status(409).send('User ' + userToUpdate.name + ' already exists');      
+    }
+    else {
+      res.sendStatus(500)
+    }
+  }
+})
+
+
 module.exports = router

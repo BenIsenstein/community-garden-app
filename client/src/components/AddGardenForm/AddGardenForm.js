@@ -223,7 +223,7 @@ function AddGardenForm({formCoordinates}) {
 
   async function checkIsNameFree(name) {
     let submissionData = {nameData: name}
-    let fetchUrl = "/api/add-a-garden/check-is-name-free" 
+    let fetchUrl = "/api/garden/check-is-name-free" 
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -244,7 +244,7 @@ function AddGardenForm({formCoordinates}) {
 
   async function checkIsAddressFree(address) {
     let submissionData = {addressData: address}
-    let fetchUrl = "/api/add-a-garden/check-is-address-free" 
+    let fetchUrl = "/api/garden/check-is-address-free" 
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -265,7 +265,7 @@ function AddGardenForm({formCoordinates}) {
   async function submitAddGardenForm(data) {
     data.coordinatesData={lat, lng}
 
-    let fetchUrl = "/api/add-a-garden" 
+    let fetchUrl = "/api/garden/add" 
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
