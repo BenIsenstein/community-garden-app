@@ -44,10 +44,7 @@ function App() {
               <Link to="/login">Log In</Link>
             </li>
             <li>
-              <Link to="/weather">Weather</Link>
-            </li>
-            <li>
-              <Link to="/forecast">Forecast</Link>
+              <Link to="/forecast">Current Weather and Forecast</Link>
             </li>
             <li>
               <button onClick={async () => {await fetch('/api/user/logout')}}>
@@ -79,6 +76,7 @@ function App() {
             <GetWeather/>
           </Route>
           <Route path="/forecast">
+            <GetWeather/>
             <GetForecast />
           </Route>
           <Route path="/table">
