@@ -12,6 +12,7 @@ function initialize(passport) {
         try {
             console.log('password compare: ', await bcrypt.compare(password, user.password))
             if (await bcrypt.compare(password, user.password)) {
+                console.log(`Login worked! (user ${user.username} found and bcrypt compared passwords)`)
                 return done(null, user)
             }
             else {
