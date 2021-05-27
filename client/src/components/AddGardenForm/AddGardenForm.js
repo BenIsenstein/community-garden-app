@@ -1,4 +1,4 @@
-import './AddGardenForm.css'
+import './addGardenForm.css'
 import { useEffect } from 'react'
 import { useForm } from "react-hook-form";
 

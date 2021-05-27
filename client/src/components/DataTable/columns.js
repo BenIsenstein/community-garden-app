@@ -4,17 +4,20 @@ export const columnHeaders = [
     {
         Header: 'Garden Name',
         accessor: 'name',
-        Filter: TypeColumnFilter
+        Filter: TypeColumnFilter,
+        sticky: 'left'
     },
     {
         Header: 'Address',
         accessor: 'address',
-        Filter: TypeColumnFilter
+        Filter: TypeColumnFilter,
+        sticky: 'left'
     },
     {
         Header: 'Quadrant',
         accessor: 'quadrant',
-        Filter: SelectColumnFilter
+        Filter: SelectColumnFilter,
+        sticky: 'left'
     },
     /*{
         Header: 'Latitude',
@@ -37,12 +40,14 @@ export const columnHeaders = [
         Header: '# of Plots',
         accessor: 'numberOfPlots',
         Filter: NumberRangeColumnFilter,
-        disableFilters: true
+        disableFilters: true,
+        sticky: 'left'
     },
     {
         Header: 'Established',
         accessor: 'established',
         Filter: NumberRangeColumnFilter,
-        disableFilters: true
+        disableFilters: true,
+        sticky: 'left'
     },
 ]

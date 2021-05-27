@@ -10,6 +10,7 @@ import GetForecast from "./components/Weather/GetForecast"
 import GardenMap from "./components/gardenMap/GardenMap"
 import GardenTable from "./components/DataTable/GardenTable"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
+import StickyTable from "./components/DataTable/StickyTable"
 
 function App() {
 // const[user, setUser] = useState()
@@ -89,6 +90,9 @@ function App() {
           </Route>
           <Route path="/garden-page">
             <GardenPageRouter />
+          </Route>
+          <Route path='/sticky'>
+            <StickyTable />
           </Route>
           <Route path="/">
             <Home />
