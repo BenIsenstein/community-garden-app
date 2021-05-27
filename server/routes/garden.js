@@ -6,49 +6,36 @@ let router = express.Router()
 // add a garden
 router.post('/add', async (req, res) => {
   let body = req.body
+  body.members = {}
   
   console.log('req.body: ', body)
 
-  let newGarden = new Garden({
-    name: body.nameData,
-    address: body.addressData,
-    coordinates: body.coordinatesData,
-    postalCode: body.postalCodeData,
-    plotSize: body.plotSizeData,
-    numberOfPlots: body.numberOfPlotsData,
-    quadrant: body.quadrantData,
-    coverPhoto: body.coverPhotoData,
-    established: body.establishedData,
-    members: {},
-    vacancy: body.vacancyData, 
-    website: body.websiteData,
-    email: body.emailData,
-    description: body.descriptionData,
-    wheelchairAccessible: body.accessibilityData
-  })  
+  let newGarden = new Garden({body})  
 
   console.log('newGarden: ', newGarden)
 
-  //await addGarden(newGarden)
+  await addGarden(newGarden)
 
-  res.json({successMessage: 'Message received.'})
+  res.json({successMessage: 'Added!'})
 })
 
-/* Update a superhero by ID. */
-router.put('/update/:name', async (req, res) => {
+// update garden by id
+router.put('/edit/:id', async (req, res) => {
   let gardenToUpdate = req.body
+  console.log('req body: ', gardenToUpdate)
   try {
-    let data = await Garden.findOneAndUpdate({name: req.params.name}, gardenToUpdate);
+    let data = await Garden.findByIdAndUpdate(req.params.id, gardenToUpdate, {new: true});
     console.log("Updated Garden", data)
-    res.redirect(`/garden-page/${gardenToUpdate.name}`);
+    //res.redirect(`/garden-page/${data.name}`);
+    res.send({message: 'success!'})
   }
   catch(err) {
     console.log(err)
     if (err.code === 11000) {
-      res.status(409).send('Garden ' + gardenToUpdate.name + ' already exists');      
+      res.status(409).send({message: 'Garden ' + gardenToUpdate.name + ' already exists'});      
     }
     else {
-      res.sendStatus(500)
+      res.status(500).send({message: '500 error.'})
     }
   }
 })
@@ -72,7 +59,8 @@ router.get('/get/:name', async (req, res) => {
 // check if garden name is available
 router.post('/check-is-name-free', async (req, res) => {
   let reqName = req.body.nameData
-  let isNameFree = await checkIsNameFree(reqName)
+  let reqId = req.body.idData
+  let isNameFree = await checkIsNameFree(reqName, reqId)
   console.log('isNameFree: ', isNameFree)
 
   res.json({result: isNameFree})
@@ -81,7 +69,8 @@ router.post('/check-is-name-free', async (req, res) => {
 // check if garden address is available
 router.post('/check-is-address-free', async (req, res) => {
   let reqAddress = req.body.addressData
-  let isAddressFree = await checkIsAddressFree(reqAddress)
+  let reqId = req.body.idData
+  let isAddressFree = await checkIsAddressFree(reqAddress, reqId)
   console.log('isAddressFree: ', isAddressFree)
 
   res.json({result: isAddressFree})
@@ -90,16 +79,21 @@ router.post('/check-is-address-free', async (req, res) => {
 
 
 // functions
-async function checkIsNameFree(desiredName) {
+async function checkIsNameFree(desiredName, idData) {
   let searchResult = await findGardenByName(desiredName)
-  return searchResult?.name !== desiredName
+
+  return !idData 
+    ? searchResult?.name !== desiredName
+    : searchResult?.name !== desiredName || searchResult?._id === idData
 }
 
-async function checkIsAddressFree(desiredAddress) {
+async function checkIsAddressFree(desiredAddress, idData) {
   let searchResult = await findGardenByAddress(desiredAddress)
   return !desiredAddress 
     ? true 
-    : searchResult?.address !== desiredAddress 
+    : !idData 
+      ? searchResult?.address !== desiredAddress 
+      : searchResult?.address !== desiredAddress || searchResult?._id === idData
 }
 
 module.exports = router

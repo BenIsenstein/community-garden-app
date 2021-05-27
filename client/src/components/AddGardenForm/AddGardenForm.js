@@ -24,16 +24,16 @@ function AddGardenForm({formCoordinates}) {
           <input 
             className='Garden-name' 
             id='Garden-name' 
-            name='nameData'
+            name='name'
             onChange={onChange}
-            {...register('nameData', 
+            {...register('name', 
               {
                 validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
                 required: 'You must input a name for your garden.'
               }
             )}
           />
-          {errors.nameData && <p>{errors.nameData.message}</p>}
+          {errors.name && <p>{errors.name.message}</p>}
         </div>
         <div className='Address-and-coordinates'>
           <div className='Garden-form-element'>
@@ -41,11 +41,11 @@ function AddGardenForm({formCoordinates}) {
             <input 
               className='address' 
               id='address' 
-              name='addressData'
+              name='address'
               onChange={onChange}
-              {...register('addressData', {validate: async (address) => await checkIsAddressFree(address) || 'That address is taken'})}
+              {...register('address', {validate: async (address) => await checkIsAddressFree(address) || 'That address is taken'})}
             />
-            {errors.addressData && <p>{errors.addressData.message}</p>}
+            {errors.address && <p>{errors.address.message}</p>}
           </div>
           <div className='Garden-form-element'>
             <label htmlFor='address'>Coordinates</label>
@@ -73,34 +73,34 @@ function AddGardenForm({formCoordinates}) {
           <input 
             className='Established' 
             id='Established' 
-            name='establishedData'
+            name='established'
             type='number'
             min='1900'
-            {...register('establishedData', {required: 'You must input a year established.'})}
+            {...register('established', {required: 'You must input a year established.'})}
           />
-          {errors.establishedData && <p>{errors.establishedData.message}</p>}
+          {errors.established && <p>{errors.established.message}</p>}
         </div>
         <div className='Garden-form-element'>
           <label htmlFor='quadrant'>Quadrant</label>
           <div className='Quadrant-buttons' id='quadrant'>
             <div className='button'>
               <label htmlFor="NW">NW</label>
-              <input type="radio" id="NW" name="quadrantData" value="NW" {...register('quadrantData', {required: 'You must select a quadrant.'})}/>  
+              <input type="radio" id="NW" name="quadrant" value="NW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
             </div>
             <div className='button'>
               <label htmlFor="NE">NE</label>
-              <input type="radio" id="NE" name="quadrantData" value="NE" {...register('quadrantData', {required: 'You must select a quadrant.'})}/>  
+              <input type="radio" id="NE" name="quadrant" value="NE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
             </div>   
             <div className='button'>
               <label htmlFor="SW">SW</label>
-              <input type="radio" id="SW" name="quadrantData" value="SW" {...register('quadrantData', {required: 'You must select a quadrant.'})}/>  
+              <input type="radio" id="SW" name="quadrant" value="SW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
             </div>
             <div className='button'>
               <label htmlFor="SE">SE</label>
-              <input type="radio" id="SE" name="quadrantData" value="SE" {...register('quadrantData', {required: 'You must select a quadrant.'})}/>  
+              <input type="radio" id="SE" name="quadrant" value="SE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
             </div>   
           </div>
-          {errors.quadrantData && <p>{errors.quadrantData.message}</p>}
+          {errors.quadrant && <p>{errors.quadrant.message}</p>}
         </div>
         <div className='Garden-form-element'>   
           <label className='Cover-photo-label' htmlFor='Cover-photo'>Cover Photo</label>
@@ -108,8 +108,8 @@ function AddGardenForm({formCoordinates}) {
             type='file' 
             className='Cover-photo' 
             id='Cover-photo' 
-            name='coverPhotoData'
-            {...register('coverPhotoData')}
+            name='coverPhoto'
+            {...register('coverPhoto')}
           />
         </div> 
         <div className='Garden-form-element'>
@@ -117,43 +117,43 @@ function AddGardenForm({formCoordinates}) {
           <input 
             className='Plot-size' 
             id='Plot-size' 
-            name='plotSizeData'
+            name='plotSize'
             type='number'
             min='0'
-            {...register('plotSizeData', {required: 'You must input a plot size.'})}
+            {...register('plotSize', {required: 'You must input a plot size.'})}
           />
-          {errors.plotSizeData && <p>{errors.plotSizeData.message}</p>}
+          {errors.plotSize && <p>{errors.plotSize.message}</p>}
         </div>
         <div className='Garden-form-element'>
           <label htmlFor='Number-of-plots'>Number of Plots</label>
           <input 
             className='Number-of-plots' 
             id='Number-of-plots' 
-            name='numberOfPlotsData'
+            name='numberOfPlots'
             type='number'
             min='0'
-            {...register('numberOfPlotsData', {required: 'You must input a number of plots.'})}
+            {...register('numberOfPlots', {required: 'You must input a number of plots.'})}
           />
-          {errors.numberOfPlotsData && <p>{errors.numberOfPlotsData.message}</p>}
+          {errors.numberOfPlots && <p>{errors.numberOfPlots.message}</p>}
         </div>
         <div className='Garden-form-element'>
           <label htmlFor='Postal-code'>Postal Code</label>
           <input 
             className='Postal-code' 
             id='Postal-code' 
-            name='postalCodeData'
-            {...register('postalCodeData', {required: 'You must input a postal code.'})}
+            name='postalCode'
+            {...register('postalCode', {required: 'You must input a postal code.'})}
           />
-          {errors.postalCodeData && <p>{errors.postalCodeData.message}</p>}
+          {errors.postalCode && <p>{errors.postalCode.message}</p>}
         </div>      
         <div className='Garden-form-element'>
           <label htmlFor='Fee'>Annual Membership Fee</label>
           <input 
             className='Fee' 
             id='Fee' 
-            name='feeData'
+            name='fee'
             placeholder='Leave blank if no fee'
-            {...register('feeData')}
+            {...register('fee')}
           />
         </div>
         <div className='Garden-form-element'> 
@@ -161,33 +161,33 @@ function AddGardenForm({formCoordinates}) {
           <div className='Vacancy-buttons'id='vacancy'>
             <div className='button'>
               <label htmlFor="yes">Yes</label>
-              <input type="radio" id="yes" name="vacancyData" value="yes" {...register('vacancyData', {required:  'You must declare whether you have room for new gardeners.'})}/>
+              <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy', {required:  'You must declare whether you have room for new gardeners.'})}/>
             </div>
             <div className='button'>
               <label htmlFor="no">No</label>
-              <input type="radio" id="no" name="vacancyData" value="no" {...register('vacancyData', {required: 'You must declare whether you have room for new gardeners.'})}/>
+              <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy', {required: 'You must declare whether you have room for new gardeners.'})}/>
             </div>   
           </div> 
-          {errors.vacancyData && <p>{errors.vacancyData.message}</p>} 
+          {errors.vacancy && <p>{errors.vacancy.message}</p>} 
         </div> 
         <div className='Garden-form-element'>
           <label htmlFor='Description'>Description</label>
           <input 
             className='Description' 
             id='Description' 
-            name='descriptionData'
-            {...register('descriptionData', {required: "You must write a description."})}
+            name='description'
+            {...register('description', {required: "You must write a description."})}
           />
-          {errors.descriptionData && <p>{errors.descriptionData.message}</p>}
+          {errors.description && <p>{errors.description.message}</p>}
         </div>  
         <div className='Garden-form-element'>
           <label htmlFor='Website'>Website</label>
           <input 
             className='Website' 
             id='Website' 
-            name='websiteData'
+            name='website'
             placeholder='Leave blank if no website'
-            {...register('websiteData')}
+            {...register('website')}
           />
         </div> 
         <div className='Garden-form-element'>
@@ -195,24 +195,24 @@ function AddGardenForm({formCoordinates}) {
           <input 
             className='Email' 
             id='Email' 
-            name='emailData'
-            {...register('emailData', {required: "You must include an email for security reasons. We won't spam you, we promise :)"})}
+            name='email'
+            {...register('email', {required: "You must include an email for security reasons. We won't spam you, we promise :)"})}
           />
-          {errors.emailData && <p>{errors.emailData.message}</p>}
+          {errors.email && <p>{errors.email.message}</p>}
         </div> 
         <div className='Garden-form-element'> 
-          <label htmlFor='Accessibility'>Is your garden Wheelchair-Accessible?</label>
-          <div className='Accessibility-buttons'id='Accessibility'>
+          <label htmlFor='wheelchairAccessible'>Is your garden Wheelchair-Accessible?</label>
+          <div className='Accessibility-buttons'id='wheelchairAccessible'>
             <div className='button'>
               <label htmlFor="yes">Yes</label>
-              <input type="radio" id="yes" name="accessibilityData" value="yes" {...register('accessibilityData', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
+              <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
             </div>
             <div className='button'>
               <label htmlFor="no">No</label>
-              <input type="radio" id="no" name="accessibilityData" value="no" {...register('accessibilityData', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
+              <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
             </div>   
           </div> 
-          {errors.accessibilityData && <p>{errors.accessibilityData.message}</p>} 
+          {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
         </div> 
         <div className='Garden-form-element'>
           <input type='submit' value='submit' />
@@ -222,12 +222,12 @@ function AddGardenForm({formCoordinates}) {
   )
 
   async function checkIsNameFree(name) {
-    let submissionData = {nameData: name}
+    let submission = {nameData: name}
     let fetchUrl = "/api/garden/check-is-name-free" 
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify(submissionData)
+      body: JSON.stringify(submission)
     }
     
     try {
@@ -243,12 +243,12 @@ function AddGardenForm({formCoordinates}) {
 
 
   async function checkIsAddressFree(address) {
-    let submissionData = {addressData: address}
+    let submission = {addressData: address}
     let fetchUrl = "/api/garden/check-is-address-free" 
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify(submissionData)
+      body: JSON.stringify(submission)
     }
 
     try {
@@ -263,7 +263,7 @@ function AddGardenForm({formCoordinates}) {
   }
 
   async function submitAddGardenForm(data) {
-    data.coordinatesData={lat, lng}
+    data.coordinates={lat, lng}
 
     let fetchUrl = "/api/garden/add" 
     let fetchOptions = {

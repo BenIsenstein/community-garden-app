@@ -91,10 +91,10 @@ router.get("/logout", function (req, res) {
 // ------------------------------------ UPDATE USER---------------------------------
 
 // Update a user by name
-router.put('/update/:name', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
   let userToUpdate = req.body
   try {
-    let data = await User.findOneAndUpdate({name: req.params.name}, userToUpdate);
+    let data = await User.findByIdAndUpdate(req.params.id, userToUpdate);
     console.log("Updated User", data)
     res.redirect('/home');
   }
