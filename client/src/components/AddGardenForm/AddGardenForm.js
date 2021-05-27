@@ -14,7 +14,7 @@ function AddGardenForm({formCoordinates}) {
   }, [lat, lng])
           
   return (
-    <form onSubmit={handleSubmit(submitAddGardenForm)}>   
+    <form className ='Add-garden-form' onSubmit={handleSubmit(submitAddGardenForm)}>   
       <h1 className='Add-garden-form-header'>
         Add A Garden
       </h1>

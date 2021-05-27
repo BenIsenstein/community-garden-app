@@ -3,7 +3,7 @@ import './ListFormButtons.css'
 
 function ListGardensButton({setStateFunction}) {
     return (  
-        <button className='button' onClick={() => setStateFunction()}>
+        <button className='List-garden-button' onClick={() => setStateFunction()}>
             Back To Garden List
         </button> 
     )

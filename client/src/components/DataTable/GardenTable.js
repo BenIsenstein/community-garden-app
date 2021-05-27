@@ -43,9 +43,9 @@ export default function GardenTable() {
     const firstPageRows = rows.slice(0,100)
 
     return (
-      <div style={{display: 'flex', justifyContent: 'center', marginTop:'10px'}}>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <Styles>
-          <div {...getTableProps()} className="table sticky" style={{ width: 570, height: '625px' }}>
+          <div {...getTableProps()} className="table sticky" style={{ width: 570, height: '600px' }}>
             <div className="header">
               {headerGroups.map((headerGroup) => (
                 <div {...headerGroup.getHeaderGroupProps()} className="tr">

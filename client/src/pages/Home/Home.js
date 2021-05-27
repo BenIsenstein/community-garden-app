@@ -19,7 +19,7 @@ function Homepage() {
   return (
     <div>
       <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
-        <div>
+        <div style={{marginTop:'10px'}}>
           {isFormDisplayed 
             ? <AddGardenForm className="Garden-list-and-form" formCoordinates={formCoordinates} /> 
             : <GardenTable />

@@ -25,7 +25,7 @@ export const Styles = styled.div`
         padding-bottom: 12px;
         text-align: center;
         background-color: #05386B;
-        color: white;
+        color: #edf5e1;
     },
     .td {
         border: 1px solid #ddd;

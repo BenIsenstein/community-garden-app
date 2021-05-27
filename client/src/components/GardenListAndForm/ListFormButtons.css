@@ -1,16 +1,21 @@
 .Garden-list-and-form-buttons {
   margin: 5px;
+  display: flex;
+  justify-content: center;
 }
 
-.Garden-list-and-form-buttons .button {
+.Garden-list-and-form-buttons button {
   width: max-content;
   font-family: monospace;
   font-size: calc(10px + 0.5vmin);
   font-weight: 900;
   color: #05386B;
-  background-color: #8EE4AF;
-  border: solid #379683;
+  border: solid #05386B;
   border-radius: 1px;
   margin: 10px;
   padding: 4px;
+}
+
+.Add-garden-button {
+  background-color: #EDF5E1;
 }
