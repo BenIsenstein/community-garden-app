@@ -34,13 +34,33 @@ function EditGardenPage() {
       let response = await fetch(fetchGardenUrl)
       let resObject = await response.json()
       let gardenObject = resObject.garden
-      let coordinates = gardenObject.coordinates
-       
-      setGardenData(gardenObject) 
-      setFormCoordinates({
-        lat: parseFloat(coordinates.lat),
-        lng: parseFloat(coordinates.lng)
-      })
+      let coordinates = gardenObject?.coordinates
+
+      if (gardenObject) {
+        setGardenData(gardenObject) 
+        setFormCoordinates({
+          lat: parseFloat(coordinates.lat),
+          lng: parseFloat(coordinates.lng)
+        })
+      }
+      else {
+        setGardenData({
+          name: 'Garden not found.',
+          address: '',
+          coordinates: formCoordinates,
+          postalCode: '',
+          plotSize: 0,
+          numberOfPlots: 0,
+          quadrant: null,
+          established: null,
+          vacancy: null,
+          website: '',
+          email: '',
+          description: '',
+          fee: '',
+          wheelchairAccessible: null
+        })
+      } 
     }
     
     try {fetchData()}

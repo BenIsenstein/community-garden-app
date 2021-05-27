@@ -54,7 +54,7 @@ function EditGardenForm({formCoordinates, gardenToEdit}) {
   return ( 
       <form onSubmit={handleSubmit(submitEditGardenForm)}>   
         <h1 className='Edit-garden-form-header'>
-          Editing {gardenToEdit.name}
+          {gardenToEdit.name !== 'Garden not found.' ? `Editing ${gardenToEdit.name}` : 'GARDEN NOT FOUND'}
         </h1>
         <div className='Add-garden-form'>
           <div className='Garden-form-element'>

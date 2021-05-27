@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
+import EditGardenButton from "./EditGardenButton";
 
 export default function LandingPage() {
   const { gardenName } = useParams()
@@ -19,10 +20,11 @@ export default function LandingPage() {
 
   return (
     <div>
-      <h1>
+      <h1 style={{display: 'flex'}}>
         {!gardenData && 'Loading...'}
         {(gardenData === 'no garden') && 'This garden could not be found.'}
         {(gardenData !== 'no garden') && gardenData?.name}
+        {(typeof gardenData === 'object') && <EditGardenButton />}
       </h1>
       <div>
         {gardenData?.address}
