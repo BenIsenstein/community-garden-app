@@ -20,6 +20,7 @@ export const Styles = styled.div`
     }
 
     .th {
+        font-size: 50%;
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: center;
@@ -28,7 +29,6 @@ export const Styles = styled.div`
     },
     .td {
         border: 1px solid #ddd;
-        padding: 8px;
         overflow: hidden;
 
       :last-child {

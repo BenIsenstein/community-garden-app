@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import GardenList from "../../components/GardenList/GardenList"
 import ListGardensButton from "../../components/GardenListAndForm/ListGardensButton"
 import AddGardenButton from "../../components/GardenListAndForm/AddGardenButton"
 import AddGardenForm from "../../components/AddGardenForm/AddGardenForm"
@@ -9,7 +8,7 @@ import GetWeather from "../../components/Weather/GetWeather"
 import GardenTable from "../../components/DataTable/GardenTable"
 
 
-function GardenListAndForm() {
+function Homepage() {
   const [isFormDisplayed, setIsFormDisplayed] = useState(false)
   const [formCoordinates, setFormCoordinates] = useState({
     lat: 0,
@@ -20,14 +19,16 @@ function GardenListAndForm() {
   return (
     <div>
       <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
-        <div className="Garden-list-and-form">
+        <div>
           {isFormDisplayed 
-            ? <AddGardenForm formCoordinates={formCoordinates} /> 
-            : <GardenList />
+            ? <AddGardenForm className="Garden-list-and-form" formCoordinates={formCoordinates} /> 
+            : <GardenTable />
           }
           <div className="Garden-list-and-form-buttons">
-            <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} /> 
-            <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
+            {isFormDisplayed 
+              ? <ListGardensButton setStateFunction={() => setIsFormDisplayed(false)} />
+              : <AddGardenButton setStateFunction={() => setIsFormDisplayed(true)} /> 
+            }
           </div>
         </div>
         <div className='Garden-map'>
@@ -45,4 +46,4 @@ function GardenListAndForm() {
   )
 }
 
-export default GardenListAndForm
+export default Homepage

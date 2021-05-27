@@ -17,7 +17,8 @@ export const columnHeaders = [
         Header: 'Quadrant',
         accessor: 'quadrant',
         Filter: SelectColumnFilter,
-        sticky: 'left'
+        sticky: 'left',
+        width: 80
     },
     /*{
         Header: 'Latitude',
@@ -41,13 +42,15 @@ export const columnHeaders = [
         accessor: 'numberOfPlots',
         Filter: NumberRangeColumnFilter,
         disableFilters: true,
-        sticky: 'left'
+        sticky: 'left',
+        width: 80
     },
     {
         Header: 'Established',
         accessor: 'established',
         Filter: NumberRangeColumnFilter,
         disableFilters: true,
-        sticky: 'left'
+        sticky: 'left',
+        width: 80
     },
 ]
