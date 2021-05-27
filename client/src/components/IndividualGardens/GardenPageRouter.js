@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from "react-router-dom"
 import EditGardenPage from "../../pages/EditGardenPage/EditGardenPage"
-import LandingPage from "./LandingPage"
+import LandingPage from "../../pages/LandingPage/LandingPage"
 
 export default function GardenPageRouter() {
   let { path } = useRouteMatch()
@@ -14,7 +14,9 @@ export default function GardenPageRouter() {
         <Route path={`${path}/:gardenName`}>
           <LandingPage />
         </Route>
-        <Route path={path} render={() => <Redirect to={'/'} />}>
+        <Route 
+          path={path} render={() => <Redirect to={'/'} />}
+        > 
         </Route>
       </Switch>
     </Router>

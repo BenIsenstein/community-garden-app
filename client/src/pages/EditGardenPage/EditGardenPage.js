@@ -4,7 +4,7 @@ import EditGardenMap from "./EditGardenMap"
 import EditGardenForm from "../../components/EditGardenForm/EditGardenForm"
 import "./EditGardenPage.css"
 
-function EditGardenPage() {
+export default function EditGardenPage() {
   const [formCoordinates, setFormCoordinates] = useState({
     lat: 0,
     lng: 0
@@ -34,13 +34,33 @@ function EditGardenPage() {
       let response = await fetch(fetchGardenUrl)
       let resObject = await response.json()
       let gardenObject = resObject.garden
-      let coordinates = gardenObject.coordinates
-       
-      setGardenData(gardenObject) 
-      setFormCoordinates({
-        lat: parseFloat(coordinates.lat),
-        lng: parseFloat(coordinates.lng)
-      })
+      let coordinatesToSet = gardenObject?.coordinates
+
+      if (gardenObject) {
+        setGardenData(gardenObject) 
+        setFormCoordinates({
+          lat: parseFloat(coordinatesToSet.lat),
+          lng: parseFloat(coordinatesToSet.lng)
+        })
+      }
+      else {
+        setGardenData({
+          name: 'Garden not found.',
+          address: '',
+          coordinates: {lat: 0,  lng: 0},
+          postalCode: '',
+          plotSize: 0,
+          numberOfPlots: 0,
+          quadrant: null,
+          established: null,
+          vacancy: null,
+          website: '',
+          email: '',
+          description: '',
+          fee: '',
+          wheelchairAccessible: null
+        })
+      } 
     }
     
     try {fetchData()}
@@ -62,5 +82,3 @@ function EditGardenPage() {
     </div>
   )
 }
-
-export default EditGardenPage

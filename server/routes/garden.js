@@ -26,7 +26,6 @@ router.put('/edit/:id', async (req, res) => {
   try {
     let data = await Garden.findByIdAndUpdate(req.params.id, gardenToUpdate, {new: true});
     console.log("Updated Garden", data)
-    //res.redirect(`/garden-page/${data.name}`);
     res.send({message: 'success!'})
   }
   catch(err) {
@@ -79,21 +78,20 @@ router.post('/check-is-address-free', async (req, res) => {
 
 
 // functions
-async function checkIsNameFree(desiredName, idData) {
+async function checkIsNameFree(desiredName, reqId) {
   let searchResult = await findGardenByName(desiredName)
-
-  return !idData 
+  return !reqId 
     ? searchResult?.name !== desiredName
-    : searchResult?.name !== desiredName || searchResult?._id === idData
+    : (searchResult?.name !== desiredName) || (searchResult?._id.toString() === reqId)
 }
 
-async function checkIsAddressFree(desiredAddress, idData) {
+async function checkIsAddressFree(desiredAddress, reqId) {
   let searchResult = await findGardenByAddress(desiredAddress)
   return !desiredAddress 
     ? true 
-    : !idData 
+    : !reqId 
       ? searchResult?.address !== desiredAddress 
-      : searchResult?.address !== desiredAddress || searchResult?._id === idData
+      : (searchResult?.address !== desiredAddress) || (searchResult?._id.toString() === reqId)
 }
 
 module.exports = router
