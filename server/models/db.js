@@ -1,6 +1,7 @@
 //db setup
 
 const mongoose = require("mongoose")
+const uniqueValidator = require('mongoose-unique-validator');
 const dotenv = require("dotenv").config()
 const dbServer = "mongodb://localhost:27017"
 const databaseName = "project-2-C6-local"
@@ -77,20 +78,36 @@ const listGardens = async () => {
 
 // User model and functions
 const userSchema = new mongoose.Schema({
-  username: String,
+  username: { type: String, unique: true }, // *** How to check if username is unique before adding to database?
   password: String,
   howLongGardening: String,
   currentPlants: Array,
   postalCode: String,
   gardenMembership: String,
   dateSignedUp: Date
+}, 
+{
+  usePushEach: true
 })
 
 userSchema.methods.validPassword = function (pwd) {
   return this.password === pwd
 }
 
+// userSchema.plugin(uniqueValidator, {message: 'Sorry, this username is already taken.'})
+
 const User = mongoose.model("User", userSchema)
+
+// userSchema.path('username').validate(function(value, done) {
+//   User('User').countDocuments({ username: value }, function(err, count) {
+//       if (err) {
+//           return (err);
+//       } 
+//       // If `count` is greater than zero, "invalidate"
+//       (!count);
+//   });
+// }, 'Username already exists (userSchema.path');
+
 
 const findUserByName = async (name) => {
   let result = await User.findOne({ username: name })
@@ -103,8 +120,19 @@ const findUserById = async (id) => {
 }
 
 const addUser = async (newUser) => {
-  let result = await newUser.save()
-  return result.username + " succesfully added to database!"
+//   console.log("findUserByName(newUser)", findUserByName(newUser))
+// findUserByName(newUser)
+// if (newUser) {
+//   console.log("New user = ", newUser)
+// }
+  // if (!findUserByName()) {
+
+    let result = await newUser.save()
+    return result.username + " succesfully added to database!"
+  // } else {
+  //   return
+  // }
+  
 }
 
 // General db functions
