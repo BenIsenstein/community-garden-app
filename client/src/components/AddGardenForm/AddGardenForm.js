@@ -212,9 +212,6 @@ function AddGardenForm({formCoordinates}) {
         <div className='Garden-form-element'> {/* Description */}
             <label htmlFor='Description'>Description</label>
             <textarea 
-              rows='5' 
-              cols='50'
-              style={{height: '5em', width: '85%'}}
               className='Description' 
               id='Description' 
               name='description'
