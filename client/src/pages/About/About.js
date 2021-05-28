@@ -31,7 +31,7 @@ export default function About() {
             <div class="container">
                 <h2>Brady</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>mike@example.com</p>
+                <p>brady@example.com</p>
                 <p><button class="button">Contact</button></p>
             </div>
         </div>
@@ -52,7 +52,7 @@ export default function About() {
 
     <div class="column">
         <div class="card">
-            <img src="/images/team3.jpg" alt="Donna" />
+            <img src="images/squashes.jpg" alt="Donna" />
             <div class="container">
                 <h2>Donna</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>

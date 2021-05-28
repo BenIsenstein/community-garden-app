@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "./EditGardenButton";
 import "../../components/Weather/styles.css"
-import squashes from "../../images/squashes.jpg"
+import squashes from "../../pages/About/images/squashes.jpg"
 
 export default function LandingPage() {
   const { gardenName } = useParams()
@@ -39,7 +39,7 @@ export default function LandingPage() {
             <p>Reader Rock Garden Historic Park is one of Calgary's most unique cultural landscapes featuring the restored Reader house (that contains Reader's Garden Café), rock pathways, bridges, benches and beautiful flowers. Reader Rock Garden is the perfect location for group functions and events, including weddings, photography sessions and family gatherings. Book Reader Rock Garden for your function.</p>
           </div>
           <div class="about-our-garden-text">
-            <img src={squashes} alt="" className="about-our-garden-photo"/>
+            <img src={squashes.jpg} alt="" className="about-our-garden-photo"/>
           </div>
         </div>
       </div>
