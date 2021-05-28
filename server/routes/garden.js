@@ -10,7 +10,7 @@ router.post('/add', async (req, res) => {
   
   console.log('req.body: ', body)
 
-  let newGarden = new Garden({body})  
+  let newGarden = new Garden(body)  
 
   console.log('newGarden: ', newGarden)
 
