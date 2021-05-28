@@ -15,7 +15,7 @@ export default function About() {
     <div class="row">
         <div class="column">
             <div class="card">
-            <img src="/w3images/team1.jpg" alt="Ben" />
+            <img src="/images/team1.jpg" alt="Ben" />
             <div class="container">
                 <h2>Ben</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -27,7 +27,7 @@ export default function About() {
 
     <div class="column">
         <div class="card">
-            <img src="/w3images/team2.jpg" alt="Brady" />
+            <img src="/images/team2.jpg" alt="Brady" />
             <div class="container">
                 <h2>Brady</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -40,7 +40,7 @@ export default function About() {
 
     <div class="column">
         <div class="card">
-            <img src="/w3images/team3.jpg" alt="Christy" />
+            <img src="/images/team3.jpg" alt="Christy" />
             <div class="container">
                 <h2>Christy</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -52,7 +52,7 @@ export default function About() {
 
     <div class="column">
         <div class="card">
-            <img src="/w3images/team3.jpg" alt="Donna" />
+            <img src="/images/team3.jpg" alt="Donna" />
             <div class="container">
                 <h2>Donna</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>

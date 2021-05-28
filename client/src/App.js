@@ -31,38 +31,6 @@ function App() {
   //   return <div>{user.name} is loggged in</div>;
   // } else
   return (
-<<<<<<< HEAD
-    <Router>
-      <div style={{backgroundColor: '#8EE4AF'}}>
-        <nav style={{backgroundColor: '#05386B'}}>
-          <h1 style={{color: '#5CDB95'}}>Grow Calgary</h1>
-          <ul style={{display: 'flex', justifyContent: 'space-around', listStyle: 'none' }}>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-            <li>
-              <Link to="/login">Log In</Link>
-            </li>
-            <li>
-              <Link to="/forecast">Current Weather and Forecast</Link>
-            </li>
-            <li>
-              <Link to="/garden-page">Individual Garden Pages</Link>
-            </li>
-            <li>
-              <button onClick={async () => {await fetch('/api/user/logout')}}>
-                Log out
-              </button>
-            </li>
-          </ul>
-        </nav>
-=======
     <AuthenticationProvider>
       <Router>
         <div style={{ backgroundColor: "#8EE4AF" }}>
@@ -101,7 +69,6 @@ function App() {
               </li>
             </ul>
           </nav>
->>>>>>> 0ad77fb6fcf0cf5bd66bf72a20950cddf1712233
 
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
