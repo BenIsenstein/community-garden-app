@@ -59,7 +59,7 @@ const AuthenticationProvider = ({ children }) => {
         let response = await fetch("/api/user/logout")
         let resObject = await response.json()
   
-        if (resObject.isLoggedOut) {
+        if (resObject.isLoggedOutNow) {
           setUsername(undefined) 
           alert('Logged out')
         }

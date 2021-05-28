@@ -69,7 +69,7 @@ router.get("/logout",
   function (req, res) {
     let username = req.user?.username || 'nobody'
     let logoutResult = undefined
-    let isLoggedOut = undefined
+    let isLoggedOutNow = undefined
 
     console.log("is someone currently logged in? ", req.isAuthenticated())
 
@@ -92,8 +92,8 @@ router.get("/logout",
     console.log("logout result: ", logoutResult)
 
     // send response with boolean of logout success
-    isLoggedOut = !req.isAuthenticated()
-    res.json({isLoggedOut})
+    isLoggedOutNow = !req.isAuthenticated()
+    res.json({isLoggedOutNow})
   }
 )
 
