@@ -26,7 +26,8 @@ const LogInOrOut = () => {
     }
   }
 
-  return <div style={{color: 'white'}}>
+  return (
+    <div style={{color: 'white'}}>
       {isLoggedIn 
         ? (
           <div>
@@ -43,6 +44,7 @@ const LogInOrOut = () => {
         )
       }
     </div>   
+  )
 }
 
 export default LogInOrOut
