@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import EditGardenButton from "./EditGardenButton";
 import "../../components/Weather/styles.css"
 import squashes from "../../pages/images/squashes.jpg"
+import MessageBoard from "./MessageBoard"
 
 export default function LandingPage() {
   const { gardenName } = useParams()
@@ -47,7 +48,7 @@ export default function LandingPage() {
       <div class="messages-and-to-do">
         <div class="round-background message-board">
           <h2 class="section-heading ">Message Board</h2>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt similique sapiente aspernatur. Magni quaerat voluptas nisi commodi dolor saepe reiciendis.</p>
+          <MessageBoard />
         </div>
         <div class="round-background to-do-list">
           <h2 class="section-heading ">To-Do List</h2>
@@ -55,11 +56,11 @@ export default function LandingPage() {
         </div>
       </div>
 
-    <footer>
-      <div>
-          {(typeof gardenData === 'object') && <EditGardenButton />}
-      </div>
-    </footer>
+      <footer>
+        <div>
+            {(typeof gardenData === 'object') && <EditGardenButton />}
+        </div>
+      </footer>
 
     </div>
 
