@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react"
-import { useHistory } from 'react-router-dom'
+import React from "react"
 import {
   GoogleMap,
   Marker,
@@ -30,11 +29,6 @@ export default function GardenMap({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   })
-
-
-  const history = useHistory()
-  const changeRoute = (val) => history.push(`/garden-page/${val}`)
-
    
 
   const onMapClick = React.useCallback(

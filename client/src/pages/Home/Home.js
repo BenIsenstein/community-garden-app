@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import ListGardensButton from "../../components/GardenListAndForm/ListGardensButton"
 import AddGardenButton from "../../components/GardenListAndForm/AddGardenButton"
 import AddGardenForm from "../../components/AddGardenForm/AddGardenForm"

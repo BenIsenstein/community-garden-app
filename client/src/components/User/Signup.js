@@ -37,9 +37,7 @@ const Signup = () => {
     )
   }
 
-  const alertData = (data) => alert(JSON.stringify(data))
-
-  useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
+  useEffect(() => setValue('gardenMembership', gardenMembership), [setValue, gardenMembership])
 
   return (
     <form className="signupForm" onSubmit={handleSubmit(async (data) => await onSubmit(data))}>
