@@ -56,12 +56,13 @@ router.post(
       console.log("about to log in")
       next()
     } else {
+      // res.cookie("user", 17)
       // console.log('Already logged in (line 18)')
       res.redirect("/home")
     }
   },
   passport.authenticate("local", {
-    successRedirect: "/loggedon",
+    successRedirect: "/home",
     failureRedirect: "/login",
     failureFlash: true
   })
