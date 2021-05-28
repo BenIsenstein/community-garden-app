@@ -92,12 +92,14 @@ router.get("/logout", function (req, res) {
 
   req.isAuthenticated() ? req.logOut() : console.log("already logged out")
 
+  let isLoggedOut = !req.isAuthenticated()
+
   let message = req.isAuthenticated()
     ? `user ${req.user?.username} is logged in still :(`
     : `${req.user?.username} logged out!`
 
   console.log("message: ", message)
-  res.json({isLoggedOut: true})
+  res.json({isLoggedOut})
 })
 
 // ----------------------------------- GET USER -----------------------------------
