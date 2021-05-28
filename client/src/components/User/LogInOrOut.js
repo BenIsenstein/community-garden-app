@@ -14,7 +14,7 @@ const LogInOrOut = () => {
 
       if (resObject.isLoggedOut) {
         authContext.logOut() 
-        alert('Logged out.')
+        alert('Logged out')
       }
       else {
         alert('You are still logged in for some reason. Please try logging out again.')

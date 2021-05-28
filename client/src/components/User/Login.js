@@ -38,7 +38,7 @@ const Login = () => {
             <label htmlFor="dontHaveAnAccount" id="dontHaveAnAccount">
               Don't have an account yet?
               <span className="signupSpan">
-                <Link to="/signup">Sign up</Link>
+                <Link to="/signup"> Sign up</Link>
               </span>
             </label>
           </div>
