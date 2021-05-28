@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
 import EditGardenMap from "./EditGardenMap"
 import EditGardenForm from "../../components/EditGardenForm/EditGardenForm"
-import "./EditGardenPage.css"
+// import "./EditGardenPage.css"
 
 export default function EditGardenPage() {
   const [formCoordinates, setFormCoordinates] = useState({
