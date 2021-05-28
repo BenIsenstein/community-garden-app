@@ -25,10 +25,17 @@ export default function LandingPage() {
         {(gardenData === 'no garden') && 'This garden could not be found.'}
         {(gardenData !== 'no garden') && gardenData?.name}
         {(typeof gardenData === 'object') && <EditGardenButton />}
+
       </h1>
       <div>
         {gardenData?.address}
       </div>
+
+      <div class ="header2"><h2>History</h2>
+     
+      </div>
+
+
     </div>
 
 

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
 import Home from "./pages/Home/Home"
+import About from "./pages/About/About"
 import Signup from "./components/User/Signup"
 import Login from "./components/User/Login"
 import LoggedOn from "./components/User/LoggedOn"
@@ -10,6 +11,7 @@ import GetForecast from "./components/Weather/GetForecast"
 import GardenMap from "./components/gardenMap/GardenMap"
 import GardenTable from "./components/DataTable/GardenTable"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
+
 
 function App() {
 // const[user, setUser] = useState()
@@ -45,6 +47,9 @@ function App() {
             </li>
             <li>
               <Link to="/forecast">Current Weather and Forecast</Link>
+            </li>
+            <li>
+              <Link to="/garden-page">Individual Garden Pages</Link>
             </li>
             <li>
               <button onClick={async () => {await fetch('/api/user/logout')}}>
@@ -94,9 +99,9 @@ function App() {
   )
 }
 
-function About() {
-  return <h2>About</h2>
-}
+// function About() {
+//  return <h2>About</h2>
+// }
 
 // function Users() {
 //   return <Signup />
