@@ -4,7 +4,7 @@ export const Styles = styled.div`
   .table {
     font-family: Arial, Helvetica, sans-serif;
     color:#05386B;
-    border-collapse: collapse;
+    
 
     .tr {
         text-align: center;

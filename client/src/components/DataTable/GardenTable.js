@@ -43,10 +43,18 @@ export default function GardenTable() {
     const firstPageRows = rows.slice(0,100)
 
     return (
-      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div 
+        style={{
+          display: 'flex', 
+          justifyContent: 'center',
+          border: "4px solid #05386B",
+          borderRadius: '20px',
+          backgroundColor: '#edf5e1'
+        }}
+      >
         <Styles>
-          <div {...getTableProps()} className="table sticky" style={{ width: 570, height: '600px' }}>
-            <div className="header">
+          <div {...getTableProps()} className="table sticky" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 570, height: '600px' }}>
+            <div className="header" style={{margin: '0px'}}>
               {headerGroups.map((headerGroup) => (
                 <div {...headerGroup.getHeaderGroupProps()} className="tr">
                   {headerGroup.headers.map((column) => (
