@@ -50,6 +50,7 @@ const Signup = () => {
           </label>
           <input
             {...register("username", {
+              validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
               required: true
             })}
             type="text"
@@ -224,6 +225,26 @@ const Signup = () => {
       </div>
     </form>
   )
+
+  async function checkIsNameFree(name) {
+    let submission = {nameData: name}
+    let fetchUrl = "/api/user/check-is-name-free" 
+    let fetchOptions = {
+      method: 'post',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(submission)
+    }
+    
+    try {
+      let response = await fetch(fetchUrl, fetchOptions)
+      let resObject = await response.json()
+
+      return resObject.result
+    }
+    catch (err) {
+      console.error('Error validating name in MongoDBAtlas Cluster!', err)
+    }
+  }
 }
 
 export default Signup
