@@ -70,9 +70,9 @@ export default function EditGardenPage() {
 
   return (
     <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
-      <div className="Edit-garden-form">
+      
         <EditGardenForm formCoordinates={formCoordinates} gardenToEdit={gardenData} />    
-      </div>
+      
       <div className='Garden-map'>
         <EditGardenMap
           formCoordinates={formCoordinates}

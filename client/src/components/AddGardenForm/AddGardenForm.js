@@ -19,7 +19,7 @@ function AddGardenForm({formCoordinates}) {
         Add A Garden
       </h1>
       <div style={{width:'100%'}}>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Name & established */}
+        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}>
           <div className='Garden-form-element'>
             <label htmlFor='Garden-name'>Garden Name</label>
             <input 
@@ -49,7 +49,7 @@ function AddGardenForm({formCoordinates}) {
             {errors.established && <p>{errors.established.message}</p>}
           </div>
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Address & Postal Code */}
+        <div className='Address-and-coordinates'>
           <div className='Garden-form-element'>
             <label htmlFor='address'>Address</label>
             <input 
@@ -60,40 +60,6 @@ function AddGardenForm({formCoordinates}) {
               {...register('address', {validate: async (address) => await checkIsAddressFree(address) || 'That address is taken'})}
             />
             {errors.address && <p>{errors.address.message}</p>}
-          </div>
-          <div className='Garden-form-element'>
-            <label htmlFor='Postal-code'>Postal Code</label>
-            <input 
-              className='Postal-code' 
-              id='Postal-code' 
-              name='postalCode'
-              {...register('postalCode', {required: 'You must input a postal code.'})}
-            />
-            {errors.postalCode && <p>{errors.postalCode.message}</p>}
-          </div>      
-        </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Coordinates & Quadrant */}
-          <div className='Garden-form-element'>
-            <label htmlFor='quadrant'>Quadrant</label>
-            <div className='Quadrant-buttons' id='quadrant'>
-              <div className='button'>
-                <label htmlFor="NW">NW</label>
-                <input type="radio" id="NW" name="quadrant" value="NW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
-              </div>
-              <div className='button'>
-                <label htmlFor="NE">NE</label>
-                <input type="radio" id="NE" name="quadrant" value="NE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
-              </div>   
-              <div className='button'>
-                <label htmlFor="SW">SW</label>
-                <input type="radio" id="SW" name="quadrant" value="SW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
-              </div>
-              <div className='button'>
-                <label htmlFor="SE">SE</label>
-                <input type="radio" id="SE" name="quadrant" value="SE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
-              </div>   
-            </div>
-            {errors.quadrant && <p>{errors.quadrant.message}</p>}
           </div>
           <div className='Garden-form-element'>
             <label htmlFor='address'>Coordinates</label>
@@ -116,107 +82,140 @@ function AddGardenForm({formCoordinates}) {
             {errors.lat && <p>{errors.lat.message}</p>}
           </div>
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Plot size & # of plots*/}
-          <div className='Garden-form-element'>
-            <label htmlFor='Plot-size'>Plot Size (sqft)</label>
-            <input 
-              className='Plot-size' 
-              id='Plot-size' 
-              name='plotSize'
-              type='number'
-              min='0'
-              {...register('plotSize', {required: 'You must input a plot size.'})}
-            />
-            {errors.plotSize && <p>{errors.plotSize.message}</p>}
+        <div className='Garden-form-element'>
+          <label htmlFor='quadrant'>Quadrant</label>
+          <div className='Quadrant-buttons' id='quadrant'>
+            <div className='button'>
+              <label htmlFor="NW">NW</label>
+              <input type="radio" id="NW" name="quadrant" value="NW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+            </div>
+            <div className='button'>
+              <label htmlFor="NE">NE</label>
+              <input type="radio" id="NE" name="quadrant" value="NE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+            </div>   
+            <div className='button'>
+              <label htmlFor="SW">SW</label>
+              <input type="radio" id="SW" name="quadrant" value="SW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+            </div>
+            <div className='button'>
+              <label htmlFor="SE">SE</label>
+              <input type="radio" id="SE" name="quadrant" value="SE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+            </div>   
           </div>
-          <div className='Garden-form-element'>
-            <label htmlFor='Number-of-plots'>Number of Plots</label>
-            <input 
-              className='Number-of-plots' 
-              id='Number-of-plots' 
-              name='numberOfPlots'
-              type='number'
-              min='0'
-              {...register('numberOfPlots', {required: 'You must input a number of plots.'})}
-            />
-            {errors.numberOfPlots && <p>{errors.numberOfPlots.message}</p>}
-          </div>
+          {errors.quadrant && <p>{errors.quadrant.message}</p>}
         </div>
-        <div  style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Desription & fee */}
-          <div className='Garden-form-element'>
-            <label htmlFor='Description'>Description</label>
-            <input 
-              className='Description' 
-              id='Description' 
-              name='description'
-              {...register('description', {required: "You must write a description."})}
-            />
-            {errors.description && <p>{errors.description.message}</p>}
+        <div className='Garden-form-element'>   
+          <label className='Cover-photo-label' htmlFor='Cover-photo'>Cover Photo</label>
+          <input 
+            type='file' 
+            className='Cover-photo' 
+            id='Cover-photo' 
+            name='coverPhoto'
+            {...register('coverPhoto')}
+          />
+        </div> 
+        <div className='Garden-form-element'>
+          <label htmlFor='Plot-size'>Plot Size (sqft)</label>
+          <input 
+            className='Plot-size' 
+            id='Plot-size' 
+            name='plotSize'
+            type='number'
+            min='0'
+            {...register('plotSize', {required: 'You must input a plot size.'})}
+          />
+          {errors.plotSize && <p>{errors.plotSize.message}</p>}
+        </div>
+        <div className='Garden-form-element'>
+          <label htmlFor='Number-of-plots'>Number of Plots</label>
+          <input 
+            className='Number-of-plots' 
+            id='Number-of-plots' 
+            name='numberOfPlots'
+            type='number'
+            min='0'
+            {...register('numberOfPlots', {required: 'You must input a number of plots.'})}
+          />
+          {errors.numberOfPlots && <p>{errors.numberOfPlots.message}</p>}
+        </div>
+        <div className='Garden-form-element'>
+          <label htmlFor='Postal-code'>Postal Code</label>
+          <input 
+            className='Postal-code' 
+            id='Postal-code' 
+            name='postalCode'
+            {...register('postalCode', {required: 'You must input a postal code.'})}
+          />
+          {errors.postalCode && <p>{errors.postalCode.message}</p>}
+        </div>      
+        <div className='Garden-form-element'>
+          <label htmlFor='Fee'>Annual Membership Fee</label>
+          <input 
+            className='Fee' 
+            id='Fee' 
+            name='fee'
+            placeholder='Leave blank if no fee'
+            {...register('fee')}
+          />
+        </div>
+        <div className='Garden-form-element'> 
+          <label htmlFor='vacancy'>Vacancy</label>
+          <div className='Vacancy-buttons'id='vacancy'>
+            <div className='button'>
+              <label htmlFor="yes">Yes</label>
+              <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy', {required:  'You must declare whether you have room for new gardeners.'})}/>
+            </div>
+            <div className='button'>
+              <label htmlFor="no">No</label>
+              <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy', {required: 'You must declare whether you have room for new gardeners.'})}/>
+            </div>   
           </div> 
-          <div className='Garden-form-element'>
-            <label htmlFor='Fee'>Annual Membership Fee</label>
-            <input 
-              className='Fee' 
-              id='Fee' 
-              name='fee'
-              placeholder='Leave blank if no fee'
-              {...register('fee')}
-            />
-          </div>
+          {errors.vacancy && <p>{errors.vacancy.message}</p>} 
+        </div> 
+        <div className='Garden-form-element'>
+          <label htmlFor='Description'>Description</label>
+          <input 
+            className='Description' 
+            id='Description' 
+            name='description'
+            {...register('description', {required: "You must write a description."})}
+          />
+          {errors.description && <p>{errors.description.message}</p>}
         </div>  
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Website & email */}
-          <div className='Garden-form-element'>
-            <label htmlFor='Website'>Website</label>
-            <input 
-              className='Website' 
-              id='Website' 
-              name='website'
-              placeholder='Leave blank if no website'
-              {...register('website')}
-            />
+        <div className='Garden-form-element'>
+          <label htmlFor='Website'>Website</label>
+          <input 
+            className='Website' 
+            id='Website' 
+            name='website'
+            placeholder='Leave blank if no website'
+            {...register('website')}
+          />
+        </div> 
+        <div className='Garden-form-element'>
+          <label htmlFor='Email'>Garden Admin Email</label>
+          <input 
+            className='Email' 
+            id='Email' 
+            name='email'
+            {...register('email', {required: "You must include an email for security reasons. We won't spam you, we promise :)"})}
+          />
+          {errors.email && <p>{errors.email.message}</p>}
+        </div> 
+        <div className='Garden-form-element'> 
+          <label htmlFor='wheelchairAccessible'>Is your garden Wheelchair-Accessible?</label>
+          <div className='Accessibility-buttons'id='wheelchairAccessible'>
+            <div className='button'>
+              <label htmlFor="yes">Yes</label>
+              <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
+            </div>
+            <div className='button'>
+              <label htmlFor="no">No</label>
+              <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
+            </div>   
           </div> 
-          <div className='Garden-form-element'>
-            <label htmlFor='Email'>Garden Admin Email</label>
-            <input 
-              className='Email' 
-              id='Email' 
-              name='email'
-              {...register('email', {required: "You must include an email for security reasons. We won't spam you, we promise :)"})}
-            />
-            {errors.email && <p>{errors.email.message}</p>}
-          </div> 
-        </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Vacancy & wheelchair */}
-          <div className='Garden-form-element'> 
-            <label htmlFor='vacancy'>Vacancy</label>
-            <div className='Vacancy-buttons'id='vacancy'>
-              <div className='button'>
-                <label htmlFor="yes">Yes&nbsp;</label>
-                <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy', {required:  'You must declare whether you have room for new gardeners.'})}/>
-              </div>
-              <div className='button'>
-                <label htmlFor="no">No&nbsp;</label>
-                <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy', {required: 'You must declare whether you have room for new gardeners.'})}/>
-              </div>   
-            </div> 
-            {errors.vacancy && <p>{errors.vacancy.message}</p>} 
-          </div>
-          <div className='Garden-form-element'> 
-            <label htmlFor='wheelchairAccessible'>Is your garden Wheelchair-Accessible?</label>
-            <div className='Accessibility-buttons'id='wheelchairAccessible'>
-              <div className='button'>
-                <label htmlFor="yes">Yes&nbsp;</label>
-                <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
-              </div>
-              <div className='button'>
-                <label htmlFor="no">No&nbsp;</label>
-                <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
-              </div>   
-            </div> 
-            {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
-          </div>
-
-        </div>
+          {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
+        </div> 
         <div className='Garden-form-element'>
           <input type='submit' value='submit' />
         </div>
