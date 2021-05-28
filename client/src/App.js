@@ -31,8 +31,8 @@ function App() {
   //   return <div>{user.name} is loggged in</div>;
   // } else
   return (
-    <AuthenticationProvider>
-      <Router>
+    <Router>
+      <AuthenticationProvider>
         <div style={{ backgroundColor: "#8EE4AF" }}>
           <nav style={{ backgroundColor: "#05386B" }}>
             <h1 style={{ color: "#5CDB95" }}>Grow Calgary</h1>
@@ -52,15 +52,6 @@ function App() {
               <li>
                 {/* <Link to="/login">Log In</Link> */}
                 <LogInOrOut />
-              </li>
-              <li>
-                {/* <button
-                  onClick={async () => {
-                    await fetch("/api/user/logout")
-                  }}
-                >
-                  Log out
-                </button> */}
               </li>
               <li>
                 <AdministratorOnly>
@@ -106,8 +97,9 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
-    </AuthenticationProvider>
+      </AuthenticationProvider>
+    </Router>
+    
   )
 }
 

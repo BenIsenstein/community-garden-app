@@ -1,36 +1,48 @@
-import React, { useState, useEffect } from "react"
-import { useContext } from "react"
+import React, { useContext } from "react"
+import { Link } from "react-router-dom"
 import AuthenticationContext from "../../AuthenticationContext"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-
 
 const LogInOrOut = () => {
   const authContext = useContext(AuthenticationContext)
   console.log('authContext', authContext)
   const isLoggedIn = authContext.username !== undefined
 
-  return isLoggedIn ? (
-    <div>
-      <span>Hello {authContext.username}</span>
-      <button onClick={
-        async () => {
-          await fetch("/api/user/logout").then(
-            authContext.logOut())}}>Logout</button>
-      
-    </div>
-  ) : (
-    <div>
-      {/* How to bring in req.user??? */}
-      <Link to="/login">
-        <button onClick={
-          async () => {
-            authContext.logIn("Username", true)
-          }
-        }>Login
-        </button>
-      </Link>
-    </div>
-  )
+  const fetchLogout = async () => {
+    try {
+      let response = await fetch("/api/user/logout")
+      let resObject = await response.json()
+
+      if (resObject.isLoggedOut) {
+        authContext.logOut() 
+        alert('Logged out.')
+      }
+      else {
+        alert('You are still logged in for some reason. Please try logging out again.')
+      }
+    }
+    catch(err) {
+      console.log(`Error logging out user ${authContext.username}: `, err)
+      alert('There was an error logging you out. We are fixing it as fast as we can.')
+    }
+  }
+
+  return <div style={{color: 'white', border: '1px solid white', padding: '2px'}}>
+      {isLoggedIn 
+        ? (
+          <div>
+            <span>Hello {authContext.username} </span>
+            <button onClick={async () => await fetchLogout()}>
+              Logout
+            </button>   
+          </div>    
+        ) 
+        : (
+          <Link to="/login">
+            Login
+          </Link>
+        )
+      }
+    </div>   
 }
 
 export default LogInOrOut

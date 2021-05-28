@@ -11,10 +11,10 @@ function AddGardenForm({formCoordinates}) {
     setValue('lat', lat)
     setValue('lng', lng)
 
-  }, [lat, lng])
+  }, [setValue, lat, lng])
           
   return (
-    <form className ='Add-garden-form' onSubmit={handleSubmit(submitAddGardenForm)}>   
+    <form className ='Add-garden-form' onSubmit={handleSubmit(async (data) => await submitAddGardenForm(data))}>   
       <h1 className='Add-garden-form-header'>
         Add A Garden
       </h1>

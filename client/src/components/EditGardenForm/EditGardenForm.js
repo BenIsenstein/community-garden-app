@@ -54,7 +54,7 @@ function EditGardenForm({formCoordinates, gardenToEdit}) {
   
           
   return ( 
-    <form className='Edit-garden-form' onSubmit={handleSubmit(submitEditGardenForm)}>   
+    <form className='Edit-garden-form' onSubmit={handleSubmit(async (data) => await submitEditGardenForm(data))}>   
       <h1 
         className='Edit-garden-form-header'
       >

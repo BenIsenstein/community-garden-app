@@ -47,25 +47,31 @@ router.post("/signup", async (req, res) => {
 
 router.post(
   "/login",
+  // check if someone is already logged in
   (req, res, next) => {
     // if (req.user) {
     //   console.log("hi")
     // }
     // else 
+
+    // move to authentication middleware if no one is logged in
     if (!req.isAuthenticated()) {
       console.log("about to log in")
       next()
-    } else {
+    } 
+    // if someone is already logged in, send back {isAlreadyLoggedIn: true}
+    else {
       // res.cookie("user", 17)
       // console.log('Already logged in (line 18)')
-      res.redirect("/home")
+      res.json({isAlreadyLoggedIn: true})
     }
   },
-  passport.authenticate("local", {
-    successRedirect: "/home",
-    failureRedirect: "/login",
-    failureFlash: true
-  })
+  // authentication middleware. sends a status code 401 if auth fails
+  passport.authenticate("local"),
+  // if authentication passes, the next function has access to req.user
+  (req, res) => {
+    res.json({username: req.user.username})
+  }
   
   // if (req.isAuthenticated) {
   //   res.json({isUserLoggedIn: true})}
@@ -83,12 +89,15 @@ router.post(
 router.get("/logout", function (req, res) {
   console.log("req authenticated: ", req.isAuthenticated())
   console.log('req.user: ', req.user)
+
   req.isAuthenticated() ? req.logOut() : console.log("already logged out")
+
   let message = req.isAuthenticated()
     ? `user ${req.user?.username} is logged in still :(`
     : `${req.user?.username} logged out!`
+
   console.log("message: ", message)
-  res.redirect("/")
+  res.json({isLoggedOut: true})
 })
 
 // ----------------------------------- GET USER -----------------------------------

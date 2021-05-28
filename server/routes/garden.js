@@ -26,15 +26,15 @@ router.put('/edit/:id', async (req, res) => {
   try {
     let data = await Garden.findByIdAndUpdate(req.params.id, gardenToUpdate, {new: true});
     console.log("Updated Garden", data)
-    res.send({message: 'success!'})
+    res.json({message: 'success!'})
   }
   catch(err) {
     console.log(err)
     if (err.code === 11000) {
-      res.status(409).send({message: 'Garden ' + gardenToUpdate.name + ' already exists'});      
+      res.status(409).json({message: 'Garden ' + gardenToUpdate.name + ' already exists'});      
     }
     else {
-      res.status(500).send({message: '500 error.'})
+      res.status(500).json({message: '500 error.'})
     }
   }
 })
