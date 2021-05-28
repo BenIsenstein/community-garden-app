@@ -54,7 +54,7 @@ function EditGardenForm({formCoordinates, gardenToEdit}) {
   
           
   return ( 
-    <form onSubmit={handleSubmit(submitEditGardenForm)}>   
+    <form className='Edit-garden-form' onSubmit={handleSubmit(submitEditGardenForm)}>   
       <h1 
         className='Edit-garden-form-header'
       >
@@ -63,7 +63,7 @@ function EditGardenForm({formCoordinates, gardenToEdit}) {
           : `Editing ${gardenToEdit.name}` 
         }
       </h1>
-      <div className='Add-garden-form'>
+      <div style={{width:'100%'}}>
         <div className='Garden-form-element'>
           <label htmlFor='Garden-name'>Garden Name</label>
           <input 

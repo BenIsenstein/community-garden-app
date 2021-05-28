@@ -42,15 +42,7 @@ function App() {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <AdministratorOnly>
-                  <Link to="/loggedon">Logged On</Link>
-                </AdministratorOnly>
-              </li>
-              <li>
-                <Link to="/weather">Weather</Link>
-              </li>
-              <li>
-                <Link to="/forecast">Forecast</Link>
+                <Link to="/forecast">Current Weather and Forecast</Link>
               </li>
               <li>
                 <Link to="/signup">Sign Up</Link>
@@ -67,6 +59,11 @@ function App() {
                 >
                   Log out
                 </button> */}
+              </li>
+              <li>
+                <AdministratorOnly>
+                  <Link to="/loggedon">Logged On</Link>
+                </AdministratorOnly>
               </li>
             </ul>
           </nav>
@@ -93,6 +90,7 @@ function App() {
               <GetWeather />
             </Route>
             <Route path="/forecast">
+              <GetWeather />
               <GetForecast />
             </Route>
             <Route path="/table">

@@ -1,4 +1,4 @@
-import './AddGardenForm.css'
+import './addGardenForm.css'
 import { useEffect } from 'react'
 import { useForm } from "react-hook-form";
 
@@ -18,22 +18,36 @@ function AddGardenForm({formCoordinates}) {
       <h1 className='Add-garden-form-header'>
         Add A Garden
       </h1>
-      <div className='Add-garden-form'>
-        <div className='Garden-form-element'>
-          <label htmlFor='Garden-name'>Garden Name</label>
-          <input 
-            className='Garden-name' 
-            id='Garden-name' 
-            name='name'
-            onChange={onChange}
-            {...register('name', 
-              {
-                validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
-                required: 'You must input a name for your garden.'
-              }
-            )}
-          />
-          {errors.name && <p>{errors.name.message}</p>}
+      <div style={{width:'100%'}}>
+        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}>
+          <div className='Garden-form-element'>
+            <label htmlFor='Garden-name'>Garden Name</label>
+            <input 
+              className='Garden-name' 
+              id='Garden-name' 
+              name='name'
+              onChange={onChange}
+              {...register('name', 
+                {
+                  validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
+                  required: 'You must input a name for your garden.'
+                }
+              )}
+            />
+            {errors.name && <p>{errors.name.message}</p>}
+          </div>
+          <div className='Garden-form-element'>
+            <label htmlFor='Established'>Established</label>
+            <input 
+              className='Established' 
+              id='Established' 
+              name='established'
+              type='number'
+              min='1900'
+              {...register('established', {required: 'You must input a year established.'})}
+            />
+            {errors.established && <p>{errors.established.message}</p>}
+          </div>
         </div>
         <div className='Address-and-coordinates'>
           <div className='Garden-form-element'>
@@ -67,18 +81,6 @@ function AddGardenForm({formCoordinates}) {
             </div>
             {errors.lat && <p>{errors.lat.message}</p>}
           </div>
-        </div>
-        <div className='Garden-form-element'>
-          <label htmlFor='Established'>Established</label>
-          <input 
-            className='Established' 
-            id='Established' 
-            name='established'
-            type='number'
-            min='1900'
-            {...register('established', {required: 'You must input a year established.'})}
-          />
-          {errors.established && <p>{errors.established.message}</p>}
         </div>
         <div className='Garden-form-element'>
           <label htmlFor='quadrant'>Quadrant</label>
