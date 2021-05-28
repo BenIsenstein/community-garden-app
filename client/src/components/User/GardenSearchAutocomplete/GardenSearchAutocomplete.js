@@ -7,7 +7,7 @@ export default function GardenSearchAutocomplete({setGardenMembership}) {
   
   useEffect(() => {
     const getAllGardens = async () => {
-      let fetchUrl = "/api/get-all-gardens"
+      let fetchUrl = "/api/garden/get"
       let response = await fetch(fetchUrl)
       let resObject = await response.json()
       let listResult = resObject.gardenList
@@ -28,7 +28,7 @@ export default function GardenSearchAutocomplete({setGardenMembership}) {
       getItemValue={(garden) => garden._id || garden}
       items={filteredGardenList}
       renderItem={(garden, isHighlighted) => (
-        <div style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
+        <div key={garden?._id} style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
       )}
       value={inputFieldGardenName}
       onChange={(e) => setInputFieldGardenName(e.target.value)}

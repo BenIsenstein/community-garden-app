@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from "react"
-import { useContext } from "react"
+import React, { useContext } from "react"
+import { Link } from "react-router-dom"
 import AuthenticationContext from "../../AuthenticationContext"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-
 
 const LogInOrOut = () => {
   const authContext = useContext(AuthenticationContext)
   console.log('authContext', authContext)
   const isLoggedIn = authContext.username !== undefined
 
-  return isLoggedIn ? (
-    <div>
-      <span>Hello {authContext.username}</span>
-      <button onClick={
-        async () => {
-          await fetch("/api/user/logout").then(
-            authContext.logOut())}}>Logout</button>
-      
-    </div>
-  ) : (
-    <div>
-      {/* How to bring in req.user??? */}
-      <Link to="/login">
-        <button onClick={
-          async () => {
-            authContext.logIn("Username", true)
-          }
-        }>Login
-        </button>
-      </Link>
-    </div>
+  
+
+  return (
+    <div style={{color: 'white'}}>
+      {isLoggedIn 
+        ? (
+          <div>
+            <span>Hello {authContext.username} | </span>
+            <button onClick={async () => await authContext.logOut()}>Logout</button>   
+          </div>    
+        ) 
+        : (
+          <Link to="/login">
+            Login
+          </Link>
+        )
+      }
+    </div>   
   )
 }
 

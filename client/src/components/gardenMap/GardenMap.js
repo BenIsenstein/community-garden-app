@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useMemo } from "react"
-import { useHistory } from 'react-router-dom'
 import {
   GoogleMap,
   Marker,
@@ -49,12 +48,8 @@ export default function GardenMap({
     getAllGardens()
   }, [])
 
-  const history = useHistory()
-  const changeRoute = (val) => history.push(`/garden-page/${val}`)
-
   // Prevent re-rendering of data
   const data = useMemo(() => gardenList, [gardenList])
-  console.log(data) 
 
   const onMapClick = React.useCallback(
     (event) => {
@@ -73,7 +68,7 @@ export default function GardenMap({
         lng: 0
       })
     }
-  }, [isFormDisplayed])
+  }, [setFormCoordinates, isFormDisplayed])
 
   const [selected, setSelected] = React.useState(null)
 

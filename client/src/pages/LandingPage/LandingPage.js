@@ -18,7 +18,7 @@ export default function LandingPage() {
       return gardenObject ? setGardenData(gardenObject) : setGardenData('no garden');
     };
     fetchData();
-  }, []);
+  }, [gardenName]);
 
   return (
     <div>

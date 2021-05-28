@@ -6,13 +6,7 @@ import "./Signup.css"
 
 const Signup = () => {
   const [gardenMembership, setGardenMembership] = useState("")
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch,
-    setValue
-  } = useForm({})
+  const { register, formState: { errors }, handleSubmit, watch, setValue } = useForm({})
   const username = useRef({})
   const password = useRef({})
   const confirmPassword = useRef({})
@@ -43,12 +37,10 @@ const Signup = () => {
     )
   }
 
-  const alertData = (data) => alert(JSON.stringify(data))
-
-  useEffect(() => setValue('gardenMembership', gardenMembership), [gardenMembership])
+  useEffect(() => setValue('gardenMembership', gardenMembership), [setValue, gardenMembership])
 
   return (
-    <form className="signupForm" onSubmit={handleSubmit(onSubmit)}>
+    <form className="signupForm" onSubmit={handleSubmit(async (data) => await onSubmit(data))}>
     {/* <form className="signupForm" onSubmit={handleSubmit(alertData)}> */}
       <div className="container">
         <h1>Sign Up!</h1>
