@@ -7,10 +7,9 @@ import "./Signup.css"
 const Login = () => {
   const authContext = useContext(AuthenticationContext)
   const { register, formState: { errors }, handleSubmit } = useForm({})
-  const logIn = authContext.logIn
 
   return (
-    <form className="signupForm" onSubmit={handleSubmit(async (data) => await logIn(data))}>
+    <form className="signupForm" onSubmit={handleSubmit(async (data) => await authContext.logIn(data))}>
       <div className="container">
         <h1>Log In!</h1>
         <div className="form-control">

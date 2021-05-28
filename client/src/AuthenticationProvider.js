@@ -53,9 +53,23 @@ const AuthenticationProvider = ({ children }) => {
       } 
     }
 
-    const logOut = () => {
-        setUsername(undefined)
-        setIsAdministrator(false)
+    const logOut = async () => {
+      try {
+        let response = await fetch("/api/user/logout")
+        let resObject = await response.json()
+  
+        if (resObject.isLoggedOut) {
+          setUsername(undefined) 
+          alert('Logged out')
+        }
+        else {
+          alert('You are still logged in for some reason. Please try logging out again.')
+        }
+      }
+      catch(err) {
+        console.log(`Error logging out user ${username}: `, err)
+        alert('There was an error logging you out. We are fixing it as fast as we can.')
+      }
     }
 
     let contextValue = {
