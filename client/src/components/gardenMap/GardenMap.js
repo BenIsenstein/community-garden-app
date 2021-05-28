@@ -53,6 +53,7 @@ export default function GardenMap({
 
   const onMapClick = React.useCallback(
     (event) => {
+      console.log('onMapClick registered')
       setFormCoordinates({
         lat: event.latLng.lat(),
         lng: event.latLng.lng()
@@ -68,7 +69,7 @@ export default function GardenMap({
         lng: 0
       })
     }
-  }, [setFormCoordinates, isFormDisplayed])
+  }, [isFormDisplayed])
 
   const [selected, setSelected] = React.useState(null)
 
