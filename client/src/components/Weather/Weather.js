@@ -48,7 +48,7 @@ export default function Weather({weatherData}) {
     <div className="main">
       <div className="top">
         <p className="header">{weatherData.name}</p>
-        <Button className="button" inverted color='green' circular icon='refresh' onClick={refresh} />
+        <Button className="button" inverted color='white' circular icon='refresh' onClick={refresh} />
       </div>
       <div className="flex">
         <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
