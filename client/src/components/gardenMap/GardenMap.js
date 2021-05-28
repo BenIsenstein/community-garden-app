@@ -50,7 +50,6 @@ export default function GardenMap({
 
   // Prevent re-rendering of data
   const data = useMemo(() => gardenList, [gardenList])
-  console.log(data) 
 
   const onMapClick = React.useCallback(
     (event) => {
