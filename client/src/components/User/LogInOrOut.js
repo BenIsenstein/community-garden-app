@@ -32,9 +32,7 @@ const LogInOrOut = () => {
         ? (
           <div>
             <span>Hello {authContext.username} | </span>
-            <button onClick={async () => await fetchLogout()}>
-              Logout
-            </button>   
+            <button onClick={async () => await fetchLogout()}>Logout</button>   
           </div>    
         ) 
         : (
