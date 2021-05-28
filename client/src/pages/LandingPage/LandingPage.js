@@ -3,12 +3,9 @@ import { useParams } from 'react-router-dom'
 import EditGardenButton from "./EditGardenButton";
 import "../../components/Weather/styles.css"
 import squashes from "../../pages/images/squashes.jpg"
-<<<<<<< HEAD
 import ToDoApp from "../../components/ToDo/ToDoApp"
 
-=======
 import MessageBoard from "./MessageBoard"
->>>>>>> 9b422fe2d34a411ee1c6b84ba610b0f260f04920
 
 export default function LandingPage() {
   const { gardenName } = useParams()
