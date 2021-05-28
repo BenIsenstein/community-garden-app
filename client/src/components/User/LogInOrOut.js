@@ -26,11 +26,11 @@ const LogInOrOut = () => {
     }
   }
 
-  return <div style={{color: 'white', border: '1px solid white', padding: '2px'}}>
+  return <div style={{color: 'white'}}>
       {isLoggedIn 
         ? (
           <div>
-            <span>Hello {authContext.username} </span>
+            <span>Hello {authContext.username} | </span>
             <button onClick={async () => await fetchLogout()}>
               Logout
             </button>   
