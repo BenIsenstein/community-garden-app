@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ToDoForm(props) {
+export default function ToDoForm(props) {
   const [name, setName] = useState('');
 
 
@@ -42,4 +42,3 @@ function ToDoForm(props) {
   );
 }
 
-export default ToDoForm;

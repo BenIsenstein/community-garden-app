@@ -5,6 +5,7 @@ import ToDo from "./ToDo";
 import { nanoid } from "nanoid";
 
 
+// custom hook  to return a previous value
 function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {
@@ -13,17 +14,23 @@ function usePrevious(value) {
   return ref.current;
 }
 
+// values of FILTER_MAP are functions used to filter the tasks data array (All, Active, Completed)
+//ALL-CAPS  convention that signifies this data will never change after being defined here
 const FILTER_MAP = {
   All: () => true,
   Active: task => !task.completed,
   Completed: task => task.completed
 };
 
+//Collects an array of filter names
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
+
 export default function ToDoApp(props) {
+
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter] = useState('All');
+
 
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
@@ -37,7 +44,7 @@ export default function ToDoApp(props) {
     });
     setTasks(updatedTasks);
   }
-
+ 
 
   function deleteTask(id) {
     const remainingTasks = tasks.filter(task => id !== task.id);
@@ -57,6 +64,7 @@ export default function ToDoApp(props) {
     setTasks(editedTaskList);
   }
 
+  //Re-uses the unique id of task as the key
   const taskList = tasks
   .filter(FILTER_MAP[filter])
   .map(task => (

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import './toDo.css'
+
 
  
-
 function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {
@@ -64,6 +65,7 @@ export default function ToDo(props) {
     </form>
   );
 
+  //c-cd assigns unique id
   const viewTemplate = (
     <div className="stack-small">
       <div className="c-cb">

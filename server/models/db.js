@@ -135,6 +135,29 @@ const addUser = async (newUser) => {
   
 }
 
+// toDoDataSchema
+
+const toDoDataSchema = new mongoose.Schema({
+  id: String,
+  name: String,
+  completed: Boolean,
+
+})
+
+// NB. syntax to add methods: toDoDataSchema.methods.methodX = function () {}
+
+const toDoData = mongoose.model("ToDoData", toDoDataSchema)
+
+const addtoDoData = async (newToDoData) => {
+  let result = await newToDoData.save()
+  return result.name + " succesfully added to database!"
+}
+
+const deletetoDoData = async (name) => {
+  let result = await ToDoData.deleteOne({ name: name })
+  return result.name + " successfully deleted from database!"
+}
+
 // General db functions
 
 const closeDb = async () => {
@@ -160,5 +183,8 @@ module.exports = {
   findGardenByName,
   findUserByName,
   findUserById,
-  addUser
+  addUser,
+  toDoData,
+  addtoDoData,
+  deletetoDoData
 }

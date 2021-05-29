@@ -15,7 +15,7 @@ export default function About() {
         <p>Resize the browser window to see that this page is responsive by the way.</p>
     </div>
     
-    <h2 >Our Team</h2>
+    <h2>Our Team</h2>
     <div class="row">
         <div class="column">
             <div class="card">
