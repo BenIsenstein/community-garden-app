@@ -28,7 +28,7 @@
 
 .Garden-display-container {
   display: flex; 
-  flex-direction: row wrap;
+  flex-flow: row wrap;
   justify-content: space-around; 
   margin-top: 25px; 
   margin-bottom: 25px; 
