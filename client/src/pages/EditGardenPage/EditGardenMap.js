@@ -4,7 +4,7 @@ import {
   Marker,
   useLoadScript
 } from "@react-google-maps/api"
-import mapStyles from "./mapStyles"
+import mapStyles from "../../components/gardenMap/mapStyles"
 
 const libraries = ["places"]
 const mapContainerStyle = {
