@@ -50,7 +50,7 @@ function Homepage() {
         </div>
       </div>
 
-      <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
+      <div className='Garden-display-container'>
         <div style={{marginTop:'20px'}}>
           {isFormDisplayed 
             ? <AddGardenForm className="Garden-list-and-form" formCoordinates={formCoordinates} /> 

@@ -25,14 +25,14 @@
 .Garden-map {
   padding: 20px;
 }
-/* 
+
 .Garden-display-container {
   display: flex; 
-  flex-direction: row;
-  justify-content: 'space-around'; 
-  margin-top: '25px'; 
-  margin-bottom: '25px'; 
-} */
+  flex-direction: row wrap;
+  justify-content: space-around; 
+  margin-top: 25px; 
+  margin-bottom: 25px; 
+} 
 
 .welcome-and-weather {
   display: flex;
