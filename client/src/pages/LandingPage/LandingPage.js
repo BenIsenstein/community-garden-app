@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "./EditGardenButton";
 import "../../components/Weather/styles.css"
-import squashes from "../../pages/images/squashes.jpg"
+import squashes from "../../components/images/squashes.jpg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "./MessageBoard/MessageBoard"
 
