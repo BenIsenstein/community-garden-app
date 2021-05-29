@@ -7,8 +7,9 @@ import "./Home.css"
 import "../../App.css"
 import GetWeather from "../../components/Weather/GetWeather"
 import GardenTable from "../../components/DataTable/GardenTable"
-import squashes from "../images/squashes.jpg"
+import squashes from "../../components/images/squashes.jpg"
 import { Icon } from "semantic-ui-react"
+import gardenPic from "../../components/images/garden.jpeg"
 
 
 function Homepage() {
@@ -33,7 +34,7 @@ function Homepage() {
             </p>
           </div>
           <div class="about-our-garden-text">
-              <img src={squashes} alt="" className="about-our-garden-photo"/>
+              <img src={gardenPic} alt="" className="about-our-garden-photo" />
           </div>
         </div>
       </div>
