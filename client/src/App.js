@@ -7,8 +7,6 @@ import Login from "./components/User/Login"
 import LoggedOn from "./components/User/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
-import GardenMap from "./components/gardenMap/GardenMap"
-import GardenTable from "./components/DataTable/GardenTable"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 import AuthenticationProvider from "./AuthenticationProvider"
 import LogInOrOut from "./components/User/LogInOrOut"
@@ -75,18 +73,12 @@ function App() {
             <Route path="/loggedon">
               <LoggedOn />
             </Route>
-            <Route path="/gardenMap">
-              <GardenMap />
-            </Route>
             <Route path="/weather">
               <GetWeather />
             </Route>
             <Route path="/forecast">
               <GetWeather />
               <GetForecast />
-            </Route>
-            <Route path="/table">
-              <GardenTable />
             </Route>
             <Route path="/garden-page">
               <GardenPageRouter />
