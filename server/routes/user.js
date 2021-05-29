@@ -122,16 +122,22 @@ router.put('/edit/:id',
   }
 )
 
-// check if user name is available
-router.post('/check-is-name-free', async (req, res) => {
-  let reqName = req.body.nameData
-  let isNameFree = await checkIsNameFree(reqName)
-  console.log('isNameFree: ', isNameFree)
+// -------------------- check if user name is available --------------------
 
-  res.json({result: isNameFree})
-})
+router.post('/check-is-name-free', 
+  async (req, res) => {
+    let reqName = req.body.nameData
+    let isNameFree = await checkIsNameFree(reqName)
+    console.log('isNameFree: ', isNameFree)
 
-// functions
+    res.json({result: isNameFree})
+  }
+)
+
+
+
+
+// --------------------------- functions -------------------------------------
 async function checkIsNameFree(desiredName) {
   let searchResult = await findUserByName(desiredName)
   return searchResult?.username !== desiredName
