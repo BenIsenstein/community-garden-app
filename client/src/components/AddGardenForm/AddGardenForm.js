@@ -1,4 +1,4 @@
-import './addGardenForm.css'
+import './gardenForm.css'
 import { useEffect } from 'react'
 import { useForm } from "react-hook-form";
 
@@ -15,9 +15,9 @@ function AddGardenForm({formCoordinates}) {
           
   return (
     <form 
-      className ='Add-garden-form' onSubmit={handleSubmit(submitAddGardenForm)}
+      className ='Garden-form' onSubmit={handleSubmit(submitAddGardenForm)}
     >   
-      <h1 className='Add-garden-form-header'>
+      <h1 className='Garden-form-header'>
         Add A Garden
       </h1>
       <div style={{width:'100%'}}>
@@ -79,19 +79,19 @@ function AddGardenForm({formCoordinates}) {
             <label htmlFor='quadrant'>Quadrant</label>
             <div className='Quadrant-buttons' id='quadrant'>
               <div className='button'>
-                <label htmlFor="NW">NW</label>
+                <label htmlFor="NW">NW&nbsp;</label>
                 <input type="radio" id="NW" name="quadrant" value="NW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
               </div>
               <div className='button'>
-                <label htmlFor="NE">NE</label>
+                <label htmlFor="NE">NE&nbsp;</label>
                 <input type="radio" id="NE" name="quadrant" value="NE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
               </div>   
               <div className='button'>
-                <label htmlFor="SW">SW</label>
+                <label htmlFor="SW">SW&nbsp;</label>
                 <input type="radio" id="SW" name="quadrant" value="SW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
               </div>
               <div className='button'>
-                <label htmlFor="SE">SE</label>
+                <label htmlFor="SE">SE&nbsp;</label>
                 <input type="radio" id="SE" name="quadrant" value="SE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
               </div>   
             </div>
@@ -157,35 +157,35 @@ function AddGardenForm({formCoordinates}) {
             />
           </div>
           <div style={{display:'flex', flexDirection:'column'}}>
-          <div className='Garden-form-element'> 
-            <label htmlFor='vacancy'>Vacancy</label>
-            <div className='Vacancy-buttons'id='vacancy'>
-              <div className='button'>
-                <label htmlFor="yes">Yes&nbsp;</label>
-                <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy', {required:  'You must declare vacancy.'})}/>
-              </div>
-              <div className='button'>
-                <label htmlFor="no">No&nbsp;</label>
-                <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy', {required: 'You must declare vacancy.'})}/>
-              </div>   
-            </div> 
-            {errors.vacancy && <p>{errors.vacancy.message}</p>} 
+            <div className='Garden-form-element'> 
+              <label htmlFor='vacancy'>Vacancy</label>
+              <div className='Vacancy-buttons'id='vacancy'>
+                <div className='button'>
+                  <label htmlFor="yes">Yes&nbsp;</label>
+                  <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy', {required:  'You must declare vacancy.'})}/>
+                </div>
+                <div className='button'>
+                  <label htmlFor="no">No&nbsp;</label>
+                  <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy', {required: 'You must declare vacancy.'})}/>
+                </div>   
+              </div> 
+              {errors.vacancy && <p>{errors.vacancy.message}</p>} 
+            </div>
+            <div className='Garden-form-element'> 
+              <label htmlFor='wheelchairAccessible'>Wheelchair Accessible?</label>
+              <div className='Accessibility-buttons'id='wheelchairAccessible'>
+                <div className='button'>
+                  <label htmlFor="yes">Yes&nbsp;</label>
+                  <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
+                </div>
+                <div className='button'>
+                  <label htmlFor="no">No&nbsp;</label>
+                  <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
+                </div>   
+              </div> 
+              {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
+            </div>
           </div>
-          <div className='Garden-form-element'> 
-            <label htmlFor='wheelchairAccessible'>Wheelchair-Accessible?</label>
-            <div className='Accessibility-buttons'id='wheelchairAccessible'>
-              <div className='button'>
-                <label htmlFor="yes">Yes&nbsp;</label>
-                <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
-              </div>
-              <div className='button'>
-                <label htmlFor="no">No&nbsp;</label>
-                <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
-              </div>   
-            </div> 
-            {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
-          </div>
-        </div>
         </div>  
         <div className='Garden-form-row'> {/* Website & email */}
           <div className='Garden-form-element'>
@@ -209,7 +209,6 @@ function AddGardenForm({formCoordinates}) {
             {errors.email && <p>{errors.email.message}</p>}
           </div> 
         </div>
-        
         <div className='Garden-form-element'> {/* Description */}
             <label htmlFor='Description'>Description</label>
             <textarea 
