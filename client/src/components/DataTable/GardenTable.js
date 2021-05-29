@@ -53,7 +53,7 @@ export default function GardenTable() {
         }}
       >
         <Styles>
-          <div {...getTableProps()} className="table sticky" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 570, height: '650px' }}>
+          <div {...getTableProps()} className="table sticky" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 570, height: '660px' }}>
             <div className="header" style={{margin: '0px'}}>
               {headerGroups.map((headerGroup) => (
                 <div {...headerGroup.getHeaderGroupProps()} className="tr">
