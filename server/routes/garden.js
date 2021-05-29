@@ -7,6 +7,7 @@ let router = express.Router()
 router.post('/add', async (req, res) => {
   let body = req.body
   body.members = {}
+  body.messages = []
   
   console.log('req.body: ', body)
 
@@ -37,6 +38,20 @@ router.put('/edit/:id', async (req, res) => {
       res.status(500).json({message: '500 error.'})
     }
   }
+})
+
+router.put('/messages/:id', async (req, res) => {
+  let newMessage = req.body
+  console.log('new message req.body: ', req.body)
+  try {
+    let gardenObject = await Garden.findById(req.params.id)
+    console.log("gardenObject: ", gardenObject)
+    gardenObject.messages.push(newMessage)
+    await gardenObject.save()
+    res.json({message: "gardenObject was saved"})
+  }
+  catch(err) {
+    console.log(err)}
 })
 
 
