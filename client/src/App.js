@@ -32,8 +32,8 @@ function App() {
   return (
     <Router>
       <AuthenticationProvider>
-        <div style={{ backgroundColor: "#8EE4AF" }}>
-          <nav style={{ backgroundColor: "#05386B" }}>
+        <div className="pageBody">
+          <nav className="pageNavbar">
             <h1 style={{ color: "#5CDB95" }}>Grow Calgary</h1>
             <ul style={{ display: "flex", justifyContent: "space-around", listStyle: "none" }}>
               <li>

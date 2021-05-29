@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
 
+.pageBody {
+  background-color: #8EE4AF;
+  width: 100%;
+}
+
+.pageNavbar {
+  background-color: #05386B;
+}
+
 li a {
   color: #EDF5E1;
 }
