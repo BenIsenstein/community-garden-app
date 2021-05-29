@@ -40,13 +40,18 @@ router.put('/edit/:id', async (req, res) => {
   }
 })
 
+// log message history when someone post to message board
 router.put('/messages/:id', async (req, res) => {
   let newMessage = req.body
   console.log('new message req.body: ', req.body)
   try {
     let gardenObject = await Garden.findById(req.params.id)
     console.log("gardenObject: ", gardenObject)
+
+    if (!gardenObject.messages) {gardenObject.messages = []}
     gardenObject.messages.push(newMessage)
+    console.log('Messages array after new message: ', gardenObject.messages)
+
     await gardenObject.save()
     res.json({message: "gardenObject was saved"})
   }

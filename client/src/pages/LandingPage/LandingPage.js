@@ -4,12 +4,11 @@ import EditGardenButton from "./EditGardenButton";
 import "../../components/Weather/styles.css"
 import squashes from "../../pages/images/squashes.jpg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
-
 import MessageBoard from "./MessageBoard/MessageBoard"
 
 export default function LandingPage() {
   const { gardenName } = useParams()
-  const [gardenData, setGardenData] = useState(null);
+  const [gardenData, setGardenData] = useState(undefined);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +17,10 @@ export default function LandingPage() {
       let resObject = await response.json()
       let gardenObject = resObject.garden
       
-      return gardenObject ? setGardenData(gardenObject) : setGardenData('no garden');
-    };
-    fetchData();
-  }, [gardenName]);
+      return gardenObject ? setGardenData(gardenObject) : setGardenData('no garden')
+    }
+    fetchData()
+  }, [gardenName])
 
   return (
     <div>
@@ -50,7 +49,9 @@ export default function LandingPage() {
       <div class="messages-and-to-do">
         <div class="round-background message-board">
           <h2 class="section-heading ">Message Board</h2>
-          <MessageBoard />
+          {(typeof gardenData === 'object') &&  
+            <MessageBoard gardenId={gardenData?._id}/>
+          }
         </div>
         <div class="round-background to-do-list">
           <h2 class="section-heading ">To-Do List</h2>
