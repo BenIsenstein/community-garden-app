@@ -7,7 +7,6 @@ import "./Home.css"
 import "../../App.css"
 import GetWeather from "../../components/Weather/GetWeather"
 import GardenTable from "../../components/DataTable/GardenTable"
-import squashes from "../../components/images/squashes.jpg"
 import { Icon } from "semantic-ui-react"
 import gardenPic from "../../components/images/garden.jpeg"
 
