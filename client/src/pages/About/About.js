@@ -1,9 +1,9 @@
 import "./about.css"
-import bean from "../images/bean.jpg"
-import harvest from "../images/harvest.jpg"
-import beanflower from "../images/beanflower.jpg"
-import donna from "../images/donna.jpg"
-import Ben from "../images/Ben.jpg"
+import harvest from "../../components/images/harvest.jpg"
+import beanflower from "../../components/images/beanflower.jpg"
+import donna from "../../components/images/donna.jpg"
+import Ben from "../../components/images/Ben.jpg"
+
 
 export default function About() {
 
