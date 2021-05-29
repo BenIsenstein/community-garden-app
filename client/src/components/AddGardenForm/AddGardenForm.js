@@ -21,7 +21,7 @@ function AddGardenForm({formCoordinates}) {
         Add A Garden
       </h1>
       <div style={{width:'100%'}}>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Name & established */}
+        <div className='Garden-form-row'> {/* Name & established */}
           <div className='Garden-form-element'>
             <label htmlFor='Garden-name'>Garden Name</label>
             <input 
@@ -51,7 +51,7 @@ function AddGardenForm({formCoordinates}) {
             {errors.established && <p>{errors.established.message}</p>}
           </div>
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Address & Postal Code */}
+        <div className='Garden-form-row'> {/* Address & Postal Code */}
           <div className='Garden-form-element'>
             <label htmlFor='address'>Address</label>
             <input 
@@ -74,7 +74,7 @@ function AddGardenForm({formCoordinates}) {
             {errors.postalCode && <p>{errors.postalCode.message}</p>}
           </div>      
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Coordinates & Quadrant */}
+        <div className='Garden-form-row'> {/* Coordinates & Quadrant */}
           <div className='Garden-form-element'>
             <label htmlFor='quadrant'>Quadrant</label>
             <div className='Quadrant-buttons' id='quadrant'>
@@ -97,7 +97,7 @@ function AddGardenForm({formCoordinates}) {
             </div>
             {errors.quadrant && <p>{errors.quadrant.message}</p>}
           </div>
-          <div className='Garden-form-element'>
+          <div className='Garden-form-element' style={{justifyContent:'space-evenly'}}>
             <label htmlFor='address'>Coordinates</label>
             <input 
               type='hidden'
@@ -113,12 +113,13 @@ function AddGardenForm({formCoordinates}) {
             />
             <div id='coordinates'>
               <div>Lat: {lat || 'No coordinates given'}</div>
-              <div>Lng: {lng || 'No coordinates given'}</div>  
+              <div>Lng: {lng || 'No coordinates given'}</div>
             </div>
+            <div style={{textAlign: 'center'}}>Click on map to set</div>  
             {errors.lat && <p>{errors.lat.message}</p>}
           </div>
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Plot size & # of plots*/}
+        <div className='Garden-form-row'> {/* Plot size & # of plots*/}
           <div className='Garden-form-element'>
             <label htmlFor='Plot-size'>Plot Size (sqft)</label>
             <input 
@@ -144,7 +145,7 @@ function AddGardenForm({formCoordinates}) {
             {errors.numberOfPlots && <p>{errors.numberOfPlots.message}</p>}
           </div>
         </div>
-        <div  style={{display:'flex', flexDirection:'row',justifyContent:'space-around', alignItems:'center'}}> {/* Vacancy, wheelchair fee */}
+        <div className='Garden-form-row' style={{alignItems:'center'}}> {/* Vacancy, wheelchair, fee */}
           <div className='Garden-form-element'>
             <label htmlFor='Fee'>Annual Membership Fee</label>
             <input 
@@ -155,7 +156,7 @@ function AddGardenForm({formCoordinates}) {
               {...register('fee')}
             />
           </div>
-          <div style={{display:'flex', flexDirection:'column'}}> {/* Vacancy & wheelchair */}
+          <div style={{display:'flex', flexDirection:'column'}}>
           <div className='Garden-form-element'> 
             <label htmlFor='vacancy'>Vacancy</label>
             <div className='Vacancy-buttons'id='vacancy'>
@@ -186,7 +187,7 @@ function AddGardenForm({formCoordinates}) {
           </div>
         </div>
         </div>  
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}> {/* Website & email */}
+        <div className='Garden-form-row'> {/* Website & email */}
           <div className='Garden-form-element'>
             <label htmlFor='Website'>Website</label>
             <input 
