@@ -18,7 +18,7 @@ function Homepage() {
 
   return (
     <div>
-      <div style={{ display: "flex", flexFlow: "row wrap",justifyContent: 'space-around', marginTop: '25px', marginBottom: '25px' }}>
+      <div className='Garden-display-container'>
         <div style={{marginTop:'20px'}}>
           {isFormDisplayed 
             ? <AddGardenForm className="Garden-list-and-form" formCoordinates={formCoordinates} /> 
@@ -39,8 +39,18 @@ function Homepage() {
           />
         </div>
       </div>
-      <div style={{ display: "flex", justifyContent: "center"}}>
-          <GetWeather />
+      <div className='Garden-display-container'>
+        <GetWeather />
+        <div className='Vision-statement'>
+          <h1>Vision Statement</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Nisl rhoncus mattis rhoncus urna neque viverra. Purus sit amet luctus venenatis lectus magna fringilla. Fermentum iaculis eu non diam. 
+            Laoreet sit amet cursus sit. Sit amet purus gravida quis blandit turpis cursus. Maecenas pharetra convallis posuere morbi leo urna. 
+            Vestibulum lectus mauris ultrices eros in cursus turpis. Pellentesque nec nam aliquam sem et tortor. Senectus et netus et malesuada fames. 
+            Ut faucibus pulvinar elementum integer enim neque. Accumsan in nisl nisi scelerisque eu ultrices. Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. 
+            Adipiscing elit pellentesque habitant morbi tristique.
+          </p>
+        </div>
       </div>
     </div>
   )
