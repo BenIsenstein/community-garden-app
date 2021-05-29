@@ -97,7 +97,7 @@ function AddGardenForm({formCoordinates}) {
             </div>
             {errors.quadrant && <p>{errors.quadrant.message}</p>}
           </div>
-          <div className='Garden-form-element'>
+          <div className='Garden-form-element' style={{justifyContent:'space-evenly'}}>
             <label htmlFor='address'>Coordinates</label>
             <input 
               type='hidden'
@@ -113,8 +113,9 @@ function AddGardenForm({formCoordinates}) {
             />
             <div id='coordinates'>
               <div>Lat: {lat || 'No coordinates given'}</div>
-              <div>Lng: {lng || 'No coordinates given'}</div>  
+              <div>Lng: {lng || 'No coordinates given'}</div>
             </div>
+            <div style={{textAlign: 'center'}}>Click on map to set</div>  
             {errors.lat && <p>{errors.lat.message}</p>}
           </div>
         </div>
