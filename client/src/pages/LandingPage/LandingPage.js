@@ -5,7 +5,7 @@ import "../../components/Weather/styles.css"
 import squashes from "../../pages/images/squashes.jpg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 
-import MessageBoard from "./MessageBoard"
+import MessageBoard from "./MessageBoard/MessageBoard"
 
 export default function LandingPage() {
   const { gardenName } = useParams()
