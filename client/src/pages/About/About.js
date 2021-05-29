@@ -1,8 +1,9 @@
 import "./about.css"
-import bean from "../../pages/images/bean.jpg"
-import harvest from "../../pages/images/harvest.jpg"
-import beanflower from "../../pages/images/beanflower.jpg"
-import donna from "../../pages/images/donna.jpg"
+import bean from "../images/bean.jpg"
+import harvest from "../images/harvest.jpg"
+import beanflower from "../images/beanflower.jpg"
+import donna from "../images/donna.jpg"
+import Ben from "../images/Ben.jpg"
 
 export default function About() {
 
@@ -19,7 +20,7 @@ export default function About() {
     <div class="row">
         <div class="column">
             <div class="card">
-            <img src={bean} alt="Ben" width="200" height="275"/>
+            <img src={Ben} alt="Ben" width="400" height="275"/>
             <div class="container">
                 <h2>Ben</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>

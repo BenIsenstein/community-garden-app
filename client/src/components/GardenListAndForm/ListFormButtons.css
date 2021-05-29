@@ -6,14 +6,21 @@
 
 .Garden-list-and-form-buttons button {
   width: max-content;
-  font-family: monospace;
+  /* font-family: monospace; */
   font-size: calc(10px + 0.5vmin);
   font-weight: 900;
-  color: #05386B;
-  border: solid #05386B;
-  border-radius: 1px;
+  background-color: #05386B;
+  color: #EDF5E1;
+  /* border: solid #05386B; */
+  border: solid 1px #379683;
+  border-radius: 20px;
   margin: 10px;
-  padding: 4px;
+  padding: 10px;
+}
+
+.Garden-list-and-form-buttons button:hover {
+  background-color: #EDF5E1;
+  color: #05386B;
 }
 
 .Add-garden-button {

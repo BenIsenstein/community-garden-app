@@ -43,7 +43,12 @@ const gardenSchema = new mongoose.Schema({
   website: String,
   email: String,
   description: String,
-  wheelchairAccessible: Boolean
+  wheelchairAccessible: Boolean,
+  messages: [{
+    name: String,
+    content: String,
+    date: Date
+  }]
 })
 
 // NOTE syntax to add methods: gardenSchema.methods.methodX = function () {}
