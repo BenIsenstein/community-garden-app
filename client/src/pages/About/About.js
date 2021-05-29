@@ -4,7 +4,6 @@ import beanflower from "../../components/images/beanflower.jpg"
 import donna from "../../components/images/donna.jpg"
 import Ben from "../../components/images/Ben.jpg"
 
-
 export default function About() {
 
  return (
