@@ -38,7 +38,7 @@ export default function LandingPage() {
       </div>
 
       <div class="round-background">
-        <h2 class="section-heading">About Our Garden</h2>
+        <h2 class="section-heading">About {gardenName}</h2>
         <div class="about-our-garden">
           <div class="about-our-garden-text">
             <p>Reader Rock Garden Historic Park is one of Calgary's most unique cultural landscapes featuring the restored Reader house (that contains Reader's Garden Café), rock pathways, bridges, benches and beautiful flowers. Reader Rock Garden is the perfect location for group functions and events, including weddings, photography sessions and family gatherings. Book Reader Rock Garden for your function.</p>
