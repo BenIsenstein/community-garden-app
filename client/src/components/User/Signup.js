@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect, useState, useContext } from "react"
 import { useForm } from "react-hook-form"
 import GardenSearchAutocomplete from "./GardenSearchAutocomplete/GardenSearchAutocomplete"
 import "./Signup.css"
+import AuthenticationContext from "../../AuthenticationContext"
 
 const Signup = () => {
+  const authContext = useContext(AuthenticationContext)
   const [gardenMembership, setGardenMembership] = useState("")
   const { register, formState: { errors }, handleSubmit, watch, setValue } = useForm({})
   const username = useRef({})
@@ -14,18 +16,32 @@ const Signup = () => {
   password.current = watch("password", "")
   confirmPassword.current = watch("confirmPassword", "")
 
-
   async function onSubmit(data) {
-
     let fetchUrl = "/api/user/signup"
     let fetchOptions = {
       method: "post",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data)
     }
-    let response = await fetch(fetchUrl, fetchOptions)
-    let resObject = await response.json()
-    // console.log("submit worked!!")
+
+    try { 
+      let response = await fetch(fetchUrl, fetchOptions)
+      let resObject = await response.json()
+      // promt them to logout if they're logged in
+      if (resObject.isAlreadyLoggedIn) {
+        let willTheyLogOut = window.confirm("You must be logged out to sign up. Logout?")
+        if (willTheyLogOut) {await authContext.logOut()}
+      }
+      else {
+        let { username, password } = data
+        alert(resObject.message)
+        await authContext.logIn({username, password})
+      }
+    }
+    catch(err) {
+      console.log('Error signing up: ', err)
+      alert("There was an error signing you up. We're fixing it as fast as we can.")
+    }
   }
 
   function validatePass(password) {
@@ -37,6 +53,7 @@ const Signup = () => {
     )
   }
 
+  // update 'gardenMembership' input field whenever the piece of state is changed
   useEffect(() => setValue('gardenMembership', gardenMembership), [setValue, gardenMembership])
 
   return (
@@ -51,7 +68,7 @@ const Signup = () => {
           <input
             {...register("username", {
               validate: async (name) => await checkIsNameFree(name) || 'That name is taken.',
-              required: true
+              required: "You must pick a username."
             })}
             type="text"
             placeholder="Enter Username"
@@ -98,9 +115,9 @@ const Signup = () => {
             <input
               {...register("confirmPassword", {
                 required: true,
-                validate: (value) => value === password.current || "The passwords do not match"
-                // validatePass(value) ||
-                // "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long.",
+                validate: (value) => 
+                  value === password.current || 
+                  "The passwords do not match"
               })}
               type="password"
               placeholder="Confirm Password"
@@ -135,9 +152,9 @@ const Signup = () => {
           <div className="currentPlantsSelection" id="currentPlantsSelection">
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register("currentPlants", { required: false })}
                 type="checkbox"
-                name="plantCheckbox"
+                name="currentPlants"
                 id="fruits"
                 value="fruits"
               />
@@ -145,9 +162,9 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register("currentPlants", { required: false })}
                 type="checkbox"
-                name="plantCheckbox"
+                name="currentPlants"
                 id="vegetables"
                 value="vegetables"
               />
@@ -155,9 +172,9 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register("currentPlants", { required: false })}
                 type="checkbox"
-                name="plantCheckbox"
+                name="currentPlants"
                 id="herbs"
                 value="herbs"
               />
@@ -165,9 +182,9 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register("currentPlants", { required: false })}
                 type="checkbox"
-                name="plantCheckbox"
+                name="currentPlants"
                 id="flowers"
                 value="flowers"
               />
@@ -175,9 +192,9 @@ const Signup = () => {
             </div>
             <div>
               <input
-                {...register("plantCheckbox", { required: false })}
+                {...register("currentPlants", { required: false })}
                 type="checkbox"
-                name="plantCheckbox"
+                name="currentPlants"
                 id="other"
                 value="other"
               />
@@ -200,10 +217,10 @@ const Signup = () => {
         <div className="form-control gardenMembership">
           <label htmlFor="gardenMembership">
             <b>If you're currently a member of a garden, search for it here.</b>
-          </label>
-           <GardenSearchAutocomplete 
-            setGardenMembership={setGardenMembership}
-           /> 
+          </label>         
+          <GardenSearchAutocomplete 
+          setGardenMembership={setGardenMembership}
+          /> 
           <input 
             type='hidden'
             name='gardenMembership'

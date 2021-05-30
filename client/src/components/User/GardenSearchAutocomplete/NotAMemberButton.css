@@ -1,0 +1,18 @@
+.Not-a-member-button {
+  margin-left: 10px;
+  width: max-content;
+  /* font-family: monospace; */
+  font-size: calc(8px + 0.5vmin);
+  font-weight: 900;
+  background-color: #05386B;
+  color: #EDF5E1;
+  border: solid 1px #379683;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.Not-a-member-button:hover {
+    background-color: #EDF5E1;
+    color: #05386B;
+  }
