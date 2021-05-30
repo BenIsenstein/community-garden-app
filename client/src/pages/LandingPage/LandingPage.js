@@ -37,10 +37,10 @@ export default function LandingPage() {
         {gardenData?.address}
       </div>
 
-      <div class="round-background">
-        <h2 class="section-heading">About {gardenName}</h2>
-        <div class="about-our-garden">
-          <div class="about-our-garden-text">
+      <div className="round-background">
+        <h2 className="section-heading">About {gardenName}</h2>
+        <div className="about-our-garden">
+          <div className="about-our-garden-text">
             <p>Reader Rock Garden Historic Park is one of Calgary's most unique cultural landscapes featuring the restored Reader house (that contains Reader's Garden Café), rock pathways, bridges, benches and beautiful flowers. Reader Rock Garden is the perfect location for group functions and events, including weddings, photography sessions and family gatherings. Book Reader Rock Garden for your function.</p>
           </div>
           <div class="about-our-garden-text">
@@ -49,15 +49,13 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div class="messages-and-to-do">
-        <div class="round-background message-board">
-          <h2 class="section-heading ">Message Board</h2>
-          {(typeof gardenData === 'object') &&  
-            <MessageBoard gardenId={gardenData?._id}/>
-          }
+      <div className="messages-and-to-do">
+        <div className="round-background message-board">
+          <h2 className="section-heading ">Message Board</h2>
+          {(typeof gardenData === 'object') && <MessageBoard gardenId={gardenData?._id} />}
         </div>
-        <div class="round-background to-do-list">
-          <h2 class="section-heading ">To-Do List</h2>
+        <div className="round-background to-do-list">
+          <h2 className="section-heading ">To-Do List</h2>
           <ToDoApp tasks={DATA}/>
         </div>
       </div>

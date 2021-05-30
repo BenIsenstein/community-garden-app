@@ -47,7 +47,7 @@ const gardenSchema = new mongoose.Schema({
   messages: [{
     name: String,
     content: String,
-    date: Date
+    date: String
   }]
 })
 
