@@ -49,16 +49,23 @@
   margin-right: 20px;
 }
 
-.header{
+.website-info{
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #379683;
+}
+
+.website-info-header{
+  text-align: center;
   background-color: #05386B;
-  color: #8EE4AF;
+  color: #5cdb95;
   margin: 10px 0px 0px 10px;
   font-size: 25px;
   border-radius: 20px 20px 0 0;
   font-family: 'Recursive', sans-serif;
 }
 
-.top{
+.website-info-header-container{
   min-height: 60px;
   background-color: #05386B;
   color: #EDF5E1;

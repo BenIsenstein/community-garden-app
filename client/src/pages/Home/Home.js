@@ -22,9 +22,9 @@ function Homepage() {
   return (
     <div>
       <div className="welcome-and-weather" style={{ display: "flex", justifyContent: "center"}}>
-        <div className="main">
-          <div className="top">
-            <h1 class="section-heading header">Welcome to Calgary Community Gardens!</h1>
+        <div className="website-info">
+          <div className="website-info-header-container">
+            <h1 className="website-info-header">Welcome to Calgary Community Gardens!</h1>
           </div>
         <div className="welcome-and-weather-content">
           <div>
