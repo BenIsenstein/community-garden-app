@@ -36,6 +36,7 @@
 
 .welcome-and-weather {
   display: flex;
+  margin-top: 20px;
 }
 
 .welcome-content {
