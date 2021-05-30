@@ -90,12 +90,16 @@ export default function LandingPage() {
       </div>
 
       <div className="messages-and-to-do">
-        <div className="round-background message-board">
-          <h2 className="section-heading ">Message Board</h2>
+        <div className="garden-info message-board">
+          <div className="garden-info-header-container">
+            <h2 className="garden-info-header">Message Board</h2>
+          </div>
           {(typeof gardenData === 'object') && <MessageBoard gardenId={gardenData?._id} />}
         </div>
-        <div className="round-background to-do-list">
-          <h2 className="section-heading ">To-Do List</h2>
+        <div className="garden-info to-do-list">
+          <div className="garden-info-header-container">
+            <h2 className="garden-info-header">To-Do List</h2>
+          </div>
           <ToDoApp tasks={DATA}/>
         </div>
       </div>
