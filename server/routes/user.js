@@ -8,31 +8,28 @@ const router = express.Router()
 
 router.post("/signup", 
   async (req, res) => {
-    console.log("req.body.password: ", req.body.password)
-    console.log("req.body.confirmPassword: ", req.body.confirmPassword)
-    let username = req.body.username
-    let email = req.body.email
-    let hashedPassword = await bcrypt.hash(req.body.password, 10)
-    let confirmPassword = req.body.confirmPassword
-    let howLongGardening = req.body.howLongGardening
-    let plantCheckbox = req.body.plantCheckbox[0]
-    let postalCode = req.body.postalCode
-    let gardenMembership = req.body.gardenMembership
+    // if someone is already logged in, prompt them to logout first
+    if (req.isAuthenticated()) {
+      return res.json({isAlreadyLoggedIn: true})
+    }
+    
+    let body = req.body
+    console.log('req body: ', body)
 
-    let newUser = new User({
-      username: username,
-      email: email,
-      password: hashedPassword,
-      howLongGardening: howLongGardening,
-      currentPlants: plantCheckbox,
-      postalCode: postalCode,
-      gardenMembership: gardenMembership,
-      dateSignedUp: new Date()
-    })
+    body.password = await bcrypt.hash(body.password, 10)
+    body.dateSignedUp = new Date()
+    
+    let newUser = new User(body)
 
     await addUser(newUser)
     console.log("New user has been added: ", newUser)
-    res.send({}) // What do I need to return? (user record, id, etc.)
+
+    res.json({
+      message: `
+      You have successfuly signed up ${body.username}! 
+      You will be logged in and directed to our home page.
+      `
+    })
   }
 )
 

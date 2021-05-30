@@ -1,5 +1,6 @@
 import Autocomplete from "react-autocomplete"
 import { useState, useEffect } from "react"
+import NotAMemberButton from "./NotAMemberButton"
 
 export default function GardenSearchAutocomplete({setGardenMembership}) {
   const [gardenList, setGardenList] = useState(null)
@@ -24,19 +25,26 @@ export default function GardenSearchAutocomplete({setGardenMembership}) {
       })
 
   return (
-    <Autocomplete
-      getItemValue={(garden) => garden._id || garden}
-      items={filteredGardenList}
-      renderItem={(garden, isHighlighted) => (
-        <div key={garden?._id} style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
-      )}
-      value={inputFieldGardenName}
-      onChange={(e) => setInputFieldGardenName(e.target.value)}
-      onSelect={(id, garden) => {
-        setInputFieldGardenName(garden.name)
-        setGardenMembership(id)
-      }}
-      inputProps={{placeholder:'Search Gardens'}}
-    />
+    <div style={{display: 'flex', alignItems: 'center'}}>
+      <Autocomplete
+        getItemValue={(garden) => garden._id || garden}
+        items={filteredGardenList}
+        renderItem={(garden, isHighlighted) => (
+          <div key={garden?._id} style={{ background: isHighlighted ? "lightgray" : "white" }}>{garden?.name}</div>
+        )}
+        value={inputFieldGardenName}
+        onChange={(e) => setInputFieldGardenName(e.target.value)}
+        onSelect={(id, garden) => {
+          setInputFieldGardenName(garden.name)
+          setGardenMembership(id)
+        }}
+        inputProps={{placeholder:'Search Gardens'}}
+      />
+      <NotAMemberButton 
+        inputFieldSetter={setInputFieldGardenName}
+        membershipSetter={setGardenMembership}
+      />
+    </div>
   )
 }
+
