@@ -37,11 +37,49 @@ export default function LandingPage() {
         {gardenData?.address}
       </div>
 
-      <div className="round-background">
-        <h2 className="section-heading">About {gardenName}</h2>
-        <div className="about-our-garden">
-          <div className="about-our-garden-text">
-            <p>Reader Rock Garden Historic Park is one of Calgary's most unique cultural landscapes featuring the restored Reader house (that contains Reader's Garden Café), rock pathways, bridges, benches and beautiful flowers. Reader Rock Garden is the perfect location for group functions and events, including weddings, photography sessions and family gatherings. Book Reader Rock Garden for your function.</p>
+      <div class="round-background">
+        <h2 class="section-heading">About {gardenName}</h2>
+        <div class="about-our-garden">
+          <div class="about-our-garden-text">
+            <p>
+              {(gardenData) &&
+                ((gardenData?.description) && 'Description: ' + (gardenData.description))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData?.plotSize) && 'Plot Size: ' + (gardenData.plotSize))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData?.numberOfPlots) && 'Number of Plots: ' + (gardenData.numberOfPlots))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData.established) && 'Established: ' + (gardenData.established))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData.vacancy) && 'Vacancy: ' + (gardenData.vacancy))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData.website) && 'Website: ' + (gardenData.website))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData.email) && 'Email: ' + (gardenData.email))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData.fee) && 'Fee: ' + (gardenData.fee))}
+            </p>
+            <p>
+              {(gardenData) && 
+              ((gardenData.wheelchairAccessible) && 'Wheelchair Accessible: ' + (gardenData.wheelchairAccessible))}
+            </p>
+       
+            
+            {/* <p>Reader Rock Garden Historic Park is one of Calgary's most unique cultural landscapes featuring the restored Reader house (that contains Reader's Garden Café), rock pathways, bridges, benches and beautiful flowers. Reader Rock Garden is the perfect location for group functions and events, including weddings, photography sessions and family gatherings. Book Reader Rock Garden for your function.</p> */}
           </div>
           <div class="about-our-garden-text">
             <img src={garden} alt="" className="about-our-garden-photo"/>
