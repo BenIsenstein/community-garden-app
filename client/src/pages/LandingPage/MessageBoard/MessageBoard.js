@@ -112,7 +112,7 @@ const MessageBoard = ({ gardenId }) => {
   }
 
   return (
-    <div className='App'>
+    <div className='discussion-board'>
       <DiscussionBoard posts={posts} onSubmit={submitPost} />
     </div>
   )

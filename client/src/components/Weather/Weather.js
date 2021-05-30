@@ -47,7 +47,7 @@ export default function Weather({weatherData}) {
   return (
     <div className="main">
       <div className="top">
-        <p className="header">{weatherData.name}</p>
+        <h1 className="header">{weatherData.name}</h1>
         <Button className="button" color='green' inverted circular icon='refresh' onClick={refresh} />
       </div>
       <div className="flex">
