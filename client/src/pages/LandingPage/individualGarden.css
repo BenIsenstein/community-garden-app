@@ -2,15 +2,6 @@
   text-align: center;
 }
 
-.round-background{
-    border-radius: 20px;
-    background-color: #379683;
-    color: #EDF5E1;
-    padding: 20px;
-    margin: 10px;
-    font-family: 'Recursive', sans-serif;
-    font-size: 19px;
-}
 
 .messages-and-to-do {
     display: flex;
@@ -35,4 +26,58 @@
 .about-our-garden {
     display: flex;
     justify-content: space-around;
+    color: #EDF5E1;
+    padding: 20px;
+    margin: 10px;
+    font-family: 'Recursive', sans-serif;
+    font-size: 19px;
+}
+
+.garden-title {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border-radius: 20px;
+    background-color: #05386b;
+    color: #EDF5E1;
+    padding: 20px;
+    margin: 10px;
+    font-family: 'Recursive', sans-serif;
+    font-size: 19px;
+}
+
+.garden-info{
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #379683;
+}
+
+.round-background{
+    border-radius: 20px;
+    background-color: #379683;
+    color: #EDF5E1;
+    padding: 20px;
+    margin: 10px;
+    font-family: 'Recursive', sans-serif;
+    font-size: 19px;
+}
+.garden-info-header{
+    text-align: center;
+    background-color: #05386B;
+    color: #5cdb95;
+    margin: 10px 0px 0px 10px;
+    font-size: 25px;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Recursive', sans-serif;
+}
+
+.garden-info-header-container{
+    min-height: 60px;
+    background-color: #05386B;
+    color: #EDF5E1;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Recursive', sans-serif;
+    /* display: flex; */
+    justify-content: space-between;
 }

@@ -27,18 +27,20 @@ export default function LandingPage() {
 
   return (
     <div>
-      <h1 style={{display: 'flex'}}>
-        {!gardenData && 'Loading...'}
-        {(gardenData === 'no garden') && 'This garden could not be found.'}
-        {(gardenData !== 'no garden') && gardenData?.name}
-
-      </h1>
-      <div>
-        {gardenData?.address}
+      <div className='garden-title'>
+        <h1 style={{display: 'flex'}}>
+          {!gardenData && 'Loading...'}
+          {(gardenData === 'no garden') && 'This garden could not be found.'}
+          {(gardenData !== 'no garden') && gardenData?.name}
+        </h1>
+        <div>
+          {gardenData?.address}
+        </div>
       </div>
-
-      <div className="round-background">
-        <h2 className="section-heading">About {gardenName}</h2>
+      <div className="garden-info">
+        <div className='garden-info-header-container'>
+          <h2 className="garden-info-header">About {gardenName}</h2>
+        </div>
         <div className="about-our-garden">
           <div className="about-our-garden-text">
             <p>
