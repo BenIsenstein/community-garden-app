@@ -60,7 +60,7 @@
 .welcome-header{
   text-align: center;
   background-color: #05386B;
-  color: #5cdb95;
+  color: #EDF5E1;
   margin: 10px 0px 0px 10px;
   font-size: 25px;
   border-radius: 20px 20px 0 0;
@@ -81,7 +81,7 @@
 .search-below-bar {
   border-radius: 20px;
   background-color: #05386B;
-  color: #5cdb95;
+  color: #EDF5E1;
   padding: 20px;
   margin: 10px;
   font-family: 'Recursive', sans-serif;
