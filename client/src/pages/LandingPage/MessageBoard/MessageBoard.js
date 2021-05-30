@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useMemo } from 'react'
 import DiscussionBoard from 'react-discussion-board'
 import AuthenticationContext from "../../../AuthenticationContext"
 // import 'react-discussion-board/dist/index.css'
+import './MessageBoard.css'
 
 const MessageBoard = ({ gardenId }) => {
   // USE CONTEXT TO GET USERNAME
@@ -9,14 +10,14 @@ const MessageBoard = ({ gardenId }) => {
   const posterUsername = authContext.username || 'Anonymous'
   // DEFAULT POST TO DISPLAY LOADING MESSAGE
   const loadingPost = [{
-    profileImage: undefined,
+    // profileImage: undefined,
     name: 'Loading...',
     content: '<p>Loading...</p>',
     date: new Date()
   }]
   // POST TO COMMUNICATE 'NO CHAT HISTORY YET'
   const noHistoryYetPost = useMemo(() => [{
-    profileImage: undefined,
+    // profileImage: undefined,
     name: 'No Chat History',
     content: '<p>No one has posted to the message board yet. Make the first post!</p>',
     date: new Date()
@@ -70,7 +71,6 @@ const MessageBoard = ({ gardenId }) => {
     
 
     // SET 'POSTS' STATE TO INCLUDE THE NEW POST.
-    // CURRENTLY ONLY THE 'LOADING' POST APPEARS AFTER REFRESHING, BUT OLD POSTS ARE SAVED IN THE DB - WILL NEED TO MAKE NEW POSTS DISPLAY ON THE PAGE TOO
     setPosts([
       ...posts,
       {

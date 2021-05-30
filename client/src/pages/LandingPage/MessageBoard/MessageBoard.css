@@ -1,0 +1,33 @@
+.App .container {
+  margin-top: 35px;
+}
+
+.pl-3 {
+  color: #EDF5E1;
+  font-weight: bold;
+  background-color: #05386B;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.panel {
+  margin-top: 40px;
+}
+
+.mb-1 {
+  font-weight: bold;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li.page-item {
+  font-weight: bold;
+  padding: 20px;
+  text-decoration: none;
+  list-style: none;
+  font-size: 15px;
+}
