@@ -64,8 +64,7 @@ router.put('/messages/:id', async (req, res) => {
 router.get('/messages/:id', async (req, res) => {
   try {
     let gardenObject = await Garden.findById(req.params.id)
-    console.log("getting messages history. garden messages: ", gardenObject.messages)
-    console.log('single message date: ', gardenObject.messages ? gardenObject.messages[0] ? gardenObject.messages[0].date : null : null)
+    console.log("garden message history: ", gardenObject.messages)
 
     res.json({messages: gardenObject.messages})
   }
