@@ -33,7 +33,7 @@ function App() {
         <div className="pageBody">
           <nav className="pageNavbar">
             <h1 style={{ color: "#5CDB95" }}>Grow Calgary</h1>
-            <ul style={{ display: "flex", justifyContent: "space-around", listStyle: "none" }}>
+            <ul style={{ display: "flex", justifyContent: "space-around", listStyle: "none", fontSize: "16px", paddingBottom: "5px" }}>
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -47,7 +47,6 @@ function App() {
                 <Link to="/signup">Sign Up</Link>
               </li>
               <li>
-                {/* <Link to="/login">Log In</Link> */}
                 <LogInOrOut />
               </li>
               <li>
