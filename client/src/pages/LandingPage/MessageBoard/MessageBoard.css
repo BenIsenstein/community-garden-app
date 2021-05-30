@@ -40,7 +40,7 @@ li.page-item {
 }
 
 .quill {
-  padding: 10px 0px 10px 0px;
+  padding: 20px 0px 10px 0px;
 }
 
 .ql-container {
@@ -50,14 +50,17 @@ li.page-item {
 .panel-body .row {
   display: flex;
   width: 100%;
+  padding-bottom: 2px;
+  color: #05386B;
 }
 
 .col-7 {
   margin-left: 10px;
+  margin-right: 80px;
 }
 
 .col-3 {
-  justify-self: flex-end;
+  justify-self: end;
 }
 
 .mt-0 {
