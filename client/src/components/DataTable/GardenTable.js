@@ -30,7 +30,15 @@ export default function GardenTable() {
   let tableInstance = useTable(
     {
       columns,
-      data
+      data,
+      initialState: {
+        sortBy: [
+            {
+                id: 'name',
+                desc: false
+            }
+        ]
+      }
     },
     useFilters,
     useSortBy,
