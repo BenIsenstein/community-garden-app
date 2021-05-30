@@ -1,0 +1,38 @@
+.section-heading{
+  text-align: center;
+}
+
+.round-background{
+    border-radius: 20px;
+    background-color: #379683;
+    color: #EDF5E1;
+    padding: 20px;
+    margin: 10px;
+    font-family: 'Recursive', sans-serif;
+    font-size: 19px;
+}
+
+.messages-and-to-do {
+    display: flex;
+    justify-content: stretch;
+    width: 100%;
+}
+  
+.message-board, .to-do-list {
+    width: 50%;
+}
+
+.about-our-garden-text {
+    padding-right: 10px;
+}
+
+.about-our-garden-photo {
+    width: 100%;
+    max-width: 1500px;
+    border-radius: 20px;
+}
+
+.about-our-garden {
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "./EditGardenButton";
-import "../../components/Weather/styles.css"
+import "./individualGarden.css"
 import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "./MessageBoard/MessageBoard"
