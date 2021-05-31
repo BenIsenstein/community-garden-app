@@ -72,13 +72,46 @@ router.get('/messages/:id', async (req, res) => {
     console.log(err)}
 })
 
-
 // get all gardens
 router.get('/get', async (req, res) => {
   let allGardensArray = await listGardens()
 
   res.json({gardenList: allGardensArray})
 })
+
+// create task
+router.post('/task/:id', async (req, res) => {
+  let newTask = req.body
+  console.log('new message req.body: ', req.body)
+  try {
+    let gardenObject = await Garden.findById(req.params.id)
+    console.log("gardenObject: ", gardenObject)
+
+    if (!gardenObject.tasks) {gardenObject.tasks = []}
+    gardenObject.tasks.push(newTask)
+    console.log('Tasks array after new message: ', gardenObject.tasks)
+
+    await gardenObject.save()
+    res.json({message: "task saved!"})
+  }
+  catch(err) {
+    console.log(err)}
+})
+
+// get all tasks
+router.get('/alltasks/:id', async (req, res) => {
+    let gardenObject = await Garden.findById(req.params.id)
+  
+    if (!gardenObject.tasks) {gardenObject.tasks = []}
+     
+    res.json({allTasks:gardenObject.tasks})
+ 
+})
+
+// edit/update a task
+
+// delete task
+
 
 // get one garden by name
 router.get('/get/:name', async (req, res) => {

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react'
 import DiscussionBoard from 'react-discussion-board'
-import AuthenticationContext from "../../../AuthenticationContext"
+import AuthenticationContext from "../../AuthenticationContext"
 // import 'react-discussion-board/dist/index.css'
 import './MessageBoard.css'
 

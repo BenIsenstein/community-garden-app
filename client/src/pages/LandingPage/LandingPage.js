@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
-import EditGardenButton from "./EditGardenButton";
+import EditGardenButton from "../../components/EditGardenButton";
 import "./individualGarden.css"
 import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
-import MessageBoard from "./MessageBoard/MessageBoard"
-//import ToDoDB from "../../components/ToDo/ToDoDB";
+import MessageBoard from "../../components/MessageBoard/MessageBoard"
 
-//this array is temporary until CRUD functions/DB access made
-const DATA =[{}]
 
 export default function LandingPage() {
   const { gardenName } = useParams()
@@ -101,9 +98,8 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">To-Do List</h2>
           </div>
-          <ToDoApp tasks={DATA}/>
+          <ToDoApp gardenId={gardenData?._id}/>
         </div>
-    
       </div>
 
       <footer>

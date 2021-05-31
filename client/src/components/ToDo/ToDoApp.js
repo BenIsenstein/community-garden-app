@@ -26,11 +26,26 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 
-export default function ToDoApp(props) {
+export default function ToDoApp({gardenId}) {
+  var loadingTask=[{
+    name:"loading",
+    id:"loading",
+    completed:true
+  } ]
 
-  const [tasks, setTasks] = useState(props.tasks);
+  const [tasks, setTasks] = useState(loadingTask);
   const [filter, setFilter] = useState('All');
 
+  useEffect (()=> {
+    async function getAllTasks() {
+      let response=await fetch(`/api/garden/allTasks/${gardenId}`)
+      let resObject = await response.json()
+      let allTasks = resObject.allTasks
+      setTasks(allTasks)
+    }
+    getAllTasks()
+    },[]
+  )
 
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
@@ -49,6 +64,8 @@ export default function ToDoApp(props) {
   function deleteTask(id) {
     const remainingTasks = tasks.filter(task => id !== task.id);
     setTasks(remainingTasks);
+
+    // fetch
   }
 
 
@@ -62,6 +79,7 @@ export default function ToDoApp(props) {
       return task;
     });
     setTasks(editedTaskList);
+    //fetch
   }
 
   //Re-uses the unique id of task as the key
@@ -91,6 +109,7 @@ export default function ToDoApp(props) {
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
     setTasks([...tasks, newTask]);
+    //fetch
   }
   
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
