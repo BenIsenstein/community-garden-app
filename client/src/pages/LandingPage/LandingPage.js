@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "../../components/EditGardenButton";
 import "./individualGarden.css"
 import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "../../components/MessageBoard/MessageBoard"
+import AuthenticationContext from "../../AuthenticationContext"
 
 
 export default function LandingPage() {
   const { gardenName } = useParams()
   const [gardenData, setGardenData] = useState(undefined);
+  const authContext = useContext(AuthenticationContext)
+  console.log('authContext', authContext)
+  const isLoggedIn = authContext.username !== undefined
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,9 +81,6 @@ export default function LandingPage() {
               {(gardenData) && 
               ((gardenData.wheelchairAccessible) && 'Wheelchair Accessible: ' + (gardenData.wheelchairAccessible))}
             </p>
-       
-            
-            {/* <p>Reader Rock Garden Historic Park is one of Calgary's most unique cultural landscapes featuring the restored Reader house (that contains Reader's Garden Café), rock pathways, bridges, benches and beautiful flowers. Reader Rock Garden is the perfect location for group functions and events, including weddings, photography sessions and family gatherings. Book Reader Rock Garden for your function.</p> */}
           </div>
           <div className="about-our-garden-text">
             <img src={garden} alt="" className="about-our-garden-photo"/>
@@ -92,7 +93,13 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">Message Board</h2>
           </div>
-          {(typeof gardenData === 'object') && <MessageBoard gardenId={gardenData?._id} />}
+          <div className="must-be-logged-in-message">
+            {isLoggedIn ? 
+              (typeof gardenData === 'object') &&  <MessageBoard gardenId={gardenData?._id} />
+              :
+              "Please log in to access the message board."
+            }
+          </div>
         </div>
         <div className="garden-info to-do-list">
           <div className="garden-info-header-container">
@@ -100,8 +107,8 @@ export default function LandingPage() {
           </div>
           {(typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />}
         </div>
-      </div>
-
+        </div>
+        
       <footer>
         <div>
           {(typeof gardenData === 'object') && <EditGardenButton />}
