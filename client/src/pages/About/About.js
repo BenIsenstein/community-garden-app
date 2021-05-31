@@ -1,5 +1,5 @@
 import "./about.css"
-import harvest from "../../components/images/harvest.jpg"
+import Brady from "../../components/images/brady.jpg"
 import Christy from "../../components/images/Christy.jpg"
 import donna from "../../components/images/donna.jpg"
 import Ben from "../../components/images/Ben.jpg"
@@ -32,8 +32,8 @@ export default function About() {
 
     <div class="column">
         <div class="card">
-            <div className="team-image" style={{height: "275px", backgroundImage: "url(" + harvest + ")", backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}/>
-            {/* <img src={harvest} alt="Brady" width="200" height="275" /> */}
+            <div className="team-image" style={{height: "275px", backgroundImage: "url(" + Brady + ")", backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}/>
+            {/* <img src={Brady} alt="Brady" width="200" height="275" /> */}
             <div class="container">
                 <h2>Brady</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
