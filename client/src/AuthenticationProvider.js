@@ -6,7 +6,8 @@ import AuthenticationContext from './AuthenticationContext'
 // UPDATE FOR GARDENING APP
 const AuthenticationProvider = ({ children }) => {
     let history = useHistory()
-    const redirectHome = () => history.push('/')
+    // const redirectHome = () => history.push('/')
+    const goBack = () => history.goBack()
 
     const [username, setUsername] = useState()
     const [isAdministrator, setIsAdministrator] = useState(false)
@@ -38,7 +39,8 @@ const AuthenticationProvider = ({ children }) => {
         // success logging in server-side
         else {
           setUsername(resObject.username) 
-          redirectHome()
+          // redirectHome()
+          goBack()
           alert(`Logged in as ${resObject.username}`)
         }
       }
