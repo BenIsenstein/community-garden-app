@@ -2,20 +2,17 @@
 |BACKLOG|
 ---------
 
-1. Add feature in GardenListAndForm to make sure previously set 
-    marker doesn't re-render when going from list back to form.
+1. Garden page photo sizing & front page weather sizing
 
-2. GardenListAndForm ->
-    - Garden Leader - Name
-    - Phone # / Email
-    - What year was the garden established?
-    - Annual fee?
-    - Wheelchair accessible?
+2. Only display message board & toDo if logged in
 
+3. collection.ensureIndex is deprecated
 
-3. add updateGarden function and route
+4. Redirect after submitting the signup form
 
-4. 'not a member' button in signup form
+5. Edit Garden pulled in Donna's address
+
+6. Landing page -> better name
 
 7. Garden Page router should be in routes folder?
 
