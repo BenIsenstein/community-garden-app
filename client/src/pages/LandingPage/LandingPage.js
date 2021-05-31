@@ -5,6 +5,7 @@ import "../../components/Weather/styles.css"
 import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "./MessageBoard/MessageBoard"
+//import ToDoDB from "../../components/ToDo/ToDoDB";
 
 //this array is temporary until CRUD functions/DB access made
 const DATA =[{}]
@@ -96,6 +97,7 @@ export default function LandingPage() {
           <h2 className="section-heading ">To-Do List</h2>
           <ToDoApp tasks={DATA}/>
         </div>
+    
       </div>
 
       <footer>
