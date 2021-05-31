@@ -8,7 +8,7 @@ export default function EditGardenButton() {
 
     return (
       <div style={{textAlign: "center"}}>
-        <Button className="button" style={{width: '80%', margin: "20px"}} primary circular onClick={() => history.push(`/garden-page/${gardenName}/edit`)}>
+        <Button className="button" style={{width: '80%', margin: "20px", backgroundColor:"#05386B", color:"#EDF5E1"}} primary circular onClick={() => history.push(`/garden-page/${gardenName}/edit`)}>
           Edit this garden
         </Button>
       </div>
