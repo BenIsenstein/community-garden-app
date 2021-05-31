@@ -29,16 +29,22 @@ export default function LandingPage() {
 
   return (
     <div className="pageBackground">
-      <div className='garden-title'>
-        <h1 style={{display: 'flex'}}>
-          {!gardenData && 'Loading...'}
-          {(gardenData === 'no garden') && 'This garden could not be found.'}
-          {(gardenData !== 'no garden') && gardenData?.name}
-        </h1>
+      <div class="garden-title-and-edit">
+        <div className='garden-title'>
+          <h1 style={{display: 'flex'}}>
+            {!gardenData && 'Loading...'}
+            {(gardenData === 'no garden') && 'This garden could not be found.'}
+            {(gardenData !== 'no garden') && gardenData?.name}
+          </h1>
+          <div>
+            {gardenData?.address}
+          </div>
+        </div>
         <div>
-          {gardenData?.address}
+          {(typeof gardenData === 'object') && <EditGardenButton />}
         </div>
       </div>
+      
       <div className="garden-info">
         <div className='garden-info-header-container'>
           <h2 className="garden-info-header">About {gardenName}</h2>
@@ -114,13 +120,6 @@ export default function LandingPage() {
           </div>
         </div>
         </div>
-        
-      <footer>
-        <div>
-          {(typeof gardenData === 'object') && <EditGardenButton />}
-        </div>
-      </footer>
-
     </div>
 
 

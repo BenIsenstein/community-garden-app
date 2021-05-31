@@ -10,10 +10,10 @@ export default function EditGardenButton() {
         <Button 
           className="button" 
           style={{
-            width: '80%', 
+            width: '150px', 
             margin: "20px", 
-            backgroundColor:"#05386B", 
-            color:"#EDF5E1"
+            backgroundColor:"#EDF5E1", 
+            color:"#05386B"
           }} 
           primary 
           circular 
