@@ -48,6 +48,11 @@ const gardenSchema = new mongoose.Schema({
     name: String,
     content: String,
     date: String
+  }],
+  tasks: [{
+    id: String,
+    name: String,
+    completed: Boolean
   }]
 })
 
@@ -120,7 +125,7 @@ const addUser = async (newUser) => {
 
 // toDoDataSchema
 
-const toDoDataSchema = new mongoose.Schema({
+/*const toDoDataSchema = new mongoose.Schema({
   id: String,
   name: String,
   completed: Boolean,
@@ -129,7 +134,7 @@ const toDoDataSchema = new mongoose.Schema({
 
 // NB. syntax to add methods: toDoDataSchema.methods.methodX = function () {}
 
-const toDoData = mongoose.model("ToDoData", toDoDataSchema)
+//const toDoData = mongoose.model("ToDoData", toDoDataSchema)
 
 const addtoDoData = async (newToDoData) => {
   let result = await newToDoData.save()
@@ -139,7 +144,7 @@ const addtoDoData = async (newToDoData) => {
 const deletetoDoData = async (name) => {
   let result = await ToDoData.deleteOne({ name: name })
   return result.name + " successfully deleted from database!"
-}
+}*/
 
 // General db functions
 
@@ -166,8 +171,5 @@ module.exports = {
   findGardenByName,
   findUserByName,
   findUserById,
-  addUser,
-  toDoData,
-  addtoDoData,
-  deletetoDoData
+  addUser
 }

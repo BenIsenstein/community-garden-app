@@ -13,7 +13,7 @@ require("dotenv").config()
 // IMPORT ROUTES
 const gardenRouter = require("./routes/garden")
 const userRouter = require("./routes/user")
-const todoRouter = require("./routes/todo")
+//const todoRouter = require("./routes/todo")
 
 const app = express()
 app.use(cors())
@@ -49,7 +49,6 @@ app.use(cookieParser())
 // USE ROUTES
 app.use("/api/garden", gardenRouter)
 app.use("/api/user", userRouter)
-app.use("/api/todo", todoRouter )
 
 // serve the react application
 app.use(express.static("../client/build"))

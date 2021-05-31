@@ -6,8 +6,6 @@ import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "../../components/MessageBoard/MessageBoard"
 
-//this array is temporary until CRUD functions/DB access made
-const DATA =[{}]
 
 export default function LandingPage() {
   const { gardenName } = useParams()
@@ -100,7 +98,7 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">To-Do List</h2>
           </div>
-          <ToDoApp tasks={DATA}/>
+          <ToDoApp gardenId={gardenData?._id}/>
         </div>
       </div>
 
