@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
-import EditGardenButton from "./EditGardenButton";
+import EditGardenButton from "../../components/EditGardenButton";
 import "./individualGarden.css"
 import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
-import MessageBoard from "./MessageBoard/MessageBoard"
+import MessageBoard from "../../components/MessageBoard/MessageBoard"
 
 //this array is temporary until CRUD functions/DB access made
 const DATA =[{}]
