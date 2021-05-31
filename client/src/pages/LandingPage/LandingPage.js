@@ -28,7 +28,7 @@ export default function LandingPage() {
   }, [gardenName])
 
   return (
-    <div>
+    <div className="pageBackground">
       <div className='garden-title'>
         <h1 style={{display: 'flex'}}>
           {!gardenData && 'Loading...'}
