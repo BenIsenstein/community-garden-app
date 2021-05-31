@@ -105,7 +105,13 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">To-Do List</h2>
           </div>
-          {(typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />}
+          <div className="must-be-logged-in-message">
+            {isLoggedIn ? 
+              (typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />
+              :
+              "Please log in to access the to-do list."
+            }
+          </div>
         </div>
         </div>
         
