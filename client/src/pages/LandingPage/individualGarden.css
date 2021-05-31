@@ -11,6 +11,7 @@
   
 .message-board, .to-do-list {
     width: 50%;
+    min-width: 400px;
 }
 
 .about-our-garden-text {
@@ -62,6 +63,7 @@
     font-family: 'Recursive', sans-serif;
     font-size: 19px;
 }
+
 .garden-info-header{
     text-align: center;
     background-color: #05386B;
@@ -91,5 +93,16 @@
 }
 
 .pageBackground {
-    height: 100vh;
+    height: 100%;
   }
+
+@media screen and (max-width: 800px) {
+    .messages-and-to-do {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message-board, .to-do-list {
+        width: 96%;
+    }
+}
