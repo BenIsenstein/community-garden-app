@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "./EditGardenButton";
-import "../../components/Weather/styles.css"
+import "./individualGarden.css"
 import garden from "../../components/images/garden.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "./MessageBoard/MessageBoard"
@@ -28,18 +28,20 @@ export default function LandingPage() {
 
   return (
     <div>
-      <h1 style={{display: 'flex'}}>
-        {!gardenData && 'Loading...'}
-        {(gardenData === 'no garden') && 'This garden could not be found.'}
-        {(gardenData !== 'no garden') && gardenData?.name}
-
-      </h1>
-      <div>
-        {gardenData?.address}
+      <div className='garden-title'>
+        <h1 style={{display: 'flex'}}>
+          {!gardenData && 'Loading...'}
+          {(gardenData === 'no garden') && 'This garden could not be found.'}
+          {(gardenData !== 'no garden') && gardenData?.name}
+        </h1>
+        <div>
+          {gardenData?.address}
+        </div>
       </div>
-
-      <div className="round-background">
-        <h2 className="section-heading">About {gardenName}</h2>
+      <div className="garden-info">
+        <div className='garden-info-header-container'>
+          <h2 className="garden-info-header">About {gardenName}</h2>
+        </div>
         <div className="about-our-garden">
           <div className="about-our-garden-text">
             <p>
@@ -89,12 +91,16 @@ export default function LandingPage() {
       </div>
 
       <div className="messages-and-to-do">
-        <div className="round-background message-board">
-          <h2 className="section-heading ">Message Board</h2>
+        <div className="garden-info message-board">
+          <div className="garden-info-header-container">
+            <h2 className="garden-info-header">Message Board</h2>
+          </div>
           {(typeof gardenData === 'object') && <MessageBoard gardenId={gardenData?._id} />}
         </div>
-        <div className="round-background to-do-list">
-          <h2 className="section-heading ">To-Do List</h2>
+        <div className="garden-info to-do-list">
+          <div className="garden-info-header-container">
+            <h2 className="garden-info-header">To-Do List</h2>
+          </div>
           <ToDoApp tasks={DATA}/>
         </div>
     

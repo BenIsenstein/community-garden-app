@@ -1,0 +1,84 @@
+._1FtUZ a {
+  color: #05386B;
+}
+
+._1FtUZ ul {
+  margin-left: 15px;
+}
+
+.col-3 {
+  /* justify-self: end; */
+  text-align: right;
+  flex-basis: 100px;
+}
+
+.col-7 {
+  margin-left: 10px;
+  margin-right: 80px;
+  /* justify-self: start; */
+  flex-basis: 400px;
+}
+
+.discussion-board .container {
+  margin: 35px 10px 20px 10px;
+  background-color: #EDF5E1;
+  border: 4px solid #05386B;
+  border-radius: 20px;
+}
+
+.mb-1 {
+  font-weight: bold;
+}
+
+.mt-0 {
+  border: 1px solid #05386B;
+}
+
+.panel {
+  margin-top: 40px;
+}
+
+.pl-3 {
+  color: #EDF5E1;
+  font-weight: bold;
+  background-color: #05386B;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li.page-item {
+  font-weight: bold;
+  padding: 20px;
+  text-decoration: none;
+  list-style: none;
+  font-size: 15px;
+}
+
+li.page-item a.page-link {
+  color: #05386B;
+}
+
+.panel-body .row {
+  display: flex;
+  padding-bottom: 2px;
+  color: #05386B;
+  justify-content: space-between;
+}
+
+.ql-container {
+  background-color: white;
+}
+
+.ql-toolbar {
+  background-color: #8EE4AF;
+}
+
+.quill {
+  padding: 20px 0px 10px 0px;
+}

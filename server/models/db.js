@@ -88,8 +88,9 @@ const listGardens = async () => {
 
 // User model and functions
 const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true }, // *** How to check if username is unique before adding to database?
+  username: { type: String, unique: true }, 
   password: String,
+  email: String,
   howLongGardening: String,
   currentPlants: Array,
   postalCode: String,
@@ -104,20 +105,8 @@ userSchema.methods.validPassword = function (pwd) {
   return this.password === pwd
 }
 
-// userSchema.plugin(uniqueValidator, {message: 'Sorry, this username is already taken.'})
 
 const User = mongoose.model("User", userSchema)
-
-// userSchema.path('username').validate(function(value, done) {
-//   User('User').countDocuments({ username: value }, function(err, count) {
-//       if (err) {
-//           return (err);
-//       } 
-//       // If `count` is greater than zero, "invalidate"
-//       (!count);
-//   });
-// }, 'Username already exists (userSchema.path');
-
 
 const findUserByName = async (name) => {
   let result = await User.findOne({ username: name })
@@ -130,19 +119,8 @@ const findUserById = async (id) => {
 }
 
 const addUser = async (newUser) => {
-//   console.log("findUserByName(newUser)", findUserByName(newUser))
-// findUserByName(newUser)
-// if (newUser) {
-//   console.log("New user = ", newUser)
-// }
-  // if (!findUserByName()) {
-
-    let result = await newUser.save()
-    return result.username + " succesfully added to database!"
-  // } else {
-  //   return
-  // }
-  
+  let result = await newUser.save()
+  return result.username + " succesfully added to database!"
 }
 
 // toDoDataSchema

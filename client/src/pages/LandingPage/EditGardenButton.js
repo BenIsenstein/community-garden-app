@@ -7,8 +7,10 @@ export default function EditGardenButton() {
     const history = useHistory()
 
     return (
-      <Button className="button" primary circular onClick={() => history.push(`/garden-page/${gardenName}/edit`)}>
-        Edit this garden
-      </Button>
+      <div style={{textAlign: "center"}}>
+        <Button className="button" style={{width: '80%', margin: "20px"}} primary circular onClick={() => history.push(`/garden-page/${gardenName}/edit`)}>
+          Edit this garden
+        </Button>
+      </div>
     )
 }
