@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import AuthenticationContext from './AuthenticationContext'
 
@@ -11,6 +11,20 @@ const AuthenticationProvider = ({ children }) => {
 
     const [username, setUsername] = useState()
     const [isAdministrator, setIsAdministrator] = useState(false)
+
+    useEffect(() => {
+      let checkLoggedInUser = async () => {
+        try{
+          let response = await fetch('/api/user/getloggedinuser')
+          let user = await response.json()
+          setUsername(user?.username) 
+        }
+        catch(error){
+          console.log(error)
+        }
+      }
+      checkLoggedInUser()
+    }, [])
 
     const logIn = async (data) => {
       let fetchUrl = "/api/user/login"

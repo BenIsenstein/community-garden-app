@@ -58,7 +58,14 @@ router.post("/login",
 )
  
 
+// ----------------------------------- GET LOGGED IN USER -----------------------------------
 
+router.get("/getloggedinuser",
+  // check if someone is already logged in
+  (req, res, next) => {
+    res.json(req.user)
+  }
+)
 
 // ----------------------------------- LOGOUT -----------------------------------
 
