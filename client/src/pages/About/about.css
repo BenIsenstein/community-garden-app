@@ -11,6 +11,10 @@ body {
     box-sizing: inherit;
   }
   
+  .about-heading {
+    margin-left: 20px;
+  }
+
   .column {
     float: left;
     width: 25%;
@@ -21,6 +25,8 @@ body {
   .card {
     box-shadow: 0 4px 8px 0 #05386B;
     margin: 8px;
+    background-color: #EDF5E1;
+    border-radius: 10px;
   }
   
   .about-section {
@@ -72,3 +78,6 @@ body {
    height: auto;
 }
   
+.team-image {
+  border-radius: 10px 10px 0px 0px;
+}

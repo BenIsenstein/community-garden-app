@@ -9,7 +9,7 @@ const Login = () => {
   const { register, formState: { errors }, handleSubmit } = useForm({})
 
   return (
-    <div className="loginBackground">
+    <div className="pageBackground">
       <form className="signupForm" onSubmit={handleSubmit(async (data) => await authContext.logIn(data))}>
         <div className="container">
           <h1>Log In!</h1>
