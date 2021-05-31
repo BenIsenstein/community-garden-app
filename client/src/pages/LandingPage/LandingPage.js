@@ -28,7 +28,7 @@ export default function LandingPage() {
   }, [gardenName])
 
   return (
-    <div className="pageBackground">
+    <div className="pageBody">
       <div class="garden-title-and-edit">
         <div className='garden-title'>
           <h1 style={{display: 'flex'}}>

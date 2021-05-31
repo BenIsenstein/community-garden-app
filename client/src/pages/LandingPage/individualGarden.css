@@ -94,11 +94,11 @@
     font-weight: bold;
     color: #05386B;
 }
-
+/* 
 .pageBackground {
     height: 100%;
     width: 100%;
-  }
+  } */
 
 @media screen and (max-width: 800px) {
     .messages-and-to-do {
