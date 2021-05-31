@@ -123,20 +123,12 @@ const addUser = async (newUser) => {
   return result.username + " succesfully added to database!"
 }
 
-// toDoDataSchema
 
-/*const toDoDataSchema = new mongoose.Schema({
-  id: String,
-  name: String,
-  completed: Boolean,
-
-})
 
 // NB. syntax to add methods: toDoDataSchema.methods.methodX = function () {}
-
 //const toDoData = mongoose.model("ToDoData", toDoDataSchema)
 
-const addtoDoData = async (newToDoData) => {
+/*const addtoDoData = async (newToDoData) => {
   let result = await newToDoData.save()
   return result.name + " succesfully added to database!"
 }
