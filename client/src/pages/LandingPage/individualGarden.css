@@ -25,9 +25,9 @@
 
 .about-our-garden {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #EDF5E1;
-    padding: 20px;
+    padding: 25px 30px 25px 50px;
     margin: 10px;
     font-family: 'Recursive', sans-serif;
     font-size: 19px;
