@@ -23,7 +23,6 @@ const MessageBoard = ({ gardenId }) => {
     date: new Date()
   }], [])
 
-
   // DECLARE STATE FOR POSTS
   const [posts, setPosts] = useState(loadingPost)
 
@@ -95,7 +94,7 @@ const MessageBoard = ({ gardenId }) => {
     // URL BUILT WITH THE 'gardenId' PROP
     let fetchUrl = `/api/garden/messages/${gardenId}`
     let fetchOptions = {
-      method: 'put',
+      method: 'post',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newMessage)
     }

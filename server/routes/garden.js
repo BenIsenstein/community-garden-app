@@ -41,7 +41,7 @@ router.put('/edit/:id', async (req, res) => {
 })
 
 // log message history when someone post to message board
-router.put('/messages/:id', async (req, res) => {
+router.post('/messages/:id', async (req, res) => {
   let newMessage = req.body
   console.log('new message req.body: ', req.body)
   try {
@@ -82,7 +82,8 @@ router.get('/get', async (req, res) => {
 // create task
 router.post('/task/:id', async (req, res) => {
   let newTask = req.body
-  console.log('new message req.body: ', req.body)
+  console.log('new task req.body: ', req.body)
+
   try {
     let gardenObject = await Garden.findById(req.params.id)
     console.log("gardenObject: ", gardenObject)
@@ -100,12 +101,15 @@ router.post('/task/:id', async (req, res) => {
 
 // get all tasks
 router.get('/alltasks/:id', async (req, res) => {
+  try {
     let gardenObject = await Garden.findById(req.params.id)
-  
-    if (!gardenObject.tasks) {gardenObject.tasks = []}
-     
-    res.json({allTasks:gardenObject.tasks})
- 
+    console.log('getting all tasks. gardenObject: ', gardenObject)
+    if (!gardenObject.tasks) {gardenObject.tasks = []} 
+    res.json({allTasks: gardenObject.tasks}) 
+  }
+  catch(err) {
+    console.log(`error getting all tasks for garden with _id ${req.params.id}: `, err)
+  }
 })
 
 // edit/update a task

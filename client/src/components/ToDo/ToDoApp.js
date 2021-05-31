@@ -26,25 +26,31 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 
-export default function ToDoApp({gardenId}) {
+export default function ToDoApp({ gardenId }) {
   var loadingTask=[{
     name:"loading",
     id:"loading",
     completed:true
-  } ]
+  }]
 
   const [tasks, setTasks] = useState(loadingTask);
   const [filter, setFilter] = useState('All');
 
   useEffect (()=> {
     async function getAllTasks() {
-      let response=await fetch(`/api/garden/allTasks/${gardenId}`)
-      let resObject = await response.json()
-      let allTasks = resObject.allTasks
-      setTasks(allTasks)
+      try {
+        let response = await fetch(`/api/garden/alltasks/${gardenId}`)
+        let resObject = await response.json()
+        let allTasks = resObject.allTasks
+        setTasks(allTasks)
+      }
+      catch(err) {
+        console.log(`ERROR fetching all tasks for garden with _id ${gardenId}: `, err)
+        alert("There was an error finding the todo list for this garden. We're fixing it as fast as we can.")
+      }
     }
     getAllTasks()
-    },[]
+    }, [gardenId]
   )
 
   function toggleTaskCompleted(id) {

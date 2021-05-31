@@ -98,13 +98,13 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">To-Do List</h2>
           </div>
-          <ToDoApp gardenId={gardenData?._id}/>
+          {(typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />}
         </div>
       </div>
 
       <footer>
         <div>
-            {(typeof gardenData === 'object') && <EditGardenButton />}
+          {(typeof gardenData === 'object') && <EditGardenButton />}
         </div>
       </footer>
 
