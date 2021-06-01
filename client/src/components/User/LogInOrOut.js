@@ -7,8 +7,6 @@ const LogInOrOut = () => {
   console.log('authContext', authContext)
   const isLoggedIn = authContext.username !== undefined
 
-  
-
   return (
     <div style={{color: 'white'}}>
       {isLoggedIn 

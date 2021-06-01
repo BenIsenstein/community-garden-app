@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import AuthenticationContext from './AuthenticationContext'
@@ -6,7 +5,6 @@ import AuthenticationContext from './AuthenticationContext'
 // UPDATE FOR GARDENING APP
 const AuthenticationProvider = ({ children }) => {
     let history = useHistory()
-    // const redirectHome = () => history.push('/')
     const goBack = () => history.goBack()
 
     const [username, setUsername] = useState()

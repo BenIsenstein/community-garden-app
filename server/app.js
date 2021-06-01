@@ -20,25 +20,12 @@ app.use(cors())
 
 // Initialize passport strategy
 initializePassport(passport)
-// initializePassport(
-//   passport,
-//   username => users.find(user => user.username === username)
-//   )
 
 // Passport middleware
 app.use(session({ secret: process.env.PASSPORT_SECRET, resave: true, saveUninitialized: true }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
-
-
-// // Global variables as middlewares
-// app.use(function (req, res, next) {
-//   res.locals.success_msg = req.flash('success_msg');
-//   res.locals.error_msg = req.flash('error_msg');
-//   res.locals.error = req.flash('error');
-//   next();
-// });
 
 // Configure Express app
 app.use(logger("dev"))
@@ -66,8 +53,6 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500)
-  // *** res.render (below) was replaced with res.json since we don't have a view engine specified
-  // res.render("error")
   res.json({
     message: err.message,
     error: err

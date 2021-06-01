@@ -4,14 +4,11 @@ import Home from "./pages/Home/Home"
 import About from "./pages/About/About"
 import Signup from "./components/User/Signup"
 import Login from "./components/User/Login"
-import LoggedOn from "./components/User/LoggedOn"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
 import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
 import AuthenticationProvider from "./AuthenticationProvider"
 import LogInOrOut from "./components/User/LogInOrOut"
-import AdministratorOnly from "./components/User/AdministratorOnly"
-
 
 function App() {
   return (
@@ -36,11 +33,6 @@ function App() {
               <li>
                 <LogInOrOut />
               </li>
-              <li>
-                <AdministratorOnly>
-                  <Link to="/loggedon">Logged On</Link>
-                </AdministratorOnly>
-              </li>
             </ul>
           </nav>
 
@@ -53,9 +45,6 @@ function App() {
             </Route>
             <Route path="/login">
               <Login />
-            </Route>
-            <Route path="/loggedon">
-              <LoggedOn />
             </Route>
             <Route path="/weather">
               <GetWeather />
