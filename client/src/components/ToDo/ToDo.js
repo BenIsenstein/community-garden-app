@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./todo.css"
-
-
  
 function usePrevious(value) {
   const ref = useRef();
@@ -22,12 +20,12 @@ export default function ToDo(props) {
     setNewName(e.target.value);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!newName.trim()) {
       return;
     }
-    props.editTask(props.id, newName);
+    await props.editTask(props.id, newName);
     setNewName("");
     setEditing(false);
   }

@@ -115,16 +115,14 @@ router.get('/alltasks/:id', async (req, res) => {
 // edit/update a task
 router.put('/editTask/:id', async (req, res) => {
   let taskToUpdate = req.body
-  console.log('req body: ', taskToUpdate)
+  console.log('Task to update req body: ', taskToUpdate)
   try {
     let currentGarden = await Garden.findById(req.params.id);
-    console.log("Updated tasks", currentGarden)
-    currentGarden.tasks = currentGarden.tasks.map((task) => {
-      if (task.id === taskToUpdate.id) {
-        task = taskToUpdate
-        console.log("Task updated",task)
-      }
-    })
+    console.log("Current garden", currentGarden)
+    currentGarden.tasks = currentGarden.tasks.map((task) => 
+       (task.id === taskToUpdate.id) ? taskToUpdate : task
+    )
+    console.log("What is the currentGarden.tasks",currentGarden.tasks)
     await currentGarden.save()
     console.log("Task list after updating", currentGarden.tasks)
     res.json({successMessage: 'success!'})

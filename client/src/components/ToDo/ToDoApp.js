@@ -36,8 +36,8 @@ export default function ToDoApp({ gardenId }) {
   // POST TO COMMUNICATE 'NOTHING TO DO YET'
   const nothingToDo = useMemo(() => [{
     // profileImage: undefined,
-    name: 'Nothing To do Today',
-    id: '<p>No one has posted to the list yet. Make the first post!</p>',
+    name: 'Please add a task',
+    id: "default task",
     completed: true
   }], [])
 
@@ -48,9 +48,10 @@ export default function ToDoApp({ gardenId }) {
     async function getAllTasks() {
       try {
         let response = await fetch(`/api/garden/alltasks/${gardenId}`)
-        let resObject = await response.json()
-        let allTasks = resObject.allTasks
-        setTasks(allTasks)
+        let resObject = await response.json()       
+        let areThereTasks = (resObject.allTasks?.length > 0)
+        let tasksToSet = areThereTasks ? resObject.allTasks : nothingToDo
+        setTasks(tasksToSet)
       }
       catch(err) {
         console.log(`ERROR fetching all tasks for garden with _id ${gardenId}: `, err)
@@ -58,7 +59,7 @@ export default function ToDoApp({ gardenId }) {
       }
     }
     getAllTasks()
-    }, [gardenId]
+    }, [gardenId, nothingToDo]
   )
 
   function toggleTaskCompleted(id) {
@@ -107,7 +108,7 @@ export default function ToDoApp({ gardenId }) {
       return task;
     });
     setTasks(editedTaskList);
-    let taskToUpdate=tasks.find((task) => task.id === id)
+    let taskToUpdate=editedTaskList.find((task) => task.id === id)
     let fetchUrl = `/api/garden/editTask/${gardenId}`
     let fetchOptions = {
       method: 'put',
@@ -118,6 +119,7 @@ export default function ToDoApp({ gardenId }) {
     try {
       let response = await fetch(fetchUrl, fetchOptions)
       let resObject = await response.json()
+      console.log ("edited resObject is", resObject)
       alert(resObject.successMessage)
     }
     catch(err) {
@@ -152,24 +154,22 @@ export default function ToDoApp({ gardenId }) {
 
   //Create a task 
   const createTask = async (taskText) => {
-   // if (tasks.length === nothingToDo) {setTasks([])}
-    
+    console.log("Tasks and nothing to do are currently",tasks, nothingToDo)
+    console.log("are they the same",tasks === nothingToDo)
+    if (tasks === nothingToDo) {setTasks([])}
+    if (tasks === loadingTask) {setTasks([])}
+    console.log("What is tasks after([})",tasks)
     // SET 'Tasks' STATE TO INCLUDE THE NEW Task.
-    setTasks([
-      ...tasks, 
-      {
-        id: "todo-" + nanoid(),
-        name: taskText,
-        completed: false
-    }
-    ])
-
+    
     let newTask ={
       id: "todo-" + nanoid(),
       name: taskText,
       completed: false
     }
   
+    setTasks([...tasks, newTask])
+
+
     let fetchUrl = `/api/garden/task/${gardenId}`
     let fetchOptions = {
       method: 'post',
