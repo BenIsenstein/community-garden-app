@@ -25,6 +25,7 @@ input, #username, #howLongGardening, #postalCode {
 
 .signup-form-error-message {
   color: red;
+  max-width: 350px;
 }
 
 .signup-form-header {
