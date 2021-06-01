@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react'
 import DiscussionBoard from 'react-discussion-board'
 import AuthenticationContext from "../../AuthenticationContext"
-// import 'react-discussion-board/dist/index.css'
 import './MessageBoard.css'
 
 const MessageBoard = ({ gardenId }) => {
@@ -10,14 +9,12 @@ const MessageBoard = ({ gardenId }) => {
   const posterUsername = authContext.username || 'Anonymous'
   // DEFAULT POST TO DISPLAY LOADING MESSAGE
   const loadingPost = [{
-    // profileImage: undefined,
     name: 'Loading...',
     content: '<p>Loading...</p>',
     date: new Date()
   }]
   // POST TO COMMUNICATE 'NO CHAT HISTORY YET'
   const noHistoryYetPost = useMemo(() => [{
-    // profileImage: undefined,
     name: 'No Chat History',
     content: '<p>No one has posted to the message board yet. Make the first post!</p>',
     date: new Date()

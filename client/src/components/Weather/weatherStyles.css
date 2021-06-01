@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 
-.main{
+.Weather-main{
     margin: 10px;
     border-radius: 20px;
     background-color: #379683;
+    min-height: 374.48px;
+    min-width: 378.31px;
 }
 
 .top{

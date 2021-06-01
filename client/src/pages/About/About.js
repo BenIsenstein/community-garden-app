@@ -16,9 +16,9 @@ export default function About() {
         </div>
 
         <h2 className="about-heading">Our Team</h2>
-        <div class="row">
-          <div class="column">
-            <div class="card">
+        <div className="row">
+          <div className="column">
+            <div className="card">
               <div
                 className="team-image"
                 style={{
@@ -29,7 +29,7 @@ export default function About() {
                   backgroundRepeat: "no-repeat"
                 }}
               />
-              <div class="container">
+              <div className="container">
                 <h2>Ben</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>ben@example.com</p>
@@ -40,8 +40,8 @@ export default function About() {
             </div>
           </div>
 
-          <div class="column">
-            <div class="card">
+          <div className="column">
+            <div className="card">
               <div
                 className="team-image"
                 style={{
@@ -52,7 +52,7 @@ export default function About() {
                   backgroundRepeat: "no-repeat"
                 }}
               />
-              <div class="container">
+              <div className="container">
                 <h2>Brady</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>brady@example.com</p>
@@ -63,8 +63,8 @@ export default function About() {
             </div>
           </div>
 
-          <div class="column">
-            <div class="card">
+          <div className="column">
+            <div className="card">
               <div
                 className="team-image"
                 style={{
@@ -75,7 +75,7 @@ export default function About() {
                   backgroundRepeat: "no-repeat"
                 }}
               />
-              <div class="container">
+              <div className="container">
                 <h2>Christy</h2>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>christy@example.com</p>
@@ -86,8 +86,8 @@ export default function About() {
             </div>
           </div>
 
-          <div class="column">
-            <div class="card">
+          <div className="column">
+            <div className="card">
               <div
                 className="team-image"
                 style={{
@@ -98,7 +98,7 @@ export default function About() {
                   backgroundRepeat: "no-repeat"
                 }}
               />
-              <div class="container">
+              <div className="container">
                 <h2>Donna</h2>
                 <p>
                   Beans, peas and pattypan squash are among my most succesful garden crops. Growing

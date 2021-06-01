@@ -4,10 +4,7 @@ import AuthenticationContext from "../../AuthenticationContext"
 
 const LogInOrOut = () => {
   const authContext = useContext(AuthenticationContext)
-  console.log('authContext', authContext)
   const isLoggedIn = authContext.username !== undefined
-
-  
 
   return (
     <div style={{color: 'white'}}>

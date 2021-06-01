@@ -33,7 +33,6 @@ router.post("/signup",
   }
 )
 
-
 // ----------------------------------- LOGIN -----------------------------------
 
 router.post("/login",
@@ -56,15 +55,12 @@ router.post("/login",
     res.json({username: req.user.username})
   }
 )
- 
 
 // ----------------------------------- GET LOGGED IN USER -----------------------------------
 
 router.get("/getloggedinuser",
   // check if someone is already logged in
-  (req, res, next) => {
-    res.json(req.user)
-  }
+  (req, res,) => {res.json({user: req.user})}
 )
 
 // ----------------------------------- LOGOUT -----------------------------------
@@ -101,8 +97,6 @@ router.get("/logout",
   }
 )
 
-// ----------------------------------- GET USER -----------------------------------
-
 // ------------------------------------ UPDATE USER---------------------------------
 
 // Update a user by id
@@ -138,16 +132,11 @@ router.post('/check-is-name-free',
   }
 )
 
-
-
-
 // --------------------------- functions -------------------------------------
 async function checkIsNameFree(desiredName) {
   let searchResult = await findUserByName(desiredName)
   return searchResult?.username !== desiredName
   
 }
-
-
 
 module.exports = router

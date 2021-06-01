@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "../../components/EditGardenButton";
 import "./individualGarden.css"
-import garden from "../../components/images/garden.jpeg"
+import squashes from "../../components/images/squashes.jpg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "../../components/MessageBoard/MessageBoard"
 import AuthenticationContext from "../../AuthenticationContext"
@@ -28,17 +28,23 @@ export default function LandingPage() {
   }, [gardenName])
 
   return (
-    <div>
-      <div className='garden-title'>
-        <h1 style={{display: 'flex'}}>
-          {!gardenData && 'Loading...'}
-          {(gardenData === 'no garden') && 'This garden could not be found.'}
-          {(gardenData !== 'no garden') && gardenData?.name}
-        </h1>
+    <div className="pageBody">
+      <div className="garden-title-and-edit">
+        <div className='garden-title'>
+          <h1 style={{display: 'flex'}}>
+            {!gardenData && 'Loading...'}
+            {(gardenData === 'no garden') && 'This garden could not be found.'}
+            {(gardenData !== 'no garden') && gardenData?.name}
+          </h1>
+          <div>
+            {gardenData?.address}
+          </div>
+        </div>
         <div>
-          {gardenData?.address}
+          {(typeof gardenData === 'object') && <EditGardenButton />}
         </div>
       </div>
+      
       <div className="garden-info">
         <div className='garden-info-header-container'>
           <h2 className="garden-info-header">About {gardenName}</h2>
@@ -82,8 +88,8 @@ export default function LandingPage() {
               ((gardenData.wheelchairAccessible) && 'Wheelchair Accessible: ' + (gardenData.wheelchairAccessible))}
             </p>
           </div>
-          <div className="about-our-garden-text">
-            <img src={garden} alt="" className="about-our-garden-photo"/>
+          <div className="about-our-garden-text" style={{display: 'flex', justifyContent:'center'}}>
+            <img src={squashes} style={{maxWidth:'40vw'}} alt="" className="about-our-garden-photo"/>
           </div>
         </div>
       </div>
@@ -105,18 +111,15 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">To-Do List</h2>
           </div>
-          {(typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />}
+          <div className="must-be-logged-in-message">
+            {isLoggedIn ? 
+              (typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />
+              :
+              "Please log in to access the to-do list."
+            }
+          </div>
         </div>
         </div>
-        
-      <footer>
-        <div>
-          {(typeof gardenData === 'object') && <EditGardenButton />}
-        </div>
-      </footer>
-
     </div>
-
-
   )
 }

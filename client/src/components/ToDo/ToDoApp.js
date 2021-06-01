@@ -33,11 +33,11 @@ export default function ToDoApp({ gardenId }) {
     id:"loading",
     completed:true
   }]
-  // POST TO COMMUNICATE 'NO CHAT HISTORY YET'
+  // POST TO COMMUNICATE 'NOTHING TO DO YET'
   const nothingToDo = useMemo(() => [{
     // profileImage: undefined,
-    name: 'No History',
-    id: '<p>No one has posted to the to do list yet. Make the first post!</p>',
+    name: 'Nothing To do Today',
+    id: '<p>No one has posted to the list yet. Make the first post!</p>',
     completed: true
   }], [])
 
