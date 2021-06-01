@@ -86,14 +86,14 @@ router.post('/task/:id', async (req, res) => {
 
   try {
     let gardenObject = await Garden.findById(req.params.id)
-    console.log("gardenObject: ", gardenObject)
+    console.log("gardenObject: ", gardenObject?.name)
 
     if (!gardenObject.tasks) {gardenObject.tasks = []}
     gardenObject.tasks.push(newTask)
     console.log('Tasks array after new message: ', gardenObject.tasks)
 
     await gardenObject.save()
-    res.json({message: "task saved!"})
+    res.json({successMessage: "task saved!"})
   }
   catch(err) {
     console.log(err)}
@@ -117,9 +117,17 @@ router.put('/editTask/:id', async (req, res) => {
   let taskToUpdate = req.body
   console.log('req body: ', taskToUpdate)
   try {
-    let updatedTask = await Garden.findByIdAndUpdate(req.params.id, taskToUpdate, {new: true});
-    console.log("Updated tasks", updatedTask)
-    res.json({message: 'success!'})
+    let currentGarden = await Garden.findById(req.params.id);
+    console.log("Updated tasks", currentGarden)
+    currentGarden.tasks = currentGarden.tasks.map((task) => {
+      if (task.id === taskToUpdate.id) {
+        task = taskToUpdate
+        console.log("Task updated",task)
+      }
+    })
+    await currentGarden.save()
+    console.log("Task list after updating", currentGarden.tasks)
+    res.json({successMessage: 'success!'})
   }
   catch(err) {
     console.log(err)
@@ -134,12 +142,13 @@ router.put('/editTask/:id', async (req, res) => {
 
 // delete task
 router.delete('/deleteTask/:id', async (req, res)  => {
-  let deleteTask = req.body
-  console.log('req body: ', deleteTask)
+  let deletedTaskId = req.body.taskId
+  console.log('req body taskId: ', deletedTaskId)
   try {
-    let deleteTask = await Garden.findByIdAndUpdate(req.params.id, taskToDelete, {new: true});
-    console.log("Deleted task", deleteTask)
-    res.json({message: 'Delete was succesful!'})
+    let currentGarden = await Garden.findById(req.params.id);
+    currentGarden.tasks = currentGarden.tasks.filter(task => task.id !== deletedTaskId)
+    await currentGarden.save()
+    res.json({successMessage: 'Delete was succesful!'})
       }
     catch(err) {
       console.log(err)

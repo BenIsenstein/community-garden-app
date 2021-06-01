@@ -99,7 +99,7 @@ const Signup = () => {
           </label>
           <input
             {...register("password", {
-              required: true,
+              required: "You must provide a password.",
               validate: (value) =>
                 validatePass(value) ||
                 "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long."

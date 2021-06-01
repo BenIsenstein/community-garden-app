@@ -75,16 +75,29 @@ export default function ToDoApp({ gardenId }) {
   }
  
 
-  function deleteTask(id) {
+  async function deleteTask(id) {
     const remainingTasks = tasks.filter(task => id !== task.id);
-    
     setTasks(remainingTasks);
+    let fetchUrl = `/api/garden/deleteTask/${gardenId}`
+    let fetchOptions = {
+      method: 'delete',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({taskId:id})
+    }
 
-    // fetch
+    try {
+      let response = await fetch(fetchUrl, fetchOptions)
+      let resObject = await response.json()
+      alert(resObject.successMessage)
+    }
+    catch(err) {
+      alert("Error!", err)
+      console.log(err)
+    }
+
   }
 
-
-  function editTask(id, newName) {
+  async function editTask(id, newName) {
     const editedTaskList = tasks.map(task => {
     // if this task has the same ID as the edited task
       if (id === task.id) {
@@ -94,7 +107,23 @@ export default function ToDoApp({ gardenId }) {
       return task;
     });
     setTasks(editedTaskList);
-    //fetch
+    let taskToUpdate=tasks.find((task) => task.id === id)
+    let fetchUrl = `/api/garden/editTask/${gardenId}`
+    let fetchOptions = {
+      method: 'put',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(taskToUpdate)
+    }
+
+    try {
+      let response = await fetch(fetchUrl, fetchOptions)
+      let resObject = await response.json()
+      alert(resObject.successMessage)
+    }
+    catch(err) {
+      alert("Error!", err)
+      console.log(err)
+    }
   }
 
   //Re-uses the unique id of task as the key
@@ -107,7 +136,7 @@ export default function ToDoApp({ gardenId }) {
       completed={task.completed}
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
-      deleteTask={deleteTask}
+      deleteTask={() => deleteTask(task.id)}
       editTask={editTask}
     />
   ));
@@ -125,6 +154,7 @@ export default function ToDoApp({ gardenId }) {
   const createTask = async (taskText) => {
    // if (tasks.length === nothingToDo) {setTasks([])}
     
+    // SET 'Tasks' STATE TO INCLUDE THE NEW Task.
     setTasks([
       ...tasks, 
       {
@@ -138,10 +168,9 @@ export default function ToDoApp({ gardenId }) {
       id: "todo-" + nanoid(),
       name: taskText,
       completed: false
-
     }
   
-    let fetchUrl = `/api/garden/tasks/${gardenId}`
+    let fetchUrl = `/api/garden/task/${gardenId}`
     let fetchOptions = {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -151,15 +180,13 @@ export default function ToDoApp({ gardenId }) {
     try {
       let response = await fetch(fetchUrl, fetchOptions)
       let resObject = await response.json()
-      alert(resObject.task)
+      alert(resObject.successMessage)
     }
     catch(err) {
       alert("Error!", err)
       console.log(err)
     }
   }
-
-  
 
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
