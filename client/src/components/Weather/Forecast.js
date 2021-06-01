@@ -35,7 +35,7 @@ export default function Forecast ({ forecast }) {
 
   const results = forecast.map((item) => {
     // Add precip to totalRain
-    if (item.rain) totalRain += item.rain['3h']
+    if (item.rain) {totalRain += item.rain['3h']}
 
     // ------------- SETTING COLORS OF THE FORECAST SEGMENTS ------------------
 
@@ -49,7 +49,7 @@ export default function Forecast ({ forecast }) {
     // divide by 3 and use the remainder to access a color in forecastBackgroundColors
     let currentDayColor = forecastBackgroundColors[newDayCount % 3]
 
-    //define a style object to apply to the div
+    // define a style object to apply to the div
     let backgroundColorStyle = {backgroundColor: currentDayColor}
 
     // set the previousMonthAndDay variable to the date we used for this segment
@@ -90,7 +90,7 @@ export default function Forecast ({ forecast }) {
     )
   })
 
-  // Add total-rain-header at the bottom
+  // Add Total-rain-header at the bottom
   results.push(
     <div key={"precip sum"} className="forecast">
       <div className="flex-forecast">
@@ -99,7 +99,7 @@ export default function Forecast ({ forecast }) {
     </div>
   )
   
-  return(
+  return (
     <div>
     {!forecast ? "loading" : <List aria-label="forecast">{results}</List> }
     </div>
