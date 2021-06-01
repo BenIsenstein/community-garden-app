@@ -113,10 +113,46 @@ router.get('/alltasks/:id', async (req, res) => {
 })
 
 // edit/update a task
+router.put('/editTask/:id', async (req, res) => {
+  let taskToUpdate = req.body
+  console.log('req body: ', taskToUpdate)
+  try {
+    let updatedTask = await Garden.findByIdAndUpdate(req.params.id, taskToUpdate, {new: true});
+    console.log("Updated tasks", updatedTask)
+    res.json({message: 'success!'})
+  }
+  catch(err) {
+    console.log(err)
+    if (err.code === 11000) {
+      res.status(409).json({message: 'Task ' +taskToUpdate.name + ' already exists'});      
+    }
+    else {
+      res.status(500).json({message: '500 error.'})
+    }
+  }
+})
 
 // delete task
+router.delete('/deleteTask/:id', async (req, res)  => {
+  let deleteTask = req.body
+  console.log('req body: ', deleteTask)
+  try {
+    let deleteTask = await Garden.findByIdAndUpdate(req.params.id, taskToDelete, {new: true});
+    console.log("Deleted task", deleteTask)
+    res.json({message: 'Delete was succesful!'})
+      }
+    catch(err) {
+      console.log(err)
+      if (err.code === 11000) {
+        res.status(409).json({message: 'Task ' +taskToUpdate.name + ' already deleted'});      
+      }
+      else {
+        res.status(500).json({message: '500 error.'})
+      }
+  }
+})
 
-
+ 
 // get one garden by name
 router.get('/get/:name', async (req, res) => {
   let gardenName = req.params.name

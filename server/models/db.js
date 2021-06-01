@@ -105,7 +105,6 @@ userSchema.methods.validPassword = function (pwd) {
   return this.password === pwd
 }
 
-
 const User = mongoose.model("User", userSchema)
 
 const findUserByName = async (name) => {
@@ -123,20 +122,6 @@ const addUser = async (newUser) => {
   return result.username + " succesfully added to database!"
 }
 
-
-
-// NB. syntax to add methods: toDoDataSchema.methods.methodX = function () {}
-//const toDoData = mongoose.model("ToDoData", toDoDataSchema)
-
-/*const addtoDoData = async (newToDoData) => {
-  let result = await newToDoData.save()
-  return result.name + " succesfully added to database!"
-}
-
-const deletetoDoData = async (name) => {
-  let result = await ToDoData.deleteOne({ name: name })
-  return result.name + " successfully deleted from database!"
-}*/
 
 // General db functions
 

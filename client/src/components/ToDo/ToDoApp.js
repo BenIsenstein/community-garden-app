@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import ToDoForm from "./ToDoForm";
 import ToDoFilterButton from "./ToDoFilterButton";
 import ToDo from "./ToDo";
 import { nanoid } from "nanoid";
+//import { Db } from "mongodb";
 
 
 // custom hook  to return a previous value
@@ -32,6 +33,13 @@ export default function ToDoApp({ gardenId }) {
     id:"loading",
     completed:true
   }]
+  // POST TO COMMUNICATE 'NO CHAT HISTORY YET'
+  const nothingToDo = useMemo(() => [{
+    // profileImage: undefined,
+    name: 'No History',
+    id: '<p>No one has posted to the to do list yet. Make the first post!</p>',
+    completed: true
+  }], [])
 
   const [tasks, setTasks] = useState(loadingTask);
   const [filter, setFilter] = useState('All');
@@ -69,6 +77,7 @@ export default function ToDoApp({ gardenId }) {
 
   function deleteTask(id) {
     const remainingTasks = tasks.filter(task => id !== task.id);
+    
     setTasks(remainingTasks);
 
     // fetch
@@ -110,14 +119,48 @@ export default function ToDoApp({ gardenId }) {
       isPressed={name === filter}
       setFilter={setFilter}
     />
-  ));
+  ))
 
-  function addTask(name) {
-    const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
-    setTasks([...tasks, newTask]);
-    //fetch
-  }
+  //Create a task 
+  const createTask = async (taskText) => {
+   // if (tasks.length === nothingToDo) {setTasks([])}
+    
+    setTasks([
+      ...tasks, 
+      {
+        id: "todo-" + nanoid(),
+        name: taskText,
+        completed: false
+    }
+    ])
+
+    let newTask ={
+      id: "todo-" + nanoid(),
+      name: taskText,
+      completed: false
+
+    }
   
+    let fetchUrl = `/api/garden/tasks/${gardenId}`
+    let fetchOptions = {
+      method: 'post',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(newTask)
+    }
+
+    try {
+      let response = await fetch(fetchUrl, fetchOptions)
+      let resObject = await response.json()
+      alert(resObject.task)
+    }
+    catch(err) {
+      alert("Error!", err)
+      console.log(err)
+    }
+  }
+
+  
+
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
@@ -132,7 +175,7 @@ export default function ToDoApp({ gardenId }) {
 
   return (
     <div className="todoapp stack-large">
-      <ToDoForm addTask={addTask} />
+      <ToDoForm addTask={createTask} />
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
@@ -146,6 +189,7 @@ export default function ToDoApp({ gardenId }) {
         {taskList}
       </ul>
     </div>
-  );
+  )
 }
+
 
