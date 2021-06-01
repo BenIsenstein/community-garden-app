@@ -20,7 +20,7 @@ function Homepage() {
 
   return (
     <div>
-      <div className="welcome-and-weather" style={{ display: "flex", justifyContent: "center"}}>
+      <div className="welcome-and-weather">
         <div className="welcome">
           <div className="welcome-header-container">
             <h1 className="welcome-header">Welcome to Calgary Community Gardens!</h1>
@@ -36,17 +36,15 @@ function Homepage() {
             </div>
           </div>
         </div>
-        <div>
-          <GetWeather />
-        </div>
+        
+        <GetWeather /> 
       </div>
-      <div>
-        <div>
-          <div style={{marginTop: "30px"}}>
-            <h1 className="search-below-bar"><Icon className="arrow" name='arrow down' />Search below for your local garden<Icon className="arrow" name='arrow down' /></h1>
-          </div>
-        </div>
+
+      
+      <div style={{marginTop: "30px"}}>
+        <h1 className="search-below-bar"><Icon className="arrow" name='arrow down' />Search below for your local garden<Icon className="arrow" name='arrow down' /></h1>
       </div>
+        
 
       <div className='Garden-display-container'>
         <div style={{marginTop:'20px'}}>

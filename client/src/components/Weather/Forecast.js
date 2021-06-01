@@ -3,7 +3,7 @@ import {
   List
 } from "@material-ui/core";
 import moment from 'moment';
-import './styles.css';
+import './weatherStyles.css';
 import {
   faCloud,
   faBolt,

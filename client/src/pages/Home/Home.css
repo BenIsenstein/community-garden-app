@@ -36,7 +36,12 @@
 
 .welcome-and-weather {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: flex-start;
+  justify-content: space-around;
+  width: 100%;
   margin-top: 20px;
+  
 }
 
 .welcome-content {
@@ -46,18 +51,21 @@
 }
 
 .welcome-content p {
-  font-size: 1.2rem;
+  font-size: calc(10px + 0.8vw);
   margin-right: 20px;
   color: #EDF5E1;
 }
 
-.welcome{
+.welcome {
   margin: 10px;
   border-radius: 20px;
+  max-width: calc(100vw - 500px);
+  min-width: 389.65px;
+  width: auto;
   background-color: #379683;
 }
 
-.welcome-header{
+.welcome-header {
   text-align: center;
   background-color: #05386B;
   color: #EDF5E1;
@@ -67,7 +75,7 @@
   font-family: 'Recursive', sans-serif;
 }
 
-.welcome-header-container{
+.welcome-header-container {
   min-height: 60px;
   background-color: #05386B;
   color: #EDF5E1;
