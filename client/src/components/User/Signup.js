@@ -10,9 +10,11 @@ const Signup = () => {
   const [gardenMembership, setGardenMembership] = useState("")
   const { register, formState: { errors }, handleSubmit, watch, setValue } = useForm({})
   const username = useRef({})
+  const email = useRef({})
   const password = useRef({})
   const confirmPassword = useRef({})
   username.current = watch("username", "")
+  email.current = watch("email", "")
   password.current = watch("password", "")
   confirmPassword.current = watch("confirmPassword", "")
 
@@ -75,19 +77,21 @@ const Signup = () => {
             name="username"
             id="username"
           />
-          {errors.username && <p>{errors.username.message}</p>}
+          {errors.username && <p className="signup-form-error-message">{errors.username.message}</p>}
         </div>
         <div className="form-control">
           <label htmlFor="email">
             Email
           </label>
           <input
-            {...register("email", { required: true })}
+            {...register("email", { 
+              required: "You must provide an email address." })}
             type="email"
             placeholder="Enter Email"
             name="email"
             id="email"
           />
+        {errors.email && <p className="signup-form-error-message">{errors.email.message}</p>}
         </div>
         <div className="form-control">
           <label htmlFor="password">
@@ -105,7 +109,7 @@ const Signup = () => {
             name="password"
             id="password"
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && <p className="signup-form-error-message">{errors.password.message}</p>}
         </div>
         <div className="form-control">
           <label htmlFor="confirmPassword">
