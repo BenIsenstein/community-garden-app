@@ -23,6 +23,19 @@ const MessageBoard = ({ gardenId }) => {
   // DECLARE STATE FOR POSTS
   const [posts, setPosts] = useState(loadingPost)
 
+  // Remove default post once more get added
+  useEffect (() => {
+    let shouldNoHistoryYetBeRemoved = (
+      posts.length > 1 && 
+      posts.includes(noHistoryYetPost)
+    ) 
+
+    if (shouldNoHistoryYetBeRemoved) {
+      setPosts(posts.slice(1))
+    }
+    
+  },[posts, noHistoryYetPost])
+
   // setPosts TO ALL POSTS FROM DB
   useEffect(() => {
     // fetch to the garden router for all posts  

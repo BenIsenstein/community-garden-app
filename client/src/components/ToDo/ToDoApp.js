@@ -44,11 +44,17 @@ export default function ToDoApp({ gardenId }) {
   const [tasks, setTasks] = useState(loadingTask);
   const [filter, setFilter] = useState('All');
   
+  // remove default task once more get added
   useEffect (() =>{
-    if (tasks.length > 1 && 
-      tasks.includes(nothingToDo)){
-        setTasks(tasks.slice(1))
-      }
+    let shouldNothingToDoBeRemoved = (
+      tasks.length > 1 &&
+      tasks.includes(nothingToDo)
+    )
+
+    if (shouldNothingToDoBeRemoved) {
+      setTasks(tasks.slice(1))
+    }
+    
   },[tasks, nothingToDo])
   
   useEffect (()=> {
