@@ -27,7 +27,7 @@ const Signup = () => {
     try { 
       let response = await fetch(fetchUrl, fetchOptions)
       let resObject = await response.json()
-      // promt them to logout if they're logged in
+      // prompt them to logout if they're logged in
       if (resObject.isAlreadyLoggedIn) {
         let willTheyLogOut = window.confirm("You must be logged out to sign up. Logout?")
         if (willTheyLogOut) {await authContext.logOut()}
@@ -57,13 +57,13 @@ const Signup = () => {
   useEffect(() => setValue('gardenMembership', gardenMembership), [setValue, gardenMembership])
 
   return (
-    <form className="signupForm" onSubmit={handleSubmit(async (data) => await onSubmit(data))}>
-    {/* <form className="signupForm" onSubmit={handleSubmit(alertData)}> */}
-      <div className="container">
-        <h1>Sign Up!</h1>
+    <form className="signup-form-container" onSubmit={handleSubmit(async (data) => await onSubmit(data))}>
+      <div className="signup-form">
+      <div className="signup-form-content">
+        <h1 className="signup-form-header">Sign Up!</h1>
         <div className="form-control">
           <label htmlFor="username">
-            <b>Username</b>
+            Username
           </label>
           <input
             {...register("username", {
@@ -79,7 +79,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="email">
-            <b>Email</b>
+            Email
           </label>
           <input
             {...register("email", { required: true })}
@@ -91,7 +91,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="password">
-            <b>Password</b>
+            Password
           </label>
           <input
             {...register("password", {
@@ -109,7 +109,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="confirmPassword">
-            <b>Password</b>
+            Password
           </label>
           <div style={{ display: "flex", color: "red" }}>
             <input
@@ -129,7 +129,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="howLongGardening">
-            <b>How long have you been gardening?</b>
+            How long have you been gardening?
           </label>
           <select
             defaultValue="selectOne"
@@ -147,7 +147,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="currentPlants">
-            <b>What types of plants are in your garden?</b>
+            What types of plants are in your garden?
           </label>
           <div className="currentPlantsSelection" id="currentPlantsSelection">
             <div>
@@ -204,7 +204,7 @@ const Signup = () => {
         </div>
         <div className="form-control postalCode">
           <label htmlFor="postalCode">
-            <b>Postal Code (city?? other location details instead?)</b>
+            Postal Code
           </label>
           <input
             {...register("postalCode", { required: false })}
@@ -216,7 +216,7 @@ const Signup = () => {
         </div>
         <div className="form-control gardenMembership">
           <label htmlFor="gardenMembership">
-            <b>If you're currently a member of a garden, search for it here.</b>
+            If you're currently a member of a garden, search for it here.
           </label>         
           <GardenSearchAutocomplete 
           setGardenMembership={setGardenMembership}
@@ -234,12 +234,13 @@ const Signup = () => {
             <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
               Already have an account?
               <span className="signupSpan">
-                <Link to="/login"> Log in.</Link>
+                <Link to="/login">  Log in.</Link>
               </span>
             </label>
           </div>
         </div>
       </div>
+    </div>
     </form>
   )
 

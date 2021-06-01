@@ -29,7 +29,7 @@ export default function LandingPage() {
 
   return (
     <div className="pageBody">
-      <div class="garden-title-and-edit">
+      <div className="garden-title-and-edit">
         <div className='garden-title'>
           <h1 style={{display: 'flex'}}>
             {!gardenData && 'Loading...'}
@@ -121,7 +121,5 @@ export default function LandingPage() {
         </div>
         </div>
     </div>
-
-
   )
 }

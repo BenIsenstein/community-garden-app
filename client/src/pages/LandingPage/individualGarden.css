@@ -84,7 +84,6 @@
     padding: 10px;
     border-radius: 20px 20px 0 0;
     font-family: 'Recursive', sans-serif;
-    /* display: flex; */
     justify-content: space-between;
 }
 
@@ -94,11 +93,6 @@
     font-weight: bold;
     color: #05386B;
 }
-/* 
-.pageBackground {
-    height: 100%;
-    width: 100%;
-  } */
 
 @media screen and (max-width: 800px) {
     .messages-and-to-do {

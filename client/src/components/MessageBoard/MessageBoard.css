@@ -7,7 +7,6 @@
 }
 
 .col-3 {
-  /* justify-self: end; */
   text-align: right;
   flex-basis: 100px;
 }
@@ -15,7 +14,6 @@
 .col-7 {
   margin-left: 10px;
   margin-right: 80px;
-  /* justify-self: start; */
   flex-basis: 400px;
 }
 

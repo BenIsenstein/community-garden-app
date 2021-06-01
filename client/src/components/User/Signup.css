@@ -3,30 +3,55 @@
   margin: 0;
 }
 
-.signupForm {
-  padding: 10px;
-  justify-content: center;
+input, #username, #howLongGardening, #postalCode {
+  border: 1px solid #05386B;
+  border-radius: 5px;
+}
+
+.signup-form-container {
   display: flex;
-}
-
-.signupForm h1 {
-  text-align: center;
-  margin-top: 0px;
-}
-
-.signupForm .container {
-  background-color: #fff;
+  width: 100%;
+  justify-content: center;
   padding: 20px;
+}
+
+.signup-form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: calc(12px + 0.5vmin);
+  color: #05386B;
+}
+
+.signup-form-header {
+  text-align: center;
+  color: #edf5e1;
+  background-color: #05386B;
+  min-height: fit-content;
+  width: 100%;
+  margin: 0px;
+  border: 4px solid #05386B;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.signup-form-content {
+  background-color: #EDF5E1;
   border: 4px solid #05386B;
   border-radius: 20px;
+  width: 500px;
 }
 
-.signupForm label {
+.signup-form label {
   display: block;
   margin-top: 10px;
+  font-weight: bold;
 }
 
-.signupForm input {
+.currentPlantsSelection label {
+  font-weight: normal;
+}
+
+.signup-form input {
   padding: 5px;
 }
 
@@ -40,6 +65,11 @@
   cursor: pointer;
 }
 
+.signupButton:hover {
+  background-color: #379683;
+  color: #EDF5E1;
+}
+
 .currentPlantsSelection label {
   display: inline;
   padding-left: 5px;
@@ -48,6 +78,7 @@
 #alreadyHaveAnAccount,
 #dontHaveAnAccount {
   text-align: center;
+  padding: 0 10px 10px 10px;
 }
 #alreadyHaveAnAccount a,
 #dontHaveAnAccount a {
@@ -61,8 +92,12 @@
 .signupSpan {
   font-weight: bold;
 }
+#alreadyHaveAnAccount a:hover,
+#dontHaveAnAccount a:hover {
+  color: #05386B;
+}
 
 .form-control {
   margin-bottom: 10px;
-  padding-bottom: 20px;
+  padding: 0 20px 10px 20px;
 }
