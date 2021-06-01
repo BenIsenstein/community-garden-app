@@ -22,7 +22,7 @@ export default function ToDoForm(props) {
     <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
+          Task list
         </label>
       </h2>
 
