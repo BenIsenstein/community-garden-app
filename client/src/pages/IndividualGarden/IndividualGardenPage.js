@@ -52,40 +52,40 @@ export default function LandingPage() {
         <div className="about-our-garden">
           <div className="about-our-garden-text">
             <p>
-              {(gardenData) &&
-                ((gardenData?.description) && 'Description: ' + (gardenData.description))}
+              <b>{(gardenData) && ((gardenData?.description) && 'Description: ')}</b>
+              {(gardenData) && ((gardenData?.description) && (gardenData.description))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData?.plotSize) && 'Plot Size: ' + (gardenData.plotSize))}
+              <b>{(gardenData) && ((gardenData?.plotSize) && 'Plot Size: ')}</b>
+              {(gardenData) && ((gardenData?.plotSize) && (gardenData.plotSize))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData?.numberOfPlots) && 'Number of Plots: ' + (gardenData.numberOfPlots))}
+              <b>{(gardenData) && ((gardenData?.numberOfPlots) && 'Number of Plots: ')}</b>
+              {(gardenData) && ((gardenData?.numberOfPlots) && (gardenData.numberOfPlots))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData.established) && 'Established: ' + (gardenData.established))}
+              <b>{(gardenData) && ((gardenData.established) && 'Established: ')}</b>
+              {(gardenData) && ((gardenData.established) && (gardenData.established))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData.vacancy) && 'Vacancy: ' + (gardenData.vacancy))}
+              <b>{(gardenData) && ((gardenData.vacancy) && 'Vacancy: ')}</b>
+              {(gardenData) && ((gardenData.vacancy) && (gardenData.vacancy))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData.website) && 'Website: ' + (gardenData.website))}
+              <b>{(gardenData) && ((gardenData.website) && 'Website: ')}</b>
+              {(gardenData) && ((gardenData.website) && (gardenData.website))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData.email) && 'Email: ' + (gardenData.email))}
+              <b>{(gardenData) && ((gardenData.email) && 'Email: ')}</b>
+              {(gardenData) && ((gardenData.email) && (gardenData.email))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData.fee) && 'Fee: ' + (gardenData.fee))}
+              <b>{(gardenData) && ((gardenData.fee) && 'Fee: ')}</b>
+              {(gardenData) && ((gardenData.fee) && (gardenData.fee))}
             </p>
             <p>
-              {(gardenData) && 
-              ((gardenData.wheelchairAccessible) && 'Wheelchair Accessible: ' + (gardenData.wheelchairAccessible))}
+              <b>{(gardenData) && ((gardenData.wheelchairAccessible) && 'Wheelchair Accessible: ')}</b>
+              {(gardenData) && ((gardenData.wheelchairAccessible) && (gardenData.wheelchairAccessible))}
             </p>
           </div>
           <div className="about-our-garden-text" style={{display: 'flex', justifyContent:'center'}}>
