@@ -18,21 +18,13 @@ export default function GetForecast() {
      // let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
       let response = await fetch(fetchForecastUrl)
       let resObject = await response.json()
-       
-      console.log ("resObject is", resObject)
   
-      resObject ? setForecast(resObject.list) : setForecast('no forecast')
-
-      console.log('Forecast length is', forecast?.length)
-      }
-
-    //  setError(null)
-    //  .catch (error => {
-    //    setError(error.message)
-    //  })
- 
-  fetchForecast()
-  },[lat,lon] )
+      if (resObject) {setForecast(resObject.list)} 
+      else {setForecast('no forecast')}
+    }
+    
+    fetchForecast()
+  },[lat,lon])
   
   return (
       <div className="GetForecast">

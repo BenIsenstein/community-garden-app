@@ -35,7 +35,7 @@ export default function Forecast ({ forecast }) {
 
   const results = forecast.map((item) => {
     // Add precip to totalRain
-    totalRain += (item.rain && item.rain['3h']) || 0
+    if (item.rain) totalRain += item.rain['3h']
 
     // ------------- SETTING COLORS OF THE FORECAST SEGMENTS ------------------
 

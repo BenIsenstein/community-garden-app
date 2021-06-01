@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Loader } from 'semantic-ui-react';
 import Weather from './Weather';
 
 export default function GetWeather() {
