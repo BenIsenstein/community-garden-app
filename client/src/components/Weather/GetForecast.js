@@ -12,16 +12,18 @@ export default function GetForecast() {
 
   useEffect(() => {
     const fetchForecast = async () => {
-      let fetchForecastUrl = `${process.env.REACT_APP_WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
+      let weatherUrl = process.env.REACT_APP_WEATHER_API_URL
+      let weatherKey = process.env.REACT_APP_WEATHER_API_KEY
+      let fetchForecastUrl = `${weatherUrl}/forecast/?lat=${lat}&lon=${lon}&units=metric&APPID=${weatherKey}`
      // let fetchForecastUrl = `https://pro.openweathermap.org/data/2.5/forecast?lat=51.050&lon=-114.0853&units=metric&APPID=343be121d39acc6b7c438003f0fe1e30`
       let response = await fetch(fetchForecastUrl)
       let resObject = await response.json()
        
       console.log ("resObject is", resObject)
-    
   
-      return resObject ? setForecast(resObject.list) : setForecast('no forecast')
-      
+      resObject ? setForecast(resObject.list) : setForecast('no forecast')
+
+      console.log('Forecast length is', forecast?.length)
       }
 
     //  setError(null)
@@ -31,8 +33,6 @@ export default function GetForecast() {
  
   fetchForecast()
   },[lat,lon] )
-
-  console.log('Forecast length is', forecast?.length)
   
   return (
       <div className="GetForecast">
