@@ -46,7 +46,7 @@ function Homepage() {
       </div>
         
 
-      <div className='Garden-display-container'>
+      <div className='Garden-display-container' id='search'>
         <div style={{marginTop:'20px'}}>
           {isFormDisplayed 
             ? <AddGardenForm className="Garden-list-and-form" formCoordinates={formCoordinates} /> 
