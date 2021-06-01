@@ -93,7 +93,7 @@ export default function Forecast ({ forecast }) {
   results.push(
     <div key={"precip sum"} className="forecast">
       <div className="flex-forecast">
-      <h2 className="Total-rain-header">Total rain in the next five days: {totalRain}</h2>
+      <h2 className="Total-rain-header">Total rain in the next five days: {totalRain.toFixed(2)} mm</h2>
       </div>
     </div>
   )
