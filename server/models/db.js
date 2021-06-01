@@ -1,7 +1,6 @@
 //db setup
 
 const mongoose = require("mongoose")
-const uniqueValidator = require('mongoose-unique-validator');
 const dotenv = require("dotenv").config()
 const dbServer = "mongodb://localhost:27017"
 const databaseName = "project-2-C6-local"
