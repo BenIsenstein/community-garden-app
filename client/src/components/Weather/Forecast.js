@@ -24,9 +24,8 @@ export default function Forecast ({ forecast }) {
 
   // background color options
   let forecastBackgroundColors = {  
-    0: "CornflowerBlue",
-    1: "DarkOliveGreen",
-    2: "DarkKhaki"
+    1: "#05386B",
+    2: "#379683"
   }
   // value holders to compare whether the date of the forecast segment has changed
   let newDayCount = 0
@@ -47,7 +46,7 @@ export default function Forecast ({ forecast }) {
     if (currentMonthAndDay !== previousMonthAndDay) {newDayCount++}
 
     // divide by 3 and use the remainder to access a color in forecastBackgroundColors
-    let currentDayColor = forecastBackgroundColors[newDayCount % 3]
+    let currentDayColor = forecastBackgroundColors[newDayCount % 2]
 
     // define a style object to apply to the div
     let backgroundColorStyle = {backgroundColor: currentDayColor}
