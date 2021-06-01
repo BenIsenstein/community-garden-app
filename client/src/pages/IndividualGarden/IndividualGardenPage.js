@@ -89,7 +89,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="about-our-garden-text" style={{display: 'flex', justifyContent:'center'}}>
-            <img src={squashes} style={{maxWidth:'30vw'}} alt="" className="about-our-garden-photo"/>
+            <img src={squashes} style={{maxWidth:'40vw'}} alt="" className="about-our-garden-photo"/>
           </div>
         </div>
       </div>
