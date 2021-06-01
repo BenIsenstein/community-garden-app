@@ -43,7 +43,14 @@ export default function ToDoApp({ gardenId }) {
 
   const [tasks, setTasks] = useState(loadingTask);
   const [filter, setFilter] = useState('All');
-
+  
+  useEffect (() =>{
+    if (tasks.length > 1 && 
+      tasks.includes(nothingToDo)){
+        setTasks(tasks.slice(1))
+      }
+  },[tasks, nothingToDo])
+  
   useEffect (()=> {
     async function getAllTasks() {
       try {
