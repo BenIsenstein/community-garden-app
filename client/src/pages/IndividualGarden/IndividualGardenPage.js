@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "../../components/EditGardenButton";
 import "./individualGarden.css"
-import squashes from "../../components/images/squashes.jpg"
+import youngSalad from "../../components/images/young-salad.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "../../components/MessageBoard/MessageBoard"
 import AuthenticationContext from "../../AuthenticationContext"
@@ -89,7 +89,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="about-our-garden-text" style={{display: 'flex', justifyContent:'center'}}>
-            <img src={squashes} style={{maxWidth:'40vw'}} alt="" className="about-our-garden-photo"/>
+            <img src={youngSalad} style={{maxHeight:'80vh', maxWidth:'80vw'}}alt="" className="about-our-garden-photo"/>
           </div>
         </div>
       </div>
