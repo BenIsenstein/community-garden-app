@@ -25,7 +25,7 @@ function App() {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/forecast">Current Weather and Forecast</Link>
+                <Link to="/forecast">Weather &amp; Forecast</Link>
               </li>
               <li>
                 <Link to="/signup">Sign Up</Link>
