@@ -60,9 +60,7 @@ router.post("/login",
 
 router.get("/getloggedinuser",
   // check if someone is already logged in
-  (req, res, next) => {
-    res.json(req.user)
-  }
+  (req, res,) => {res.json({user: req.user})}
 )
 
 // ----------------------------------- LOGOUT -----------------------------------

@@ -11,16 +11,18 @@ const AuthenticationProvider = ({ children }) => {
     const [isAdministrator, setIsAdministrator] = useState(false)
 
     useEffect(() => {
-      let checkLoggedInUser = async () => {
-        try{
+      const checkLoggedInUser = async () => {
+        try {
           let response = await fetch('/api/user/getloggedinuser')
-          let user = await response.json()
-          setUsername(user?.username) 
+          let resObject = await response.json()
+          console.log('user object: ', resObject.user)
+          if (resObject.user) {setUsername(resObject.user.username)}
         }
         catch(error){
           console.log(error)
         }
       }
+
       checkLoggedInUser()
     }, [])
 
