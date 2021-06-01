@@ -32,8 +32,8 @@ function App() {
       <AuthenticationProvider>
         <div className="pageBody">
           <nav className="pageNavbar">
-            <h1 style={{ color: "#5CDB95" }}>Grow Calgary</h1>
-            <ul style={{ display: "flex", justifyContent: "space-around", listStyle: "none", fontSize: "16px", paddingBottom: "5px" }}>
+            <h1 style={{ color: "#5CDB95", padding: "0 10px" }}>Grow Calgary</h1>
+            <ul style={{ display: "flex", justifyContent: "space-around", listStyle: "none", fontSize: "16px", paddingBottom: "5px", fontWeight: "bold" }}>
               <li>
                 <Link to="/">Home</Link>
               </li>
