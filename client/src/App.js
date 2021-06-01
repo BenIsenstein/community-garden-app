@@ -6,7 +6,7 @@ import Signup from "./components/User/Signup"
 import Login from "./components/User/Login"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
-import GardenPageRouter from "./components/IndividualGardens/GardenPageRouter"
+import GardenPageRouter from "./routes/IndividualGardens/GardenPageRouter"
 import AuthenticationProvider from "./AuthenticationProvider"
 import LogInOrOut from "./components/User/LogInOrOut"
 
