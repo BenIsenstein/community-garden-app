@@ -99,11 +99,11 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">Message Board</h2>
           </div>
-          <div className="must-be-logged-in-message">
+          <div>
             {isLoggedIn ? 
               (typeof gardenData === 'object') &&  <MessageBoard gardenId={gardenData?._id} />
               :
-              "Please log in to access the message board."
+              <div className="must-be-logged-in-message">"Please log in to access the message board."</div>
             }
           </div>
         </div>
@@ -111,11 +111,11 @@ export default function LandingPage() {
           <div className="garden-info-header-container">
             <h2 className="garden-info-header">To-Do List</h2>
           </div>
-          <div className="must-be-logged-in-message">
+          <div>
             {isLoggedIn ? 
               (typeof gardenData === 'object') && <ToDoApp gardenId={gardenData?._id} />
               :
-              "Please log in to access the to-do list."
+              <div className="must-be-logged-in-message">Please log in to access the to-do list.</div>
             }
           </div>
         </div>
