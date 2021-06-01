@@ -2,19 +2,31 @@
 |BACKLOG|
 ---------
 
-1. Garden page photo sizing & front page weather sizing
+1. Front page weather sizing & welcome box -> Ben
+    - Weather same height as welcome
+    - Welcome & weather flex when compressed
 
-2. Only display message board & toDo if logged in
+2. Take out fake gardens from database
 
-3. collection.ensureIndex is deprecated
+3. Only toDo if logged in -> Christy
 
-4. Redirect after submitting the signup form
+4. Font size & placeholder text on toDo -> Donna
 
-5. Edit Garden pulled in Donna's address
+5. editGarden button to header -> Christy
 
-6. Landing page -> better name
+6. Bolding description headings -> Brady
 
-7. Garden Page router should be in routes folder?
+7. Change placeholder photo -> Brady
+
+8. Edit Garden pulled in Donna's address
+
+9. Landing page -> better name -> Brady
+
+10. Garden Page router should be in routes folder? -> Brady
+
+11. Sum up rain amount by date for Rain.max -> Ben
+
+12. Clean up your code -> Everyone
 
 Script to upload data to mongo atlas -> run in terminal
 mongoimport --host communitygarden-shard-00-01.hawuz.mongodb.net:27017 --db gardenDatabase --collection gardens --type json --file /Users/bwalkerbrock/Documents/Coding/EvolveU/community-garden-app/client/src/components/DataTable/gardenData.json --jsonArray --authenticationDatabase admin --ssl --username evolveU-cohort6 --password ux9OjXYa50waR6NP

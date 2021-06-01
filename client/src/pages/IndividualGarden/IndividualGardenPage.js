@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import EditGardenButton from "../../components/EditGardenButton";
 import "./individualGarden.css"
-import garden from "../../components/images/garden.jpeg"
+import squashes from "../../components/images/squashes.jpg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "../../components/MessageBoard/MessageBoard"
 import AuthenticationContext from "../../AuthenticationContext"
@@ -88,8 +88,8 @@ export default function LandingPage() {
               ((gardenData.wheelchairAccessible) && 'Wheelchair Accessible: ' + (gardenData.wheelchairAccessible))}
             </p>
           </div>
-          <div className="about-our-garden-text">
-            <img src={garden} alt="" className="about-our-garden-photo"/>
+          <div className="about-our-garden-text" style={{display: 'flex', justifyContent:'center'}}>
+            <img src={squashes} style={{maxWidth:'40vw'}} alt="" className="about-our-garden-photo"/>
           </div>
         </div>
       </div>
