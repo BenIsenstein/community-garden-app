@@ -23,6 +23,10 @@ input, #username, #howLongGardening, #postalCode {
   color: #05386B;
 }
 
+.signup-form-error-message {
+  color: red;
+}
+
 .signup-form-header {
   text-align: center;
   color: #edf5e1;
