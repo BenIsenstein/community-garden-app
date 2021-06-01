@@ -14,19 +14,6 @@ import AdministratorOnly from "./components/User/AdministratorOnly"
 
 
 function App() {
-  // const[user, setUser] = useState()
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     console.log("Logged on (line 21)")
-  //     setUser(foundUser);
-  //     fetch
-  //   }
-  // }, []);
-  // if (user) {
-  //   return <div>{user.name} is loggged in</div>;
-  // } else
   return (
     <Router>
       <AuthenticationProvider>
@@ -57,8 +44,6 @@ function App() {
             </ul>
           </nav>
 
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/about">
               <About />
@@ -89,50 +74,7 @@ function App() {
         </div>
       </AuthenticationProvider>
     </Router>
-    
   )
 }
 
-// function About() {
-//  return <h2>About</h2>
-// }
-
-// function Users() {
-//   return <Signup />
-// }
-
 export default App
-
-// export default class App extends React.Component {
-//   state = {
-//     users: [],
-//   };
-//   componentDidMount() {
-//     axios.get("/users.json").then((response) => {
-//       this.setState({ users: response.data });
-//     });
-//   }
-
-//   render() {
-//     const { users } = this.state;
-//     return (
-//       <div>
-//         <ul className="users">
-//           {users.map((user) => (
-//             <li className="user">
-//               <p>
-//                 <strong>Name:</strong> {user.name}
-//               </p>
-//               <p>
-//                 <strong>Email:</strong> {user.email}
-//               </p>
-//               <p>
-//                 <strong>City:</strong> {user.address.city}
-//               </p>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
