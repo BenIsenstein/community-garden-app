@@ -2,8 +2,13 @@ import "../../../src/App.css"
 import "./about.css"
 import Brady from "../../components/images/brady.jpg"
 import Christy from "../../components/images/Christy.jpg"
-import donna from "../../components/images/donna.jpg"
+import Donna from "../../components/images/Donna.jpg"
 import Ben from "../../components/images/Ben.jpg"
+import HTMLlogo from "../../components/images/html5-logo-31819.png"
+import NodeLogo from "../../components/images/Node.js_logo.svg"
+import ReactIcon from "../../components/images/React-icon.svg"
+import Moment from "../../components/images/momentjs.png"
+import NanoID from "../../components/images/nano.png"
 
 export default function About() {
   return (
@@ -93,7 +98,7 @@ export default function About() {
                   className="team-image"
                   style={{
                     height: "275px",
-                    backgroundImage: "url(" + donna + ")",
+                    backgroundImage: "url(" + Donna + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
@@ -105,7 +110,7 @@ export default function About() {
                     Beans, peas and pattypan squash are among my most succesful garden crops. Growing
                     my full-stack development skill-set.
                   </p>
-                  <p>donna@example.com</p>
+                  <p>dgswitzer@gmail.com</p>
                   <p>
                     <button className="About-button">Contact</button>
                   </p>
@@ -133,13 +138,20 @@ export default function About() {
         <div className="about-subsection">
           <h2 className="about-heading">The Technologies</h2>
           <div className="row">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ducimus, maxime adipisci iure itaque tenetur quam quas doloremque officia omnis enim sapiente animi est expedita. Ex molestiae at distinctio deserunt.
-            </p>
+          <div class="column">          
+              <img src={NodeLogo} alt="Node Logo"/>          
+              <img src={HTMLlogo} alt="HTML Logo"/>    
+              <img src={Moment} alt="Moment"/>
+          </div>
+          <div class="column">
+              <img src={ReactIcon} alt="React Logo"/>
+              <img src={NanoID} alt="NanoID"/>
+          </div>
+            
           </div>
         </div>
-
       </div>
     </div>
   )
 }
+
