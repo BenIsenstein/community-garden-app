@@ -254,14 +254,15 @@ function EditGardenForm({formCoordinates, gardenToEdit}) {
         </div> 
         <div className='Garden-form-element'> {/* Description */}
           <label htmlFor='Description'>Description</label>
-          <input 
+          <textarea 
             className='Description' 
             id='Description' 
             name='description'
             {...register('description', {required: "You must write a description."})}
-          />
+          >              
+          </textarea>
           {errors.description && <p>{errors.description.message}</p>}
-        </div>  
+        </div> 
         <div className='Garden-form-element'>
           <input className='submit-button' type='submit' value='Submit' />
         </div>
