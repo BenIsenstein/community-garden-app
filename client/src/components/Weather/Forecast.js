@@ -24,9 +24,8 @@ export default function Forecast ({ forecast }) {
 
   // background color options
   let forecastBackgroundColors = {  
-    0: "CornflowerBlue",
-    1: "DarkOliveGreen",
-    2: "DarkKhaki"
+    1: "#05386B",
+    2: "#379683"
   }
   // value holders to compare whether the date of the forecast segment has changed
   let newDayCount = 0
@@ -47,7 +46,7 @@ export default function Forecast ({ forecast }) {
     if (currentMonthAndDay !== previousMonthAndDay) {newDayCount++}
 
     // divide by 3 and use the remainder to access a color in forecastBackgroundColors
-    let currentDayColor = forecastBackgroundColors[newDayCount % 3]
+    let currentDayColor = forecastBackgroundColors[newDayCount % 2]
 
     // define a style object to apply to the div
     let backgroundColorStyle = {backgroundColor: currentDayColor}
@@ -94,7 +93,7 @@ export default function Forecast ({ forecast }) {
   results.push(
     <div key={"precip sum"} className="forecast">
       <div className="flex-forecast">
-      <h2 className="Total-rain-header">Total rain in the next five days: {totalRain}</h2>
+      <h2 className="Total-rain-header">Total rain in the next five days: {totalRain.toFixed(2)} mm</h2>
       </div>
     </div>
   )

@@ -6,14 +6,12 @@ const logger = require("morgan")
 const passport = require("passport")
 const session = require("express-session")
 const cors = require("cors")
-const flash = require("connect-flash")
 const initializePassport = require("./passport-config")
 require("dotenv").config()
 
 // IMPORT ROUTES
 const gardenRouter = require("./routes/garden")
 const userRouter = require("./routes/user")
-//const todoRouter = require("./routes/todo")
 
 const app = express()
 app.use(cors())
@@ -25,7 +23,7 @@ initializePassport(passport)
 app.use(session({ secret: process.env.PASSPORT_SECRET, resave: true, saveUninitialized: true }))
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(flash())
+
 
 // Configure Express app
 app.use(logger("dev"))

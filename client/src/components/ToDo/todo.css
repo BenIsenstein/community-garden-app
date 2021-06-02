@@ -35,6 +35,7 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+  font-weight: 700;
 }
 button,
 input {
@@ -182,7 +183,7 @@ input[type="text"] {
   text-align: center;
 }
 .input__lg {
-  padding: 2rem;
+  padding: 1rem;
   border: 2px solid #05386B;
 }
 .input__lg:focus {
@@ -192,14 +193,14 @@ input[type="text"] {
 [class*="__lg"] {
   display: inline-block;
   width: 100%;
-  font-size: 1.9rem;
+  font-size: 1.2rem;
 }
 [class*="__lg"]:not(:last-child) {
   margin-bottom: 1rem;
 }
 @media screen and (min-width: 620px) {
   [class*="__lg"] {
-    font-size: 2.4rem;
+    font-size: 1.4rem;
   }
 }
 .filters {
@@ -237,6 +238,7 @@ input[type="text"] {
   min-height: 44px;
   padding-left: 40px;
   clear: left;
+  color: #05386B;
 }
 .c-cb > label::before,
 .c-cb > input[type="checkbox"] {

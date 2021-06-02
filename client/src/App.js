@@ -9,6 +9,7 @@ import GetForecast from "./components/Weather/GetForecast"
 import GardenPageRouter from "./routes/IndividualGardens/GardenPageRouter"
 import AuthenticationProvider from "./AuthenticationProvider"
 import LogInOrOut from "./components/User/LogInOrOut"
+import { HashLink } from 'react-router-hash-link'
 
 function App() {
   return (
@@ -25,7 +26,10 @@ function App() {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/forecast">Current Weather and Forecast</Link>
+                <Link to="/forecast">Weather &amp; Forecast</Link>
+              </li>
+              <li>
+                <HashLink to='/home#search'>Find a Garden</HashLink>
               </li>
               <li>
                 <Link to="/signup">Sign Up</Link>
