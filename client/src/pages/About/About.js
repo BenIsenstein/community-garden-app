@@ -2,12 +2,12 @@ import "../../../src/App.css"
 import "./about.css"
 import Brady from "../../components/images/brady.jpg"
 import Christy from "../../components/images/Christy.jpg"
-import Donna from "../../components/images/Donna.jpg"
+import Donna from "../../components/images/donna.jpg"
 import Ben from "../../components/images/Ben.jpg"
 import HTMLlogo from "../../components/images/html5-logo-31819.png"
 import NodeLogo from "../../components/images/Node.js_logo.svg"
 import ReactIcon from "../../components/images/React-icon.svg"
-import Moment from "../../components/images/momentjs.png"
+// import Moment from "../../components/images/momentjs.png"  // Not used??
 import NanoID from "../../components/images/nano.png"
 
 export default function About() {
@@ -227,7 +227,7 @@ export default function About() {
           <div class="column">          
               <img src={NodeLogo} alt="Node Logo"/>          
               <img src={HTMLlogo} alt="HTML Logo"/>    
-              <img src={Moment} alt="Moment"/>
+              {/* <img src={Moment} alt="Moment"/> */}
           </div>
           <div class="column">
               <img src={ReactIcon} alt="React Logo"/>
