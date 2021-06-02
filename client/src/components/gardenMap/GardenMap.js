@@ -12,7 +12,8 @@ const mapContainerStyle = {
   width: "50vw",
   height: "685px",
   border: "4px solid #05386B",
-  borderRadius: "20px"
+  borderRadius: "20px",
+  minWidth: "575px"
 }
 const center = {
   lat: 51.01,
@@ -70,6 +71,7 @@ export default function GardenMap({
         lng: 0
       })
     }
+    // eslint-disable-next-line
   }, [isFormDisplayed])
 
   const [selected, setSelected] = React.useState(null)
