@@ -118,7 +118,58 @@ export default function About() {
           <h2 className="about-heading">The Problem</h2>
           <div className="row">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ducimus, maxime adipisci iure itaque tenetur quam quas doloremque officia omnis enim sapiente animi est expedita. Ex molestiae at distinctio deserunt.
+              
+              Grow Calgary began with four software developers-in-training who shared an interest in solving municipal problems. Passion for the outdoors led us to the problems many people face in the world of gardening.
+              <br />
+              <br />
+              For people just beginning their gardening journey, common barriers look like:
+              <br />
+              <ul>
+                <li>
+                  Not knowing where to start
+                </li>
+                <li>
+                  Not knowing anyone who can provide mentorship
+                </li>
+                <li>
+                  No access to garden equipment or funds
+                </li>
+                <li>
+                  Fear of entering a new community and making friends
+                </li>
+              </ul>
+              <br />
+              <br />
+
+              Experienced gardeners have their own host of problems:
+              <ul>
+                <li>
+                  Desire to have a consistent high-quality harvest
+                </li>
+                <li>
+                  No one to share their craft with
+                </li>
+                <li>
+                  No one to take their gardening to the next level with
+                </li>
+              </ul>
+              <br />
+              <br />
+              Garden organizers who have an administrative role have the greatest challenges:
+              <ul>
+                <li>
+                  No reliable way to communicate updates
+                </li>
+                <li>
+                  Inundated with tasks
+                </li>
+                <li>
+                  Members who often miss updates or neglect responsibilities
+                </li>
+                <li>
+                  No way of tracking activities in the community and holding members accountable
+                </li>
+              </ul>
             </p>
           </div>
         </div>
@@ -126,7 +177,42 @@ export default function About() {
           <h2 className="about-heading">The Solution</h2>
           <div className="row">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ducimus, maxime adipisci iure itaque tenetur quam quas doloremque officia omnis enim sapiente animi est expedita. Ex molestiae at distinctio deserunt.
+            Through thoughtful problem-setting and collaboration, our team arrived at the solution: 
+            <br />
+            <br />
+            Grow.
+            <br />
+            <br />
+            Grow is a web application offering helpful and easy-to-use tools for gardening beginners, pros, and organizers alike. Users can add their community garden to the app, search for gardens in the city of Calgary, access weather, share best practices via message board, and more.
+            <br />
+            <br />
+            Features:
+            <ul>
+              <li>
+                Master list of every garden in our system including location, website and how to join
+              </li>
+              <li>
+                Five-day weather forecast with temperature, wind, and precipitation
+              </li>
+              <li>
+                User sign-up
+              </li>
+              <li>
+                Ability to easily add your community garden
+              </li>
+              <li>
+                Option to indicate wheelchair accessibility of your garden
+              </li>
+              <li>
+                Home page for each garden including basic information, message board and todo list
+              </li>
+            </ul>
+            <br />
+            We're really proud of our product, and we had an incredible time building it together. We're confident you'll love it too. 
+            <br />
+            <br />
+            The Grow Calgary Team 
+
             </p>
           </div>
         </div>
