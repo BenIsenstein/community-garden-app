@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import React, { useContext } from "react"
 import { useForm } from "react-hook-form"
-import AuthenticationContext from "../../AuthenticationContext"
+import AuthenticationContext from "../../auth/AuthenticationContext"
 import "./Signup.css"
 import "./Login.css"
 
