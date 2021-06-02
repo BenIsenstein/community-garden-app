@@ -10,9 +10,14 @@ body {
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  
-  .about-heading {
-    margin-left: 20px;
+
+  .about-subsection {
+    padding: 20px;
+    background-color: #8EE4AF;
+  }
+
+  .about-subsection:nth-child(odd) {
+    background-color: #EDF5E1;
   }
 
   .column {
