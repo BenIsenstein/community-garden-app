@@ -10,7 +10,7 @@ function AddGardenForm({formCoordinates}) {
   useEffect(() => {
     setValue('lat', lat)
     setValue('lng', lng)
-
+    // eslint-disable-next-line
   }, [lat, lng])
           
   return (

@@ -70,6 +70,7 @@ export default function GardenMap({
         lng: 0
       })
     }
+    // eslint-disable-next-line
   }, [isFormDisplayed])
 
   const [selected, setSelected] = React.useState(null)
