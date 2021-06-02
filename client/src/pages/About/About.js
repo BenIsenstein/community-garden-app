@@ -32,8 +32,8 @@ export default function About() {
                 />
                 <div className="container">
                   <h2>Ben</h2>
-                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  <p>ben@example.com</p>
+                  <p>I spent the first five years of my working life as a performing musician in Toronto, Calgary, Montreal and Italy. This year I'm growing zuchini, lettuce, curly kale, wild arugula and potatoes. I'm very excited to be in the EvolveU progam at InceptionU, and creatively solving problems through software!</p>
+                  <p>ben.isenstein@gmail.com</p>
                   <p>
                     <button className="About-button">Contact</button>
                   </p>

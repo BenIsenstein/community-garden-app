@@ -69,7 +69,7 @@ function AddGardenForm({formCoordinates}) {
               className='Postal-code' 
               id='Postal-code' 
               name='postalCode'
-              {...register('postalCode', {required: 'You must input a postal code.'})}
+              {...register('postalCode')}
             />
             {errors.postalCode && <p>{errors.postalCode.message}</p>}
           </div>      
@@ -80,19 +80,19 @@ function AddGardenForm({formCoordinates}) {
             <div className='Quadrant-buttons' id='quadrant'>
               <div className='button'>
                 <label htmlFor="NW">NW&nbsp;</label>
-                <input type="radio" id="NW" name="quadrant" value="NW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+                <input type="radio" id="NW" name="quadrant" value="NW" {...register('quadrant')}/>  
               </div>
               <div className='button'>
                 <label htmlFor="NE">NE&nbsp;</label>
-                <input type="radio" id="NE" name="quadrant" value="NE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+                <input type="radio" id="NE" name="quadrant" value="NE" {...register('quadrant')}/>  
               </div>   
               <div className='button'>
                 <label htmlFor="SW">SW&nbsp;</label>
-                <input type="radio" id="SW" name="quadrant" value="SW" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+                <input type="radio" id="SW" name="quadrant" value="SW" {...register('quadrant')}/>  
               </div>
               <div className='button'>
                 <label htmlFor="SE">SE&nbsp;</label>
-                <input type="radio" id="SE" name="quadrant" value="SE" {...register('quadrant', {required: 'You must select a quadrant.'})}/>  
+                <input type="radio" id="SE" name="quadrant" value="SE" {...register('quadrant')}/>  
               </div>   
             </div>
             {errors.quadrant && <p>{errors.quadrant.message}</p>}
@@ -128,7 +128,7 @@ function AddGardenForm({formCoordinates}) {
               name='plotSize'
               type='number'
               min='0'
-              {...register('plotSize', {required: 'You must input a plot size.'})}
+              {...register('plotSize')}
             />
             {errors.plotSize && <p>{errors.plotSize.message}</p>}
           </div>
@@ -140,7 +140,7 @@ function AddGardenForm({formCoordinates}) {
               name='numberOfPlots'
               type='number'
               min='0'
-              {...register('numberOfPlots', {required: 'You must input a number of plots.'})}
+              {...register('numberOfPlots')}
             />
             {errors.numberOfPlots && <p>{errors.numberOfPlots.message}</p>}
           </div>
@@ -162,11 +162,11 @@ function AddGardenForm({formCoordinates}) {
               <div className='Vacancy-buttons'id='vacancy'>
                 <div className='button'>
                   <label htmlFor="yes">Yes&nbsp;</label>
-                  <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy', {required:  'You must declare vacancy.'})}/>
+                  <input type="radio" id="yes" name="vacancy" value="yes" {...register('vacancy')}/>
                 </div>
                 <div className='button'>
                   <label htmlFor="no">No&nbsp;</label>
-                  <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy', {required: 'You must declare vacancy.'})}/>
+                  <input type="radio" id="no" name="vacancy" value="no" {...register('vacancy')}/>
                 </div>   
               </div> 
               {errors.vacancy && <p>{errors.vacancy.message}</p>} 
@@ -176,11 +176,11 @@ function AddGardenForm({formCoordinates}) {
               <div className='Accessibility-buttons'id='wheelchairAccessible'>
                 <div className='button'>
                   <label htmlFor="yes">Yes&nbsp;</label>
-                  <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible', {required:  'You must declare whether your garden is wheelchair-accessible.'})}/>
+                  <input type="radio" id="yes" name="wheelchairAccessible" value="yes" {...register('wheelchairAccessible')}/>
                 </div>
                 <div className='button'>
                   <label htmlFor="no">No&nbsp;</label>
-                  <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible', {required: 'You must declare whether your garden is wheelchair-accessible.'})}/>
+                  <input type="radio" id="no" name="wheelchairAccessible" value="no" {...register('wheelchairAccessible')}/>
                 </div>   
               </div> 
               {errors.wheelchairAccessible && <p>{errors.wheelchairAccessible.message}</p>} 
@@ -204,7 +204,7 @@ function AddGardenForm({formCoordinates}) {
               className='Email' 
               id='Email' 
               name='email'
-              {...register('email', {required: "You must include an email for security reasons. We won't spam you, we promise :)"})}
+              {...register('email')}
             />
             {errors.email && <p>{errors.email.message}</p>}
           </div> 
