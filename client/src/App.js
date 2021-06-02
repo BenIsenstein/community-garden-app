@@ -7,7 +7,7 @@ import Login from "./components/User/Login"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
 import GardenPageRouter from "./routes/IndividualGardens/GardenPageRouter"
-import AuthenticationProvider from "./AuthenticationProvider"
+import AuthenticationProvider from "./auth/AuthenticationProvider"
 import LogInOrOut from "./components/User/LogInOrOut"
 import { HashLink } from 'react-router-hash-link'
 

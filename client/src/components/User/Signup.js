@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState, useContext } from "react"
 import { useForm } from "react-hook-form"
 import GardenSearchAutocomplete from "./GardenSearchAutocomplete/GardenSearchAutocomplete"
 import "./Signup.css"
-import AuthenticationContext from "../../AuthenticationContext"
+import AuthenticationContext from "../../auth/AuthenticationContext"
 
 const Signup = () => {
   const authContext = useContext(AuthenticationContext)

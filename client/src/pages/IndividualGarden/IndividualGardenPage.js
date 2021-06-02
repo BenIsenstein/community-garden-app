@@ -5,7 +5,7 @@ import "./individualGarden.css"
 import youngSalad from "../../components/images/young-salad.jpeg"
 import ToDoApp from "../../components/ToDo/ToDoApp"
 import MessageBoard from "../../components/MessageBoard/MessageBoard"
-import AuthenticationContext from "../../AuthenticationContext"
+import AuthenticationContext from "../../auth/AuthenticationContext"
 
 
 export default function LandingPage() {
@@ -103,7 +103,7 @@ export default function LandingPage() {
             {isLoggedIn ? 
               (typeof gardenData === 'object') &&  <MessageBoard gardenId={gardenData?._id} />
               :
-              <div className="must-be-logged-in-message">"Please log in to access the message board."</div>
+              <div className="must-be-logged-in-message">Please log in to access the message board.</div>
             }
           </div>
         </div>
