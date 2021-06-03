@@ -112,12 +112,12 @@ export default function About() {
                 />
                 <div className="container">
                   <h2>Christy</h2>
-                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  <p>christy@example.com</p>
+                  <p>My favourite things to grow are carrots, tomatoes, and coding skills.</p>
+                  <p>christyclement001@gmail.com</p>
                   <p>
                     <button 
                       className="About-button"
-                      data-clipboard-text="christy@example.com"
+                      data-clipboard-text="christyclement001@gmail.com"
                     >
                       Contact
                     </button>
