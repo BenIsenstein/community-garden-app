@@ -7,13 +7,23 @@ import Ben from "../../components/images/Ben.jpg"
 import HTMLlogo from "../../components/images/html5-logo-31819.png"
 import NodeLogo from "../../components/images/Node.js_logo.svg"
 import ReactIcon from "../../components/images/React-icon.svg"
-// import Moment from "../../components/images/momentjs.png"  // Not used??
+// import Moment from "../../components/images/momentjs.png"  // Not used?? **We are using it in GetForecast. -Ben
 import NanoID from "../../components/images/nano.png"
+import ClipboardJS from 'clipboard'
+
 
 export default function About() {
+  const clipboard = new ClipboardJS('.About-button')
+
+  clipboard.on('success', (event) => {
+    alert(`'${event.text}' has been copied to your clipboard.`)
+    event.clearSelection()
+    }
+  )
+
   return (
     <div className="pageBackground">
-      <div>
+      <div style={{height: '100%'}}>
         <div className="about-section">
           <h1>About Us Page</h1>
           <p>Some text about who we are and what we do.</p>
@@ -40,7 +50,12 @@ export default function About() {
                   <p>I spent the first five years of my working life as a performing musician in Toronto, Calgary, Montreal and Italy. This year I'm growing zuchini, lettuce, curly kale, wild arugula and potatoes. I'm very excited to be in the EvolveU progam at InceptionU, and creatively solving problems through software!</p>
                   <p>ben.isenstein@gmail.com</p>
                   <p>
-                    <button className="About-button">Contact</button>
+                    <button 
+                      className="About-button"
+                      data-clipboard-text="ben.isenstein@gmail.com"
+                    >
+                      Contact
+                    </button>
                   </p>
                 </div>
               </div>
@@ -63,7 +78,12 @@ export default function About() {
                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                   <p>brady@example.com</p>
                   <p>
-                    <button className="About-button">Contact</button>
+                    <button 
+                      className="About-button"
+                      data-clipboard-text="brady@example.com"
+                    >
+                      Contact
+                    </button>
                   </p>
                 </div>
               </div>
@@ -86,7 +106,12 @@ export default function About() {
                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                   <p>christy@example.com</p>
                   <p>
-                    <button className="About-button">Contact</button>
+                    <button 
+                      className="About-button"
+                      data-clipboard-text="christy@example.com"
+                    >
+                      Contact
+                    </button>
                   </p>
                 </div>
               </div>
@@ -112,7 +137,12 @@ export default function About() {
                   </p>
                   <p>dgswitzer@gmail.com</p>
                   <p>
-                    <button className="About-button">Contact</button>
+                    <button 
+                      className="About-button"
+                      data-clipboard-text="dgswitzer@gmail.com"
+                    >
+                      Contact
+                    </button>
                   </p>
                 </div>
               </div>
@@ -124,7 +154,7 @@ export default function About() {
           <div className="row">
             <p>
               
-              Grow Calgary began with four software developers-in-training who shared an interest in solving municipal problems. Passion for the outdoors led us to the problems many people face in the world of gardening.
+              Grow Calgary began with four software developers-in-training who shared an interest in solving municipal problems. Passion for the outdoors led us to problems many people face in the world of gardening.
               <br />
               <br />
               For people just beginning their gardening journey, common barriers look like:
@@ -160,7 +190,7 @@ export default function About() {
               </ul>
               <br />
               <br />
-              Garden organizers who have an administrative role have the greatest challenges:
+              Garden organizers with an administrative role have the greatest challenges:
               <ul>
                 <li>
                   No reliable way to communicate updates

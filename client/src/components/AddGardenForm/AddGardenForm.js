@@ -222,7 +222,7 @@ function AddGardenForm({formCoordinates}) {
             {errors.description && <p>{errors.description.message}</p>}
           </div> 
         <div className='Garden-form-element'>
-          <input type='submit' value='submit' />
+          <input className='submit-button' type='submit' value='Submit' />
         </div>
       </div>    
     </form>

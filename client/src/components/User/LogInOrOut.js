@@ -12,14 +12,7 @@ const LogInOrOut = () => {
         ? (
           <div>
             <span>Hello {authContext.username} &nbsp;&nbsp; </span>
-            <button 
-              style={{            
-                backgroundColor:"#EDF5E1", 
-                color:"#05386B",
-                borderRadius:'10em',
-                padding: '2px 10px 2px 10px',
-              }}
-              onClick={async () => await authContext.logOut()}>Logout</button>   
+            <button className='logout-button' onClick={async () => await authContext.logOut()}>Logout</button>   
           </div>    
         ) 
         : (
