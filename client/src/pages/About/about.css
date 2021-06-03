@@ -19,6 +19,10 @@ body {
     background-color: #8EE4AF;
   }
 
+  .about-subsection li {
+    margin-left: 17px;
+  }
+
   .about-subsection:nth-child(odd) {
     background-color: #EDF5E1;
   }
