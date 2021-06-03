@@ -78,10 +78,10 @@ export default function Forecast ({ forecast }) {
       <div key={forecast.indexOf(item)} className="forecast" style={backgroundColorStyle}>
         <div className="flex-forecast">
         <p>{moment(item.dt_txt).format("MMMM Do")}</p>
-        <p>{moment(item.dt_txt).format("h:mm a")}</p>
+        <p>{moment(item.dt_txt).format("hh:mm a")}</p>
         <WeatherIcon style={{fontSize:20,marginTop:4}}>{weatherIcon}</WeatherIcon>
         <p>{Math.round(item.main.temp)} &deg;C</p>
-        <p>{(item.rain && "Precip(mm):  " + item.rain['3h']) || "No precip"} </p>
+        <p>{(item.rain && "Precip(mm): " + item.rain['3h'])|| "No precipitation"} </p>
         <p> Wind: {Math.round(item.wind.speed)} km/hr</p>
         </div>
       </div>
