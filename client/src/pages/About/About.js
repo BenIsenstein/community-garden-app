@@ -7,7 +7,7 @@ import Ben from "../../components/images/Ben.jpg"
 import HTMLlogo from "../../components/images/html5-logo-31819.png"
 import NodeLogo from "../../components/images/Node.js_logo.svg"
 import ReactIcon from "../../components/images/React-icon.svg"
-// import Moment from "../../components/images/momentjs.png"  // Not used?? **We are using it in GetForecast. -Ben
+import Moment from "../../components/images/momentjs.png"
 import NanoID from "../../components/images/nano.png"
 import ClipboardJS from 'clipboard'
 
@@ -103,12 +103,12 @@ export default function About() {
                 />
                 <div className="container">
                   <h2>Christy</h2>
-                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  <p>christy@example.com</p>
+                  <p>My favourite things to grow are carrots, tomatoes, and coding skills.</p>
+                  <p>christyclement001@gmail.com</p>
                   <p>
                     <button 
                       className="About-button"
-                      data-clipboard-text="christy@example.com"
+                      data-clipboard-text="christyclement001@gmail.com"
                     >
                       Contact
                     </button>
@@ -257,7 +257,7 @@ export default function About() {
           <div class="column">          
               <img src={NodeLogo} alt="Node Logo"/>          
               <img src={HTMLlogo} alt="HTML Logo"/>    
-              {/* <img src={Moment} alt="Moment"/> */}
+              <img src={Moment} alt="Moment"/>
           </div>
           <div class="column">
               <img src={ReactIcon} alt="React Logo"/>
