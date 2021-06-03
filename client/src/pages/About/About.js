@@ -248,23 +248,17 @@ export default function About() {
         </div>
         <div className="about-subsection">
           <h2 className="about-heading">The Technologies</h2>
-          <div className="logoRow">
           <div class="logoColumn"> 
-              <img src={ReactIcon} alt="React Logo" width="450" height="450"/>
+              <img src={ReactIcon} alt="React Logo"/>
               <img src={HTMLlogo} alt="HTML Logo" />  
-              <img src={NodeLogo} alt="Node Logo" width="300" height="300"/>          
-              <img src={Git} alt="Git "width="200" height="200"/>
-              <img src={Mongoose} alt="mongoose" width="200" height="200"/>    
-               
-          </div>
-          <div class="logoColumn">           
-              <img src={Passport} alt="passport" width="200" height="275"/>
-              <img src={OpenWeather} alt="Open Weather API" width="300" height="175"/>
-              <img src={googlemap} alt="Google Map" width="450" height="450"/>
-              <img src={MongoDBicon} alt="MongoDB" width="450" height="200"/>
-              <img src={Express} alt="Express" width="350" height="100" />         
-          </div>
-            
+              <img src={NodeLogo} alt="Node Logo"/>          
+              <img src={Git} alt="Git Logo"/>
+              <img src={Mongoose} alt="Mongoose Logo"/>         
+              <img src={Passport} alt="Passport Logo"/>
+              <img src={OpenWeather} alt="Open Weather API Logo"/>
+              <img src={googlemap} alt="Google Map Logo"/>
+              <img src={MongoDBicon} alt="MongoDB Logo"/>
+              <img src={Express} alt="Express Logo"/>         
           </div>
         </div>
       </div>

@@ -120,24 +120,17 @@ body {
   border-radius: 10px 10px 0px 0px;
 }
 
-#for image logos
-.logoRow {
+.logoColumn {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 30px 30px 30px 30px;
-  justify-content: space-between
+  justify-content: center;
+  padding: 20px;
 }
 
-/* Create two equal columns that sits next to each other */
-.logoColumn {
-  flex: 20%;
-  justify-content: space-between;
-  padding: 30px 50px 0px 10px;
-}
-
-.logocolumn img {
-  margin-top: 10px;
+.logoColumn img {
   vertical-align: middle;
   justify-content: space-between;
-  padding: 10px 10px 10px 10px;
+  padding: 25px;
+  height: 125px;
 }     
