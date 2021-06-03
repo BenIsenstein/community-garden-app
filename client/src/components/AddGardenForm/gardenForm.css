@@ -87,3 +87,13 @@
     width: 85%;
     resize: none;
 }
+
+.submit-button {
+    display: block;
+    padding: 5px;
+    margin: 20px auto;
+    font-size: 1.25rem;
+    background-color: #8ee4af;
+    border-radius: 5px;
+    cursor: pointer;
+}

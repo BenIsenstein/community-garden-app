@@ -15,11 +15,12 @@ const AuthenticationProvider = ({ children }) => {
         try {
           let response = await fetch('/api/user/getloggedinuser')
           let resObject = await response.json()
-          console.log('user object: ', resObject.user)
+
           if (resObject.user) {setUsername(resObject.user.username)}
         }
-        catch(error){
-          console.log(error)
+        catch(err) {
+          console.log(err)
+          alert("There was an error checking your login status. We're fixing it as fast as we can.")
         }
       }
 
@@ -38,32 +39,25 @@ const AuthenticationProvider = ({ children }) => {
         let response = await fetch(fetchUrl, fetchOptions)
 
         // they tried to log in, but passport authentication failed
-        if (response.status === 401) {
-          alert('Unable to log in. Please make sure your login info is correct.')
-          return
-        }
-
+        if (response.status === 401) {return alert('Unable to log in. Please make sure your login info is correct.')}
+          
         // parse the response as JSON since we're sure it has a value
         let resObject = await response.json()  
 
         // they are already logged in
-        if (resObject.isAlreadyLoggedIn) {
-          alert('You are already logged in. Please log out before logging in as a different gardener.')
-        }
+        if (resObject.isAlreadyLoggedIn) {alert('You are already logged in. Please log out before logging in as a different gardener.')}
+        
         // success logging in server-side
-        else {
-          setUsername(resObject.username) 
-          // redirectHome()
-          goBack()
-          alert(`Logged in as ${resObject.username}`)
-        }
+        else {setUsername(resObject.username); goBack()}
       }
       catch(err) {
         // reset context
         setUsername(undefined)
+
         // logout the user server-side, incase they got logged in before error occurred in the code block
         try {await fetch('/api/user/logout')} 
         catch(err) {console.log('error logging out: ', err)}
+        
         // log error and communicate with user
         console.log('Error sending fetch to login router: ', err)
         alert("There was an error logging you in. We're fixing it as fast as we can.")
@@ -75,13 +69,8 @@ const AuthenticationProvider = ({ children }) => {
         let response = await fetch("/api/user/logout")
         let resObject = await response.json()
   
-        if (resObject.isLoggedOutNow) {
-          setUsername(undefined) 
-          alert('Logged out')
-        }
-        else {
-          alert('You are still logged in for some reason. Please try logging out again.')
-        }
+        if (resObject.isLoggedOutNow) {setUsername(undefined)}
+        else {alert('You are still logged in for some reason. Please try logging out again.')}
       }
       catch(err) {
         console.log(`Error logging out user ${username}: `, err)

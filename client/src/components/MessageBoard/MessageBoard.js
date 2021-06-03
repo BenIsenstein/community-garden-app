@@ -8,20 +8,22 @@ const MessageBoard = ({ gardenId }) => {
   const authContext = useContext(AuthenticationContext)
   const posterUsername = authContext.username || 'Anonymous'
   // DEFAULT POST TO DISPLAY LOADING MESSAGE
-  const loadingPost = [{
+  const loadingPostArray = [{
     name: 'Loading...',
     content: '<p>Loading...</p>',
     date: new Date()
   }]
   // POST TO COMMUNICATE 'NO CHAT HISTORY YET'
-  const noHistoryYetPost = useMemo(() => [{
-    name: 'No Chat History',
-    content: '<p>No one has posted to the message board yet. Make the first post!</p>',
-    date: new Date()
-  }], [])
+  const noHistoryYetPost = useMemo(() => {
+    return {
+      name: 'No Chat History',
+      content: '<p>No one has posted to the message board yet. Make the first post!</p>',
+      date: new Date()
+    }
+  }, [])
 
   // DECLARE STATE FOR POSTS
-  const [posts, setPosts] = useState(loadingPost)
+  const [posts, setPosts] = useState(loadingPostArray)
 
   // Remove default post once more get added
   useEffect (() => {
@@ -30,9 +32,7 @@ const MessageBoard = ({ gardenId }) => {
       posts.includes(noHistoryYetPost)
     ) 
 
-    if (shouldNoHistoryYetBeRemoved) {
-      setPosts(posts.slice(1))
-    }
+    if (shouldNoHistoryYetBeRemoved) {setPosts(posts.slice(1))}
     
   },[posts, noHistoryYetPost])
 
@@ -54,11 +54,11 @@ const MessageBoard = ({ gardenId }) => {
         // if there are messages, set the 'posts' state to them.
         // if not, set 'posts' to noHistoryYetPost
         let areThereMessages = (resObject.messages?.length > 0)
-        let messagesToSet = areThereMessages ? resObject.messages : noHistoryYetPost
+        let messagesToSet = areThereMessages ? resObject.messages : [noHistoryYetPost]
         setPosts(messagesToSet)
       }
       catch(err) {
-        alert("Error!", err)
+        alert("There was an error getting the message board history for this garden. We're fixing it as fast as we can.")
         console.log(err)
       }
     }
@@ -71,13 +71,6 @@ const MessageBoard = ({ gardenId }) => {
   const submitPost = async (messageText) => {
     // PUT THE VALUE OF THE CURRENT TIME INTO A VARIABLE
     const curDate = new Date()
-
-    // IF THE ONLY POST IS THE 'NO HISTORY YET' POST, 
-    // OR THE 'LOADING' POST,
-    // MAKE IT DISAPPEAR 
-    if (posts === noHistoryYetPost) {setPosts([])}
-    if (posts === loadingPost) {setPosts([])}
-    
 
     // SET 'POSTS' STATE TO INCLUDE THE NEW POST.
     setPosts([
@@ -109,15 +102,9 @@ const MessageBoard = ({ gardenId }) => {
       body: JSON.stringify(newMessage)
     }
 
-    try {
-      let response = await fetch(fetchUrl, fetchOptions)
-      let resObject = await response.json()
-      alert(resObject.message)
-    }
-    catch(err) {
-      alert("Error!", err)
-      console.log(err)
-    }
+    try {await fetch(fetchUrl, fetchOptions)}
+
+    catch(err) {console.log(err); alert("There was an error posting your message. We're fixing it as fast as we can.")}
   }
 
   return (

@@ -44,6 +44,11 @@
   border-radius: 20px;
 }
 
+.pl-3:hover {
+  color: #EDF5E1;
+  cursor: pointer;
+}
+
 .pagination {
   display: flex;
   align-items: center;
@@ -79,4 +84,8 @@ li.page-item a.page-link {
 
 .quill {
   padding: 20px 0px 10px 0px;
+}
+
+.page-item:hover {
+  cursor: pointer;
 }

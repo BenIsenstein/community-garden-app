@@ -3,8 +3,6 @@ import ToDoForm from "./ToDoForm";
 import ToDoFilterButton from "./ToDoFilterButton";
 import ToDo from "./ToDo";
 import { nanoid } from "nanoid";
-//import { Db } from "mongodb";
-
 
 // custom hook  to return a previous value
 function usePrevious(value) {
@@ -21,49 +19,53 @@ const FILTER_MAP = {
   All: () => true,
   Active: task => !task.completed,
   Completed: task => task.completed
-};
+}
 
 //Collects an array of filter names
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-
 export default function ToDoApp({ gardenId }) {
-  var loadingTask=[{
+  var loadingTask = [{
     name:"loading",
     id:"loading",
-    completed:true
+    completed: false
   }]
   // POST TO COMMUNICATE 'NOTHING TO DO YET'
-  const nothingToDo = useMemo(() => [{
-    // profileImage: undefined,
-    name: 'Please add a task',
-    id: "default task",
-    completed: true
-  }], [])
+  const nothingToDo = useMemo(() => {
+    return {
+      profileImage: undefined,
+      name: 'Please add a task',
+      id: "default task",
+      completed: false
+    }
+  }, [])
 
-  const [tasks, setTasks] = useState(loadingTask);
-  const [filter, setFilter] = useState('All');
+  const [tasks, setTasks] = useState(loadingTask)
+  const [filter, setFilter] = useState('All')
   
-  // remove default task once more get added
-  useEffect (() =>{
+  // manage default task appearing in task list
+  useEffect (() => { 
+    // if tasks is empty, add nothingToDo
+    if (!tasks.length) {setTasks([nothingToDo])}
+
+    // check if nothingToDo should be removed
     let shouldNothingToDoBeRemoved = (
       tasks.length > 1 &&
       tasks.includes(nothingToDo)
     )
 
-    if (shouldNothingToDoBeRemoved) {
-      setTasks(tasks.slice(1))
-    }
-    
+    if (shouldNothingToDoBeRemoved) {setTasks(tasks.slice(1))}
+
   },[tasks, nothingToDo])
   
-  useEffect (()=> {
+  // get all tasks from MongoDB and update them in state
+  useEffect (() => {
     async function getAllTasks() {
       try {
         let response = await fetch(`/api/garden/alltasks/${gardenId}`)
         let resObject = await response.json()       
         let areThereTasks = (resObject.allTasks?.length > 0)
-        let tasksToSet = areThereTasks ? resObject.allTasks : nothingToDo
+        let tasksToSet = areThereTasks ? resObject.allTasks : [nothingToDo]
         setTasks(tasksToSet)
       }
       catch(err) {
@@ -71,9 +73,9 @@ export default function ToDoApp({ gardenId }) {
         alert("There was an error finding the todo list for this garden. We're fixing it as fast as we can.")
       }
     }
+    
     getAllTasks()
-    }, [gardenId, nothingToDo]
-  )
+  }, [gardenId, nothingToDo])
 
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
@@ -88,10 +90,33 @@ export default function ToDoApp({ gardenId }) {
     setTasks(updatedTasks);
   }
  
+  //Create a task 
+  const createTask = async (taskText) => {
+    // new task object
+    let newTask = {
+      id: "todo-" + nanoid(),
+      name: taskText,
+      completed: false
+    }
+    // data for fetch()
+    let fetchUrl = `/api/garden/task/${gardenId}`
+    let fetchOptions = {
+      method: 'post',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(newTask)
+    }
+    
+    try {
+      await fetch(fetchUrl, fetchOptions)
+      setTasks([...tasks, newTask])
+    }
+    catch(err) {
+      console.log(err)
+      alert("There was an error creating this task. We're fixing it as fast as we can.")
+    }
+  }
 
   async function deleteTask(id) {
-    const remainingTasks = tasks.filter(task => id !== task.id);
-    setTasks(remainingTasks);
     let fetchUrl = `/api/garden/deleteTask/${gardenId}`
     let fetchOptions = {
       method: 'delete',
@@ -100,28 +125,22 @@ export default function ToDoApp({ gardenId }) {
     }
 
     try {
-      let response = await fetch(fetchUrl, fetchOptions)
-      let resObject = await response.json()
-      alert(resObject.successMessage)
+      await fetch(fetchUrl, fetchOptions)
+      let remainingTasks = tasks.filter(task => id !== task.id);
+      setTasks(remainingTasks);
     }
     catch(err) {
-      alert("Error!", err)
       console.log(err)
+      alert("There was an error deleting this task. We're fixing it as fast as we can.")
     }
 
   }
 
   async function editTask(id, newName) {
-    const editedTaskList = tasks.map(task => {
-    // if this task has the same ID as the edited task
-      if (id === task.id) {
-        //
-        return {...task, name: newName}
-      }
-      return task;
-    });
-    setTasks(editedTaskList);
-    let taskToUpdate=editedTaskList.find((task) => task.id === id)
+    // update the task in state and put it into a variable
+    let editedTaskList = tasks.map(task => (id === task.id) ? {...task, name: newName} : task)
+    let taskToUpdate = editedTaskList.find((task) => task.id === id)
+    // define info for fetch()
     let fetchUrl = `/api/garden/editTask/${gardenId}`
     let fetchOptions = {
       method: 'put',
@@ -130,10 +149,9 @@ export default function ToDoApp({ gardenId }) {
     }
 
     try {
-      let response = await fetch(fetchUrl, fetchOptions)
-      let resObject = await response.json()
-      console.log ("edited resObject is", resObject)
-      alert(resObject.successMessage)
+      await fetch(fetchUrl, fetchOptions)
+      setTasks(editedTaskList)
+      
     }
     catch(err) {
       alert("Error!", err)
@@ -165,42 +183,7 @@ export default function ToDoApp({ gardenId }) {
     />
   ))
 
-  //Create a task 
-  const createTask = async (taskText) => {
-    console.log("Tasks and nothing to do are currently",tasks, nothingToDo)
-    console.log("are they the same",tasks === nothingToDo)
-    if (tasks === nothingToDo) {setTasks([])}
-    if (tasks === loadingTask) {setTasks([])}
-    console.log("What is tasks after([})",tasks)
-    // SET 'Tasks' STATE TO INCLUDE THE NEW Task.
-    
-    let newTask ={
-      id: "todo-" + nanoid(),
-      name: taskText,
-      completed: false
-    }
   
-    setTasks([...tasks, newTask])
-
-
-    let fetchUrl = `/api/garden/task/${gardenId}`
-    let fetchOptions = {
-      method: 'post',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify(newTask)
-    }
-
-    try {
-      let response = await fetch(fetchUrl, fetchOptions)
-      let resObject = await response.json()
-      alert(resObject.successMessage)
-    }
-    catch(err) {
-      alert("Error!", err)
-      console.log(err)
-    }
-  }
-
   const tasksNoun = taskList.length !== 1 ? 'Tasks' : 'Task';
   const headingText = `${taskList.length} ${tasksNoun} Remaining`;
 

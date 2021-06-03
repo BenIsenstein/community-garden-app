@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import React, { useRef, useEffect, useState, useContext } from "react"
 import { useForm } from "react-hook-form"
 import GardenSearchAutocomplete from "./GardenSearchAutocomplete/GardenSearchAutocomplete"
@@ -62,7 +61,6 @@ const Signup = () => {
     <form className="signup-form-container" onSubmit={handleSubmit(async (data) => await onSubmit(data))}>
       <div className="signup-form">
       <div className="signup-form-content">
-        <h1 className="signup-form-header">Sign Up!</h1>
         <div className="form-control">
           <label htmlFor="username">
             Username
@@ -73,7 +71,6 @@ const Signup = () => {
               required: "You must pick a username."
             })}
             type="text"
-            placeholder="Enter Username"
             name="username"
             id="username"
           />
@@ -87,7 +84,6 @@ const Signup = () => {
             {...register("email", { 
               required: "You must provide an email address." })}
             type="email"
-            placeholder="Enter Email"
             name="email"
             id="email"
           />
@@ -105,7 +101,6 @@ const Signup = () => {
                 "The password must contain an uppercase letter, a lowercase letter, a number, and be at least 6 characters long."
             })}
             type="password"
-            placeholder="Enter Password"
             name="password"
             id="password"
           />
@@ -113,7 +108,7 @@ const Signup = () => {
         </div>
         <div className="form-control">
           <label htmlFor="confirmPassword">
-            Password
+            Confirm password
           </label>
           <div style={{ display: "flex", color: "red" }}>
             <input
@@ -124,7 +119,6 @@ const Signup = () => {
                   "The passwords do not match"
               })}
               type="password"
-              placeholder="Confirm Password"
               name="confirmPassword"
               id="confirmPassword"
             />
@@ -213,7 +207,6 @@ const Signup = () => {
           <input
             {...register("postalCode", { required: false })}
             type="text"
-            placeholder="Enter Postal Code"
             name="postalCode"
             id="postalCode"
           />
@@ -233,15 +226,6 @@ const Signup = () => {
         </div>
         <div>
           <input className="signupButton" type="submit" value="Submit" />
-          <hr />
-          <div>
-            <label htmlFor="alreadyHaveAnAccount" id="alreadyHaveAnAccount">
-              Already have an account?
-              <span className="signupSpan">
-                <Link to="/login">  Log in.</Link>
-              </span>
-            </label>
-          </div>
         </div>
       </div>
     </div>
