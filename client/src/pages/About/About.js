@@ -7,8 +7,18 @@ import Ben from "../../components/images/Ben.jpg"
 import HTMLlogo from "../../components/images/html5-logo-31819.png"
 import NodeLogo from "../../components/images/Node.js_logo.svg"
 import ReactIcon from "../../components/images/React-icon.svg"
-import Moment from "../../components/images/momentjs.png"
 import NanoID from "../../components/images/nano.png"
+import Moment from "../../components/images/moment.png"
+import Express from "../../components/images/express.png"
+import FontAwesome from "../../components/images/font-awesome.svg"
+import FortAwesome from "../../components/images/fort-awesome.svg"
+import Git from "../../components/images/git.svg"
+import MongoDBicon from "../../components/images/mongoDBatlas.png"
+import Mongoose from "../../components/images/mongoose.png"
+import Passport from "../../components/images/passport.png"
+import Semantic from "../../components/images/semantic.png"
+import Styled from "../../components/images/Styled_components.png"
+
 
 export default function About() {
   return (
@@ -223,15 +233,24 @@ export default function About() {
         </div>
         <div className="about-subsection">
           <h2 className="about-heading">The Technologies</h2>
-          <div className="row">
-          <div class="column">          
-              <img src={NodeLogo} alt="Node Logo"/>          
-              <img src={HTMLlogo} alt="HTML Logo"/>    
-              <img src={Moment} alt="Moment"/>
+          <div className="logoRow">
+          <div class="logoColumn"> 
+              <img src={ReactIcon} alt="React Logo" width="450" height="450"/>
+              <img src={HTMLlogo} alt="HTML Logo" />  
+              <img src={NodeLogo} alt="Node Logo" width="300" height="300"/>          
+              <img src={Git} alt="Git "width="200" height="200"/>
+              <img src={Mongoose} alt="mongoose" width="200" height="200"/>    
+              <img src={Passport} alt="passport" width="200" height="275"/>
+              <img src={Express} alt="Express" width="550" height="300" />       
           </div>
-          <div class="column">
-              <img src={ReactIcon} alt="React Logo"/>
-              <img src={NanoID} alt="NanoID"/>
+          <div class="logoColumn">          
+              <img src={MongoDBicon} alt="MongoDB" width="450" height="200"/>  
+              <img src={FontAwesome} alt="@font-awesome" width="250" height="250"/>   
+              <img src={FortAwesome} alt="@fort-awesome" width="250" height="250" />  
+              <img src={Styled} alt="styled-components" width="200" height="200" />       
+              <img src={Semantic} alt="semantic"width="200" height="200"/> 
+              <img src={NanoID} alt="NanoID"width="200" height="200"/>
+              <img src={Moment} alt="Moment" width="200" height="200"/>
           </div>
             
           </div>
@@ -240,4 +259,3 @@ export default function About() {
     </div>
   )
 }
-
