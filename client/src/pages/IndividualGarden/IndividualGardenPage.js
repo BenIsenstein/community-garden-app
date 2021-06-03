@@ -77,11 +77,11 @@ export default function LandingPage() {
             </p>
             <p>
               <b>{(gardenData) && ((gardenData.website) && 'Website: ')}</b>
-              {(gardenData) && ((gardenData.website) && (gardenData.website))}
+              <a href={(gardenData) && ((gardenData.website) && (gardenData.website))} className="external-garden-link">{(gardenData) && ((gardenData.website) && (gardenData.website))}</a>
             </p>
             <p>
               <b>{(gardenData) && ((gardenData.email) && 'Email: ')}</b>
-              {(gardenData) && ((gardenData.email) && (gardenData.email))}
+              <a href={`mailto: ${(gardenData) && ((gardenData.email) && (gardenData.email))}`} className="external-garden-email">{(gardenData) && ((gardenData.email) && (gardenData.email))}</a>
             </p>
             <p>
               <b>{(gardenData) && ((gardenData.fee) && 'Fee: ')}</b>
