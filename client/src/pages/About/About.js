@@ -2,7 +2,7 @@ import "../../../src/App.css"
 import "./about.css"
 import Brady from "../../components/images/brady.jpg"
 import Christy from "../../components/images/Christy.jpg"
-import Donna from "../../components/images/donna.jpg"
+import DonnaD from "../../components/images/DonnaD.jpg"
 import Ben from "../../components/images/Ben.jpg"
 import HTMLlogo from "../../components/images/html5-logo-31819.png"
 import NodeLogo from "../../components/images/Node.js_logo.svg"
@@ -132,7 +132,7 @@ export default function About() {
                   className="team-image"
                   style={{
                     height: "275px",
-                    backgroundImage: "url(" + Donna + ")",
+                    backgroundImage: "url(" + DonnaD + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
