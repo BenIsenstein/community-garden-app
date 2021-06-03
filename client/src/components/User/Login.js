@@ -28,6 +28,7 @@ const Login = () => {
               <input 
                 type="password" 
                 name="password" 
+                id="password"
                 {...register("password", {required: "You must input a password."})}
               />
               {errors.password && <p className="signup-form-error-message">{errors.password.message}</p>}
