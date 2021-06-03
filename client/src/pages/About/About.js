@@ -35,30 +35,28 @@ export default function About() {
 
         <div className="about-subsection">
           <h2 className="about-heading">The Team</h2>
-          <div className="row">
+          <div className="about-cards">
             <div className="about-column">
               <div className="card">
                 <div
                   className="team-image"
                   style={{
-                    height: "275px",
                     backgroundImage: "url(" + Ben + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
-                  }}
-                />
+                  }}>
+                  </div>
                 <div className="groupmember-container">
                   <h2>Ben</h2>
                   <p>I spent the first five years of my working life as a performing musician in Toronto, Calgary, Montreal and Italy. This year I'm growing zuchini, lettuce, curly kale, wild arugula and potatoes. I'm very excited to be in the EvolveU progam at InceptionU, and creatively solving problems through software!</p>
-                  <p>ben.isenstein@gmail.com</p>
-                  <button 
-                    className="About-button"
-                    data-clipboard-text="ben.isenstein@gmail.com"
-                  >
-                    Contact
-                  </button>
                 </div>
+                <button 
+                  className="About-button"
+                  data-clipboard-text="ben.isenstein@gmail.com"
+                >
+                  Contact
+                </button>
               </div>
             </div>
 
@@ -67,24 +65,22 @@ export default function About() {
                 <div
                   className="team-image"
                   style={{
-                    height: "275px",
                     backgroundImage: "url(" + Brady + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
-                  }}
-                />
+                  }}>
+                  </div>
                 <div className="groupmember-container">
                   <h2>Brady</h2>
                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  <p>brady@example.com</p>
-                  <button 
-                    className="About-button"
-                    data-clipboard-text="brady@example.com"
-                  >
-                    Contact
-                  </button>
                 </div>
+                <button 
+                  className="About-button"
+                  data-clipboard-text="brady@example.com"
+                >
+                  Contact
+                </button>
               </div>
             </div>
 
@@ -93,24 +89,22 @@ export default function About() {
                 <div
                   className="team-image"
                   style={{
-                    height: "275px",
                     backgroundImage: "url(" + Christy + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
-                  }}
-                />
+                  }}>
+                  </div>
                 <div className="groupmember-container">
                   <h2>Christy</h2>
                   <p>My favourite things to grow are carrots, tomatoes, and coding skills.</p>
-                  <p>christyclement001@gmail.com</p>
-                  <button 
-                    className="About-button"
-                    data-clipboard-text="christyclement001@gmail.com"
-                  >
-                    Contact
-                  </button>
                 </div>
+                <button 
+                  className="About-button"
+                  data-clipboard-text="christyclement001@gmail.com"
+                >
+                  Contact
+                </button>
               </div>
             </div>
 
@@ -119,27 +113,25 @@ export default function About() {
                 <div
                   className="team-image"
                   style={{
-                    height: "275px",
                     backgroundImage: "url(" + DonnaD + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
-                  }}
-                />
+                  }}>
+                  </div>
                 <div className="groupmember-container">
                   <h2>Donna</h2>
                   <p>
                     Beans, peas and pattypan squash are among my most succesful garden crops. Growing
                     my full-stack development skill-set.
                   </p>
-                  <p>dgswitzer@gmail.com</p>
-                  <button 
-                    className="About-button"
-                    data-clipboard-text="dgswitzer@gmail.com"
-                  >
-                    Contact
-                  </button>
                 </div>
+                <button 
+                  className="About-button"
+                  data-clipboard-text="dgswitzer@gmail.com"
+                >
+                  Contact
+                </button>
               </div>
             </div>
           </div>
