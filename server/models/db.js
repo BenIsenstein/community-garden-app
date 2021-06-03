@@ -1,13 +1,10 @@
 //db setup
 
+require("dotenv").config()
 const mongoose = require("mongoose")
-const dotenv = require("dotenv").config()
-const dbServer = "mongodb://localhost:27017"
-const databaseName = "project-2-C6-local"
-const dbUrl = dbServer + "/" + databaseName
 const mongoAtlasUrl = process.env.MONGODB_URL
 
-// mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+
 mongoose
   .connect(mongoAtlasUrl, {
     useUnifiedTopology: true,
@@ -18,9 +15,11 @@ mongoose
   })
   .catch(function (err) {
     console.log(err)
-  })
+  }
+)
 
 const db = mongoose.connection
+
 db.on("error", (err) => console.error("MongoDB connection error!", err))
 db.once("open", () => console.log("MongoDB is now connected! @ ", mongoAtlasUrl))
 
@@ -59,31 +58,15 @@ const gardenSchema = new mongoose.Schema({
 
 const Garden = mongoose.model("Garden", gardenSchema)
 
-const addGarden = async (newGarden) => {
-  let result = await newGarden.save()
-  return result.name + " succesfully added to database!"
-}
+const listGardens = async () => await Garden.find({})
 
-const deleteGardenByName = async (name) => {
-  let result = await Garden.deleteOne({ name: name })
-  return result.name + " successfully deleted from database!"
-}
+const addGarden = async (newGarden) => await newGarden.save()
 
-const findGardenByName = async (name) => {
-  let caseInsensitiveName = new RegExp(`${name}`, "i")
-  let result = await Garden.findOne({ name: caseInsensitiveName })
-  return result
-}
+const deleteGardenByName = async (name) => await Garden.deleteOne({ name: name })
 
-const findGardenByAddress = async (address) => {
-  let result = await Garden.findOne({ address: address })
-  return result
-}
+const findGardenByAddress = async (address) => await Garden.findOne({ address: address })
 
-const listGardens = async () => {
-  let result = await Garden.find({})
-  return result //returns an array
-}
+const findGardenByName = async (name) => await Garden.findOne({ name: new RegExp(`${name}`, "i") })
 
 // User model and functions
 const userSchema = new mongoose.Schema({
@@ -124,16 +107,9 @@ const addUser = async (newUser) => {
 
 // General db functions
 
-const closeDb = async () => {
-  let result = await db.close({ force: true })
-  return result
-}
+const closeDb = async () => await db.close({ force: true })
 
-const searchByFragment = async (model, fragment, attribute) => {
-  let matchFragment = new RegExp(`.*${fragment}.*`, "i")
-  let list = await model.find({ [attribute]: matchFragment })
-  return list
-}
+const searchByFragment = async (model, attribute, fragment) => await model.find({ [attribute]: new RegExp(`.*${fragment}.*`, "i") })
 
 module.exports = {
   closeDb,
