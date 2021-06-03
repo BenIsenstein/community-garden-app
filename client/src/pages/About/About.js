@@ -7,7 +7,7 @@ import Ben from "../../components/images/Ben.jpg"
 import HTMLlogo from "../../components/images/html5-logo-31819.png"
 import NodeLogo from "../../components/images/Node.js_logo.svg"
 import ReactIcon from "../../components/images/React-icon.svg"
-// import Moment from "../../components/images/momentjs.png"  // Not used??
+// import Moment from "../../components/images/momentjs.png"  // Not used?? **We are using it in GetForecast. -Ben
 import NanoID from "../../components/images/nano.png"
 
 export default function About() {
@@ -124,7 +124,7 @@ export default function About() {
           <div className="row">
             <p>
               
-              Grow Calgary began with four software developers-in-training who shared an interest in solving municipal problems. Passion for the outdoors led us to the problems many people face in the world of gardening.
+              Grow Calgary began with four software developers-in-training who shared an interest in solving municipal problems. Passion for the outdoors led us to problems many people face in the world of gardening.
               <br />
               <br />
               For people just beginning their gardening journey, common barriers look like:
@@ -160,7 +160,7 @@ export default function About() {
               </ul>
               <br />
               <br />
-              Garden organizers who have an administrative role have the greatest challenges:
+              Garden organizers with an administrative role have the greatest challenges:
               <ul>
                 <li>
                   No reliable way to communicate updates
