@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./App.css"
 import Home from "./pages/Home/Home"
 import About from "./pages/About/About"
-import Signup from "./components/User/Signup"
-import Login from "./components/User/Login"
+import SignupOrLogin from "./components/User/SignupOrLogin"
 import GetWeather from "./components/Weather/GetWeather"
 import GetForecast from "./components/Weather/GetForecast"
 import GardenPageRouter from "./routes/IndividualGardens/GardenPageRouter"
@@ -32,9 +31,6 @@ function App() {
                 <HashLink to='/home#search'>Find a Garden</HashLink>
               </li>
               <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li>
                 <LogInOrOut />
               </li>
             </ul>
@@ -44,11 +40,8 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
             <Route path="/login">
-              <Login />
+              <SignupOrLogin />
             </Route>
             <Route path="/weather">
               <GetWeather />
