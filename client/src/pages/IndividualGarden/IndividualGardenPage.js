@@ -41,7 +41,11 @@ export default function LandingPage() {
           </div>
         </div>
         <div>
-          {(typeof gardenData === 'object') && <EditGardenButton />}
+          {isLoggedIn ? 
+            (typeof gardenData === 'object') && <EditGardenButton />
+            :
+            null
+          }
         </div>
       </div>
       

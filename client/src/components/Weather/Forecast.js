@@ -90,7 +90,7 @@ export default function Forecast ({ forecast }) {
 
   // Add Total-rain-header at the bottom
   results.push(
-    <div key={"precip sum"} className="forecast">
+    <div key={"precip sum"} className="forecast" style={{backgroundColor: "cornflowerblue"}}>
       <div className="flex-forecast">
       <h2 className="Total-rain-header">Total rain in the next five days: {totalRain.toFixed(2)} mm</h2>
       </div>
