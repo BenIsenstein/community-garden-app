@@ -81,9 +81,8 @@ export default function Forecast ({ forecast }) {
         <p>{moment(item.dt_txt).format("h:mm a")}</p>
         <WeatherIcon style={{fontSize:20,marginTop:4}}>{weatherIcon}</WeatherIcon>
         <p>{Math.round(item.main.temp)} &deg;C</p>
-        <p>{(item.rain && "Precip:  " + item.rain['3h']) || "No precip"} </p>
+        <p>{(item.rain && "Precip(mm):  " + item.rain['3h']) || "No precip"} </p>
         <p> Wind: {Math.round(item.wind.speed)} km/hr</p>
-        <p> Max rain: {Math.max(item.rain && item.rain['3h']) || "None"} </p>
         </div>
       </div>
     )
