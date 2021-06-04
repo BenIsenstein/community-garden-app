@@ -73,7 +73,9 @@ export default function About() {
                   </div>
                 <div className="groupmember-container">
                   <h2>Brady</h2>
-                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                  <p>I have a degree in engineering and a passion for problem solving. 
+                    My garden consists primarily of flowers, herbs, and a few veggies.
+                    I am enjoying the opportunity to grow my skill-set in the EvolveU program.</p>
                 </div>
                 <button 
                   className="About-button"
