@@ -97,7 +97,7 @@ export default function About() {
                   </div>
                 <div className="groupmember-container">
                   <h2>Christy</h2>
-                  <p>My favourite things to grow are carrots, tomatoes, and coding skills.</p>
+                  <p>I enjoy experimenting in the garden and often buy my groceries based on what I think can be regrown from seeds or cuttings. My favourite things to grow are carrots, tomatoes, and coding skills.</p>
                 </div>
                 <button 
                   className="About-button"
