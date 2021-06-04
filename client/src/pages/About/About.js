@@ -122,7 +122,7 @@ export default function About() {
                 <div className="groupmember-container">
                   <h2>Donna</h2>
                   <p>
-                    Beans, peas and pattypan squash are among my most succesful garden crops. Growing
+                    Beans, peas and pattypan squash are among my most succesful garden crops. Currently, growing
                     my full-stack development skill-set.
                   </p>
                 </div>
