@@ -1,4 +1,4 @@
-# Grow Calgary - Community Garden App - Cohort 6
+# Grow Calgary - Community Garden App - InceptionU Cohort 6, Project 2
 - Ben Isenstein
 - Brady Walker-Brock
 - Christy Clement
@@ -35,3 +35,6 @@ In a command shell run the commands:
 
 Your browser should open to `http://localhost:4444`.  The React development
 system is running on port *4444*.
+
+## For More Info
+Visit the 'About' section of our site. 
